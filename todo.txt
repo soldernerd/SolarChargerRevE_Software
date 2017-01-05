@@ -1,0 +1,7 @@
+-.gitignore erstellen
+-Dependencies eleminieren
+-ADC fixen
+-Disp fixen
+-Flash implementieren
+-MSD auf flash umhängen
+-Filezugriff implementieren

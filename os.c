@@ -167,16 +167,37 @@ static void _system_encoder_init(void)
     
     INTCON2bits.INTEDG2 = 1; //1=rising
     INTCON3bits.INT2IF = 0;
-    INTCON3bits.INT2IE = 1;
+    //INTCON3bits.INT2IE = 1;
     
     INTCON2bits.INTEDG3 = 1; //1=rising
     INTCON3bits.INT3IF = 0;
-    INTCON3bits.INT3IE = 1;
+    //INTCON3bits.INT3IE = 1;
     
     INTCONbits.GIE = 1;
     
     os.encoderCount = 0;
     os.buttonCount = 0;
+}
+
+void system_encoder_disable(void)
+{
+    //Disable Interrupts  
+    INTCON3bits.INT2IE = 0;
+    INTCON3bits.INT3IE = 0;
+}
+
+void system_encoder_enable(void)
+{
+    //Clear interrupt flags
+    INTCON3bits.INT2IF = 0;
+    INTCON3bits.INT3IF = 0; 
+    
+    //Reset encoder count
+    os.encoderCount = 0;
+    
+    //Enable Interrupts  
+    INTCON3bits.INT2IE = 1;
+    INTCON3bits.INT3IE = 1;
 }
 
 /*

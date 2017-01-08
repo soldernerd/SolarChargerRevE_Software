@@ -524,6 +524,8 @@ static void _display_temperature(void)
     while(internal[cntr])
         display_content[1][cntr] = internal[cntr++];
     
+    
+    //_display_itoa(os.temperature_onboard_adc, 2, &display_content[1][12]);
     _display_itoa(os.temperature_onboard, 2, &display_content[1][12]);
     
     cntr = 0;

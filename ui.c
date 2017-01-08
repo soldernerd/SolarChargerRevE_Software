@@ -383,6 +383,8 @@ void ui_run(void)
             i2c_display_send_init_sequence();
             //Turn backlight on
             i2c_digipot_backlight(150); 
+            //Enable rotary encoder inputs
+            system_encoder_enable();
             //User interface is now up and running
             system_ui_inactive_count = 0;
             userInterfaceStatus = USER_INTERFACE_STATUS_ON;
@@ -394,6 +396,8 @@ void ui_run(void)
 				++system_ui_inactive_count;
 				if(system_ui_inactive_count > OS_USER_INTERFACE_TIMEOUT)
 				{
+                    //Disable rotary encoder inputs
+                    system_encoder_disable();
                     //Disable the user interface
                     DISP_EN_PORT = 1;
                     //i2c_expander_low(I2C_EXPANDER_USER_INTERFACE);

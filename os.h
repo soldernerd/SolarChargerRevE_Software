@@ -213,6 +213,8 @@ void tmr_isr(void);
 //void system_set_cpu_frequency(clockFrequency_t newFrequency);
 void system_delay_ms(uint8_t ms);
 //void system_power_save(void);
+void system_encoder_enable(void);
+void system_encoder_disable(void);
 
 /*
 

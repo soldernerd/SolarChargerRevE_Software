@@ -88,18 +88,26 @@ MAIN_RETURN main(void)
             
             adc_calibrate();
             os.temperature_onboard_adc += adc_read(ADC_CHANNEL_TEMPERATURE_ONBOARD);
-            os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
-            os.temperature_onboard_adc = 0;
+            os.temperature_external_1_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_1);
+            os.temperature_external_2_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_2);
             
             if(cntr==14)
             {
+                os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
+                os.temperature_onboard_adc = 0;
+                os.temperature_external_1 = adc_calculate_temperature(os.temperature_external_1_adc);
+                os.temperature_external_1_adc = 0;
+                os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
+                os.temperature_external_2_adc = 0;
                 display_prepare(os.display_mode);
+                
+                adc_calibrate();
             }
             if(cntr==15)
             {
                 display_update();
             }
-            system_delay_ms(4);
+            system_delay_ms(8);
         }
 
     }//end while

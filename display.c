@@ -317,8 +317,7 @@ static void _display_usb(void)
     }
     
     cntr = 0;
-    //if(i2c_expander_isHigh(I2C_EXPANDER_USB_CHARGER))
-    if(0)
+    if(USBCHARGER_EN_PORT)
     {
         while(usb_on[cntr])
             display_content[3][cntr] = usb_on[cntr++];

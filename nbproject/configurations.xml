@@ -27,6 +27,7 @@
       <itemPath>rtcc.h</itemPath>
       <itemPath>buck.h</itemPath>
       <itemPath>adc.h</itemPath>
+      <itemPath>flash.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -60,6 +61,7 @@
       <itemPath>rtcc.c</itemPath>
       <itemPath>buck.c</itemPath>
       <itemPath>adc.c</itemPath>
+      <itemPath>flash.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

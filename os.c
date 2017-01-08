@@ -158,7 +158,6 @@ static void _system_encoder_init(void)
     PPSInput(PPS_INT1, PPS_RP0); //Pushbutton
     PPSInput(PPS_INT3, PPS_RP9); //Encoder A
     PPSInput(PPS_INT2, PPS_RP10); //Encoder B
-    
     PPSLock();
     
     INTCON2bits.INTEDG1 = 0; //0=falling
@@ -245,6 +244,15 @@ void system_init(void)
     VCC_HIGH_TRIS = PIN_OUTPUT;
     PWR_GOOD_TRIS = PIN_INPUT;
     DISP_EN_TRIS = PIN_OUTPUT;
+    USBCHARGER_EN_TRIS = PIN_OUTPUT;
+    USBCHARGER_EN_PORT = 0;
+    
+    //SPI Pins
+    SPI_MISO_TRIS = PIN_INPUT;
+    SPI_MOSI_TRIS = PIN_OUTPUT;
+    SPI_SCLK_TRIS = PIN_OUTPUT;
+    SPI_SS_TRIS = PIN_OUTPUT;
+    SPI_SS_PORT = 1;
     
     //Pins for temperature sensing
     VOLTAGE_REFERENCE_TRIS = PIN_INPUT;
@@ -285,6 +293,9 @@ void system_init(void)
     os.buckDutyCycle = 0;
     os.buckLastStep = -1;
     os.display_mode = DISPLAY_MODE_OVERVIEW;
+    
+    //Just for now
+    os.output_voltage = 13000;
 
     //Configure timer 1
     //Clear interrupt flag
@@ -322,6 +333,8 @@ void system_init(void)
     
     //Set up encoder with interrupts
     _system_encoder_init();
+    
+    flash_init();
 
     //Buck init
     buck_init();

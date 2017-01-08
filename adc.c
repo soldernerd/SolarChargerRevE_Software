@@ -14,9 +14,7 @@ void adc_init(void)
     ADCON0bits.ADON = 1; // Enable ADC module
     ADCON1bits.ADFM = 1; // right justified
     ADCON1bits.ADCAL = 0; // no calibration
-    ADCON1bits.ADCS2 = 1; // T_ad = Fosc/16
-    ADCON1bits.ADCS1 = 0;
-    ADCON1bits.ADCS0 = 1;
+    ADCON1bits.ADCS = 0b110; // T_ad = Fosc/64
 }
 
 void adc_calibrate(void)
@@ -49,6 +47,7 @@ uint16_t adc_read(adcChannel_t channel)
     }
     
     //Wait for acquisition time
+    /*
     switch(os.clockFrequency)
     {
         case CPU_FREQUENCY_8MHz:
@@ -58,6 +57,11 @@ uint16_t adc_read(adcChannel_t channel)
             __delay_us(90);
             break;
     }
+    */
+    __delay_us(90);
+    __delay_us(90);
+    __delay_us(90);
+    __delay_us(90);
     
     //Start conversion
     ADCON0bits.GO_NOT_DONE = 1;

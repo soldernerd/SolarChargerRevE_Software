@@ -29,6 +29,7 @@
 #include "rtcc.h"
 #include "buck.h"
 #include "adc.h"
+#include "flash.h"
 
 
 /********************************************************************

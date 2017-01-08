@@ -169,8 +169,12 @@ static void _ui_encoder(void)
             if(os.buttonCount)
             {
                 if(os.output_voltage>USB_CHARGING_VOLTAGE_MINIMUM)
-                    //i2c_expander_toggle(I2C_EXPANDER_USB_CHARGER);
-                    ;//system_output_toggle(OUTPUT_USB);
+                {    
+                    if(USBCHARGER_EN_PORT)
+                        USBCHARGER_EN_PORT = 0;
+                    else
+                        USBCHARGER_EN_PORT = 1;
+                }
             }
             os.encoderCount = 0;
             os.buttonCount = 0;

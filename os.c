@@ -335,7 +335,8 @@ void system_init(void)
     _system_encoder_init();
     
     flash_init();
-
+    flash_dummy_write();
+    
     //Buck init
     buck_init();
 

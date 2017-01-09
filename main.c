@@ -86,6 +86,7 @@ MAIN_RETURN main(void)
         for(cntr=0;cntr<16;++cntr)
         {
             ui_run();
+            flash_dummy_read();
             
             adc_calibrate();
             os.temperature_onboard_adc += adc_read(ADC_CHANNEL_TEMPERATURE_ONBOARD);

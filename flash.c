@@ -7,36 +7,62 @@
 #include "os.h"
 #include "flash.h"
 
+#define FLASH_WRITE_ENABLE 0x06
+#define FLASH_WRITE_DISABLE 0x04
+#define FLASH_PAGE_PROGRAM 0x02
+#define FLASH_DATA_READ 0x03
+#define FLASH_BLOCK_EREASE 0xD8
+
 void flash_init(void)
 {
+    uint16_t cntr;
+    
     PPSUnLock();
     PPSInput(PPS_SDI2, SPI_MISO_PPS); //MISO
     PPSOutput(SPI_MOSI_PPS, PPS_SDO2); //MOSI
     PPSOutput(SPI_SCLK_PPS, PPS_SCK2); //SCLK
-    //PPSOutput(SPI_SS_PPS, PPS_SS2); //SS
     PPSLock();
-    
-    //MODE_00: SSPSTAT register CKE & CKP
-    //#define   SMPEND        0b10000000           // Input data sample at end of data out             
-    //#define   SMPMID        0b00000000           // Input data sample at middle of data out
-    
+
     OpenSPI2(SPI_FOSC_4, MODE_00, SMPMID);
-    //WriteSPI2(0x77);
-    //ReadSPI2();
 }
 
-/*
-Serial Data Out (SDOx) ?
-RC7/RX1/DT1/SDO1/RP18 or
-SDO2/Remappable
-? Serial Data In (SDIx) ?
-RB5/PMA0/KBI1/SDI1/SDA1/RP8 or
-SDI2/Remappable
-? Serial Clock (SCKx) ?
-RB4/PMA1/KBI0/SCK1/SCL1/RP7 or
-SCK2/Remappable
-Additionally, a fourth pin may be used when in a Slave
-mode of operation:
-? Slave Select (SSx) ? RA5/AN4/SS1/
-HLVDIN/RCV/RP2 or SS2/Remappable
- * */
+void flash_dummy_write(void)
+{
+    uint16_t cntr;
+    
+    //Enable writing
+    SPI_SS_PORT = 0;
+    WriteSPI2(FLASH_WRITE_ENABLE);
+    SPI_SS_PORT = 1;
+    
+    //Write one page of dummy data
+    SPI_SS_PORT = 0;
+    WriteSPI2(FLASH_PAGE_PROGRAM);
+    WriteSPI2(0x00);
+    WriteSPI2(0x37);
+    WriteSPI2(0x00);
+    for(cntr=0;cntr<256;++cntr)
+    {
+       WriteSPI2(cntr&0xFF); 
+    }
+    SPI_SS_PORT = 1;
+    
+}
+void flash_dummy_read()
+{
+    uint16_t cntr;
+    
+    //Read some dummy data from the location written to by flash_dummy_write())
+    SPI_SS_PORT = 0;
+    WriteSPI2(FLASH_DATA_READ);
+    WriteSPI2(0x00);
+    WriteSPI2(0x37);
+    WriteSPI2(0x58);
+    for(cntr=0;cntr<4;++cntr)
+    {
+       ReadSPI2();
+    }
+    SPI_SS_PORT = 1;
+}
+
+//void flash_send(uint32_t address, uint8_t *dat, uint16_t len){}

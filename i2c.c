@@ -182,7 +182,7 @@ void i2c_display_send_init_sequence(void)
     };
     
     //Set I2C frequency to 200kHz (display doesn't like 400kHz at startup)
-    i2c_set_frequency(I2C_FREQUENCY_200kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
     //Write initialization sequence
     _i2c_write(I2C_DISPLAY_SLAVE_ADDRESS, &init_sequence[0], 9);
@@ -218,7 +218,7 @@ void i2c_display_init(void)
     system_delay_ms(5);
     
     //Set I2C frequency to 200kHz (display doesn't like 400kHz at startup)
-    i2c_set_frequency(I2C_FREQUENCY_200kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
     //Write initialization sequence
     _i2c_write(I2C_DISPLAY_SLAVE_ADDRESS, &init_sequence[0], 9);
@@ -234,7 +234,7 @@ void _ic2_display_set_address(uint8_t address)
     data_array[1] = DISPLAY_SET_ADDRESS | address;
     
     //Set I2C frequency to 400kHz
-    i2c_set_frequency(I2C_FREQUENCY_400kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
     
     //Set address
     _i2c_write(I2C_DISPLAY_SLAVE_ADDRESS, &data_array[0], 2);
@@ -251,7 +251,7 @@ void i2c_display_cursor(uint8_t line, uint8_t position)
     address |= position;
     
     //Set I2C frequency to 400kHz
-    i2c_set_frequency(I2C_FREQUENCY_400kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
     
     //Set address
     _ic2_display_set_address(address);
@@ -260,7 +260,7 @@ void i2c_display_cursor(uint8_t line, uint8_t position)
 void i2c_display_write(char *data)
 {
     //Set I2C frequency to 400kHz
-    i2c_set_frequency(I2C_FREQUENCY_400kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
     IdleI2C();
     StartI2C();
@@ -285,7 +285,7 @@ void i2c_display_write_fixed(char *data, uint8_t length)
     uint8_t pos;
     
     //Set I2C frequency to 400kHz
-    i2c_set_frequency(I2C_FREQUENCY_400kHz);
+    i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
     IdleI2C();
     StartI2C();

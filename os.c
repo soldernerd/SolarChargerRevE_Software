@@ -247,6 +247,9 @@ void system_init(void)
     USBCHARGER_EN_TRIS = PIN_OUTPUT;
     USBCHARGER_EN_PORT = 0;
     
+
+    
+    
     //SPI Pins
     SPI_MISO_TRIS = PIN_INPUT;
     SPI_MOSI_TRIS = PIN_OUTPUT;
@@ -263,9 +266,22 @@ void system_init(void)
     TEMPERATURE3_TRIS = PIN_INPUT;
     TEMPERATURE3_ANCON = PIN_ANALOG;
     
+    //Pins for power outputs
+    PWROUT_ENABLE_PIN = 0;
+    PWROUT_ENABLE_TRIS = 0;
+    PWROUT_CH1_PIN = 1;
+    PWROUT_CH1_TRIS = 0;
+    PWROUT_CH2_PIN = 1;
+    PWROUT_CH2_TRIS = 0;
+    PWROUT_CH3_PIN = 1;
+    PWROUT_CH3_TRIS = 0;
+    PWROUT_CH4_PIN = 1;
+    PWROUT_CH4_TRIS = 0;
+    
     TRISAbits.TRISA0 = 1; //Push button 
     ANCON0bits.PCFG0 = 1; //Pushb button as digital input
     TRISBbits.TRISB6 = 1; //Encoder A
+    
     TRISBbits.TRISB7 = 1; //Encoder B
     //TRISBbits.TRISB0 = 0; //LCD Backlight, LCD reset
     //LATBbits.LATB0 = 0;
@@ -394,7 +410,7 @@ void system_power_save(void)
         }
     }
 }
-
+*/
 
 uint8_t system_output_is_on(outputs_t output)
 {
@@ -419,23 +435,23 @@ void system_output_on(outputs_t output)
     switch(output)
     {
         case OUTPUT_1:
-            i2c_expander_high(I2C_EXPANDER_OUTPUTS_ENABLE);
-            LATAbits.LA5 = 1;    
+            PWROUT_ENABLE_PIN = 1;
+            PWROUT_CH1_PIN = 0;  
             break;
         case OUTPUT_2:
-            i2c_expander_high(I2C_EXPANDER_OUTPUTS_ENABLE);
-            LATCbits.LC2 = 1;
+            PWROUT_ENABLE_PIN = 1;
+            PWROUT_CH2_PIN = 0; 
             break;
         case OUTPUT_3:
-            i2c_expander_high(I2C_EXPANDER_OUTPUTS_ENABLE);
-            i2c_expander_high(I2C_EXPANDER_OUTPUT_3);
+            PWROUT_ENABLE_PIN = 1;
+            PWROUT_CH3_PIN = 0; 
             break;
         case OUTPUT_4:
-            i2c_expander_high(I2C_EXPANDER_OUTPUTS_ENABLE);
-            i2c_expander_high(I2C_EXPANDER_OUTPUT_4);
+            PWROUT_ENABLE_PIN = 1;
+            PWROUT_CH4_PIN = 0; 
             break;
         case OUTPUT_USB:
-            i2c_expander_high(I2C_EXPANDER_USB_CHARGER);
+            //i2c_expander_high(I2C_EXPANDER_USB_CHARGER);
             break;
     }      
 }
@@ -445,29 +461,29 @@ void system_output_off(outputs_t output)
     os.outputs &= (~output);
     if(!(os.outputs&(OUTPUT_1 | OUTPUT_2 | OUTPUT_3 | OUTPUT_4)))
     {
-        i2c_expander_low(I2C_EXPANDER_OUTPUTS_ENABLE);
+        PWROUT_ENABLE_PIN = 0;
     }
         
     switch(output)
     {
         case OUTPUT_1:
-            LATAbits.LA5 = 0;    
+            PWROUT_CH1_PIN = 1;    
             break;
         case OUTPUT_2:
-            LATCbits.LC2 = 0;
+            PWROUT_CH2_PIN = 1;  
             break;
         case OUTPUT_3:
-            i2c_expander_low(I2C_EXPANDER_OUTPUT_3);
+            PWROUT_CH3_PIN = 1;  
             break;
         case OUTPUT_4:
-            i2c_expander_low(I2C_EXPANDER_OUTPUT_4);
+            PWROUT_CH4_PIN = 1;  
             break;
         case OUTPUT_USB:
-            i2c_expander_low(I2C_EXPANDER_USB_CHARGER);
             break;
     }     
 }
 
+/*
 void system_calculate_input_voltage()
 {
     float tmp = 3.00 * 0.25 * 1.009184;

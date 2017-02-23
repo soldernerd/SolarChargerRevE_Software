@@ -13,6 +13,8 @@
 #define FLASH_DATA_READ 0x03
 #define FLASH_BLOCK_EREASE 0xD8
 
+uint8_t buffer[265];
+
 void flash_init(void)
 {
     uint16_t cntr;
@@ -23,7 +25,12 @@ void flash_init(void)
     PPSOutput(SPI_SCLK_PPS, PPS_SCK2); //SCLK
     PPSLock();
 
-    OpenSPI2(SPI_FOSC_4, MODE_00, SMPMID);
+    //OpenSPI2(SPI_FOSC_4, MODE_00, SMPMID);
+    SSP2STATbits.SMP = 1; //Sample at end
+    SSP2STATbits.CKE = 1; //Active to idle
+    SSP2CON1bits.CKP = 0; //Idle clock is low
+    SSP2CON1bits.SSPM =0b0000; //SPI master mode, Fosc/4
+    SSP2CON1bits.SSPEN = 1; //Enable SPI module
 }
 
 void flash_dummy_write(void)
@@ -48,21 +55,59 @@ void flash_dummy_write(void)
     SPI_SS_PORT = 1;
     
 }
+
 void flash_dummy_read()
 {
     uint16_t cntr;
+
+    DMACON1bits.SSCON1 = 0;
+    DMACON1bits.SSCON0 = 0; //Slave Select not controlled by DMA module
+    DMACON1bits.TXINC = 1; //Do increment TX address
+    DMACON1bits.RXINC = 1; //Do increment RX address
+    DMACON1bits.DUPLEX1 = 1;
+    DMACON1bits.DUPLEX0 = 0; //Full duplex
+    DMACON1bits.DLYINTEN = 0; //Disable delay interrupts
+    DMACON2bits.DLYCYC = 0b0000; //1 cycle delay only
+    DMACON2bits.INTLVL = 0b0000; //Only interrupt after transfer is completed
     
+    //Set TX buffer address
+    //TXADDRH =  ((uint16_t) &buffer[0]) >> 8;
+    //TXADDRL = ((uint16_t) &buffer[0]) & 0xFF;
+    TXADDRH =  HIGH_BYTE((uint16_t) buffer);
+    TXADDRL =  LOW_BYTE((uint16_t)buffer);
+    
+    //Set RX buffer address
+    RXADDRH =  ((uint16_t) buffer) >> 8;
+    RXADDRL = ((uint16_t) buffer) & 0xFF;
+    
+    //Set number of bytes to transmit
+    DMABCH = (260-1) >> 8;
+    DMABCL = (260-1) & 0xFF;
+    
+    //Prepare data to send
+    buffer[0] = FLASH_DATA_READ;
+    buffer[1] = 0x00;
+    buffer[2] = 0x37;
+    buffer[3] = 0x00;
+    
+    SPI_SS_PORT = 0;
+    DMACON1bits.DMAEN = 1; //Start transfer
+    while(DMACON1bits.DMAEN); //Wait for transfer to complete
+    SPI_SS_PORT = 1;
+    
+    /*
     //Read some dummy data from the location written to by flash_dummy_write())
     SPI_SS_PORT = 0;
     WriteSPI2(FLASH_DATA_READ);
     WriteSPI2(0x00);
     WriteSPI2(0x37);
-    WriteSPI2(0x58);
-    for(cntr=0;cntr<4;++cntr)
+    WriteSPI2(0x00);
+    for(cntr=0;cntr<256;++cntr)
     {
        ReadSPI2();
     }
     SPI_SS_PORT = 1;
+    */
 }
 
 //void flash_send(uint32_t address, uint8_t *dat, uint16_t len){}

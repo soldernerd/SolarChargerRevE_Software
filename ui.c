@@ -201,11 +201,11 @@ static void _ui_encoder(void)
             if(os.encoderCount>0)
             {
                 if(os.output_voltage>POWER_OUTPUTS_VOLTAGE_MINIMUM)
-                    ;//system_output_on(OUTPUT_1);
+                    system_output_on(OUTPUT_1);
             }
             else if(os.encoderCount<0)
             {
-                ;//system_output_off(OUTPUT_1);
+                system_output_off(OUTPUT_1);
             }
             if(os.buttonCount)
             {
@@ -219,11 +219,11 @@ static void _ui_encoder(void)
             if(os.encoderCount>0)
             {
                 if(os.output_voltage>POWER_OUTPUTS_VOLTAGE_MINIMUM)
-                    ;//system_output_on(OUTPUT_2);
+                    system_output_on(OUTPUT_2);
             }
             else if(os.encoderCount<0)
             {
-                ;//system_output_off(OUTPUT_2);
+                system_output_off(OUTPUT_2);
             }
             if(os.buttonCount)
             {
@@ -237,11 +237,11 @@ static void _ui_encoder(void)
             if(os.encoderCount>0)
             {
                 if(os.output_voltage>POWER_OUTPUTS_VOLTAGE_MINIMUM)
-                    ;//system_output_on(OUTPUT_3);
+                    system_output_on(OUTPUT_3);
             }
             else if(os.encoderCount<0)
             {
-                ;//system_output_off(OUTPUT_3);
+                system_output_off(OUTPUT_3);
             }
             if(os.buttonCount)
             {
@@ -255,11 +255,11 @@ static void _ui_encoder(void)
             if(os.encoderCount>0)
             {
                 if(os.output_voltage>POWER_OUTPUTS_VOLTAGE_MINIMUM)
-                    ;//system_output_on(OUTPUT_4);
+                    system_output_on(OUTPUT_4);
             }
             else if(os.encoderCount<0)
             {
-                ;//system_output_off(OUTPUT_4);
+                system_output_off(OUTPUT_4);
             }
             if(os.buttonCount)
             {

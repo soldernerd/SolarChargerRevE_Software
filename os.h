@@ -74,6 +74,17 @@
 #define DISP_EN_TRIS TRISCbits.TRISC2
 #define DISP_EN_PORT LATCbits.LC2
 
+#define PWROUT_ENABLE_TRIS TRISCbits.TRISC7
+#define PWROUT_ENABLE_PIN LATCbits.LC7
+#define PWROUT_CH1_TRIS TRISEbits.TRISE2
+#define PWROUT_CH1_PIN LATEbits.LE2
+#define PWROUT_CH2_TRIS TRISEbits.TRISE1
+#define PWROUT_CH2_PIN LATEbits.LE1
+#define PWROUT_CH3_TRIS TRISEbits.TRISE0
+#define PWROUT_CH3_PIN LATEbits.LE0
+#define PWROUT_CH4_TRIS TRISAbits.TRISA5
+#define PWROUT_CH4_PIN LATAbits.LA5
+
 #define USBCHARGER_EN_TRIS TRISDbits.TRISD3
 #define USBCHARGER_EN_PORT LATDbits.LD3
 
@@ -109,7 +120,7 @@
 #define ENCODER_B_BIT PORTBbits.RB6
 
 #define USB_CHARGING_VOLTAGE_MINIMUM 12000
-#define POWER_OUTPUTS_VOLTAGE_MINIMUM 12000
+#define POWER_OUTPUTS_VOLTAGE_MINIMUM -1
 #define BUCK_DUTYCYCLE_MINIMUM 40
 #define BUCK_DUTYCYCLE_MAXIMUM 242
 #define BUCK_BATTERY_VOLTAGE_MAXIMUM 13500
@@ -233,13 +244,14 @@ void system_delay_ms(uint8_t ms);
 void system_encoder_enable(void);
 void system_encoder_disable(void);
 
-/*
+
 
 uint8_t system_output_is_on(outputs_t output);
 void system_output_on(outputs_t output);
 void system_output_off(outputs_t output);
 void system_output_toggle(outputs_t output);
 
+/*
 void system_buck_set_frequency(buckFrequency_t buckFrequency);
 void system_buck_set_dutycycle(uint8_t dutyCycle);
 void system_buck_adjust_dutycycle(void);

@@ -61,6 +61,8 @@ MAIN_RETURN main(void)
 
     while(1)
     {
+        
+        /*
         SYSTEM_Tasks();
 
         #if defined(USB_POLLING)
@@ -78,7 +80,124 @@ MAIN_RETURN main(void)
             // instruction cycles) before it returns.
             USBDeviceTasks();
         #endif
+        */
+        
+        //Do this as often as possible
+        APP_DeviceCustomHIDTasks();
+        APP_DeviceMSDTasks();
+        
+        if(!os.done)
+        {
+            //Do this every time
+            
+            //Shut down outputs when battery voltage drops too low
+            if(os.output_voltage<USB_CHARGING_VOLTAGE_MINIMUM)
+            {
+                system_output_off(OUTPUT_USB);
+            }
+            if(os.output_voltage<POWER_OUTPUTS_VOLTAGE_MINIMUM)
+            {
+                system_output_off(OUTPUT_1);
+                system_output_off(OUTPUT_2);
+                system_output_off(OUTPUT_3);
+                system_output_off(OUTPUT_4);
+            }
+            
+            //Run user interface
+            ui_run();
+            
+            //Measure temperature
+            adc_calibrate();
+            os.temperature_onboard_adc += adc_read(ADC_CHANNEL_TEMPERATURE_ONBOARD);
+            os.temperature_external_1_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_1);
+            os.temperature_external_2_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_2);
 
+            //Run periodic tasks
+            switch(os.timeSlot&0b00001111)
+            {
+                case 0:
+                    i2c_adc_start(I2C_ADC_OUTPUT_VOLTAGE, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
+                    break;
+
+                case 1:    
+                    os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
+                    os.temperature_onboard_adc = 0;
+                    os.temperature_external_1 = adc_calculate_temperature(os.temperature_external_1_adc);
+                    os.temperature_external_1_adc = 0;
+                    os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
+                    os.temperature_external_2_adc = 0;
+                    break;
+                    
+                case 3:
+                    os.output_voltage_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
+                    i2c_adc_start(I2C_ADC_INPUT_VOLTAGE, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
+                    system_calculate_output_voltage();
+                    break;
+                    
+                case 4:
+                    if(ui_get_status()==USER_INTERFACE_STATUS_ON)
+                    {
+                        display_prepare(os.display_mode);
+                    }
+                    break;
+
+                case 5:
+                    if(ui_get_status()==USER_INTERFACE_STATUS_ON)
+                    {
+                        display_update();
+                    }
+                    break;
+                    
+                case 6:
+                    os.input_voltage_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
+//                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
+//                    {
+//                        i2c_adc_start(I2C_ADC_OUTPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1); 
+//                    }
+                    system_calculate_input_voltage();
+                    break;
+                    
+                /*    
+                case 9:
+                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
+                    {
+                        os.output_current_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
+                        i2c_adc_start(I2C_ADC_INPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
+                        system_calculate_output_current();    
+                    }
+                    break;
+
+                case 12:
+                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
+                    {
+                        os.input_current_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
+                        system_calculate_input_current();    
+                    }
+                    break;
+
+                case 13:       
+                    buck_operate();
+                    break;
+                        
+                
+                case 14:
+                    os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
+                    os.temperature_onboard_adc = 0;
+                    os.temperature_external_1 = adc_calculate_temperature(os.temperature_external_1_adc);
+                    os.temperature_external_1_adc = 0;
+                    os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
+                    os.temperature_external_2_adc = 0;
+                    display_prepare(os.display_mode);
+                    break;
+                case 15:
+                    display_update();
+                    break;   
+                    */
+            }
+            os.done = 1;
+        }
+
+        /*
         //Application specific tasks
         APP_DeviceCustomHIDTasks();
         APP_DeviceMSDTasks();
@@ -111,8 +230,8 @@ MAIN_RETURN main(void)
             }
             system_delay_ms(8);
         }
-
-    }//end while
+        */
+    }//end while(1)
 }//end main
 
 /*******************************************************************************

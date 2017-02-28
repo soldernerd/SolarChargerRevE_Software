@@ -90,13 +90,9 @@ uint8_t i2c_eeprom_readByte(uint16_t address);
 void i2c_eeprom_write(uint16_t address, uint8_t *data, uint8_t length);
 void i2c_eeprom_read(uint16_t address, uint8_t *data, uint8_t length);
 
-/*
- 
+
 void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGain_t gain);
 int16_t i2c_adc_read(void);
-
-
-*/
 
 #endif	/* I2C_H */
 

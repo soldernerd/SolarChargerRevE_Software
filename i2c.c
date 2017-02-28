@@ -376,21 +376,16 @@ void i2c_digipot_backlight(uint8_t level)
     i2c_set_frequency(I2C_FREQUENCY_400kHz);
     
     _i2c_write(I2C_DIGIPOT_SLAVE_ADDRESS, &data_array[0], 2);
-    
 }
 
 /* ****************************************************************************
  * I2C ADC Functionality
  * ****************************************************************************/
 
-/*
+
 void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGain_t gain)
  {
      uint8_t configuration_byte;
-     
-    //Open I2C mux port
-    i2c_mux_open(I2C_MUX_ADC);
-    
      configuration_byte = 0b10000000;
      configuration_byte |= (channel<<5);
      configuration_byte |= (resolution<<2);
@@ -405,10 +400,7 @@ void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGa
  int16_t i2c_adc_read(void)
  {
     int16_t result;
-    
-    //Open I2C mux port
-    i2c_mux_open(I2C_MUX_ADC);
-    
+
     //Set I2C frequency to 400kHz
     i2c_set_frequency(I2C_FREQUENCY_400kHz);
 
@@ -426,8 +418,10 @@ void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGa
     
     return result;
  };
- * 
- * */
+ 
+/* ****************************************************************************
+ * I2C EEPROM Functionality
+ * ****************************************************************************/
  
 void i2c_eeprom_writeByte(uint16_t address, uint8_t data)
 {

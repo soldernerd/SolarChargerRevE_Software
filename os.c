@@ -199,7 +199,7 @@ void system_encoder_enable(void)
     INTCON3bits.INT3IE = 1;
 }
 
-/*
+
 
 static void _system_timer0_init(void)
 {
@@ -236,7 +236,6 @@ static void _system_timer0_init(void)
     //Initialize timeSlot
     os.timeSlot = 0;
 }
-*/
 
 void system_init(void)
 {
@@ -281,7 +280,6 @@ void system_init(void)
     TRISAbits.TRISA0 = 1; //Push button 
     ANCON0bits.PCFG0 = 1; //Pushb button as digital input
     TRISBbits.TRISB6 = 1; //Encoder A
-    
     TRISBbits.TRISB7 = 1; //Encoder B
     //TRISBbits.TRISB0 = 0; //LCD Backlight, LCD reset
     //LATBbits.LATB0 = 0;
@@ -339,9 +337,11 @@ void system_init(void)
     //Initialize Real Time Clock
     rtcc_init();
     
-    /*
+    
     //Set up timer0 for timeSlots
     _system_timer0_init();
+    
+    /*
     
     //Initialize user interface
     ui_init();
@@ -483,10 +483,10 @@ void system_output_off(outputs_t output)
     }     
 }
 
-/*
+
 void system_calculate_input_voltage()
 {
-    float tmp = 3.00 * 0.25 * 1.009184;
+    float tmp = 2.75 * 0.25 * 1.000000;
     int16_t adc_sum = os.input_voltage_adc[0] + os.input_voltage_adc[1] + os.input_voltage_adc[2] + os.input_voltage_adc[3];
     tmp *= adc_sum;
     os.input_voltage = (int16_t) tmp;
@@ -494,7 +494,7 @@ void system_calculate_input_voltage()
 
 void system_calculate_output_voltage()
 {
-    float tmp = 1.95 * 0.25 * 1.004857;
+    float tmp = 2.125 * 0.25 * 1.00000;
     int16_t adc_sum = os.output_voltage_adc[0] + os.output_voltage_adc[1] + os.output_voltage_adc[2] + os.output_voltage_adc[3];
     tmp *= adc_sum;
     os.output_voltage = (int16_t) tmp;
@@ -519,4 +519,3 @@ void system_calculate_output_current()
 }
 
 
-*/

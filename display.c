@@ -152,14 +152,14 @@ static void _display_inout(void)
     cntr = 0;
     while(line3[cntr])
         display_content[2][cntr] = line3[cntr++]; 
-    //_display_itoa(os.input_voltage, 3, &display_content[2][3]);
-    //_display_itoa(os.output_voltage, 3, &display_content[2][11]);
+        _display_itoa(os.input_voltage, 3, &display_content[2][3]);
+        _display_itoa(os.output_voltage, 3, &display_content[2][11]);
     
     cntr = 0;
     while(line4[cntr])
         display_content[3][cntr] = line4[cntr++];
     //if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
-    if(0)
+    if(1)
     {
         _display_itoa(os.input_current, 3, &display_content[3][3]);
         _display_itoa(os.output_current, 3, &display_content[3][11]); 

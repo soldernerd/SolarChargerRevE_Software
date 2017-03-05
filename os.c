@@ -246,7 +246,17 @@ void system_init(void)
     USBCHARGER_EN_TRIS = PIN_OUTPUT;
     USBCHARGER_EN_PORT = 0;
     
-
+    //Fan output
+    FANOUT_PIN = 0;
+    FANOUT_TRIS = PIN_OUTPUT;
+    
+    //Buck
+    BUCK_ENABLE_PIN = 0;
+    BUCK_ENABLE_TRIS = PIN_OUTPUT;
+    BUCK_LOWFET_PIN = 0;
+    BUCK_LOWFET_TRIS = PIN_OUTPUT;
+    BUCK_HIGHFET_PIN = 0;
+    BUCK_HIGHFET_TRIS = PIN_OUTPUT;
     
     
     //SPI Pins
@@ -502,7 +512,7 @@ void system_calculate_output_voltage()
 
 void system_calculate_input_current()
 {
-    float tmp = 0.500 * 0.25 * 0.958512;
+    float tmp = 0.7142857 * 0.25 * 1.00000;
     int16_t adc_sum = os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3];
     adc_sum -= os.input_current_calibration;
     tmp *= adc_sum;
@@ -511,7 +521,7 @@ void system_calculate_input_current()
 
 void system_calculate_output_current()
 {
-    float tmp = 0.500 * 0.25;
+    float tmp = 0.7142857 * 0.25 * 1.00000;
     int16_t adc_sum = os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3];
     adc_sum -= os.output_current_calibration;
     tmp *= adc_sum;

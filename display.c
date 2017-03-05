@@ -6,8 +6,8 @@
 #include "display.h"
 #include "i2c.h"
 #include "os.h"
-//#include "rtcc.h"
-//#include "buck.h"
+#include "rtcc.h"
+#include "buck.h"
 
 
 char display_content[4][20];
@@ -158,8 +158,7 @@ static void _display_inout(void)
     cntr = 0;
     while(line4[cntr])
         display_content[3][cntr] = line4[cntr++];
-    //if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
-    if(1)
+    if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
     {
         _display_itoa(os.input_current, 3, &display_content[3][3]);
         _display_itoa(os.output_current, 3, &display_content[3][11]); 
@@ -417,8 +416,7 @@ static void _display_charger(void)
         display_content[0][cntr] = header[cntr++];
     
     cntr = 0;
-    //if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
-    if(0)
+    if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
     {
         while(supply_on[cntr])
             display_content[1][cntr] = supply_on[cntr++];
@@ -430,43 +428,43 @@ static void _display_charger(void)
     }
     
     cntr = 0;
-    //switch(buck_get_mode())
-    if(1)
+    switch(buck_get_mode())
     {
-        //case BUCK_STATUS_OFF:
+        case BUCK_STATUS_OFF:
             while(charger_off[cntr])
                 display_content[2][cntr] = charger_off[cntr++];
-            //break;
+            break;
             
-//        case BUCK_STATUS_STARTUP:
-//            while(charger_startup[cntr])
-//                display_content[2][cntr] = charger_startup[cntr++];
-//            break;
-//            
-//        case BUCK_STATUS_ASYNCHRONOUS:
-//            while(charger_async[cntr])
-//                display_content[2][cntr] = charger_async[cntr++];
-//            break;
-//            
-//        case BUCK_STATUS_SYNCHRONOUS:
-//            while(charger_sync[cntr])
-//                display_content[2][cntr] = charger_sync[cntr++];
-//            break;
+        case BUCK_STATUS_STARTUP:
+            while(charger_startup[cntr])
+                display_content[2][cntr] = charger_startup[cntr++];
+            break;
+            
+        case BUCK_STATUS_ASYNCHRONOUS:
+            while(charger_async[cntr])
+                display_content[2][cntr] = charger_async[cntr++];
+            break;
+            
+        case BUCK_STATUS_SYNCHRONOUS:
+            while(charger_sync[cntr])
+                display_content[2][cntr] = charger_sync[cntr++];
+            break;
     }
     
     _display_itoa((int16_t) buck_get_dutycycle(), 0, &display_content[3][0]);
-    
-//    cntr = 0;
-//    if(i2c_expander_isHigh(I2C_EXPANDER_FAN))
-//    {
-//        while(fan_on[cntr])
-//            display_content[3][cntr] = fan_on[cntr++];
-//    }
-//    else
-//    {
-//        while(fan_off[cntr])
-//            display_content[3][cntr] = fan_off[cntr++];
-//    }
+    /*
+    cntr = 0;
+    if(buck_get_mode()!=BUCK_STATUS_OFF)
+    {
+        while(fan_on[cntr])
+            display_content[3][cntr] = fan_on[cntr++];
+    }
+    else
+    {
+        while(fan_off[cntr])
+            display_content[3][cntr] = fan_off[cntr++];
+    }
+    */
 }
 
 static void _display_efficiency(void)
@@ -523,8 +521,6 @@ static void _display_temperature(void)
     while(internal[cntr])
         display_content[1][cntr] = internal[cntr++];
     
-    
-    //_display_itoa(os.temperature_onboard_adc, 2, &display_content[1][12]);
     _display_itoa(os.temperature_onboard, 2, &display_content[1][12]);
     
     cntr = 0;

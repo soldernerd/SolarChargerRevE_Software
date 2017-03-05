@@ -119,14 +119,9 @@ MAIN_RETURN main(void)
                     i2c_adc_start(I2C_ADC_OUTPUT_VOLTAGE, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
                     break;
 
-                case 1:    
-                    os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
-                    os.temperature_onboard_adc = 0;
-                    os.temperature_external_1 = adc_calculate_temperature(os.temperature_external_1_adc);
-                    os.temperature_external_1_adc = 0;
-                    os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
-                    os.temperature_external_2_adc = 0;
+                case 1:
                     break;
+                    
                     
                 case 3:
                     os.output_voltage_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
@@ -144,22 +139,21 @@ MAIN_RETURN main(void)
                 case 5:
                     if(ui_get_status()==USER_INTERFACE_STATUS_ON)
                     {
-                        display_update();
+                        //display_update();
                     }
                     break;
                     
                 case 6:
                     os.input_voltage_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
-//                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
-//                    {
-//                        i2c_adc_start(I2C_ADC_OUTPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1); 
-//                    }
+                    if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
+                    {
+                        i2c_adc_start(I2C_ADC_OUTPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1); 
+                    }
                     system_calculate_input_voltage();
                     break;
-                    
-                /*    
+
                 case 9:
-                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
+                    if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
                     {
                         os.output_current_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
                         i2c_adc_start(I2C_ADC_INPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
@@ -168,14 +162,14 @@ MAIN_RETURN main(void)
                     break;
 
                 case 12:
-                    if(i2c_expander_isHigh(I2C_EXPANDER_CHARGER_ENABLE))
+                    if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
                     {
                         os.input_current_adc[(os.timeSlot&0b00110000)>>4] = i2c_adc_read();
                         system_calculate_input_current();    
                     }
                     break;
 
-                case 13:       
+                case 13:
                     buck_operate();
                     break;
                         
@@ -187,12 +181,23 @@ MAIN_RETURN main(void)
                     os.temperature_external_1_adc = 0;
                     os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
                     os.temperature_external_2_adc = 0;
+                    if(os.temperature_onboard>3000)
+                    {
+                        FANOUT_PIN = 1;
+                    }
+                    else if(os.temperature_onboard<2500)
+                    {
+                        FANOUT_PIN = 0;
+                    }
                     display_prepare(os.display_mode);
                     break;
+                    
                 case 15:
-                    display_update();
+                    if(ui_get_status()==USER_INTERFACE_STATUS_ON)
+                    {
+                        display_update();
+                    }
                     break;   
-                    */
             }
             os.done = 1;
         }

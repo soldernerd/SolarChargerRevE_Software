@@ -89,7 +89,7 @@ static void _buck_stop(void)
     T2CONbits.TMR2ON = 0;
     
     //Disconnect power & panel
-    //i2c_expander_low(I2C_EXPANDER_CHARGER_ENABLE);
+    BUCK_ENABLE_PIN = 0;
 }
 
 static void _buck_timer2_init(void)
@@ -115,8 +115,12 @@ static void _buck_timer2_init(void)
 static void _buck_pin_init(void)
 {
     //Configure pins as outputs
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB1 = 0;
+    BUCK_ENABLE_PIN = 0;
+    BUCK_ENABLE_TRIS = PIN_OUTPUT;
+    BUCK_LOWFET_PIN = 0;
+    BUCK_LOWFET_TRIS = PIN_OUTPUT;
+    BUCK_HIGHFET_PIN = 0;
+    BUCK_HIGHFET_TRIS = PIN_OUTPUT;
     
     //Both pins low
     LATBbits.LATB2 = 0;
@@ -124,8 +128,8 @@ static void _buck_pin_init(void)
     
     //Assign via peripheral pin select (PPS)
     PPSUnLock();
-    PPSOutput(PPS_RP5, PPS_CCP1P1A);
-    PPSOutput(PPS_RP4, PPS_P1B);
+    PPSOutput(PPS_RP6, PPS_CCP1P1A);
+    PPSOutput(PPS_RP5, PPS_P1B);
     PPSLock();
 }
 
@@ -149,7 +153,7 @@ void buck_operate(void)
             {
                if((os.input_voltage-500)>os.output_voltage)
                 {
-                    //i2c_expander_high(I2C_EXPANDER_CHARGER_ENABLE);
+                    BUCK_ENABLE_PIN = 1;
                     buck_status = BUCK_STATUS_STARTUP;
                     //Zero old measurements
                     os.input_current = 0;
@@ -174,10 +178,9 @@ void buck_operate(void)
                     os.input_current_calibration += os.input_current_adc[cntr];
                     os.output_current_calibration += os.output_current_adc[cntr];
                 }
-                //Charge bootstrap capacitor
-                //_buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
-                //_buck_set_dutycycle(_buck_initial_dutycycle());
+                //Initialize variables
                 buck_dutycycle_last_step = 1;
+                //Charge bootstrap capacitor
                 PIR1bits.TMR2IF = 0;
                 _buck_start(_buck_initial_dutycycle());
                 while(!PIR1bits.TMR2IF);
@@ -185,7 +188,6 @@ void buck_operate(void)
                 _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
                 _buck_set_dutycycle(BUCK_DUTYCYCLE_MINIMUM);
                 buck_status = BUCK_STATUS_ASYNCHRONOUS;
-                
             } 
             break;
             
@@ -199,11 +201,11 @@ void buck_operate(void)
                     buck_dutycycle_last_step = -1;
                 }
                 //Shut down if current has fallen to (or almost to) zero or panel voltage falls below battery voltage
-                else if ((os.input_current<BUCK_INPUT_CURRENT_MINIMUM) || (os.input_voltage<os.output_voltage))
-                {
-                    _buck_stop();
-                    buck_status = BUCK_STATUS_OFF;
-                }
+//                else if ((os.input_current<BUCK_INPUT_CURRENT_MINIMUM) || (os.input_voltage<os.output_voltage))
+//                {
+//                    _buck_stop();
+//                    buck_status = BUCK_STATUS_OFF;
+//                }
                 //Ensure a minimum voltage difference (otherwise the bootstrap capacitor will lose its charge)
                 else if (os.input_voltage - os.output_voltage < BUCK_VOLTAGE_DIFFERENCE_MINIMUM)
                 {
@@ -211,12 +213,12 @@ void buck_operate(void)
                     buck_dutycycle_last_step = -1;
                 }
                 //Switch to synchronous mode if current exceeds threshold
-                else if (os.input_current>BUCK_ASYNCHRONOUS_INPUT_CURRENT_MAXIMUM)
-                {
-                    _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
-                    _buck_set_dutycycle(_buck_initial_dutycycle()+5);
-                    buck_status = BUCK_STATUS_SYNCHRONOUS;
-                }
+//                else if (os.input_current>BUCK_ASYNCHRONOUS_INPUT_CURRENT_MAXIMUM)
+//                {
+//                    _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
+//                    _buck_set_dutycycle(_buck_initial_dutycycle()+5);
+//                    buck_status = BUCK_STATUS_SYNCHRONOUS;
+//                }
                 //Adjust duty cycle in order to track maximum point of power
                 else
                 {

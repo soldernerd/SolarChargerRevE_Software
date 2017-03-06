@@ -20,34 +20,16 @@ please contact mla_licensing@microchip.com
 /** INCLUDES *******************************************************/
 #include "usb.h"
 #include "usb_device_hid.h"
-
 #include <string.h>
-
 #include "system.h"
+
+#include "os.h"
+#include "rtcc.h"
 
 
 /** VARIABLES ******************************************************/
-/* Some processors have a limited range of RAM addresses where the USB module
- * is able to access.  The following section is for those devices.  This section
- * assigns the buffers that need to be used by the USB module into those
- * specific areas.
- */
-#if defined(FIXED_ADDRESS_MEMORY)
-    #if defined(COMPILER_MPLAB_C18)
-        #pragma udata HID_CUSTOM_OUT_DATA_BUFFER = HID_CUSTOM_OUT_DATA_BUFFER_ADDRESS
-        unsigned char ReceivedDataBuffer[64];
-        #pragma udata HID_CUSTOM_IN_DATA_BUFFER = HID_CUSTOM_IN_DATA_BUFFER_ADDRESS
-        unsigned char ToSendDataBuffer[64];
-        #pragma udata
-
-    #else defined(__XC8)
-        unsigned char ReceivedDataBuffer[64] @ HID_CUSTOM_OUT_DATA_BUFFER_ADDRESS;
-        unsigned char ToSendDataBuffer[64] @ HID_CUSTOM_IN_DATA_BUFFER_ADDRESS;
-    #endif
-#else
-    unsigned char ReceivedDataBuffer[64];
-    unsigned char ToSendDataBuffer[64];
-#endif
+unsigned char ReceivedDataBuffer[64];
+unsigned char ToSendDataBuffer[64];
 
 volatile USB_HANDLE USBOutHandle;    
 volatile USB_HANDLE USBInHandle;
@@ -55,12 +37,16 @@ volatile USB_HANDLE USBInHandle;
 /** DEFINITIONS ****************************************************/
 typedef enum
 {
+    //These are commands from the Microchip USB HID demo, leave them in place for compatibility
     COMMAND_TOGGLE_LED = 0x80,
     COMMAND_GET_BUTTON_STATUS = 0x81,
-    COMMAND_READ_POTENTIOMETER = 0x37
+    COMMAND_READ_POTENTIOMETER = 0x37,
+    //These commands are specific to this application
+    COMMAND_GET_STATUS = 0x10
 } CUSTOM_HID_DEMO_COMMANDS;
 
 /** FUNCTIONS ******************************************************/
+static void _fill_buffer_get_status(void);
 
 /*********************************************************************
 * Function: void APP_DeviceCustomHIDInitialize(void);
@@ -126,48 +112,58 @@ void APP_DeviceCustomHIDTasks()
         //We just received a packet of data from the USB host.
         //Check the first uint8_t of the packet to see what command the host
         //application software wants us to fulfill.
-        switch(ReceivedDataBuffer[0])				//Look at the data the host sent, to see what kind of application specific command it sent.
+        //Look at the data the host sent, to see what kind of application specific command it sent.
+        switch(ReceivedDataBuffer[0])				
         {
-            case COMMAND_TOGGLE_LED:  //Toggle LEDs command
-                LED_Toggle(LED_USB_DEVICE_HID_CUSTOM);
-                break;
-            case COMMAND_GET_BUTTON_STATUS:  //Get push button state
+            case COMMAND_GET_STATUS:
                 //Check to make sure the endpoint/buffer is free before we modify the contents
                 if(!HIDTxHandleBusy(USBInHandle))
                 {
-                    ToSendDataBuffer[0] = 0x81;				//Echo back to the host PC the command we are fulfilling in the first uint8_t.  In this case, the Get Pushbutton State command.
-                    if(BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_CUSTOM) == false)	//pushbutton not pressed, pull up resistor on circuit board is pulling the PORT pin high
+                    //Call function to fill the buffer with general information
+                    _fill_buffer_get_status();
+                    //Prepare the USB module to send the data packet to the host
+                    USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
+                }
+                break;
+                
+            case COMMAND_TOGGLE_LED:
+                //We don't have an LED so we toggle the fan
+                FANOUT_PIN ^= 1;
+                break;
+                
+            case COMMAND_GET_BUTTON_STATUS:
+                //Check to make sure the endpoint/buffer is free before we modify the contents
+                if(!HIDTxHandleBusy(USBInHandle))
+                {
+                    //Echo back to the host PC the command we are fulfilling in the first uint8_t
+                    ToSendDataBuffer[0] = COMMAND_GET_BUTTON_STATUS;
+                    if(PUSHBUTTON_PIN) 
                     {
-                            ToSendDataBuffer[1] = 0x01;
+                        //Pin is high so push button is not pressed
+                        ToSendDataBuffer[1] = 0x01;
                     }
-                    else									//sw3 must be == 0, pushbutton is pressed and overpowering the pull up resistor
+                    else									
                     {
-                            ToSendDataBuffer[1] = 0x00;
+                        //Pin is low so push button is pressed
+                        ToSendDataBuffer[1] = 0x00;
                     }
                     //Prepare the USB module to send the data packet to the host
                     USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
                 }
                 break;
 
-            case COMMAND_READ_POTENTIOMETER:	//Read POT command.  Uses ADC to measure an analog voltage on one of the ANxx I/O pins, and returns the result to the host
+            case COMMAND_READ_POTENTIOMETER:
                 {
-                    uint16_t pot;
-
+                    uint16_t return_value;
                     //Check to make sure the endpoint/buffer is free before we modify the contents
                     if(!HIDTxHandleBusy(USBInHandle))
                     {
-                        //Use ADC to read the I/O pin voltage.  See the relevant HardwareProfile - xxxxx.h file for the I/O pin that it will measure.
-                        //Some demo boards, like the PIC18F87J50 FS USB Plug-In Module board, do not have a potentiometer (when used stand alone).
-                        //This function call will still measure the analog voltage on the I/O pin however.  To make the demo more interesting, it
-                        //is suggested that an external adjustable analog voltage should be applied to this pin.
-
-                        pot = 123;//ADC_Read10bit(ADC_CHANNEL_POTENTIOMETER);
-
-                        ToSendDataBuffer[0] = 0x37;  	//Echo back to the host the command we are fulfilling in the first uint8_t.  In this case, the Read POT (analog voltage) command.
-                        ToSendDataBuffer[1] = (uint8_t)pot; //LSB
-                        ToSendDataBuffer[2] = pot >> 8;     //MSB
-
-
+                        //Echo back to the host PC the command we are fulfilling in the first uint8_t
+                        ToSendDataBuffer[0] = COMMAND_READ_POTENTIOMETER;
+                        //We don't have a pot so we echo back the on-board temperature (in 0.01 degrees centigrade) divided by 8
+                        return_value = os.temperature_onboard >> 3;
+                        ToSendDataBuffer[1] = (uint8_t) return_value; //LSB
+                        ToSendDataBuffer[2] = return_value >> 8; //MSB
                         //Prepare the USB module to send the data packet to the host
                         USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
                     }
@@ -178,4 +174,44 @@ void APP_DeviceCustomHIDTasks()
         //that the host may try to send us.
         USBOutHandle = HIDRxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ReceivedDataBuffer, 64);
     }
+}
+
+
+//Fill buffer with general status information
+static void _fill_buffer_get_status(void)
+{
+   //Echo back to the host PC the command we are fulfilling in the first uint8_t
+   ToSendDataBuffer[0] = COMMAND_GET_STATUS;
+   //Bytes 1-2: input voltage
+   ToSendDataBuffer[1] = (uint8_t) os.input_voltage; //LSB
+   ToSendDataBuffer[2] = os.input_voltage >> 8; //MSB
+   //Bytes 3-4: output voltage
+   ToSendDataBuffer[3] = (uint8_t) os.output_voltage; //LSB
+   ToSendDataBuffer[4] = os.output_voltage >> 8; //MSB
+   //Bytes 5-6: input current
+   ToSendDataBuffer[5] = (uint8_t) os.input_current; //LSB
+   ToSendDataBuffer[6] = os.input_current >> 8; //MSB
+   //Bytes 7-8: output current
+   ToSendDataBuffer[7] = (uint8_t) os.output_current; //LSB
+   ToSendDataBuffer[8] = os.output_current >> 8; //MSB
+   //Bytes 9-10: on-board temperature
+   ToSendDataBuffer[9] = (uint8_t) os.temperature_onboard; //LSB
+   ToSendDataBuffer[10] = os.temperature_onboard >> 8; //MSB
+   //Bytes 11-12: external temperature 1
+   ToSendDataBuffer[11] = (uint8_t) os.temperature_external_1; //LSB
+   ToSendDataBuffer[12] = os.temperature_external_1 >> 8; //MSB
+   //Bytes 13-14: external temperature 2
+   ToSendDataBuffer[13] = (uint8_t) os.temperature_external_2; //LSB
+   ToSendDataBuffer[14] = os.temperature_external_2 >> 8; //MSB
+   //Byte 15: Outputs
+   ToSendDataBuffer[15] = os.outputs;
+   //Byte 16: Display mode
+   ToSendDataBuffer[16] = os.display_mode;
+   //Byte 17-22: Date and time, all in 2-digit DCB
+   ToSendDataBuffer[17] = rtcc_get_year();
+   ToSendDataBuffer[18] = rtcc_get_month();
+   ToSendDataBuffer[19] = rtcc_get_day();
+   ToSendDataBuffer[20] = rtcc_get_hours();
+   ToSendDataBuffer[21] = rtcc_get_minutes();
+   ToSendDataBuffer[22] = rtcc_get_seconds();
 }

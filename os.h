@@ -125,7 +125,7 @@
 
 #define NUMBER_OF_TIMESLOTS 16
 
-#define PUSHBUTTON_BIT PORTAbits.RA0
+#define PUSHBUTTON_PIN PORTAbits.RA0
 #define ENCODER_A_BIT PORTBbits.RB7
 #define ENCODER_B_BIT PORTBbits.RB6
 
@@ -187,7 +187,8 @@ typedef enum
     OUTPUT_3 = 0x04,
     OUTPUT_4 = 0x08,
     OUTPUT_ALL = 0x0F,
-    OUTPUT_USB = 0x10
+    OUTPUT_USB = 0x10,
+    OUTPUT_FAN = 0x20,        
 } outputs_t;
 
 typedef enum

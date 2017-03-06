@@ -11,11 +11,16 @@
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/app_device_custom_hid.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/i2c.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/ui.c</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.h</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/usb_config.h</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.h</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.c</file>
+            <file>file:/C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.c</file>
+            <file>file:/C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c</file>
         </group>
     </open-files>
 </project-private>

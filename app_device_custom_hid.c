@@ -25,6 +25,8 @@ please contact mla_licensing@microchip.com
 
 #include "os.h"
 #include "rtcc.h"
+#include "display.h"
+#include "buck.h"
 
 
 /** VARIABLES ******************************************************/
@@ -42,11 +44,15 @@ typedef enum
     COMMAND_GET_BUTTON_STATUS = 0x81,
     COMMAND_READ_POTENTIOMETER = 0x37,
     //These commands are specific to this application
-    COMMAND_GET_STATUS = 0x10
+    COMMAND_GET_STATUS = 0x10,
+    COMMAND_GET_DISPLAY_1 = 0x11,
+    COMMAND_GET_DISPLAY_2 = 0x12
 } CUSTOM_HID_DEMO_COMMANDS;
 
 /** FUNCTIONS ******************************************************/
 static void _fill_buffer_get_status(void);
+static void _fill_buffer_get_display1(void);
+static void _fill_buffer_get_display2(void);
 
 /*********************************************************************
 * Function: void APP_DeviceCustomHIDInitialize(void);
@@ -89,6 +95,8 @@ void APP_DeviceCustomHIDInitialize()
 ********************************************************************/
 void APP_DeviceCustomHIDTasks()
 {   
+    uint8_t idx;
+    
     /* If the USB device isn't configured yet, we can't really do anything
      * else since we don't have a host to talk to.  So jump back to the
      * top of the while loop. */
@@ -121,6 +129,28 @@ void APP_DeviceCustomHIDTasks()
                 {
                     //Call function to fill the buffer with general information
                     _fill_buffer_get_status();
+                    //Prepare the USB module to send the data packet to the host
+                    USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
+                }
+                break;
+                
+            case COMMAND_GET_DISPLAY_1:
+                //Check to make sure the endpoint/buffer is free before we modify the contents
+                if(!HIDTxHandleBusy(USBInHandle))
+                {
+                    //Call function to fill the buffer with general information
+                    _fill_buffer_get_display1();
+                    //Prepare the USB module to send the data packet to the host
+                    USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
+                }
+                break;
+                
+            case COMMAND_GET_DISPLAY_2:
+                //Check to make sure the endpoint/buffer is free before we modify the contents
+                if(!HIDTxHandleBusy(USBInHandle))
+                {
+                    //Call function to fill the buffer with general information
+                    _fill_buffer_get_display2();
                     //Prepare the USB module to send the data packet to the host
                     USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
                 }
@@ -170,6 +200,54 @@ void APP_DeviceCustomHIDTasks()
                 }
                 break;
         }
+        
+        //Check if the host expects us to do anything else
+        idx = 1;
+        while((ReceivedDataBuffer[idx] & 0xF0) == 0x30)
+        {
+            switch(ReceivedDataBuffer[idx])
+            {
+                case 0x30:
+                    system_output_off(OUTPUT_1);
+                    break;
+                case 0x31:
+                    system_output_on(OUTPUT_1);
+                    break;
+                case 0x32:
+                    system_output_off(OUTPUT_2);
+                    break;
+                case 0x33:
+                    system_output_on(OUTPUT_2);
+                    break;
+                case 0x34:
+                    system_output_off(OUTPUT_3);
+                    break;
+                case 0x35:
+                    system_output_on(OUTPUT_3);
+                    break;
+                case 0x36:
+                    system_output_off(OUTPUT_4);
+                    break;
+                case 0x37:
+                    system_output_on(OUTPUT_4);
+                    break;
+                case 0x38:
+                    system_output_off(OUTPUT_USB);
+                    break;
+                case 0x39:
+                    system_output_on(OUTPUT_USB);
+                    break;
+                case 0x3A:
+                    system_output_off(OUTPUT_FAN);
+                    break;
+                case 0x3B:
+                    system_output_on(OUTPUT_FAN);
+                    break;
+            }
+            ++idx;
+        }
+        
+        
         //Re-arm the OUT endpoint, so we can receive the next OUT data packet 
         //that the host may try to send us.
         USBOutHandle = HIDRxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ReceivedDataBuffer, 64);
@@ -214,4 +292,51 @@ static void _fill_buffer_get_status(void)
    ToSendDataBuffer[20] = rtcc_get_hours();
    ToSendDataBuffer[21] = rtcc_get_minutes();
    ToSendDataBuffer[22] = rtcc_get_seconds();
+   //Charger details
+   ToSendDataBuffer[23] = buck_get_mode();
+   ToSendDataBuffer[24] = buck_get_dutycycle();
+}
+
+//Fill buffer with first half of display content
+static void _fill_buffer_get_display1(void)
+{
+    uint8_t cntr;
+    uint8_t line;
+    uint8_t position;
+    
+   //Echo back to the host PC the command we are fulfilling in the first uint8_t
+   ToSendDataBuffer[0] = COMMAND_GET_DISPLAY_1;
+   
+   //Get display data
+   cntr = 1; 
+   for(line=0; line<2; ++line)
+   {
+        for(position=0; position<20; ++position)
+        {
+            ToSendDataBuffer[cntr] = display_get_character(line, position);
+            ++cntr;
+        }
+   }
+}
+
+//Fill buffer with second half of display content
+static void _fill_buffer_get_display2(void)
+{
+    uint8_t cntr;
+    uint8_t line;
+    uint8_t position;
+    
+   //Echo back to the host PC the command we are fulfilling in the first uint8_t
+   ToSendDataBuffer[0] = COMMAND_GET_DISPLAY_2;
+   
+   //Get display data
+   cntr = 1; 
+   for(line=2; line<4; ++line)
+   {
+        for(position=0; position<20; ++position)
+        {
+            ToSendDataBuffer[cntr] = display_get_character(line, position);
+            ++cntr;
+        }
+   }
 }

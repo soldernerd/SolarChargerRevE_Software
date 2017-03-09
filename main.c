@@ -83,7 +83,6 @@ MAIN_RETURN main(void)
         */
         
         //Do this as often as possible
-        APP_DeviceCustomHIDTasks();
         APP_DeviceMSDTasks();
         
         if(!os.done)
@@ -120,6 +119,7 @@ MAIN_RETURN main(void)
                     break;
 
                 case 1:
+                    APP_DeviceCustomHIDTasks();
                     break;
                     
                     
@@ -151,6 +151,10 @@ MAIN_RETURN main(void)
                     }
                     system_calculate_input_voltage();
                     break;
+                    
+                case 8:
+                    APP_DeviceCustomHIDTasks();
+                    break;
 
                 case 9:
                     if(1 || buck_get_mode()!=BUCK_STATUS_OFF)
@@ -159,6 +163,10 @@ MAIN_RETURN main(void)
                         i2c_adc_start(I2C_ADC_INPUT_CURRENT, I2C_ADC_RESOLUTION_14BIT, I2C_ADC_GAIN_1);
                         system_calculate_output_current();    
                     }
+                    break;
+                    
+                case 11:
+                    APP_DeviceCustomHIDTasks();
                     break;
 
                 case 12:

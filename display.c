@@ -20,6 +20,11 @@ static void _display_charger(void);
 static void _display_efficiency(void);
 static void _display_temperature(void);
 
+uint8_t display_get_character(uint8_t line, uint8_t position)
+{
+    return display_content[line][position];
+}
+
 static void _display_clear(void)
 {
     uint8_t row;

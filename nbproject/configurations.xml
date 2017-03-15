@@ -4,15 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-        <itemPath>C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.h</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.h</itemPath>
-      </logicalFolder>
       <logicalFolder name="f2" displayName="fileio" projectFiles="true">
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/fileio/inc/fileio.h</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/fileio/inc/fileio_media.h</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.h</itemPath>
-        <itemPath>Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/fileio_config.h</itemPath>
+        <itemPath>fileio.h</itemPath>
+        <itemPath>fileio_media.h</itemPath>
+        <itemPath>internal_flash.h</itemPath>
+        <itemPath>fileio_config.h</itemPath>
       </logicalFolder>
       <itemPath>system.h</itemPath>
       <itemPath>io_mapping.h</itemPath>
@@ -36,16 +32,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-        <itemPath>C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c</itemPath>
-      </logicalFolder>
       <logicalFolder name="f2" displayName="usb" projectFiles="true">
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c</itemPath>
-        <itemPath>C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c</itemPath>
-        <itemPath>Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c</itemPath>
-        <itemPath>Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c</itemPath>
+        <itemPath>usb_device.c</itemPath>
+        <itemPath>usb_device_hid.c</itemPath>
+        <itemPath>usb_device_msd.c</itemPath>
+        <itemPath>usb_descriptors.c</itemPath>
+        <itemPath>usb_events.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>system.c</itemPath>
@@ -53,7 +45,6 @@
       <itemPath>app_device_msd.c</itemPath>
       <itemPath>app_led_usb_status.c</itemPath>
       <itemPath>files.c</itemPath>
-      <itemPath>C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c</itemPath>
       <itemPath>os.c</itemPath>
       <itemPath>i2c.c</itemPath>
       <itemPath>ui.c</itemPath>
@@ -62,6 +53,7 @@
       <itemPath>buck.c</itemPath>
       <itemPath>adc.c</itemPath>
       <itemPath>flash.c</itemPath>
+      <itemPath>internal_flash.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

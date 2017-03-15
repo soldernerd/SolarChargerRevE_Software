@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c" "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c" main.c system.c app_device_custom_hid.c app_device_msd.c app_led_usb_status.c files.c C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c os.c i2c.c ui.c display.c rtcc.c buck.c adc.c flash.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c system.c app_device_custom_hid.c app_device_msd.c app_led_usb_status.c files.c os.c i2c.c ui.c display.c rtcc.c buck.c adc.c flash.c usb_device.c usb_device_hid.c usb_device_msd.c usb_descriptors.c usb_events.c internal_flash.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2104742252/buttons.p1 ${OBJECTDIR}/_ext/2104742252/leds.p1 ${OBJECTDIR}/_ext/1821838623/usb_device.p1 ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1 ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1 ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1 ${OBJECTDIR}/_ext/1746714840/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/app_device_custom_hid.p1 ${OBJECTDIR}/app_device_msd.p1 ${OBJECTDIR}/app_led_usb_status.p1 ${OBJECTDIR}/files.p1 ${OBJECTDIR}/_ext/1127373753/internal_flash.p1 ${OBJECTDIR}/os.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/rtcc.p1 ${OBJECTDIR}/buck.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/flash.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2104742252/buttons.p1.d ${OBJECTDIR}/_ext/2104742252/leds.p1.d ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/system.p1.d ${OBJECTDIR}/app_device_custom_hid.p1.d ${OBJECTDIR}/app_device_msd.p1.d ${OBJECTDIR}/app_led_usb_status.p1.d ${OBJECTDIR}/files.p1.d ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d ${OBJECTDIR}/os.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/ui.p1.d ${OBJECTDIR}/display.p1.d ${OBJECTDIR}/rtcc.p1.d ${OBJECTDIR}/buck.p1.d ${OBJECTDIR}/adc.p1.d ${OBJECTDIR}/flash.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/app_device_custom_hid.p1 ${OBJECTDIR}/app_device_msd.p1 ${OBJECTDIR}/app_led_usb_status.p1 ${OBJECTDIR}/files.p1 ${OBJECTDIR}/os.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/rtcc.p1 ${OBJECTDIR}/buck.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/flash.p1 ${OBJECTDIR}/usb_device.p1 ${OBJECTDIR}/usb_device_hid.p1 ${OBJECTDIR}/usb_device_msd.p1 ${OBJECTDIR}/usb_descriptors.p1 ${OBJECTDIR}/usb_events.p1 ${OBJECTDIR}/internal_flash.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/system.p1.d ${OBJECTDIR}/app_device_custom_hid.p1.d ${OBJECTDIR}/app_device_msd.p1.d ${OBJECTDIR}/app_led_usb_status.p1.d ${OBJECTDIR}/files.p1.d ${OBJECTDIR}/os.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/ui.p1.d ${OBJECTDIR}/display.p1.d ${OBJECTDIR}/rtcc.p1.d ${OBJECTDIR}/buck.p1.d ${OBJECTDIR}/adc.p1.d ${OBJECTDIR}/flash.p1.d ${OBJECTDIR}/usb_device.p1.d ${OBJECTDIR}/usb_device_hid.p1.d ${OBJECTDIR}/usb_device_msd.p1.d ${OBJECTDIR}/usb_descriptors.p1.d ${OBJECTDIR}/usb_events.p1.d ${OBJECTDIR}/internal_flash.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/2104742252/buttons.p1 ${OBJECTDIR}/_ext/2104742252/leds.p1 ${OBJECTDIR}/_ext/1821838623/usb_device.p1 ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1 ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1 ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1 ${OBJECTDIR}/_ext/1746714840/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/app_device_custom_hid.p1 ${OBJECTDIR}/app_device_msd.p1 ${OBJECTDIR}/app_led_usb_status.p1 ${OBJECTDIR}/files.p1 ${OBJECTDIR}/_ext/1127373753/internal_flash.p1 ${OBJECTDIR}/os.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/rtcc.p1 ${OBJECTDIR}/buck.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/flash.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/app_device_custom_hid.p1 ${OBJECTDIR}/app_device_msd.p1 ${OBJECTDIR}/app_led_usb_status.p1 ${OBJECTDIR}/files.p1 ${OBJECTDIR}/os.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/ui.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/rtcc.p1 ${OBJECTDIR}/buck.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/flash.p1 ${OBJECTDIR}/usb_device.p1 ${OBJECTDIR}/usb_device_hid.p1 ${OBJECTDIR}/usb_device_msd.p1 ${OBJECTDIR}/usb_descriptors.p1 ${OBJECTDIR}/usb_events.p1 ${OBJECTDIR}/internal_flash.p1
 
 # Source Files
-SOURCEFILES=C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c main.c system.c app_device_custom_hid.c app_device_msd.c app_led_usb_status.c files.c C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c os.c i2c.c ui.c display.c rtcc.c buck.c adc.c flash.c
+SOURCEFILES=main.c system.c app_device_custom_hid.c app_device_msd.c app_led_usb_status.c files.c os.c i2c.c ui.c display.c rtcc.c buck.c adc.c flash.c usb_device.c usb_device_hid.c usb_device_msd.c usb_descriptors.c usb_events.c internal_flash.c
 
 
 CFLAGS=
@@ -81,62 +81,6 @@ MP_PROCESSOR_OPTION=18F46J50
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/2104742252/buttons.p1: C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/2104742252" 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/buttons.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/buttons.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/2104742252/buttons.p1  C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c 
-	@-${MV} ${OBJECTDIR}/_ext/2104742252/buttons.d ${OBJECTDIR}/_ext/2104742252/buttons.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/2104742252/buttons.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/2104742252/leds.p1: C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/2104742252" 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/leds.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/leds.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/2104742252/leds.p1  C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c 
-	@-${MV} ${OBJECTDIR}/_ext/2104742252/leds.d ${OBJECTDIR}/_ext/2104742252/leds.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/2104742252/leds.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device.d ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.d ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.d ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1: Z:/My\ Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1746714840" 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1  "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c" 
-	@-${MV} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.d ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1746714840/usb_events.p1: Z:/My\ Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1746714840" 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_events.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1746714840/usb_events.p1  "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c" 
-	@-${MV} ${OBJECTDIR}/_ext/1746714840/usb_events.d ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.p1.d 
@@ -184,14 +128,6 @@ ${OBJECTDIR}/files.p1: files.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/files.p1  files.c 
 	@-${MV} ${OBJECTDIR}/files.d ${OBJECTDIR}/files.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/files.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1127373753/internal_flash.p1: C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1127373753" 
-	@${RM} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1127373753/internal_flash.p1  C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c 
-	@-${MV} ${OBJECTDIR}/_ext/1127373753/internal_flash.d ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/os.p1: os.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -257,63 +193,55 @@ ${OBJECTDIR}/flash.p1: flash.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/flash.d ${OBJECTDIR}/flash.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/usb_device.p1: usb_device.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device.p1  usb_device.c 
+	@-${MV} ${OBJECTDIR}/usb_device.d ${OBJECTDIR}/usb_device.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_device_hid.p1: usb_device_hid.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device_hid.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device_hid.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device_hid.p1  usb_device_hid.c 
+	@-${MV} ${OBJECTDIR}/usb_device_hid.d ${OBJECTDIR}/usb_device_hid.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device_hid.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_device_msd.p1: usb_device_msd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device_msd.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device_msd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device_msd.p1  usb_device_msd.c 
+	@-${MV} ${OBJECTDIR}/usb_device_msd.d ${OBJECTDIR}/usb_device_msd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device_msd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_descriptors.p1: usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_descriptors.p1.d 
+	@${RM} ${OBJECTDIR}/usb_descriptors.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_descriptors.p1  usb_descriptors.c 
+	@-${MV} ${OBJECTDIR}/usb_descriptors.d ${OBJECTDIR}/usb_descriptors.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_events.p1: usb_events.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_events.p1.d 
+	@${RM} ${OBJECTDIR}/usb_events.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_events.p1  usb_events.c 
+	@-${MV} ${OBJECTDIR}/usb_events.d ${OBJECTDIR}/usb_events.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_events.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/internal_flash.p1: internal_flash.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/internal_flash.p1.d 
+	@${RM} ${OBJECTDIR}/internal_flash.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/internal_flash.p1  internal_flash.c 
+	@-${MV} ${OBJECTDIR}/internal_flash.d ${OBJECTDIR}/internal_flash.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/internal_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
-${OBJECTDIR}/_ext/2104742252/buttons.p1: C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/2104742252" 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/buttons.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/buttons.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/2104742252/buttons.p1  C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/buttons.c 
-	@-${MV} ${OBJECTDIR}/_ext/2104742252/buttons.d ${OBJECTDIR}/_ext/2104742252/buttons.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/2104742252/buttons.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/2104742252/leds.p1: C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/2104742252" 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/leds.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/2104742252/leds.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/2104742252/leds.p1  C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim/leds.c 
-	@-${MV} ${OBJECTDIR}/_ext/2104742252/leds.d ${OBJECTDIR}/_ext/2104742252/leds.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/2104742252/leds.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device.d ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.d ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device_hid.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1: C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1821838623" 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1  C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_msd.c 
-	@-${MV} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.d ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1821838623/usb_device_msd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1: Z:/My\ Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1746714840" 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1  "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c" 
-	@-${MV} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.d ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1746714840/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1746714840/usb_events.p1: Z:/My\ Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1746714840" 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1746714840/usb_events.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1746714840/usb_events.p1  "Z:/My Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_events.c" 
-	@-${MV} ${OBJECTDIR}/_ext/1746714840/usb_events.d ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1746714840/usb_events.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.p1.d 
@@ -361,14 +289,6 @@ ${OBJECTDIR}/files.p1: files.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/files.p1  files.c 
 	@-${MV} ${OBJECTDIR}/files.d ${OBJECTDIR}/files.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/files.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1127373753/internal_flash.p1: C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1127373753" 
-	@${RM} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1127373753/internal_flash.p1  C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash/internal_flash.c 
-	@-${MV} ${OBJECTDIR}/_ext/1127373753/internal_flash.d ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1127373753/internal_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/os.p1: os.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -433,6 +353,54 @@ ${OBJECTDIR}/flash.p1: flash.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/flash.p1  flash.c 
 	@-${MV} ${OBJECTDIR}/flash.d ${OBJECTDIR}/flash.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_device.p1: usb_device.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device.p1  usb_device.c 
+	@-${MV} ${OBJECTDIR}/usb_device.d ${OBJECTDIR}/usb_device.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_device_hid.p1: usb_device_hid.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device_hid.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device_hid.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device_hid.p1  usb_device_hid.c 
+	@-${MV} ${OBJECTDIR}/usb_device_hid.d ${OBJECTDIR}/usb_device_hid.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device_hid.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_device_msd.p1: usb_device_msd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_device_msd.p1.d 
+	@${RM} ${OBJECTDIR}/usb_device_msd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_device_msd.p1  usb_device_msd.c 
+	@-${MV} ${OBJECTDIR}/usb_device_msd.d ${OBJECTDIR}/usb_device_msd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_device_msd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_descriptors.p1: usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_descriptors.p1.d 
+	@${RM} ${OBJECTDIR}/usb_descriptors.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_descriptors.p1  usb_descriptors.c 
+	@-${MV} ${OBJECTDIR}/usb_descriptors.d ${OBJECTDIR}/usb_descriptors.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usb_events.p1: usb_events.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usb_events.p1.d 
+	@${RM} ${OBJECTDIR}/usb_events.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/usb_events.p1  usb_events.c 
+	@-${MV} ${OBJECTDIR}/usb_events.d ${OBJECTDIR}/usb_events.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/usb_events.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/internal_flash.p1: internal_flash.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/internal_flash.p1.d 
+	@${RM} ${OBJECTDIR}/internal_flash.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 -I"." -I"usb" -I"fileio" -I"C:/microchip/mla/v2016_11_07/framework/usb/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/inc" -I"C:/microchip/mla/v2016_11_07/framework/fileio/drivers/internal_flash" -I"C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim" --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/internal_flash.p1  internal_flash.c 
+	@-${MV} ${OBJECTDIR}/internal_flash.d ${OBJECTDIR}/internal_flash.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/internal_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

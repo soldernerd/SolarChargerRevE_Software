@@ -158,9 +158,9 @@ const USB_DEVICE_DESCRIPTOR device_dsc=
     0x00,                   // Class Code
     0x00,                   // Subclass code
     0x00,                   // Protocol code
-    USB_EP0_BUFF_SIZE,          // Max packet size for EP0, see usb_config.h
-    0x04D8,                 // Vendor ID
-    0x0054,                 // Product ID: Custom HID device demo
+    USB_EP0_BUFF_SIZE,      // Max packet size for EP0, see usb_config.h
+    0x04D8,                 // Vendor ID (Microchip VID)
+    0xF08E,                 // Product ID: (PID granted by Microchip for soldernerd.com SolarCharger, Request #1586)
     0x0100,                 // Device release number in BCD format
     0x01,                   // Manufacturer string index
     0x02,                   // Product string index
@@ -253,15 +253,15 @@ const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[1];}sd000={
 //Manufacturer string descriptor
 const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[25];}sd001={
 sizeof(sd001),USB_DESCRIPTOR_STRING,
-{'M','i','c','r','o','c','h','i','p',' ',
-'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'
+{'S','o','l','d','e','r','n','e','r','d',
+'.','c','o','m',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '
 }};
 
 //Product string descriptor
 const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[22];}sd002={
 sizeof(sd002),USB_DESCRIPTOR_STRING,
-{'S','i','m','p','l','e',' ','H','I','D',' ',
-'D','e','v','i','c','e',' ','D','e','m','o'
+{'M','P','P','T','S','o','l','a','r',' ',
+'C','h','a','r','g','e','r',' ','R','e','v','C'
 }};
 
 //Serial number string descriptor.  Note: This should be unique for each unit 

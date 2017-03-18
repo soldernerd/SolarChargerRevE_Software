@@ -1,8 +1,6 @@
 
 #include <stdint.h>
 #include <plib/pps.h>
-#include <pic18f46j50.h>
-
 #include "os.h"
 #include "adc.h"
 #include "i2c.h"

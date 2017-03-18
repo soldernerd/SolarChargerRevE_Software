@@ -14,7 +14,6 @@
       <itemPath>io_mapping.h</itemPath>
       <itemPath>app_device_custom_hid.h</itemPath>
       <itemPath>app_device_msd.h</itemPath>
-      <itemPath>app_led_usb_status.h</itemPath>
       <itemPath>usb_config.h</itemPath>
       <itemPath>os.h</itemPath>
       <itemPath>i2c.h</itemPath>
@@ -43,7 +42,6 @@
       <itemPath>system.c</itemPath>
       <itemPath>app_device_custom_hid.c</itemPath>
       <itemPath>app_device_msd.c</itemPath>
-      <itemPath>app_led_usb_status.c</itemPath>
       <itemPath>files.c</itemPath>
       <itemPath>os.c</itemPath>
       <itemPath>i2c.c</itemPath>
@@ -63,11 +61,6 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
-    <Elem>./usb</Elem>
-    <Elem>C:/microchip/mla/v2016_11_07/framework/usb</Elem>
-    <Elem>C:/microchip/mla/v2016_11_07/bsp/pic18f46j50_pim</Elem>
-    <Elem>C:\microchip\mla\v2016_11_07\framework\fileio\inc</Elem>
-    <Elem>C:\microchip\mla\v2016_11_07\framework\fileio\drivers\internal_flash</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -79,7 +72,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>1.38</languageToolchainVersion>
+        <languageToolchainVersion>1.37</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -107,8 +100,7 @@
       <HI-TECH-COMP>
         <property key="asmlist" value="true"/>
         <property key="define-macros" value=""/>
-        <property key="extra-include-directories"
-                  value=".;usb;fileio;C:\microchip\mla\v2016_11_07\framework\usb\inc;C:\microchip\mla\v2016_11_07\framework\fileio\inc;C:\microchip\mla\v2016_11_07\framework\fileio\drivers\internal_flash;C:\microchip\mla\v2016_11_07\bsp\pic18f46j50_pim"/>
+        <property key="extra-include-directories" value="."/>
         <property key="identifier-length" value="255"/>
         <property key="operation-mode" value="free"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
@@ -121,6 +113,7 @@
         <property key="optimization-level" value="9"/>
         <property key="optimization-set" value="default"/>
         <property key="optimization-speed" value="false"/>
+        <property key="optimization-stable-enable" value="false"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="undefine-macros" value=""/>
         <property key="use-cci" value="false"/>
@@ -185,6 +178,11 @@
         <property key="memories.eeprom" value="true"/>
         <property key="memories.flashdata" value="true"/>
         <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram" value="true"/>
+        <property key="memories.instruction.ram.end"
+                  value="${memories.instruction.ram.end.value}"/>
+        <property key="memories.instruction.ram.start"
+                  value="${memories.instruction.ram.start.value}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.end" value="0xfff7"/>
         <property key="memories.programmemory.partition2" value="true"/>

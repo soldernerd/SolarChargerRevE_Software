@@ -18,8 +18,6 @@
 //
 #include "app_device_custom_hid.h"
 #include "app_device_msd.h"
-//
-#include "app_led_usb_status.h"
 
 //User defined code
 #include "os.h"

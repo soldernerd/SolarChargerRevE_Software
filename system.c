@@ -20,9 +20,6 @@ please contact mla_licensing@microchip.com
 #include <xc.h>
 #include "system.h"
 #include "usb.h"
-#include "leds.h"
-#include "buttons.h"
-//#include "adc.h"
 
 /*
 // CONFIG1L
@@ -123,10 +120,10 @@ void SYSTEM_Initialize( SYSTEM_STATE state )
              }
              //Device switches over automatically to PLL output after PLL is locked and ready.
 			 
-            LED_Enable(LED_USB_DEVICE_STATE);
-            LED_Enable(LED_USB_DEVICE_HID_CUSTOM);
+            //LED_Enable(LED_USB_DEVICE_STATE);
+            //LED_Enable(LED_USB_DEVICE_HID_CUSTOM);
             
-            BUTTON_Enable(BUTTON_USB_DEVICE_HID_CUSTOM);
+            //BUTTON_Enable(BUTTON_USB_DEVICE_HID_CUSTOM);
             
             //ADC_SetConfiguration(ADC_CONFIGURATION_DEFAULT);
             //ADC_Enable(ADC_CHANNEL_POTENTIOMETER);

@@ -94,20 +94,6 @@ void flash_dummy_read()
     DMACON1bits.DMAEN = 1; //Start transfer
     while(DMACON1bits.DMAEN); //Wait for transfer to complete
     SPI_SS_PORT = 1;
-    
-    /*
-    //Read some dummy data from the location written to by flash_dummy_write())
-    SPI_SS_PORT = 0;
-    WriteSPI2(FLASH_DATA_READ);
-    WriteSPI2(0x00);
-    WriteSPI2(0x37);
-    WriteSPI2(0x00);
-    for(cntr=0;cntr<256;++cntr)
-    {
-       ReadSPI2();
-    }
-    SPI_SS_PORT = 1;
-    */
 }
 
 //void flash_send(uint32_t address, uint8_t *dat, uint16_t len){}

@@ -3,25 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/adc.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/display.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/display.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/main.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/i2c.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/app_device_custom_hid.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/i2c.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/ui.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/usb_config.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.h</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.c</file>
-            <file>file:/C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device_hid.c</file>
-            <file>file:/C:/microchip/mla/v2016_11_07/framework/usb/src/usb_device.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/PIC18_USBTest/usb_descriptors.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/usb_device.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.h</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/ui.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/flash.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/display.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/adc.c</file>
         </group>
     </open-files>
 </project-private>

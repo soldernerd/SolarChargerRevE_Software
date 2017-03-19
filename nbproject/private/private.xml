@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/usb_device_hid.c</file>
-            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/app_device_custom_hid.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/app_device_custom_hid.c</file>
+            <file>file:/D:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.h</file>
         </group>
     </open-files>
 </project-private>

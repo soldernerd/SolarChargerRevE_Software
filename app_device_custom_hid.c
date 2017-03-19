@@ -53,6 +53,9 @@ typedef enum
 static void _fill_buffer_get_status(void);
 static void _fill_buffer_get_display1(void);
 static void _fill_buffer_get_display2(void);
+static void _parse_command_short(uint8_t cmd);
+static void _parse_command_long(uint8_t cmd, uint8_t data);
+
 
 /*********************************************************************
 * Function: void APP_DeviceCustomHIDInitialize(void);
@@ -203,48 +206,21 @@ void APP_DeviceCustomHIDTasks()
         
         //Check if the host expects us to do anything else
         idx = 1;
-        while((ReceivedDataBuffer[idx] & 0xF0) == 0x30)
+        while(idx<62)
         {
-            switch(ReceivedDataBuffer[idx])
+            switch(ReceivedDataBuffer[idx] & 0xF0)
             {
                 case 0x30:
-                    system_output_off(OUTPUT_1);
+                    _parse_command_short(ReceivedDataBuffer[idx]);
+                    ++idx;
                     break;
-                case 0x31:
-                    system_output_on(OUTPUT_1);
+                case 0x40:
+                    _parse_command_long(ReceivedDataBuffer[idx], ReceivedDataBuffer[idx+1]);
+                    idx += 2;
                     break;
-                case 0x32:
-                    system_output_off(OUTPUT_2);
-                    break;
-                case 0x33:
-                    system_output_on(OUTPUT_2);
-                    break;
-                case 0x34:
-                    system_output_off(OUTPUT_3);
-                    break;
-                case 0x35:
-                    system_output_on(OUTPUT_3);
-                    break;
-                case 0x36:
-                    system_output_off(OUTPUT_4);
-                    break;
-                case 0x37:
-                    system_output_on(OUTPUT_4);
-                    break;
-                case 0x38:
-                    system_output_off(OUTPUT_USB);
-                    break;
-                case 0x39:
-                    system_output_on(OUTPUT_USB);
-                    break;
-                case 0x3A:
-                    system_output_off(OUTPUT_FAN);
-                    break;
-                case 0x3B:
-                    system_output_on(OUTPUT_FAN);
-                    break;
+                default:
+                    idx = 65; //exit loop
             }
-            ++idx;
         }
         
         
@@ -339,4 +315,109 @@ static void _fill_buffer_get_display2(void)
             ++cntr;
         }
    }
+}
+
+static void _parse_command_short(uint8_t cmd)
+{
+    switch(cmd)
+    {
+        case 0x30:
+            system_output_off(OUTPUT_1);
+            break;
+        case 0x31:
+            system_output_on(OUTPUT_1);
+            break;
+        case 0x32:
+            system_output_off(OUTPUT_2);
+            break;
+        case 0x33:
+            system_output_on(OUTPUT_2);
+            break;
+        case 0x34:
+            system_output_off(OUTPUT_3);
+            break;
+        case 0x35:
+            system_output_on(OUTPUT_3);
+            break;
+        case 0x36:
+            system_output_off(OUTPUT_4);
+            break;
+        case 0x37:
+            system_output_on(OUTPUT_4);
+            break;
+        case 0x38:
+            system_output_off(OUTPUT_USB);
+            break;
+        case 0x39:
+            system_output_on(OUTPUT_USB);
+            break;
+        case 0x3A:
+            system_output_off(OUTPUT_FAN);
+            break;
+        case 0x3B:
+            system_output_on(OUTPUT_FAN);
+            break;
+        case 0x3C:
+            --os.encoderCount;
+            break;
+        case 0x3D:
+            ++os.encoderCount;
+            break;
+        case 0x3E:
+            ++os.buttonCount;
+            break;
+    }
+}
+
+static void _parse_command_long(uint8_t cmd, uint8_t data)
+{
+    switch(cmd)
+    {
+        case 0x40:
+            rtcc_set_year(data);
+            break;
+        case 0x41:
+            rtcc_set_month(data);
+            break;
+        case 0x42:
+            rtcc_set_day(data);
+            break;
+        case 0x43:
+            rtcc_set_hours(data);
+            break;
+        case 0x44:
+            rtcc_set_minutes(data);
+            break;
+        case 0x45:
+            rtcc_set_seconds(data);
+            break;
+            
+        case 0x46:
+            //enable manual
+            break;
+        case 0x47:
+            //disable manual
+            break;
+        case 0x48:
+            //charger on
+            break;
+        case 0x49:
+            //charger off
+            break;
+        case 0x4A:
+            //async mode
+            break;
+        case 0x4B:
+            //synchronous mode;
+            break;
+        case 0x4C:
+            //decrease dc
+            break;
+        case 0x4D:
+            //increase dc
+            break;
+        case 0x4E:
+            //set dc
+            break;
+    }    
 }

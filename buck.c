@@ -10,6 +10,16 @@ buckStatus_t buck_status;
 uint8_t buck_dutycycle;
 uint8_t buck_dutycycle_last_step;
 
+//Variables for remote controlled operation
+uint8_t buck_remote_enable = 0;
+uint8_t buck_remote_on = 0;
+uint8_t buck_remote_synchronous = 0;
+uint8_t buck_remote_dutycycle = 0;
+
+//Main functions
+static void buck_operate_local(void);
+static void buck_operate_remote(void);
+
 uint8_t idx;
 int32_t last;
 int32_t now;
@@ -146,6 +156,199 @@ void buck_init(void)
 void buck_operate(void)
 {
     uint8_t cntr;
+    
+    //First of all check if remote control flag is set
+    if(buck_remote_enable)
+    {
+        if(buck_status<BUCK_STATUS_REMOTE_OFF)
+        {
+            //We are not yet in remote controlled mode
+            //Switch to remote controlled mode
+            //Copy settings to ensure smooth cutover
+            switch(buck_status)
+            {
+                case BUCK_STATUS_OFF:
+                    buck_remote_on = 0;
+                    buck_remote_synchronous = 0;
+                    break;
+                case BUCK_STATUS_ASYNCHRONOUS:
+                    buck_remote_on = 1;
+                    buck_remote_synchronous = 0;
+                    break;
+                case BUCK_STATUS_SYNCHRONOUS:
+                    buck_remote_on = 1;
+                    buck_remote_synchronous = 1;
+                    break;  
+            }
+            buck_remote_dutycycle = buck_dutycycle;
+            buck_status += BUCK_STATUS_REMOTE_OFF;
+            buck_operate_remote();
+        }
+    }
+    else
+    {
+       if(buck_status>=BUCK_STATUS_REMOTE_OFF)
+        {
+            //We are in remote controlled mode
+            //Switch to local mode without changing anything else
+            buck_status -= BUCK_STATUS_REMOTE_OFF;
+            buck_operate_local();
+        } 
+    }
+    
+    
+}
+    
+uint8_t buck_get_dutycycle(void)
+{
+    return buck_dutycycle;
+}
+
+buckStatus_t buck_get_mode(void)
+{
+    return buck_status;
+}
+            
+    /*        
+    if(system_buck_is_on())
+    {
+        if(os.input_voltage<14500)
+        {
+            system_buck_stop();
+            i2c_expander_low(I2C_EXPANDER_CHARGER_ENABLE);
+            i2c_expander_low(I2C_EXPANDER_FAN);
+        } 
+
+        //Adjust duty cycle
+        system_buck_adjust_dutycycle();
+    }
+    else
+    {
+        if(os.input_voltage>15500)
+        {
+            //Enable buck
+            i2c_expander_high(I2C_EXPANDER_CHARGER_ENABLE);
+            i2c_expander_high(I2C_EXPANDER_FAN);
+            //system_buck_set_frequency(BUCK_FREQUENCY_93750);
+            system_buck_set_frequency(BUCK_FREQUENCY_187500);
+
+            system_buck_set_dutycycle(system_buck_initial_dutycycle()); //Neutral duty cycle
+            system_buck_start(); 
+        }
+    }
+    */
+
+/*
+ 
+ * void system_buck_set_frequency(buckFrequency_t buckFrequency)
+{
+    switch(buckFrequency)
+    {
+        case BUCK_FREQUENCY_62500:
+            system_set_cpu_frequency(CPU_FREQUENCY_8MHz);
+            PR2 = 31;
+            os.buckFrequency = BUCK_FREQUENCY_62500;
+            break;
+        case BUCK_FREQUENCY_93750:
+            system_set_cpu_frequency(CPU_FREQUENCY_48MHz);
+            PR2 = 127;
+            os.buckFrequency = BUCK_FREQUENCY_93750;
+            break;
+        case BUCK_FREQUENCY_187500:
+            system_set_cpu_frequency(CPU_FREQUENCY_48MHz);
+            PR2 = 63;
+            os.buckFrequency = BUCK_FREQUENCY_187500;
+            break;
+    }
+}
+
+void system_buck_set_dutycycle(uint8_t dutyCycle)
+{
+    uint16_t dc = dutyCycle;
+    
+    //Check limits
+    if(dutyCycle<BUCK_DUTYCYCLE_MINIMUM)
+        dutyCycle = dutyCycle<BUCK_DUTYCYCLE_MINIMUM;
+    if(dutyCycle>BUCK_DUTYCYCLE_MAXIMUM)
+        dutyCycle = dutyCycle<BUCK_DUTYCYCLE_MAXIMUM;
+    
+    //Save dutyCycle
+    os.buckDutyCycle = dutyCycle;
+            
+    switch(os.buckFrequency)
+    {
+        case BUCK_FREQUENCY_62500:
+            dc >>= 1;
+            break;
+        case BUCK_FREQUENCY_93750:
+            dc <<= 1;
+            break;
+        case BUCK_FREQUENCY_187500:
+            //do nothing
+            break;
+    }    
+    
+    //Lowest two bits of duty cycle
+    CCP1CONbits.DC1B = (dc&0b11);
+    //High byte of duty cycle
+    CCPR1L = dc >> 2;
+}
+
+void system_buck_adjust_dutycycle(void)
+{
+    int32_t power;
+    int32_t power_last;
+    
+    power = os.input_voltage * os.input_current;
+    power_last = os.input_voltage_last * os.input_current_last;
+    
+    if(os.output_voltage>BUCK_BATTERY_VOLTAGE_MAXIMUM)
+    {
+        system_buck_set_dutycycle(os.buckDutyCycle-1);
+        os.buckLastStep = -1;
+    }
+    else if(power>power_last)
+    {
+        if(os.buckLastStep>1)
+        {
+            system_buck_set_dutycycle(os.buckDutyCycle+1);
+            os.buckLastStep = 1;
+        }
+        else
+        {
+            system_buck_set_dutycycle(os.buckDutyCycle-1);
+            os.buckLastStep = -1;
+        }
+    }
+    else
+    {
+        if(os.buckLastStep>1)
+        {
+            system_buck_set_dutycycle(os.buckDutyCycle-1);
+            os.buckLastStep = -1;
+        }
+        else
+        {
+            system_buck_set_dutycycle(os.buckDutyCycle+1);
+            os.buckLastStep = 1;
+        }
+    }
+}
+
+
+
+uint8_t system_buck_is_on(void)
+{
+    return T2CONbits.TMR2ON;
+}
+ 
+ */
+
+//Actual control functionality
+static void buck_operate_local(void)
+{
+    uint8_t cntr;
+    
     switch(buck_status)
     {
         case BUCK_STATUS_OFF:
@@ -383,148 +586,144 @@ void buck_operate(void)
             buck_status = BUCK_STATUS_OFF;
     }
 }
-    
-uint8_t buck_get_dutycycle(void)
-{
-    return buck_dutycycle;
-}
 
-buckStatus_t buck_get_mode(void)
+static void buck_operate_remote(void)
 {
-    return buck_status;
-}
+    uint8_t cntr;
+    switch(buck_status)
+    {
+        case BUCK_STATUS_REMOTE_OFF:
+            if((os.timeSlot&0b00110000)==0b00110000)
+            {
+               if(buck_remote_on)
+                {
+                    BUCK_ENABLE_PIN = 1;
+                    buck_status = BUCK_STATUS_REMOTE_STARTUP;
+                    //Zero old measurements
+                    os.input_current = 0;
+                    os.output_current = 0;
+                    for(cntr=0;cntr<4;++cntr)
+                    {
+                        os.input_current_adc[cntr] = 0;
+                        os.output_current_adc[cntr] = 0;
+                    }
+                }  
+            } 
+            break;
             
-    /*        
-    if(system_buck_is_on())
-    {
-        if(os.input_voltage<14500)
-        {
-            system_buck_stop();
-            i2c_expander_low(I2C_EXPANDER_CHARGER_ENABLE);
-            i2c_expander_low(I2C_EXPANDER_FAN);
-        } 
-
-        //Adjust duty cycle
-        system_buck_adjust_dutycycle();
-    }
-    else
-    {
-        if(os.input_voltage>15500)
-        {
-            //Enable buck
-            i2c_expander_high(I2C_EXPANDER_CHARGER_ENABLE);
-            i2c_expander_high(I2C_EXPANDER_FAN);
-            //system_buck_set_frequency(BUCK_FREQUENCY_93750);
-            system_buck_set_frequency(BUCK_FREQUENCY_187500);
-
-            system_buck_set_dutycycle(system_buck_initial_dutycycle()); //Neutral duty cycle
-            system_buck_start(); 
-        }
-    }
-    */
-
-/*
- 
- * void system_buck_set_frequency(buckFrequency_t buckFrequency)
-{
-    switch(buckFrequency)
-    {
-        case BUCK_FREQUENCY_62500:
-            system_set_cpu_frequency(CPU_FREQUENCY_8MHz);
-            PR2 = 31;
-            os.buckFrequency = BUCK_FREQUENCY_62500;
+        case BUCK_STATUS_STARTUP:
+            if((os.timeSlot&0b00110000)==0b00110000)
+            {
+                //Calibrate current measurements
+                os.input_current_calibration = 0;
+                os.output_current_calibration = 0;
+                for(cntr=0;cntr<4;++cntr)
+                {
+                    os.input_current_calibration += os.input_current_adc[cntr];
+                    os.output_current_calibration += os.output_current_adc[cntr];
+                }
+                //Initialize variables
+                buck_dutycycle_last_step = 1;
+                //Charge bootstrap capacitor
+                PIR1bits.TMR2IF = 0;
+                _buck_start(_buck_initial_dutycycle());
+                while(!PIR1bits.TMR2IF);
+                //Switch to asynchronous mode
+                _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
+                _buck_set_dutycycle(BUCK_DUTYCYCLE_MINIMUM);
+                buck_remote_dutycycle = buck_dutycycle;
+                buck_status = BUCK_STATUS_ASYNCHRONOUS;
+            } 
             break;
-        case BUCK_FREQUENCY_93750:
-            system_set_cpu_frequency(CPU_FREQUENCY_48MHz);
-            PR2 = 127;
-            os.buckFrequency = BUCK_FREQUENCY_93750;
-            break;
-        case BUCK_FREQUENCY_187500:
-            system_set_cpu_frequency(CPU_FREQUENCY_48MHz);
-            PR2 = 63;
-            os.buckFrequency = BUCK_FREQUENCY_187500;
-            break;
-    }
-}
-
-void system_buck_set_dutycycle(uint8_t dutyCycle)
-{
-    uint16_t dc = dutyCycle;
-    
-    //Check limits
-    if(dutyCycle<BUCK_DUTYCYCLE_MINIMUM)
-        dutyCycle = dutyCycle<BUCK_DUTYCYCLE_MINIMUM;
-    if(dutyCycle>BUCK_DUTYCYCLE_MAXIMUM)
-        dutyCycle = dutyCycle<BUCK_DUTYCYCLE_MAXIMUM;
-    
-    //Save dutyCycle
-    os.buckDutyCycle = dutyCycle;
             
-    switch(os.buckFrequency)
-    {
-        case BUCK_FREQUENCY_62500:
-            dc >>= 1;
+        case BUCK_STATUS_REMOTE_ASYNCHRONOUS:
+            _buck_set_dutycycle(buck_remote_dutycycle);
+            //Check if we should switch to synchronous mode
+            if(buck_remote_synchronous)
+            {
+                _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
+                _buck_set_dutycycle(_buck_initial_dutycycle()+5);
+                buck_remote_dutycycle = buck_dutycycle;
+                buck_status = BUCK_STATUS_REMOTE_SYNCHRONOUS;
+            }
             break;
-        case BUCK_FREQUENCY_93750:
-            dc <<= 1;
+            
+        case BUCK_STATUS_SYNCHRONOUS:
+            _buck_set_dutycycle(buck_remote_dutycycle);
+            //Check if we should switch to asynchronous mode
+            if(!buck_remote_synchronous)
+            {
+                _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
+                _buck_set_dutycycle(_buck_initial_dutycycle()-5);
+                buck_remote_dutycycle = buck_dutycycle;
+                buck_status = BUCK_STATUS_REMOTE_ASYNCHRONOUS;
+            }
             break;
-        case BUCK_FREQUENCY_187500:
-            //do nothing
-            break;
+            
+        default:
+            buck_status = BUCK_STATUS_OFF;
     }    
-    
-    //Lowest two bits of duty cycle
-    CCP1CONbits.DC1B = (dc&0b11);
-    //High byte of duty cycle
-    CCPR1L = dc >> 2;
 }
 
-void system_buck_adjust_dutycycle(void)
+//Remote control functionality
+void buck_remote_set_enable(uint8_t remote)
 {
-    int32_t power;
-    int32_t power_last;
-    
-    power = os.input_voltage * os.input_current;
-    power_last = os.input_voltage_last * os.input_current_last;
-    
-    if(os.output_voltage>BUCK_BATTERY_VOLTAGE_MAXIMUM)
-    {
-        system_buck_set_dutycycle(os.buckDutyCycle-1);
-        os.buckLastStep = -1;
-    }
-    else if(power>power_last)
-    {
-        if(os.buckLastStep>1)
-        {
-            system_buck_set_dutycycle(os.buckDutyCycle+1);
-            os.buckLastStep = 1;
-        }
-        else
-        {
-            system_buck_set_dutycycle(os.buckDutyCycle-1);
-            os.buckLastStep = -1;
-        }
-    }
+    if(remote)
+        buck_remote_enable = 1;
     else
-    {
-        if(os.buckLastStep>1)
-        {
-            system_buck_set_dutycycle(os.buckDutyCycle-1);
-            os.buckLastStep = -1;
-        }
-        else
-        {
-            system_buck_set_dutycycle(os.buckDutyCycle+1);
-            os.buckLastStep = 1;
-        }
-    }
+        buck_remote_enable = 0;
 }
 
-
-
-uint8_t system_buck_is_on(void)
+void buck_remote_set_on(uint8_t on)
 {
-    return T2CONbits.TMR2ON;
+    if(on)
+        buck_remote_on = 1;
+    else
+        buck_remote_on = 0;
 }
- 
- */
+
+void buck_remote_set_synchronous(uint8_t synchronous)
+{
+    if(synchronous)
+        buck_remote_synchronous = 1;
+    else
+        buck_remote_synchronous = 0;
+}
+
+void buck_remote_set_dutycycle(uint8_t dutycycle)
+{
+    if(dutycycle>BUCK_DUTYCYCLE_MAXIMUM)
+        buck_remote_dutycycle = BUCK_DUTYCYCLE_MAXIMUM;
+    else if(dutycycle<BUCK_DUTYCYCLE_MINIMUM)
+        buck_remote_dutycycle = BUCK_DUTYCYCLE_MINIMUM;
+    else
+        buck_remote_dutycycle = (uint8_t) dutycycle;
+}
+
+void buck_remote_change_dutycycle(int8_t change)
+{
+    int16_t new_dutycycle = buck_dutycycle + change;
+    if(new_dutycycle>BUCK_DUTYCYCLE_MAXIMUM)
+        buck_remote_dutycycle = BUCK_DUTYCYCLE_MAXIMUM;
+    else if(new_dutycycle<BUCK_DUTYCYCLE_MINIMUM)
+        buck_remote_dutycycle = BUCK_DUTYCYCLE_MINIMUM;
+    else
+        buck_remote_dutycycle = (uint8_t) new_dutycycle;
+}
+
+uint8_t buck_remote_get_status()
+{
+    uint8_t retval = 0x00;
+    if(buck_remote_enable)
+        retval |= 0x01;
+    if(buck_remote_on)
+        retval |= 0x02;
+    if(buck_remote_synchronous)
+        retval |= 0x03;
+    return retval;
+}
+
+uint8_t buck_remote_get_dutycycle()
+{
+    return buck_remote_dutycycle;
+}

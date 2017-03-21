@@ -385,6 +385,9 @@ static void _parse_command_short(uint8_t cmd)
         case 0x3E:
             ++os.buttonCount;
             break;
+        case 0x3F:
+            rtcc_write_eeprom();
+            break;
     }
 }
 

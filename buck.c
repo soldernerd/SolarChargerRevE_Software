@@ -17,119 +17,23 @@ uint8_t buck_remote_synchronous = 0;
 uint8_t buck_remote_dutycycle = 0;
 
 //Main functions
-static void buck_operate_local(void);
-static void buck_operate_remote(void);
+static void _buck_operate_local(void);
+static void _buck_operate_remote(void);
+
+//Utility functions
+static void _buck_pin_init(void);
+static void _buck_timer2_init(void);
+static uint8_t _buck_initial_dutycycle(void);
+static void _buck_set_dutycycle(uint8_t dutyCycle);
+static void _buck_prepare(void);
+static void _buck_start(buckMode_t mode, uint8_t dutycycle);
+static void _buck_set_sync_async(buckMode_t mode, uint8_t new_dutycycle);
+static void _buck_stop(void);
 
 uint8_t idx;
 int32_t last;
 int32_t now;
 uint16_t battery_voltage_maximum = 13500;
-
-static uint8_t _buck_initial_dutycycle()
-{
-    uint32_t dc;
-    dc = (uint32_t) os.output_voltage;
-    dc <<= 8;
-    dc /= os.input_voltage;
-    //Put some sane bounds around the duty cycle
-    if(dc>BUCK_DUTYCYCLE_MAXIMUM)
-        dc = BUCK_DUTYCYCLE_MAXIMUM;
-    if(dc<BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM)
-        dc = BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM;
-    return (uint8_t) dc;
-}
-
-static void _buck_set_dutycycle(uint8_t dutyCycle)
-{ 
-    //Check limits
-    if(dutyCycle>BUCK_DUTYCYCLE_MAXIMUM)
-        dutyCycle = BUCK_DUTYCYCLE_MAXIMUM;
-    if(buck_status==BUCK_STATUS_SYNCHRONOUS || buck_status==BUCK_STATUS_REMOTE_SYNCHRONOUS)
-    {
-        if(dutyCycle<BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM)
-            dutyCycle = BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM;
-        if(dutyCycle<BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM)
-            dutyCycle = BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM;
-    }
-    //Save dutyCycle
-    buck_dutycycle = dutyCycle;
-
-    //Lowest two bits of duty cycle
-    CCP1CONbits.DC1B = (dutyCycle&0b11);
-    //High byte of duty cycle
-    CCPR1L = dutyCycle >> 2;
-}
-
-static void _buck_set_sync_async(buckMode_t mode)
-{
-    if(mode==BUCK_MODE_ASYNCHRONOUS)
-    {
-        //Single output mode
-        CCP1CONbits.P1M1 = 0;
-        CCP1CONbits.P1M0 = 0;
-    }
-    if(mode==BUCK_MODE_SYNCHRONOUS)
-    {
-        //Half-bridge mode
-        CCP1CONbits.P1M1 = 1;
-        CCP1CONbits.P1M0 = 0;
-    }
-}
-
-static void _buck_start(uint8_t dutycycle)
-{
-    //Period register
-    PR2 = 63; //187.5kHz
-    
-    //Set dutycycle
-    _buck_set_dutycycle(dutycycle);
-    
-    //Clear timer 2
-    TMR2 = 0x00;
-    //Enable timer 2
-    T2CONbits.TMR2ON = 1;
-
-    //Both outputs active high
-    CCP1CON |= 0b00001100;
-    
-    //Half bridge mode
-    CCP1CON |= 0b10000000;  
-}
-
-static void _buck_stop(void)
-{
-    //_buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
-    CCP1CONbits.CCP1M3 = 0;
-    CCP1CONbits.CCP1M2 = 0;
-    CCP1CONbits.CCP1M1 = 0;
-    CCP1CONbits.CCP1M0 = 0;
-    
-    //Disable timer 2
-    T2CONbits.TMR2ON = 0;
-    
-    //Disconnect power & panel
-    BUCK_ENABLE_PIN = 0;
-}
-
-static void _buck_timer2_init(void)
-{
-    //Use timer2 for both ECCP modules
-    TCLKCONbits.T3CCP2 = 0;
-    TCLKCONbits.T3CCP1 = 0;
-    
-    //Post scaler = 16
-    T2CONbits.T2OUTPS3 = 1;
-    T2CONbits.T2OUTPS2 = 1;
-    T2CONbits.T2OUTPS1 = 1;
-    T2CONbits.T2OUTPS0 = 1;
-    
-    //Prescaler = 1
-    T2CONbits.T2CKPS1 = 0;
-    T2CONbits.T2CKPS0 = 0;
-    
-    //Disable timer 2
-    T2CONbits.TMR2ON = 0;
-}
 
 static void _buck_pin_init(void)
 {
@@ -152,76 +56,250 @@ static void _buck_pin_init(void)
     PPSLock();
 }
 
-
-
-void buck_init(void)
+static void _buck_timer2_init(void)
 {
-    buck_status = BUCK_STATUS_OFF;   
-    _buck_timer2_init();
-    _buck_pin_init();
+    //Use timer2 for CCP1 module
+    //TCLKCONbits.T3CCP2 = 0;
+    TCLKCONbits.T3CCP1 = 0;
+    
+    //Post scaler = 16
+    T2CONbits.T2OUTPS = 0b1111;
+    
+    //Prescaler = 1
+    T2CONbits.T2CKPS1 = 0;
+    T2CONbits.T2CKPS0 = 0;
+    
+    //Disable timer 2
+    T2CONbits.TMR2ON = 0;
 }
 
+static uint8_t _buck_initial_dutycycle(void)
+{
+    uint32_t dc;
+    //This happens only in testing when no panel is connected
+    if(os.input_voltage<os.output_voltage)
+        return BUCK_DUTYCYCLE_MAXIMUM;
+    dc = (uint32_t) os.output_voltage;
+    dc <<= 8;
+    dc /= os.input_voltage;
+    //Put some sane bounds around the duty cycle
+    if(dc>BUCK_DUTYCYCLE_MAXIMUM)
+        dc = BUCK_DUTYCYCLE_MAXIMUM;
+    if(dc<BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM)
+        dc = BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM;
+    return (uint8_t) dc;
+}
 
-void buck_operate(void)
+static void _buck_set_dutycycle(uint8_t dutyCycle)
+{ 
+    //Check limits
+    if(dutyCycle>BUCK_DUTYCYCLE_MAXIMUM)
+        dutyCycle = BUCK_DUTYCYCLE_MAXIMUM;
+    if(buck_status==BUCK_STATUS_SYNCHRONOUS || buck_status==BUCK_STATUS_REMOTE_SYNCHRONOUS)
+    {
+        if(dutyCycle<BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM)
+            dutyCycle = BUCK_DUTYCYCLE_SYNCHRONOUS_MINIMUM;
+    }
+    if(buck_status==BUCK_STATUS_ASYNCHRONOUS || buck_status==BUCK_STATUS_REMOTE_ASYNCHRONOUS)
+    {
+        if(dutyCycle<BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM)
+            dutyCycle = BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM;
+    }
+    //Save dutyCycle
+    buck_dutycycle = dutyCycle;
+    //What follows is critical code, we don't want to get interrupted, turn interrupts off
+    INTCONbits.GIE = 0;
+    //Lowest two bits of duty cycle
+    CCP1CONbits.DC1B = (dutyCycle&0b11);
+    //High byte of duty cycle
+    CCPR1L = dutyCycle >> 2;
+    //Re-enable interrupts
+    INTCONbits.GIE = 1;
+}
+
+static void _buck_prepare(void)
 {
     uint8_t cntr;
-    
-    //First of all check if remote control flag is set
-    if(buck_remote_enable)
+    BUCK_ENABLE_PIN = 1;
+    if(buck_status<0x80)
+        buck_status = BUCK_STATUS_STARTUP;
+    else
+        buck_status = BUCK_STATUS_REMOTE_STARTUP;
+    //Zero old measurements
+    os.input_current = 0;
+    os.output_current = 0;
+    for(cntr=0;cntr<4;++cntr)
     {
-        if(buck_status<BUCK_STATUS_REMOTE_OFF)
-        {
-            //We are not yet in remote controlled mode
-            //Switch to remote controlled mode
-            //Copy settings to ensure smooth cutover
-            switch(buck_status)
-            {
-                case BUCK_STATUS_OFF:
-                    buck_remote_on = 0;
-                    buck_remote_synchronous = 0;
-                    break;
-                case BUCK_STATUS_ASYNCHRONOUS:
-                    buck_remote_on = 1;
-                    buck_remote_synchronous = 0;
-                    break;
-                case BUCK_STATUS_SYNCHRONOUS:
-                    buck_remote_on = 1;
-                    buck_remote_synchronous = 1;
-                    break;  
-            }
-            buck_remote_dutycycle = buck_dutycycle;
-            buck_status += BUCK_STATUS_REMOTE_OFF;
-        }
-        buck_operate_remote();
+        os.input_current_adc[cntr] = 0;
+        os.output_current_adc[cntr] = 0;
+    }
+}
+
+static void _buck_start(buckMode_t mode, uint8_t dutycycle)
+{
+    uint8_t startup_dutycycle;
+    uint8_t cntr;
+    
+    //Calibrate current measurements
+    os.input_current_calibration = 0;
+    os.output_current_calibration = 0;
+    for(cntr=0;cntr<4;++cntr)
+    {
+        os.input_current_calibration += os.input_current_adc[cntr];
+        os.output_current_calibration += os.output_current_adc[cntr];
+    }
+    
+    //Prepare timer2
+    //Set frequency to 187.5kHz
+    PR2 = 63; //
+    //Clear timer 2
+    TMR2 = 0x00;
+    //Post scaler = 16
+    T2CONbits.T2OUTPS = 0b1111; 
+    //Clear interrupt flag
+    PIR1bits.TMR2IF = 0; 
+    
+    //Set status to appropriate synchronous status (needed for limit-checking...)
+    if(buck_status<0x80)
+    {
+        buck_status = BUCK_STATUS_SYNCHRONOUS;
     }
     else
     {
-       if(buck_status>=BUCK_STATUS_REMOTE_OFF)
-        {
-            //We are in remote controlled mode
-            //Switch to local mode without changing anything else
-            buck_status -= BUCK_STATUS_REMOTE_OFF;
-        } 
-        buck_operate_local();
+        buck_status = BUCK_STATUS_REMOTE_SYNCHRONOUS;
     }
     
+    //Reset module
+    CCP1CON = 0x00;
+    //Calculate duty cycle. Buck always starts up with this neutral duty cycle
+    startup_dutycycle = _buck_initial_dutycycle();
+    //Set duty cycle. 
+    _buck_set_dutycycle(startup_dutycycle);
+    //What follows is critical code, we don't want to get interrupted, turn interrupts off
+    INTCONbits.GIE = 0;
+    //Enable timer 2
+    T2CONbits.TMR2ON = 1;
+    //Both outputs active high
+    CCP1CON |= 0b00001100;
+    //Half bridge mode
+    CCP1CON |= 0b10000000;  
+    //Buck is now running. Re-enable interrupts
+    INTCONbits.GIE = 1;
     
-}
+    //Wait for interrupt flag to get set (i.e. 16 cycles)
+    while(!PIR1bits.TMR2IF);
     
-uint8_t buck_get_dutycycle(void)
-{
-    return buck_dutycycle;
+    //Check if we need to change operating mode and/or duty cycle
+    if(mode==BUCK_MODE_SYNCHRONOUS)
+    {
+        //We already are in synchronous mode. Change duty cycle if necessary
+        if(dutycycle!=startup_dutycycle)
+        {
+            _buck_set_dutycycle(dutycycle);
+        }
+    }
+    else
+    {
+        //Need to switch to async mode
+        _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS, dutycycle);
+    }
 }
 
-buckStatus_t buck_get_mode(void)
+static void _buck_set_sync_async(buckMode_t mode, uint8_t new_dutycycle)
 {
-    return buck_status;
+    switch(mode)
+    {
+        //Switch to asynchronous mode
+        //Disable lower fet first, then change dutycycle
+        case BUCK_MODE_ASYNCHRONOUS:
+            //Wait for a cycle to complete
+            //This is probably unnecessary but I want to make absolutely sure the output behaves exactly the same every time
+            T2CONbits.T2OUTPS = 0b0000; //Post scaler = 1
+            //What follows is critical code, we don't want to get interrupted, turn interrupts off
+            INTCONbits.GIE = 0;
+            //Clear interrupt flag
+            PIR1bits.TMR2IF = 0; 
+            //Wait for interrupt flag to get set
+            while(!PIR1bits.TMR2IF);
+            //Single output mode
+            CCP1CONbits.P1M1 = 0;
+            CCP1CONbits.P1M0 = 0;
+            //Set new buck status (do this first, it's needed for limit checking)
+            if(buck_status<0x80)
+            {
+                buck_status = BUCK_STATUS_ASYNCHRONOUS;
+            }
+            else
+            {
+                buck_status = BUCK_STATUS_REMOTE_ASYNCHRONOUS;
+            }
+            //Now set new dutycycle
+            _buck_set_dutycycle(new_dutycycle);
+            //Re-enable interrupts
+            INTCONbits.GIE = 1;
+            break;
+            
+        //Switch to synchronous mode    
+        //Change dutycycle first, then enable low fet on
+        case BUCK_MODE_SYNCHRONOUS:
+            //Set new buck status (do this first, it's needed for limit checking)
+            if(buck_status<0x80)
+            {
+                buck_status = BUCK_STATUS_SYNCHRONOUS;
+            }
+            else
+            {
+                buck_status = BUCK_STATUS_REMOTE_SYNCHRONOUS;
+            }
+            //Wait for a cycle to complete
+            //This is probably unnecessary but I want to make absolutely sure the output behaves exactly the same every time
+            T2CONbits.T2OUTPS = 0b0000; //Post scaler = 1
+            //What follows is critical code, we don't want to get interrupted, turn interrupts off
+            INTCONbits.GIE = 0;
+            //Clear interrupt flag
+            PIR1bits.TMR2IF = 0; 
+            //Wait for interrupt flag to get set
+            while(!PIR1bits.TMR2IF);
+            //Set dutycycle first
+            _buck_set_dutycycle(new_dutycycle);
+            //Half-bridge mode
+            CCP1CONbits.P1M1 = 1;
+            CCP1CONbits.P1M0 = 0;
+            //Re-enable interrupts
+            INTCONbits.GIE = 1;
+            break;
+    }
+}
+
+static void _buck_stop(void)
+{
+    //Wait for a cycle to complete
+    //This is probably unnecessary but I want to make absolutely sure the output behaves exactly the same every time
+    T2CONbits.T2OUTPS = 0b0000; //Post scaler = 1
+    PIR1bits.TMR2IF = 0; //Clear interrupt flag
+    while(!PIR1bits.TMR2IF);//Wait for interrupt flag to get set
+    //Turn outputs off
+    CCP1CONbits.CCP1M = 0b0000;
+    //Disable timer 2
+    T2CONbits.TMR2ON = 0;
+    //Disconnect power & panel
+    BUCK_ENABLE_PIN = 0;
+    //Change buck status
+    if(buck_status<0x80)
+    {
+        buck_status = BUCK_STATUS_OFF;
+    }
+    else
+    {
+        buck_status = BUCK_STATUS_REMOTE_OFF;
+    }
 }
 
 //Actual control functionality
-static void buck_operate_local(void)
+static void _buck_operate_local(void)
 {
     uint8_t cntr;
+    uint8_t tmp_dutycycle;
     
     switch(buck_status)
     {
@@ -257,13 +335,7 @@ static void buck_operate_local(void)
                 }
                 //Charge bootstrap capacitor
                 buck_dutycycle_last_step = 1;
-                PIR1bits.TMR2IF = 0;
-                _buck_start(_buck_initial_dutycycle());
-                while(!PIR1bits.TMR2IF);
-                //Switch to asynchronous mode
-                _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
-                _buck_set_dutycycle(BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM);
-                buck_status = BUCK_STATUS_ASYNCHRONOUS;
+                _buck_start(BUCK_MODE_ASYNCHRONOUS, _buck_initial_dutycycle());
                 
             } 
             break;
@@ -292,9 +364,10 @@ static void buck_operate_local(void)
                 //Switch to synchronous mode if current exceeds threshold
                 else if (os.input_current>BUCK_ASYNCHRONOUS_INPUT_CURRENT_MAXIMUM)
                 {
-                    _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
-                    _buck_set_dutycycle(_buck_initial_dutycycle()+5);
-                    buck_status = BUCK_STATUS_SYNCHRONOUS;
+                    tmp_dutycycle = _buck_initial_dutycycle()+5;
+                    _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS, tmp_dutycycle);
+                    //_buck_set_dutycycle();
+                    //buck_status = BUCK_STATUS_SYNCHRONOUS;
                 }
                 //Adjust duty cycle in order to track maximum point of power
                 else
@@ -334,9 +407,8 @@ static void buck_operate_local(void)
                 //Switch to asynchronous mode if current falls below threshold
                 else if (os.input_current<BUCK_SYNCHRONOUS_INPUT_CURRENT_MINIMUM)
                 {
-                    _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
-                    _buck_set_dutycycle(buck_dutycycle-5);
-                    buck_status = BUCK_STATUS_ASYNCHRONOUS;
+                    tmp_dutycycle = buck_dutycycle-5;
+                    _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS, tmp_dutycycle);
                 }
                 //Adjust duty cycle in order to track maximum point of power
                 else
@@ -369,9 +441,8 @@ static void buck_operate_local(void)
     }
 }
 
-static void buck_operate_remote(void)
+static void _buck_operate_remote(void)
 {
-    uint8_t cntr;
     switch(buck_status)
     {
         case BUCK_STATUS_REMOTE_OFF:
@@ -379,16 +450,9 @@ static void buck_operate_remote(void)
             {
                if(buck_remote_on)
                 {
-                    BUCK_ENABLE_PIN = 1;
-                    buck_status = BUCK_STATUS_REMOTE_STARTUP;
-                    //Zero old measurements
-                    os.input_current = 0;
-                    os.output_current = 0;
-                    for(cntr=0;cntr<4;++cntr)
-                    {
-                        os.input_current_adc[cntr] = 0;
-                        os.output_current_adc[cntr] = 0;
-                    }
+                   //Apply power and do some clean-up
+                   //New status will be BUCK_STATUS_REMOTE_STARTUP
+                   _buck_prepare();
                 }  
             } 
             break;
@@ -396,75 +460,137 @@ static void buck_operate_remote(void)
         case BUCK_STATUS_REMOTE_STARTUP:
             if((os.timeSlot&0b00110000)==0b00110000)
             {
-                //Calibrate current measurements
-                os.input_current_calibration = 0;
-                os.output_current_calibration = 0;
-                for(cntr=0;cntr<4;++cntr)
-                {
-                    os.input_current_calibration += os.input_current_adc[cntr];
-                    os.output_current_calibration += os.output_current_adc[cntr];
-                }
-                //Charge bootstrap capacitor
-                PIR1bits.TMR2IF = 0;
-                _buck_start(_buck_initial_dutycycle());
-                while(!PIR1bits.TMR2IF);
-                //Switch to asynchronous mode unless requested otherwise
+                //Turn buck on and save dutycycle to remote
                 if(buck_remote_synchronous)
                 {
-                    buck_status = BUCK_STATUS_REMOTE_SYNCHRONOUS;
+                    //New status will be BUCK_STATUS_REMOTE_SYNCHRONOUS
+                    _buck_start(BUCK_MODE_SYNCHRONOUS, _buck_initial_dutycycle());
+                    buck_remote_dutycycle = buck_dutycycle;
                 }
                 else
                 {
-                    //Switch to asynchronous mode
-                    _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
-                    _buck_set_dutycycle(BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM);
+                    //New status will be BUCK_STATUS_REMOTE_ASYNCHRONOUS
+                    _buck_start(BUCK_MODE_ASYNCHRONOUS, BUCK_DUTYCYCLE_ASYNCHRONOUS_MINIMUM);
                     buck_remote_dutycycle = buck_dutycycle;
-                    buck_status = BUCK_STATUS_REMOTE_ASYNCHRONOUS; 
                 }
-                
             } 
             break;
             
         case BUCK_STATUS_REMOTE_ASYNCHRONOUS:
-            _buck_set_dutycycle(buck_remote_dutycycle);
+            //Check if we should turn the buck off
             if(!buck_remote_on)
             {
+                //New status will be BUCK_STATUS_REMOTE_OFF
                 _buck_stop();
-                buck_status = BUCK_STATUS_REMOTE_OFF;
             }
             //Check if we should switch to synchronous mode
             else if(buck_remote_synchronous)
             {
-                _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS);
-                _buck_set_dutycycle(_buck_initial_dutycycle()+5);
-                buck_remote_dutycycle = buck_dutycycle;
-                buck_status = BUCK_STATUS_REMOTE_SYNCHRONOUS;
+                //New status will be BUCK_STATUS_REMOTE_ASYNCHRONOUS
+                //Always switch to synchronous mode with a neutral duty cycle. Overwrite buck_remote_dutycycle
+                buck_remote_dutycycle = _buck_initial_dutycycle();
+                _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS, buck_remote_dutycycle); 
             }
-            
+            else
+            {
+                //Check if duty cycle needs to be changed
+                if(buck_dutycycle!=buck_remote_dutycycle)
+                {
+                   _buck_set_dutycycle(buck_remote_dutycycle); 
+                }
+            }
             break;
             
         case BUCK_STATUS_REMOTE_SYNCHRONOUS:
             _buck_set_dutycycle(buck_remote_dutycycle);
             if(!buck_remote_on)
             {
+                //New status will be BUCK_STATUS_REMOTE_OFF
                 _buck_stop();
-                buck_status = BUCK_STATUS_REMOTE_OFF;
             }
             //Check if we should switch to asynchronous mode
             else if(!buck_remote_synchronous)
             {
-                _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS);
-                _buck_set_dutycycle(_buck_initial_dutycycle()-5);
-                buck_remote_dutycycle = buck_dutycycle;
-                buck_status = BUCK_STATUS_REMOTE_ASYNCHRONOUS;
+                //New status will be BUCK_STATUS_REMOTE_ASYNCHRONOUS
+                buck_remote_dutycycle = _buck_initial_dutycycle()-5;
+                _buck_set_sync_async(BUCK_MODE_ASYNCHRONOUS, buck_remote_dutycycle);
+            }
+            else
+            {
+                //Check if duty cycle needs to be changed
+                if(buck_dutycycle!=buck_remote_dutycycle)
+                {
+                   _buck_set_dutycycle(buck_remote_dutycycle); 
+                }
             }
             break;
             
         default:
+            //New status will be BUCK_STATUS_REMOTE_OFF
             _buck_stop();
-            buck_status = BUCK_STATUS_REMOTE_OFF;
     }    
 }
+
+void buck_init(void)
+{
+    buck_status = BUCK_STATUS_OFF;   
+    _buck_timer2_init();
+    _buck_pin_init();
+}
+
+void buck_operate(void)
+{  
+    //First of all check if remote control flag is set
+    if(buck_remote_enable)
+    {
+        if(buck_status<BUCK_STATUS_REMOTE_OFF)
+        {
+            //We are not yet in remote controlled mode
+            //Switch to remote controlled mode
+            //Copy settings to ensure smooth cutover
+            switch(buck_status)
+            {
+                case BUCK_STATUS_OFF:
+                    buck_remote_on = 0;
+                    buck_remote_synchronous = 0;
+                    break;
+                case BUCK_STATUS_ASYNCHRONOUS:
+                    buck_remote_on = 1;
+                    buck_remote_synchronous = 0;
+                    break;
+                case BUCK_STATUS_SYNCHRONOUS:
+                    buck_remote_on = 1;
+                    buck_remote_synchronous = 1;
+                    break;  
+            }
+            buck_remote_dutycycle = buck_dutycycle;
+            buck_status += BUCK_STATUS_REMOTE_OFF;
+        }
+        _buck_operate_remote();
+    }
+    else
+    {
+       if(buck_status>=BUCK_STATUS_REMOTE_OFF)
+        {
+            //We are in remote controlled mode
+            //Switch to local mode without changing anything else
+            buck_status -= BUCK_STATUS_REMOTE_OFF;
+        } 
+        _buck_operate_local();
+    } 
+}
+    
+uint8_t buck_get_dutycycle(void)
+{
+    return buck_dutycycle;
+}
+
+buckStatus_t buck_get_mode(void)
+{
+    return buck_status;
+}
+
+
 
 //Remote control functionality
 void buck_remote_set_enable(uint8_t remote)

@@ -36,6 +36,8 @@ unsigned char ToSendDataBuffer[64];
 volatile USB_HANDLE USBOutHandle;    
 volatile USB_HANDLE USBInHandle;
 
+extern calibration_t calibrationParameters[7];
+
 /** DEFINITIONS ****************************************************/
 typedef enum
 {
@@ -46,13 +48,16 @@ typedef enum
     //These commands are specific to this application
     COMMAND_GET_STATUS = 0x10,
     COMMAND_GET_DISPLAY_1 = 0x11,
-    COMMAND_GET_DISPLAY_2 = 0x12
+    COMMAND_GET_DISPLAY_2 = 0x12,
+    COMMAND_GET_CALIBRATION_1 = 0x13,
+    COMMAND_GET_CALIBRATION_2 = 0x14
 } CUSTOM_HID_DEMO_COMMANDS;
 
 /** FUNCTIONS ******************************************************/
 static void _fill_buffer_get_status(void);
 static void _fill_buffer_get_display1(void);
 static void _fill_buffer_get_display2(void);
+static void _fill_buffer_get_calibration1(void);
 static void _parse_command_short(uint8_t cmd);
 static void _parse_command_long(uint8_t cmd, uint8_t data);
 
@@ -154,6 +159,17 @@ void APP_DeviceCustomHIDTasks()
                 {
                     //Call function to fill the buffer with general information
                     _fill_buffer_get_display2();
+                    //Prepare the USB module to send the data packet to the host
+                    USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
+                }
+                break;
+                
+            case COMMAND_GET_CALIBRATION_1:
+                //Check to make sure the endpoint/buffer is free before we modify the contents
+                if(!HIDTxHandleBusy(USBInHandle))
+                {
+                    //Call function to fill the buffer with general information
+                    _fill_buffer_get_calibration1();
                     //Prepare the USB module to send the data packet to the host
                     USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
                 }
@@ -334,6 +350,19 @@ static void _fill_buffer_get_display2(void)
             ++cntr;
         }
    }
+}
+
+
+//Fill buffer with voltage and current measurement parameters
+static void _fill_buffer_get_calibration1(void)
+{
+   //Echo back to the host PC the command we are fulfilling in the first uint8_t
+   ToSendDataBuffer[0] = COMMAND_GET_CALIBRATION_1;
+   //Copy calibration to buffer
+   memcpy(&ToSendDataBuffer[1], &calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE], 12);
+   memcpy(&ToSendDataBuffer[13], &calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE], 12);
+   memcpy(&ToSendDataBuffer[25], &calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT], 12);
+   memcpy(&ToSendDataBuffer[37], &calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT], 12);
 }
 
 static void _parse_command_short(uint8_t cmd)

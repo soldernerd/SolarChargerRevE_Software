@@ -488,3 +488,47 @@ void i2c_eeprom_read(uint16_t address, uint8_t *data, uint8_t length)
     _i2c_write(slave_address, &addr, 1);
     _i2c_read(slave_address, &data[0], length);
 }
+
+
+void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index)
+{
+    switch(index)
+    {
+        case CALIBRATION_INDEX_INPUT_VOLTAGE:
+            (*buffer).NeutralOffset = 0;
+            (*buffer).NeutralMultiplier = 11;
+            (*buffer).NeutralShift = 4;
+            (*buffer).Offset = 0;
+            (*buffer).Multiplier = 11;
+            (*buffer).Shift = 4;
+            (*buffer).AutoCalibration = 0;
+            break;
+        case CALIBRATION_INDEX_OUTPUT_VOLTAGE:   
+            (*buffer).NeutralOffset = 0;
+            (*buffer).NeutralMultiplier = 17;
+            (*buffer).NeutralShift = 5;
+            (*buffer).Offset = 0;
+            (*buffer).Multiplier = 17;
+            (*buffer).Shift = 5;
+            (*buffer).AutoCalibration = 0;
+            break;
+        case CALIBRATION_INDEX_INPUT_CURRENT:
+            (*buffer).NeutralOffset = 0;
+            (*buffer).NeutralMultiplier = 5851;
+            (*buffer).NeutralShift = 15;
+            (*buffer).Offset = 0;
+            (*buffer).Multiplier = 5851;
+            (*buffer).Shift = 15;
+            (*buffer).AutoCalibration = 0;
+            break;
+        case CALIBRATION_INDEX_OUTPUT_CURRENT:   
+            (*buffer).NeutralOffset = 0;
+            (*buffer).NeutralMultiplier = 5851;
+            (*buffer).NeutralShift = 15;
+            (*buffer).Offset = 0;
+            (*buffer).Multiplier = 5851;
+            (*buffer).Shift = 15;
+            (*buffer).AutoCalibration = 0;
+            break;
+    }
+}

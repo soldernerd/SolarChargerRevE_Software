@@ -30,6 +30,9 @@ static void _buck_start(buckMode_t mode, uint8_t dutycycle);
 static void _buck_set_sync_async(buckMode_t mode, uint8_t new_dutycycle);
 static void _buck_stop(void);
 
+//Calibration parameters
+extern calibration_t calibrationParameters[7];
+
 uint8_t idx;
 int32_t last;
 int32_t now;
@@ -141,12 +144,16 @@ static void _buck_start(buckMode_t mode, uint8_t dutycycle)
     uint8_t cntr;
     
     //Calibrate current measurements
-    os.input_current_calibration = 0;
-    os.output_current_calibration = 0;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration = 0;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration = 0;
+    //os.input_current_calibration = 0;
+    //os.output_current_calibration = 0;
     for(cntr=0;cntr<4;++cntr)
     {
-        os.input_current_calibration += os.input_current_adc[cntr];
-        os.output_current_calibration += os.output_current_adc[cntr];
+        calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration -= os.input_current_adc[cntr];
+        calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration -= os.output_current_adc[cntr];
+        //os.input_current_calibration += os.input_current_adc[cntr];
+        //os.output_current_calibration += os.output_current_adc[cntr];
     }
     
     //Prepare timer2

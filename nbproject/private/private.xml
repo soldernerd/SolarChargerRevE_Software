@@ -5,10 +5,16 @@
         <group>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.h</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/adc.c</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/system.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.h</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/main.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/buck.c</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/i2c.h</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/rtcc.h</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/os.c</file>
             <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/app_device_custom_hid.c</file>
+            <file>file:/Z:/My%20Documents/EmbeddedSystems/MPLAB/SolarCharger_RevC/i2c.c</file>
         </group>
     </open-files>
 </project-private>

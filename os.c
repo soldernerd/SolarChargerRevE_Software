@@ -34,6 +34,10 @@
 #define TIMER0_LOAD_SHORT_HIGH_32KHZ 0xFF
 #define TIMER0_LOAD_SHORT_LOW_32KHZ 0xE0
 
+//Structs with calibration parameters
+calibration_t calibrationParameters[7];
+
+
 
 //void interrupt _isr(void)
 void tmr_isr(void)
@@ -341,6 +345,12 @@ void system_init(void)
 
     //Initialize internal ADC module
     adc_init();
+    
+    //Load calibration parameters
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE], CALIBRATION_INDEX_INPUT_VOLTAGE);
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE], CALIBRATION_INDEX_OUTPUT_VOLTAGE);
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT], CALIBRATION_INDEX_INPUT_CURRENT);
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT], CALIBRATION_INDEX_OUTPUT_CURRENT);
   
     //Initialize Real Time Clock
     rtcc_init();
@@ -494,36 +504,74 @@ void system_output_off(outputs_t output)
 
 void system_calculate_input_voltage()
 {
+    int32_t tmp = (int32_t) (os.input_voltage_adc[0] + os.input_voltage_adc[1] + os.input_voltage_adc[2] + os.input_voltage_adc[3]);
+    tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Offset; 
+    tmp *= calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Multiplier;
+    tmp >>= calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Shift - 1;
+    tmp += 1;
+    tmp >>= 1;
+    os.input_voltage = (int16_t) tmp;
+    /*
     float tmp = 2.75 * 0.25 * 1.000000;
     int16_t adc_sum = os.input_voltage_adc[0] + os.input_voltage_adc[1] + os.input_voltage_adc[2] + os.input_voltage_adc[3];
     tmp *= adc_sum;
     os.input_voltage = (int16_t) tmp;
+    */
 }
 
 void system_calculate_output_voltage()
 {
+    int32_t tmp = (int32_t) (os.output_voltage_adc[0] + os.output_voltage_adc[1] + os.output_voltage_adc[2] + os.output_voltage_adc[3]);
+    tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Offset; 
+    tmp *= calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Multiplier;
+    tmp >>= calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Shift - 1;
+    tmp += 1;
+    tmp >>= 1;
+    os.output_voltage = (int16_t) tmp;
+    /*
     float tmp = 2.125 * 0.25 * 1.00000;
     int16_t adc_sum = os.output_voltage_adc[0] + os.output_voltage_adc[1] + os.output_voltage_adc[2] + os.output_voltage_adc[3];
     tmp *= adc_sum;
     os.output_voltage = (int16_t) tmp;
+    */
 }
 
 void system_calculate_input_current()
 {
+    int32_t tmp = (int32_t) (os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3]);
+    tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration; 
+    tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Offset; 
+    tmp *= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Multiplier;
+    tmp >>= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Shift - 1;
+    tmp += 1;
+    tmp >>= 1;
+    os.input_current = (int16_t) tmp;
+    /*
     float tmp = 0.7142857 * 0.25 * 1.00000;
     int16_t adc_sum = os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3];
     adc_sum -= os.input_current_calibration;
     tmp *= adc_sum;
     os.input_current = (int16_t) tmp;
+     * */
 }
 
 void system_calculate_output_current()
 {
+    int32_t tmp = (int32_t) (os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3]);
+    tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration;
+    tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Offset; 
+    tmp *= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Multiplier;
+    tmp >>= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Shift - 1;
+    tmp += 1;
+    tmp >>= 1;
+    os.output_current = (int16_t) tmp;
+    /*
     float tmp = 0.7142857 * 0.25 * 1.00000;
     int16_t adc_sum = os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3];
     adc_sum -= os.output_current_calibration;
     tmp *= adc_sum;
     os.output_current = (int16_t) tmp;
+     * */
 }
 
 

@@ -198,6 +198,28 @@ typedef enum
     BOARD_VOLTAGE_HIGH 
 } boardVoltage_t;
 
+typedef enum
+{
+    CALIBRATION_INDEX_INPUT_VOLTAGE = 0,
+    CALIBRATION_INDEX_OUTPUT_VOLTAGE = 1,
+    CALIBRATION_INDEX_INPUT_CURRENT = 2,
+    CALIBRATION_INDEX_OUTPUT_CURRENT = 3,
+    CALIBRATION_INDEX_ONBOARD_TEMPERATURE = 4,
+    CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 = 5,
+    CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 = 6
+} calibrationIndex_t;
+
+typedef struct
+{
+    int16_t NeutralOffset;
+    int16_t NeutralMultiplier;
+    int8_t NeutralShift;
+    int16_t Offset;
+    int16_t Multiplier;
+    int8_t Shift;
+    int16_t AutoCalibration;
+} calibration_t;
+
 typedef struct
 {
     clockFrequency_t clockFrequency;
@@ -269,12 +291,13 @@ void system_buck_set_dutycycle(uint8_t dutyCycle);
 void system_buck_adjust_dutycycle(void);
 void system_buck_start(void);
 void system_buck_stop(void);
+ *  * */
 
 void system_calculate_input_voltage();
 void system_calculate_output_voltage();
 void system_calculate_input_current();
 void system_calculate_output_current();
- * */
+
 
 #endif	/* OS_H */
 

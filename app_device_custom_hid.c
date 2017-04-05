@@ -58,8 +58,10 @@ static void _fill_buffer_get_status(void);
 static void _fill_buffer_get_display1(void);
 static void _fill_buffer_get_display2(void);
 static void _fill_buffer_get_calibration1(void);
+static void _fill_buffer_get_calibration2(void);
 static void _parse_command_short(uint8_t cmd);
 static void _parse_command_long(uint8_t cmd, uint8_t data);
+static void _parse_command_calibration(uint8_t cmd, uint8_t item, uint8_t dat1, uint8_t dat2, uint8_t dat3);
 
 
 /*********************************************************************
@@ -175,6 +177,17 @@ void APP_DeviceCustomHIDTasks()
                 }
                 break;
                 
+            case COMMAND_GET_CALIBRATION_2:
+                //Check to make sure the endpoint/buffer is free before we modify the contents
+                if(!HIDTxHandleBusy(USBInHandle))
+                {
+                    //Call function to fill the buffer with general information
+                    _fill_buffer_get_calibration2();
+                    //Prepare the USB module to send the data packet to the host
+                    USBInHandle = HIDTxPacket(CUSTOM_DEVICE_HID_EP, (uint8_t*)&ToSendDataBuffer[0],64);
+                }
+                break;
+                
             case COMMAND_TOGGLE_LED:
                 //We don't have an LED so we toggle the fan
                 FANOUT_PIN ^= 1;
@@ -233,6 +246,10 @@ void APP_DeviceCustomHIDTasks()
                 case 0x40:
                     _parse_command_long(ReceivedDataBuffer[idx], ReceivedDataBuffer[idx+1]);
                     idx += 2;
+                    break;
+                case 0x60:
+                    _parse_command_calibration(ReceivedDataBuffer[idx], ReceivedDataBuffer[idx+1], ReceivedDataBuffer[idx+2], ReceivedDataBuffer[idx+3], ReceivedDataBuffer[idx+4]);
+                    idx += 5;
                     break;
                 default:
                     idx = 65; //exit loop
@@ -365,6 +382,17 @@ static void _fill_buffer_get_calibration1(void)
    memcpy(&ToSendDataBuffer[37], &calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT], 12);
 }
 
+//Fill buffer with temperature measurement parameters
+static void _fill_buffer_get_calibration2(void)
+{
+   //Echo back to the host PC the command we are fulfilling in the first uint8_t
+   ToSendDataBuffer[0] = COMMAND_GET_CALIBRATION_2;
+   //Copy calibration to buffer
+   memcpy(&ToSendDataBuffer[1], &calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE], 12);
+   memcpy(&ToSendDataBuffer[13], &calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], 12);
+   memcpy(&ToSendDataBuffer[25], &calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], 12);
+}
+
 static void _parse_command_short(uint8_t cmd)
 {
     switch(cmd)
@@ -470,4 +498,23 @@ static void _parse_command_long(uint8_t cmd, uint8_t data)
             buck_remote_set_dutycycle(data);
             break;
     }    
+}
+
+static void _parse_command_calibration(uint8_t cmd, uint8_t item, uint8_t dat1, uint8_t dat2, uint8_t dat3)
+{
+    int16_t parameter = dat1;
+    parameter <<= 8;
+    parameter |= dat2;
+    switch(item & 0x0F)
+    {
+        //Offset
+        case 0x00:
+            calibrationParameters[item>>4].Offset = parameter;
+            break;
+        //Slope
+        case 0x01:
+            calibrationParameters[item>>4].Multiplier = parameter;
+            calibrationParameters[item>>4].Shift = dat3;
+            break;
+    }
 }

@@ -530,5 +530,35 @@ void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index
             (*buffer).Shift = 15;
             (*buffer).AutoCalibration = 0;
             break;
+            
+        case CALIBRATION_INDEX_ONBOARD_TEMPERATURE:   
+            (*buffer).NeutralOffset = -13769;
+            (*buffer).NeutralMultiplier = -11479;
+            (*buffer).NeutralShift = 13;
+            (*buffer).Offset = -13769;
+            (*buffer).Multiplier = -11479;
+            (*buffer).Shift = 13;
+            (*buffer).AutoCalibration = 0;
+            break;
+            
+            case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1:   
+            (*buffer).NeutralOffset = -13769;
+            (*buffer).NeutralMultiplier = -11479;
+            (*buffer).NeutralShift = 13;
+            (*buffer).Offset = -13769;
+            (*buffer).Multiplier = -11479;
+            (*buffer).Shift = 13;
+            (*buffer).AutoCalibration = 0;
+            break;
+            
+        case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2:   
+            (*buffer).NeutralOffset = -13769;
+            (*buffer).NeutralMultiplier = -11479;
+            (*buffer).NeutralShift = 13;
+            (*buffer).Offset = -13769;
+            (*buffer).Multiplier = -11479;
+            (*buffer).Shift = 13;
+            (*buffer).AutoCalibration = 0;
+            break;
     }
 }

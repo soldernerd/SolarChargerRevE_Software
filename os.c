@@ -351,7 +351,10 @@ void system_init(void)
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE], CALIBRATION_INDEX_OUTPUT_VOLTAGE);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT], CALIBRATION_INDEX_INPUT_CURRENT);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT], CALIBRATION_INDEX_OUTPUT_CURRENT);
-  
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE], CALIBRATION_INDEX_ONBOARD_TEMPERATURE);
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1);
+    i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2], CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2);
+
     //Initialize Real Time Clock
     rtcc_init();
     

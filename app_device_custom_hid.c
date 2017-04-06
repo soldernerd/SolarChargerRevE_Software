@@ -390,7 +390,7 @@ static void _fill_buffer_get_calibration2(void)
    //Copy calibration to buffer
    memcpy(&ToSendDataBuffer[1], &calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE], 12);
    memcpy(&ToSendDataBuffer[13], &calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], 12);
-   memcpy(&ToSendDataBuffer[25], &calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], 12);
+   memcpy(&ToSendDataBuffer[25], &calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2], 12);
 }
 
 static void _parse_command_short(uint8_t cmd)

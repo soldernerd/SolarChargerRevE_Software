@@ -4,7 +4,7 @@
 #include "os.h"
 #include "adc.h"
 
-
+extern calibration_t calibrationParameters[7];
 
 void adc_init(void)
 {
@@ -78,10 +78,19 @@ uint16_t adc_read(adcChannel_t channel)
 
 int16_t adc_calculate_temperature(uint16_t adc_value)
 {
+    int32_t tmp = (int32_t) adc_value;
+    tmp += calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Offset; 
+    tmp *= calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Multiplier;
+    tmp >>= calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Shift - 1;
+    tmp += 1;
+    tmp >>= 1;
+    return (int16_t) tmp;
+    /*
     int16_t temperature;
     float tmp = -1.4090125;//-22.5442/16
     tmp *= adc_value;
     temperature = (int16_t) tmp;
     temperature += 19391;
     return temperature;
+     * */
 }

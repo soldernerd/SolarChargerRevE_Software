@@ -9,12 +9,16 @@ extern calibration_t calibrationParameters[7];
 void adc_init(void)
 {
     ADCON0bits.VCFG1 = 0; // negative reference = GND
-    ADCON0bits.VCFG0 = 1; // positive reference = AN3
+    //ADCON0bits.VCFG0 = 1; // positive reference = AN3
+    ADCON0bits.VCFG0 = 0; // positive reference = VDD
     ADCON0bits.CHS = TEMPERATURE1_CHANNEL; // On-board sensor on AN12
     ADCON0bits.ADON = 1; // Enable ADC module
-    ADCON1bits.ADFM = 1; // right justified
+    //ADCON1bits.ADFM = 1; // right justified
+    ADCON1bits.ADFM = 0; // left justified
     ADCON1bits.ADCAL = 0; // no calibration
     ADCON1bits.ADCS = 0b110; // T_ad = Fosc/64
+    //ADCON1bits.ADCS = 0b011; // T_ad = Internal circuit
+    ADCON1bits.ACQT = 0b111; // 20 T_ad acquisition time
 }
 
 void adc_calibrate(void)
@@ -31,6 +35,7 @@ uint16_t adc_read(adcChannel_t channel)
 {
     uint16_t adc_value;
     
+    /*
     switch(channel)
     {
         case ADC_CHANNEL_TEMPERATURE_ONBOARD:
@@ -45,6 +50,7 @@ uint16_t adc_read(adcChannel_t channel)
         default:
             return 0xFFFF;
     }
+    */
     
     //Wait for acquisition time
     /*
@@ -66,12 +72,16 @@ uint16_t adc_read(adcChannel_t channel)
     //Start conversion
     ADCON0bits.GO_NOT_DONE = 1;
     
+    __delay_us(90);
+    
     //Wait for result to be ready
     while(ADCON0bits.GO_NOT_DONE);
     
     //Get result
-    adc_value = ADRESH<<8;
-    adc_value |= ADRESL;
+    //adc_value = ADRESH<<8;
+    adc_value = ADRESH;
+    adc_value <<= 2;
+    //adc_value |= ADRESL;
     
     return adc_value;
 }

@@ -104,10 +104,11 @@ MAIN_RETURN main(void)
             ui_run();
             
             //Measure temperature
-            adc_calibrate();
-            os.temperature_onboard_adc += adc_read(ADC_CHANNEL_TEMPERATURE_ONBOARD);
-            os.temperature_external_1_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_1);
-            os.temperature_external_2_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_2);
+            //adc_calibrate();
+            //os.temperature_onboard_adc += adc_read(ADC_CHANNEL_TEMPERATURE_ONBOARD);
+            //os.temperature_external_1_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_1);
+            //os.temperature_external_2_adc += adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_2);
+            ++cntr;
 
             //Run periodic tasks
             switch(os.timeSlot&0b00001111)
@@ -181,12 +182,19 @@ MAIN_RETURN main(void)
                         
                 
                 case 14:
+                    os.temperature_external_2_adc = adc_read(ADC_CHANNEL_TEMPERATURE_EXTERNAL_2);
+                    /*
                     os.temperature_onboard = adc_calculate_temperature(os.temperature_onboard_adc);
                     os.temperature_onboard_adc = 0;
                     os.temperature_external_1 = adc_calculate_temperature(os.temperature_external_1_adc);
                     os.temperature_external_1_adc = 0;
-                    os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
-                    os.temperature_external_2_adc = 0;
+                    if(cntr==16)
+                    {
+                        os.temperature_external_2 = adc_calculate_temperature(os.temperature_external_2_adc);
+                        os.temperature_external_2_adc = 0;  
+                    }
+                    cntr = 0;
+                    */
                     if(os.temperature_onboard>3000)
                     {
                         FANOUT_PIN = 1;

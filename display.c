@@ -538,6 +538,5 @@ static void _display_temperature(void)
     while(external2[cntr])
         display_content[3][cntr] = external2[cntr++];
     
-    //_display_itoa(os.temperature_external_2, 2, &display_content[3][12]);  
-    _display_itoa(os.temperature_external_2_adc, 0, &display_content[3][12]);  
+    _display_itoa(os.temperature_external_2, 2, &display_content[3][12]); 
 }

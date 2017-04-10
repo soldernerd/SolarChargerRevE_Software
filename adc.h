@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include "system.h"
+#include "os.h"
 
 typedef enum
 {
@@ -21,7 +22,7 @@ typedef enum
 void adc_init(void);
 void adc_calibrate(void);
 uint16_t adc_read(adcChannel_t channel);
-int16_t adc_calculate_temperature(uint16_t adc_value);
+int16_t adc_calculate_temperature(uint16_t adc_value, calibrationIndex_t calibration);
 
 #endif	/* ADC_H */
 

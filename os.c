@@ -347,7 +347,12 @@ void system_init(void)
     //Initialize internal ADC module
     adc_init();
     
+    //Initialize Real Time Clock
+    rtcc_init();
+    
     //Load calibration parameters
+    i2c_eeprom_read_calibration();
+    /*
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE], CALIBRATION_INDEX_INPUT_VOLTAGE);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE], CALIBRATION_INDEX_OUTPUT_VOLTAGE);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT], CALIBRATION_INDEX_INPUT_CURRENT);
@@ -355,9 +360,9 @@ void system_init(void)
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE], CALIBRATION_INDEX_ONBOARD_TEMPERATURE);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1], CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1);
     i2c_eeprom_read_calibration(&calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2], CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2);
-
-    //Initialize Real Time Clock
-    rtcc_init();
+    */
+ 
+    
     
     
     //Set up timer0 for timeSlots

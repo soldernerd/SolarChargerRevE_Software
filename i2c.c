@@ -15,6 +15,7 @@
 #define I2C_EEPROM_SLAVE_ADDRESS 0b10100000
 
 i2cFrequency_t i2c_frequency = I2C_FREQUENCY_100kHz;
+extern calibration_t calibrationParameters[7];
 
 /* ****************************************************************************
  * General I2C functionality
@@ -102,14 +103,23 @@ static void _i2c_read(uint8_t slave_address, uint8_t *data, uint8_t length)
     IdleI2C();
     WriteI2C(slave_address | I2C_READ);
     IdleI2C();
-    
+    /*
     for(cntr=0; cntr<length; ++cntr)
     {
         data[cntr] = ReadI2C();
         AckI2C();       
     } 
-
     NotAckI2C();
+    */
+    
+    for(cntr=0; cntr<length-1; ++cntr)
+    {
+        data[cntr] = ReadI2C();
+        AckI2C();       
+    } 
+    data[cntr] = ReadI2C();
+    NotAckI2C();
+     
     StopI2C();
 }
 
@@ -423,6 +433,10 @@ void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGa
  * I2C EEPROM Functionality
  * ****************************************************************************/
  
+#define EEPROM_CALIBRATION_ADDRESS 0x0100
+ 
+void _i2c_eeprom_load_default_calibration(calibration_t *buffer, calibrationIndex_t index);
+ 
 void i2c_eeprom_writeByte(uint16_t address, uint8_t data)
 {
     uint8_t slave_address;
@@ -479,8 +493,10 @@ void i2c_eeprom_read(uint16_t address, uint8_t *data, uint8_t length)
 {
     uint8_t slave_address;
     uint8_t addr;
-    slave_address = I2C_EEPROM_SLAVE_ADDRESS | ((address&0b0000011100000000)>>7);
     addr = address & 0xFF;
+    address &= 0b0000011100000000;
+    address >>= 7;
+    slave_address = I2C_EEPROM_SLAVE_ADDRESS | address;
     
     //Set I2C frequency to 400kHz
     i2c_set_frequency(I2C_FREQUENCY_400kHz);
@@ -489,8 +505,108 @@ void i2c_eeprom_read(uint16_t address, uint8_t *data, uint8_t length)
     _i2c_read(slave_address, &data[0], length);
 }
 
+void i2c_eeprom_read_calibration(void)
+{
+    uint8_t buffer[4];
+    uint8_t cntr;
+    uint16_t addr;
 
-void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index)
+    for(cntr=0; cntr<CALIBRATION_INDEX_COUNT; ++cntr)
+    {
+        //Read 4 byte signature
+        addr = EEPROM_CALIBRATION_ADDRESS + (cntr<<4);
+        i2c_eeprom_read(addr, &buffer[0], 4);
+        //Check signature
+        if((buffer[0]==0x77) && (buffer[1]==0x55) && (buffer[2]==0x33) && (buffer[3]==cntr))
+        {
+            //Valid data in EEPROM -> read data
+            addr += 4;
+            i2c_eeprom_read(addr, (uint8_t*) &calibrationParameters[cntr], 12);
+        }
+        else
+        {
+            //No valid data in EEPROM -> write default data
+            _i2c_eeprom_load_default_calibration(&calibrationParameters[cntr], cntr);
+            addr += 4;
+            i2c_eeprom_write(addr, (uint8_t*) &calibrationParameters[cntr], 12);
+            //Wait for a while
+            system_delay_ms(7);
+            //Update signature to indicate that data is now valid
+            addr -= 4;
+            buffer[0] = 0x77;
+            buffer[1] = 0x55;
+            buffer[2] = 0x33;
+            buffer[3] = cntr;
+            i2c_eeprom_write(addr, &buffer[0], 4);
+            //Wait for a while
+            system_delay_ms(7);
+        }
+    }   
+}
+
+/*
+void i2c_eeprom_load_default_calibration(void)
+{
+    //Input Voltage
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralOffset = 0;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralMultiplier = 11;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralShift = 4;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Offset = 0;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Multiplier = 11;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Shift = 4;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].AutoCalibration = 0;
+    //Output Voltage
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralOffset = 0;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralMultiplier = 17;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralShift = 5;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Offset = 0;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Multiplier = 17;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Shift = 5;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].AutoCalibration = 0;
+    //Input Current
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralOffset = 0;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralMultiplier = 5851;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralShift = 15;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Offset = 0;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Multiplier = 5851;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Shift = 15;
+    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration = 0;
+    //Output Current
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralOffset = 0;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralMultiplier = 5851;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralShift = 15;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Offset = 0;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Multiplier = 5851;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Shift = 15;
+    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration = 0;
+    //Onboard Temperature
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralOffset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralMultiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralShift = 13;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Offset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Multiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Shift = 13;
+    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].AutoCalibration = 0;
+    //External Temperature 1
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralOffset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralMultiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralShift = 13;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Offset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Multiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Shift = 13;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].AutoCalibration = 0;
+    //External Temperature 2
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralOffset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralMultiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralShift = 13;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Offset = -13769;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Multiplier = -11479;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Shift = 13;
+    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].AutoCalibration = 0;
+}
+ */
+
+void _i2c_eeprom_load_default_calibration(calibration_t *buffer, calibrationIndex_t index)
 {
     switch(index)
     {
@@ -530,7 +646,6 @@ void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index
             (*buffer).Shift = 15;
             (*buffer).AutoCalibration = 0;
             break;
-            
         case CALIBRATION_INDEX_ONBOARD_TEMPERATURE:   
             (*buffer).NeutralOffset = -13769;
             (*buffer).NeutralMultiplier = -11479;
@@ -540,8 +655,7 @@ void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index
             (*buffer).Shift = 13;
             (*buffer).AutoCalibration = 0;
             break;
-            
-            case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1:   
+        case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1:   
             (*buffer).NeutralOffset = -13769;
             (*buffer).NeutralMultiplier = -11479;
             (*buffer).NeutralShift = 13;
@@ -550,7 +664,6 @@ void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index
             (*buffer).Shift = 13;
             (*buffer).AutoCalibration = 0;
             break;
-            
         case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2:   
             (*buffer).NeutralOffset = -13769;
             (*buffer).NeutralMultiplier = -11479;

@@ -10,6 +10,9 @@
 
 #include <stdint.h>
 
+#define  PPSUnLock()    {EECON2 = 0b01010101; EECON2 = 0b10101010; PPSCONbits.IOLOCK = 0;}
+#define  PPSLock() 		{EECON2 = 0b01010101; EECON2 = 0b10101010; PPSCONbits.IOLOCK = 1;}
+
 /*
  * Configuration bits
  */
@@ -67,6 +70,11 @@
 #define PIN_DIGITAL         1
 #define PIN_ANALOG          0
 
+#define PPS_FUNCTION_CCP1_OUTPUT_A 14
+#define PPS_FUNCTION_CCP2_OUTPUT_B 15
+#define PPS_FUNCTION_SPI2_MOSI_OUTPUT 9
+#define PPS_FUNCTION_SPI2_SCLK_OUTPUT 10
+
 #define VCC_HIGH_TRIS TRISDbits.TRISD0
 #define VCC_HIGH_PORT LATDbits.LD0
 #define PWR_GOOD_TRIS TRISDbits.TRISD1
@@ -81,8 +89,10 @@
 #define BUCK_ENABLE_PIN LATBbits.LB1
 #define BUCK_LOWFET_TRIS TRISBbits.TRISB2
 #define BUCK_LOWFET_PIN LATBbits.LB2
+#define BUCK_LOWFET_PPS RPOR6
 #define BUCK_HIGHFET_TRIS TRISBbits.TRISB3
 #define BUCK_HIGHFET_PIN LATBbits.LB3
+#define BUCK_HIGHFET_PPS RPOR5
 
 #define PWROUT_ENABLE_TRIS TRISCbits.TRISC7
 #define PWROUT_ENABLE_PIN LATCbits.LC7
@@ -100,16 +110,16 @@
 
 #define SPI_MISO_TRIS TRISDbits.TRISD5
 #define SPI_MISO_PORT LATDbits.LD5
-#define SPI_MISO_PPS PPS_RP22
+#define SPI_MISO_PPS 22
 #define SPI_MOSI_TRIS TRISDbits.TRISD6
 #define SPI_MOSI_PORT LATDbits.LD6
-#define SPI_MOSI_PPS PPS_RP23
+#define SPI_MOSI_PPS RPOR23
 #define SPI_SCLK_TRIS TRISDbits.TRISD7
 #define SPI_SCLK_PORT LATDbits.LD7
-#define SPI_SCLK_PPS PPS_RP24
+#define SPI_SCLK_PPS RPOR24
 #define SPI_SS_TRIS TRISDbits.TRISD4
 #define SPI_SS_PORT LATDbits.LD4
-#define SPI_SS_PPS PPS_RP21
+#define SPI_SS_PPS RPOR21
 
 
 #define VOLTAGE_REFERENCE_TRIS TRISAbits.TRISA3
@@ -126,9 +136,12 @@
 
 #define NUMBER_OF_TIMESLOTS 16
 
-#define PUSHBUTTON_PIN PORTAbits.RA0
+#define PUSHBUTTON_BIT PORTAbits.RA0
+#define PUSHBUTTON_PPS 0
 #define ENCODER_A_BIT PORTBbits.RB7
+#define ENCODER_A_PPS 9
 #define ENCODER_B_BIT PORTBbits.RB6
+#define ENCODER_B_PPS 10
 
 #define USB_CHARGING_VOLTAGE_MINIMUM 12000
 #define POWER_OUTPUTS_VOLTAGE_MINIMUM -1
@@ -273,7 +286,7 @@ os_t os;
 
 
 void tmr_isr(void);
-//void system_init(void);
+void system_init(void);
 //void system_set_cpu_frequency(clockFrequency_t newFrequency);
 void system_delay_ms(uint8_t ms);
 //void system_power_save(void);

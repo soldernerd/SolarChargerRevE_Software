@@ -1,8 +1,8 @@
 
 #include <stdint.h>
 #include <xc.h>
-#include <plib/pps.h>
-#include <plib/spi.h>
+//#include <plib/pps.h>
+//#include <plib/spi.h>
 
 #include "os.h"
 #include "flash.h"
@@ -20,10 +20,15 @@ void flash_init(void)
     uint16_t cntr;
     
     PPSUnLock();
-    PPSInput(PPS_SDI2, SPI_MISO_PPS); //MISO
-    PPSOutput(SPI_MOSI_PPS, PPS_SDO2); //MOSI
-    PPSOutput(SPI_SCLK_PPS, PPS_SCK2); //SCLK
+    RPINR21 = SPI_MISO_PPS;
+    SPI_MOSI_PPS = PPS_FUNCTION_SPI2_MOSI_OUTPUT;
+    SPI_SCLK_PPS = PPS_FUNCTION_SPI2_SCLK_OUTPUT;
     PPSLock();
+    
+    //PPSInput(PPS_SDI2, SPI_MISO_PPS); //MISO
+    //PPSOutput(SPI_MOSI_PPS, PPS_SDO2); //MOSI
+    //PPSOutput(SPI_SCLK_PPS, PPS_SCK2); //SCLK
+    
 
     //OpenSPI2(SPI_FOSC_4, MODE_00, SMPMID);
     SSP2STATbits.SMP = 1; //Sample at end
@@ -36,7 +41,8 @@ void flash_init(void)
 void flash_dummy_write(void)
 {
     uint16_t cntr;
-    
+    //This code still needs to be ported from PLIB to something else
+    /*
     //Enable writing
     SPI_SS_PORT = 0;
     WriteSPI2(FLASH_WRITE_ENABLE);
@@ -53,13 +59,11 @@ void flash_dummy_write(void)
        WriteSPI2(cntr&0xFF); 
     }
     SPI_SS_PORT = 1;
-    
+    */
 }
 
 void flash_dummy_read()
 {
-    uint16_t cntr;
-
     DMACON1bits.SSCON1 = 0;
     DMACON1bits.SSCON0 = 0; //Slave Select not controlled by DMA module
     DMACON1bits.TXINC = 1; //Do increment TX address

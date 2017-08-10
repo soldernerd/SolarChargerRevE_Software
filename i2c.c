@@ -1,5 +1,7 @@
 
-#include <plib/i2c.h>
+//#include <plib/i2c.h>
+//#include <pic18f46j50.h>
+#include <xc.h>
 #include "i2c.h"
 #include "os.h"
 
@@ -17,13 +19,81 @@
 i2cFrequency_t i2c_frequency = I2C_FREQUENCY_100kHz;
 extern calibration_t calibrationParameters[7];
 
+eeprom_write_task_t task_list[16];
+uint8_t task_list_read_index = 0;
+uint8_t task_list_write_index = 0;
+
 /* ****************************************************************************
  * General I2C functionality
  * ****************************************************************************/
 
+//Replacements for the PLIB functions
+
+//Replaces OpenI2C1();
+static void _i2c_open_1(void)
+{
+    SSP1STATbits.SMP = 0; //Enable slew rate control
+    SSP1STATbits.CKE = 0; //Disable SMBus inputs
+    SSP1ADD = 29; //400kHz at 48MHz system clock
+    SSP1CON1bits.WCOL = 0; //Clear write collision bit
+    SSP1CON1bits.SSPOV = 0; //Clear receive overflow bit bit
+    SSP1CON1bits.SSPM = 0b1000; //I2C master mode
+    SSP1CON1bits.SSPEN = 1; //Enable module
+}
+
+//Replaces IdleI2C();
+static void _i2c_wait_idle(void)
+{
+    while(SSP1CON2bits.ACKEN | SSP1CON2bits.RCEN1 | SSP1CON2bits.PEN | SSP1CON2bits.RSEN | SSP1CON2bits.SEN | SSP1STATbits.R_W ){}
+}
+
+//Replaces StartI2C();
+static void _i2c_start(void)
+{
+    SSP1CON2bits.SEN=1;
+    while(SSP1CON2bits.SEN){}
+}
+
+//Replaces WriteI2C();
+static void _i2c_send(uint8_t dat)
+{
+    SSP1BUF = dat;
+}
+
+//Replaces ReadI2C();
+static uint8_t _i2c_get(void)
+{
+    SSP1CON2bits.RCEN = 1 ; //initiate I2C read
+    while(SSP1CON2bits.RCEN){} //wait for read to complete
+    return SSP1BUF; //return the value in the buffer
+}
+
+//Replaces StopI2C();
+static void _i2c_stop(void)
+{
+    SSP1CON2bits.PEN = 1;
+    while(SSP1CON2bits.PEN){}
+}
+
+//Replaces AckI2C();
+static void _i2c_acknowledge(void)
+{
+    SSP1CON2bits.ACKDT = 0;
+    SSP1CON2bits.ACKEN = 1;
+    while(SSP1CON2bits.ACKEN){}
+}
+
+//Replaces Not_i2c_acknowledge();
+static void _i2c_not_acknowledge(void)
+{
+    SSP1CON2bits.ACKDT = 1;
+    SSP1CON2bits.ACKEN = 1;
+    while(SSP1CON2bits.ACKEN){}
+}
+
 void i2c_init(void)
 {
-    OpenI2C1(MASTER, 1);
+    _i2c_open_1();
     //Set baud rate to 100kHz
     i2c_set_frequency(I2C_FREQUENCY_100kHz);
     //SSP1ADDbits.SSPADD = 4;
@@ -79,48 +149,48 @@ static void _i2c_write(uint8_t slave_address, uint8_t *data, uint8_t length)
 {
     uint8_t cntr;
 
-    IdleI2C();
-    StartI2C();
-    IdleI2C();
-    WriteI2C(slave_address);
-    IdleI2C();
+    _i2c_wait_idle();
+    _i2c_start();
+    _i2c_wait_idle();
+    _i2c_send(slave_address);
+    _i2c_wait_idle();
     
     for(cntr=0; cntr<length; ++cntr)
     {
-        WriteI2C(data[cntr]);
-        IdleI2C();      
+        _i2c_send(data[cntr]);
+        _i2c_wait_idle();      
     } 
     
-    StopI2C();    
+    _i2c_stop();
 }
 
 static void _i2c_read(uint8_t slave_address, uint8_t *data, uint8_t length)
 {
     uint8_t cntr;
 
-    IdleI2C();
-    StartI2C();
-    IdleI2C();
-    WriteI2C(slave_address | I2C_READ);
-    IdleI2C();
+    _i2c_wait_idle();
+    _i2c_start();
+    _i2c_wait_idle();
+    _i2c_send(slave_address | I2C_READ);
+    _i2c_wait_idle();
     /*
     for(cntr=0; cntr<length; ++cntr)
     {
-        data[cntr] = ReadI2C();
-        AckI2C();       
+        data[cntr] = _i2c_get();
+        _i2c_acknowledge();      
     } 
-    NotAckI2C();
+    _i2c_not_acknowledge();
     */
     
     for(cntr=0; cntr<length-1; ++cntr)
     {
-        data[cntr] = ReadI2C();
-        AckI2C();       
+        data[cntr] = _i2c_get();
+        _i2c_acknowledge();      
     } 
-    data[cntr] = ReadI2C();
-    NotAckI2C();
+    data[cntr] = _i2c_get();
+    _i2c_not_acknowledge();
      
-    StopI2C();
+    _i2c_stop();
 }
 
 
@@ -218,6 +288,7 @@ void i2c_display_init(void)
     //i2c_expander_high(I2C_EXPANDER_USER_INTERFACE);
     system_delay_ms(10);
     //Enable on
+
     LATBbits.LATB0 = 1; 
     system_delay_ms(2);
     
@@ -272,22 +343,22 @@ void i2c_display_write(char *data)
     //Set I2C frequency to 400kHz
     i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
-    IdleI2C();
-    StartI2C();
-    IdleI2C();
-    WriteI2C(I2C_DISPLAY_SLAVE_ADDRESS);
-    IdleI2C();
-    WriteI2C(DISPLAY_DATA_REGISTER);
-    IdleI2C();
+    _i2c_wait_idle();
+    _i2c_start();
+    _i2c_wait_idle();
+    _i2c_send(I2C_DISPLAY_SLAVE_ADDRESS);
+    _i2c_wait_idle();
+    _i2c_send(DISPLAY_DATA_REGISTER);
+    _i2c_wait_idle();
     
     //Print entire (zero terminated) string
     while(*data)
     {
-        WriteI2C(*data++);
-        IdleI2C();        
+        _i2c_send(*data++);
+        _i2c_wait_idle();        
     } 
     
-    StopI2C();
+    _i2c_stop();
 }
 
 void i2c_display_write_fixed(char *data, uint8_t length)
@@ -297,22 +368,22 @@ void i2c_display_write_fixed(char *data, uint8_t length)
     //Set I2C frequency to 400kHz
     i2c_set_frequency(I2C_FREQUENCY_100kHz);
 
-    IdleI2C();
-    StartI2C();
-    IdleI2C();
-    WriteI2C(I2C_DISPLAY_SLAVE_ADDRESS);
-    IdleI2C();
-    WriteI2C(DISPLAY_DATA_REGISTER);
-    IdleI2C();
+    _i2c_wait_idle();
+    _i2c_start();
+    _i2c_wait_idle();
+    _i2c_send(I2C_DISPLAY_SLAVE_ADDRESS);
+    _i2c_wait_idle();
+    _i2c_send(DISPLAY_DATA_REGISTER);
+    _i2c_wait_idle();
     
     //Print entire (zero terminated) string
     for(pos=0; pos<length; ++pos)
     {
-        WriteI2C(data[pos]);
-        IdleI2C();        
+        _i2c_send(data[pos]);
+        _i2c_wait_idle();        
     } 
     
-    StopI2C();    
+    _i2c_stop();    
 }
 
 
@@ -414,17 +485,17 @@ void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGa
     //Set I2C frequency to 400kHz
     i2c_set_frequency(I2C_FREQUENCY_400kHz);
 
-    IdleI2C();
-    StartI2C();
-    IdleI2C();
-    WriteI2C(I2C_ADC_SLAVE_ADDRESS | I2C_READ);
-    IdleI2C();
-    result = ReadI2C();
+    _i2c_wait_idle();
+    _i2c_start();
+    _i2c_wait_idle();
+    _i2c_send(I2C_ADC_SLAVE_ADDRESS | I2C_READ);
+    _i2c_wait_idle();
+    result = _i2c_get();
     result <<= 8;
-    AckI2C();
-    result |= ReadI2C();
-    NotAckI2C();
-    StopI2C(); 
+    _i2c_acknowledge();
+    result |= _i2c_get();
+    _i2c_not_acknowledge();
+    _i2c_stop(); 
     
     return result;
  };
@@ -527,6 +598,32 @@ void i2c_eeprom_read_calibration(void)
         {
             //No valid data in EEPROM -> write default data
             _i2c_eeprom_load_default_calibration(&calibrationParameters[cntr], cntr);
+            //Schedule data to be written
+            switch((calibrationIndex_t) cntr)
+            {
+                case CALIBRATION_INDEX_INPUT_VOLTAGE:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE);
+                    break;
+                case CALIBRATION_INDEX_OUTPUT_VOLTAGE:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_VOLTAGE);
+                    break;
+                case CALIBRATION_INDEX_INPUT_CURRENT:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_INPUT_CURRENT);
+                    break;
+                case CALIBRATION_INDEX_OUTPUT_CURRENT:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_CURRENT);
+                    break;
+                case CALIBRATION_INDEX_ONBOARD_TEMPERATURE:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE);
+                    break;
+                case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1);
+                    break;
+                case CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2:
+                    schedule_eeprom_write_task(EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2);
+                    break;
+            }
+            /*
             addr += 4;
             i2c_eeprom_write(addr, (uint8_t*) &calibrationParameters[cntr], 12);
             //Wait for a while
@@ -540,71 +637,10 @@ void i2c_eeprom_read_calibration(void)
             i2c_eeprom_write(addr, &buffer[0], 4);
             //Wait for a while
             system_delay_ms(7);
+             * */
         }
     }   
 }
-
-/*
-void i2c_eeprom_load_default_calibration(void)
-{
-    //Input Voltage
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralOffset = 0;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralMultiplier = 11;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].NeutralShift = 4;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Offset = 0;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Multiplier = 11;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].Shift = 4;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_VOLTAGE].AutoCalibration = 0;
-    //Output Voltage
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralOffset = 0;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralMultiplier = 17;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].NeutralShift = 5;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Offset = 0;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Multiplier = 17;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].Shift = 5;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_VOLTAGE].AutoCalibration = 0;
-    //Input Current
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralOffset = 0;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralMultiplier = 5851;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].NeutralShift = 15;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Offset = 0;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Multiplier = 5851;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Shift = 15;
-    calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration = 0;
-    //Output Current
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralOffset = 0;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralMultiplier = 5851;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].NeutralShift = 15;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Offset = 0;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Multiplier = 5851;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Shift = 15;
-    calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration = 0;
-    //Onboard Temperature
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralOffset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralMultiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].NeutralShift = 13;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Offset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Multiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].Shift = 13;
-    calibrationParameters[CALIBRATION_INDEX_ONBOARD_TEMPERATURE].AutoCalibration = 0;
-    //External Temperature 1
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralOffset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralMultiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].NeutralShift = 13;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Offset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Multiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].Shift = 13;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1].AutoCalibration = 0;
-    //External Temperature 2
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralOffset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralMultiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].NeutralShift = 13;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Offset = -13769;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Multiplier = -11479;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].Shift = 13;
-    calibrationParameters[CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2].AutoCalibration = 0;
-}
- */
 
 void _i2c_eeprom_load_default_calibration(calibration_t *buffer, calibrationIndex_t index)
 {
@@ -675,3 +711,98 @@ void _i2c_eeprom_load_default_calibration(calibration_t *buffer, calibrationInde
             break;
     }
 }
+
+void _write_calibration(calibrationIndex_t index)
+{
+    uint8_t buffer[16];
+    uint8_t *ptr;
+    uint8_t cntr;
+    uint16_t addr;
+    buffer[0] = 0x77;
+    buffer[1] = 0x55;
+    buffer[2] = 0x33;
+    buffer[3] = (uint8_t) index;
+    ptr = (uint8_t*) &calibrationParameters[index];
+    for(cntr=4; cntr<16; ++cntr)
+    {
+        buffer[cntr] = *ptr;
+        ++ptr;
+    }
+    addr = EEPROM_CALIBRATION_ADDRESS + (index<<4);
+    i2c_eeprom_write(addr, &buffer[0], 16);
+}
+
+
+uint8_t get_eeprom_write_task_count(void)
+{
+       return (task_list_write_index - task_list_read_index) & 0x0F;
+}
+
+void schedule_eeprom_write_task(eeprom_write_task_t task)
+{
+       uint8_t idx;
+       //Check if task is already scheduled
+       for(idx=task_list_read_index; idx!=task_list_write_index; idx=(idx+1) & 0x0F)
+       {
+             if (task_list[idx] == task)
+             {
+                    //Return (i.e. do nothing) if task is already scheduled
+                    return;
+             }
+       }
+       //Add task to list
+       task_list[task_list_write_index] = task;
+       ++task_list_write_index;
+       task_list_write_index &= 0x0F;
+}
+
+eeprom_write_task_t get_next_eeprom_write_task(void)
+{
+       eeprom_write_task_t task;
+       if (task_list_read_index == task_list_write_index)
+       {
+             //Buffer is empty
+             return EEPROM_WRITE_TASK_NONE;
+       }
+       else
+       {
+             //Save task to return
+             task = task_list[task_list_read_index];
+             //Increment read index
+             ++task_list_read_index;
+             task_list_read_index &= 0x0F;
+             //Return first task
+             return task;
+       }
+}
+
+void i2c_eeprom_tasks()
+{
+    switch(get_next_eeprom_write_task())
+    {
+        case EEPROM_WRITE_TASK_REAL_TIME_CLOCK:
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE:
+            _write_calibration(CALIBRATION_INDEX_INPUT_VOLTAGE);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_VOLTAGE:
+            _write_calibration(CALIBRATION_INDEX_OUTPUT_VOLTAGE);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_INPUT_CURRENT:
+            _write_calibration(CALIBRATION_INDEX_INPUT_CURRENT);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_CURRENT:
+            _write_calibration(CALIBRATION_INDEX_OUTPUT_CURRENT);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE:
+            _write_calibration(CALIBRATION_INDEX_ONBOARD_TEMPERATURE);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1:
+            _write_calibration(CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1);
+            break;
+        case EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2:
+            _write_calibration(CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2);
+            break;
+    }
+}
+

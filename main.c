@@ -100,6 +100,9 @@ MAIN_RETURN main(void)
                 system_output_off(OUTPUT_4);
             }
             
+            //Run scheduled EEPROM write tasks
+            i2c_eeprom_tasks();
+            
             //Run user interface
             ui_run();
             

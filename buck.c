@@ -1,6 +1,6 @@
 #include <xc.h>
 #include <stdint.h>
-#include <plib/pps.h>
+//#include <plib/pps.h>
 
 #include "buck.h"
 #include "os.h"
@@ -54,9 +54,11 @@ static void _buck_pin_init(void)
     
     //Assign via peripheral pin select (PPS)
     PPSUnLock();
-    PPSOutput(PPS_RP6, PPS_CCP1P1A);
-    PPSOutput(PPS_RP5, PPS_P1B);
+    BUCK_LOWFET_PPS = PPS_FUNCTION_CCP1_OUTPUT_A;
+    BUCK_HIGHFET_PPS = PPS_FUNCTION_CCP2_OUTPUT_B;
     PPSLock();
+    //PPSOutput(PPS_RP6, PPS_CCP1P1A);
+    //PPSOutput(PPS_RP5, PPS_P1B);
 }
 
 static void _buck_timer2_init(void)

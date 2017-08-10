@@ -1,12 +1,14 @@
 
+#include <xc.h>
 #include <stdint.h>
-#include <plib/pps.h>
+//#include <plib/pps.h>
 #include "os.h"
 #include "adc.h"
 #include "i2c.h"
 #include "rtcc.h"
 #include "buck.h"
 #include "ui.h"
+#include "flash.h"
 
 
  
@@ -157,10 +159,15 @@ void system_delay_ms(uint8_t ms)
 static void _system_encoder_init(void)
 {
     PPSUnLock();
-    PPSInput(PPS_INT1, PPS_RP0); //Pushbutton
-    PPSInput(PPS_INT3, PPS_RP9); //Encoder A
-    PPSInput(PPS_INT2, PPS_RP10); //Encoder B
-    PPSLock();
+    RPINR1 = PUSHBUTTON_PPS;
+    RPINR3 = ENCODER_A_PPS;
+    RPINR2 = ENCODER_B_PPS;
+    PPSUnLock()
+            
+    //PPSInput(PPS_INT1, PPS_RP0); //Pushbutton
+    //PPSInput(PPS_INT3, PPS_RP9); //Encoder A
+    //PPSInput(PPS_INT2, PPS_RP10); //Encoder B
+
     
     INTCON2bits.INTEDG1 = 0; //0=falling
     INTCON3bits.INT1IF = 0;

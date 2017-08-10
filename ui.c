@@ -3,7 +3,7 @@
 
 #include "os.h"
 #include "i2c.h"
-//#include "rtcc.h"
+#include "rtcc.h"
 #include "ui.h"
 
 userInterfaceStatus_t userInterfaceStatus;

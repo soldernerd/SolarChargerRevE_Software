@@ -70,6 +70,23 @@ typedef enum
     I2C_EXPANDER_OUTPUT_4
 } i2cExpanderPin_t;
 
+typedef enum
+{
+       EEPROM_WRITE_TASK_NONE = 0,
+       EEPROM_WRITE_TASK_REAL_TIME_CLOCK,
+       EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE,
+       EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_VOLTAGE,
+       EEPROM_WRITE_TASK_CALIBRATION_INPUT_CURRENT,
+       EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_CURRENT,
+       EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE,
+       EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1,
+       EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2
+} eeprom_write_task_t;
+
+uint8_t get_eeprom_write_task_count(void);
+void schedule_eeprom_write_task(eeprom_write_task_t task);
+eeprom_write_task_t get_next_eeprom_write_task(void);
+void i2c_eeprom_tasks(void);
 
 void i2c_init(void);
 i2cFrequency_t i2c_get_frequency(void);
@@ -93,6 +110,8 @@ void i2c_eeprom_read(uint16_t address, uint8_t *data, uint8_t length);
 
 void i2c_eeprom_read_calibration(void);
 //void i2c_eeprom_read_calibration(calibration_t *buffer, calibrationIndex_t index);
+
+
 
 
 void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGain_t gain);

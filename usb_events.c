@@ -24,7 +24,7 @@ please contact mla_licensing@microchip.com
 #include "usb_device_hid.h"
 #include "usb_device_msd.h"
 
-#include "internal_flash.h"
+//#include "internal_flash.h"
 
 #include "app_device_custom_hid.h"
 #include "app_device_msd.h"

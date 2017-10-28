@@ -19,7 +19,8 @@ please contact mla_licensing@microchip.com
 
 #include "fileio_config.h"
 #include "fileio.h"
-#include "internal_flash.h"
+#include "external_flash.h"
+//#include "internal_flash.h"
 
 
 #if defined(__PIC32MX__)

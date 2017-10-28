@@ -14,7 +14,7 @@
 #include "usb_device_hid.h"
 #include "usb_device_msd.h"
 //
-#include "internal_flash.h"
+//#include "internal_flash.h"
 //
 #include "app_device_custom_hid.h"
 #include "app_device_msd.h"
@@ -49,13 +49,15 @@ MAIN_RETURN main(void)
 {
     //uint8_t cntr;
     
+    //This is a user defined function
+    system_init();
+    
     SYSTEM_Initialize(SYSTEM_STATE_USB_START);
 
     USBDeviceInit();
     USBDeviceAttach();
     
-    //This is a user defined function
-    system_init();
+    
 
     while(1)
     {
@@ -120,6 +122,9 @@ MAIN_RETURN main(void)
 
                 case 1:
                     APP_DeviceCustomHIDTasks();
+                    //flash_page_read(0x1234);
+                    //flash_page_read(5);
+                    //flash_set_page_size(FLASH_PAGE_SIZE_512);
                     break;
                     
                     

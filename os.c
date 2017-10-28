@@ -270,10 +270,11 @@ void system_init(void)
     
     //SPI Pins
     SPI_MISO_TRIS = PIN_INPUT;
+    //SPI_MISO_ANCON = PIN_DIGITAL;
     SPI_MOSI_TRIS = PIN_OUTPUT;
     SPI_SCLK_TRIS = PIN_OUTPUT;
     SPI_SS_TRIS = PIN_OUTPUT;
-    SPI_SS_PORT = 1;
+    SPI_SS_PIN = 1;
     
     //Pins for temperature sensing
     VOLTAGE_REFERENCE_TRIS = PIN_INPUT;
@@ -385,7 +386,8 @@ void system_init(void)
     _system_encoder_init();
     
     flash_init();
-    flash_dummy_write();
+    //flash_dummy_write();
+    //flash_dummy_read();
     
     //Buck init
     buck_init();

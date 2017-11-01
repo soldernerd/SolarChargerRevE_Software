@@ -7,8 +7,6 @@
 
 static FILEIO_MEDIA_INFORMATION mediaInformation;
 
-uint8_t _flash_buffer[512];
-
 FILEIO_MEDIA_INFORMATION * FILEIO_ExternalFlash_MediaInitialize(void* config)
 {
     mediaInformation.validityFlags.bits.sectorSize = true;
@@ -68,7 +66,8 @@ uint8_t FILEIO_ExternalFlash_SectorRead(void* config, uint32_t sector_addr, uint
     uint16_t page = (uint16_t) sector_addr;
     
     //Error check.  Make sure the host is trying to read from a legitimate address
-    if(sector_addr >= DRV_FILEIO_INTERNAL_FLASH_TOTAL_DISK_SIZE)
+    //if(sector_addr >= DRV_FILEIO_INTERNAL_FLASH_TOTAL_DISK_SIZE)
+    if(sector_addr >= 4096)
     {
         return false;
     } 
@@ -105,15 +104,15 @@ uint8_t FILEIO_ExternalFlash_SectorRead(void* config, uint32_t sector_addr, uint
 uint8_t FILEIO_ExternalFlash_SectorWrite(void* config, uint32_t sector_addr, uint8_t* buffer, uint8_t allowWriteToZero)
 {
     uint16_t page = (uint16_t) sector_addr;
-    uint16_t cntr;
-    uint8_t difference_found;
 
     //First, error check the resulting address
-    if(sector_addr >= DRV_FILEIO_INTERNAL_FLASH_TOTAL_DISK_SIZE)
+    //if(sector_addr >= DRV_FILEIO_INTERNAL_FLASH_TOTAL_DISK_SIZE)
+    if(sector_addr >= 4096)
     {
         return false;
     }  
     
+    /*
     //Read page first
     flash_page_read(page, _flash_buffer);
     
@@ -136,6 +135,7 @@ uint8_t FILEIO_ExternalFlash_SectorWrite(void* config, uint32_t sector_addr, uin
     {
         return true;
     }
+     * */
     
     //Write new data to flash
     flash_page_write(page, buffer);

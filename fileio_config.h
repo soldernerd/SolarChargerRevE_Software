@@ -87,8 +87,8 @@ please contact mla_licensing@microchip.com
 //by carefully choosing the DRV_FILEIO_INTERNAL_FLASH_CONFIG_FILES_ADDRESS and DRV_FILEIO_INTERNAL_FLASH_CONFIG_DRIVE_CAPACITY,
 //to make sure the MSD volume does extend into the erase page with the configuration
 //bits.
+//#define DRV_FILEIO_INTERNAL_FLASH_CONFIG_DRIVE_CAPACITY 14
 #define DRV_FILEIO_INTERNAL_FLASH_CONFIG_DRIVE_CAPACITY 14
-
 
 //--------------------------------------------------------------------------
 //Starting Address of the MSD Volume.

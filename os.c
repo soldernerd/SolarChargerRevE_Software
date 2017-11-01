@@ -9,6 +9,7 @@
 #include "buck.h"
 #include "ui.h"
 #include "flash.h"
+#include "fat16.h"
 
 
  
@@ -386,6 +387,7 @@ void system_init(void)
     _system_encoder_init();
     
     flash_init();
+    fat_format_flash();
     //flash_dummy_write();
     //flash_dummy_read();
     

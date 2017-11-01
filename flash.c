@@ -5,7 +5,7 @@
 #include "os.h"
 #include "flash.h"
 
-#define DEBUG_FLASsH
+#define xDEBUG_FLASH
 
 //Just for debugging, remove later
 #ifdef DEBUG_FLASH

@@ -7,7 +7,7 @@
 
 static FILEIO_MEDIA_INFORMATION mediaInformation;
 
-FILEIO_MEDIA_INFORMATION * FILEIO_ExternalFlash_MediaInitialize(void* config)
+FILEIO_MEDIA_INFORMATION * ExternalFlash_MediaInitialize(void* config)
 {
     mediaInformation.validityFlags.bits.sectorSize = true;
     mediaInformation.sectorSize = FLASH_PAGE_SIZE;
@@ -15,23 +15,23 @@ FILEIO_MEDIA_INFORMATION * FILEIO_ExternalFlash_MediaInitialize(void* config)
     return &mediaInformation;
 }
 
-uint16_t FILEIO_ExternalFlash_SectorSizeRead(void* config)
+uint16_t ExternalFlash_SectorSizeRead(void* config)
 {
     //return FILEIO_CONFIG_MEDIA_SECTOR_SIZE;
     return FLASH_PAGE_SIZE;
 }
 
-uint32_t FILEIO_ExternalFlash_CapacityRead(void* config)
+uint32_t ExternalFlash_CapacityRead(void* config)
 {
     return ((uint32_t) FLASH_NUMBER_OF_PAGES - 1);
 }
 
-uint8_t FILEIO_ExternalFlash_MediaDetect(void* config)
+uint8_t ExternalFlash_MediaDetect(void* config)
 {
     return true;
 }
 
-uint8_t FILEIO_ExternalFlash_WriteProtectStateGet(void* config)
+uint8_t ExternalFlash_WriteProtectStateGet(void* config)
 {
 
     return false;
@@ -61,7 +61,7 @@ uint8_t FILEIO_ExternalFlash_WriteProtectStateGet(void* config)
  *                  be converted to byte address. This is accomplished by
  *                  shifting the address left 9 times.
  *****************************************************************************/
-uint8_t FILEIO_ExternalFlash_SectorRead(void* config, uint32_t sector_addr, uint8_t* buffer)
+uint8_t ExternalFlash_SectorRead(void* config, uint32_t sector_addr, uint8_t* buffer)
 {
     uint16_t page = (uint16_t) sector_addr;
     
@@ -101,7 +101,7 @@ uint8_t FILEIO_ExternalFlash_SectorRead(void* config, uint32_t sector_addr, uint
  *                  be converted to byte address. This is accomplished by
  *                  shifting the address left 9 times.
  *****************************************************************************/
-uint8_t FILEIO_ExternalFlash_SectorWrite(void* config, uint32_t sector_addr, uint8_t* buffer, uint8_t allowWriteToZero)
+uint8_t ExternalFlash_SectorWrite(void* config, uint32_t sector_addr, uint8_t* buffer, uint8_t allowWriteToZero)
 {
     uint16_t page = (uint16_t) sector_addr;
 

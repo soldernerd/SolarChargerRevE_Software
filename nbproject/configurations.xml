@@ -7,7 +7,6 @@
       <logicalFolder name="f2" displayName="fileio" projectFiles="true">
         <itemPath>fileio.h</itemPath>
         <itemPath>fileio_media.h</itemPath>
-        <itemPath>fileio_config.h</itemPath>
       </logicalFolder>
       <itemPath>system.h</itemPath>
       <itemPath>io_mapping.h</itemPath>
@@ -43,7 +42,6 @@
       <itemPath>system.c</itemPath>
       <itemPath>app_device_custom_hid.c</itemPath>
       <itemPath>app_device_msd.c</itemPath>
-      <itemPath>files.c</itemPath>
       <itemPath>os.c</itemPath>
       <itemPath>i2c.c</itemPath>
       <itemPath>ui.c</itemPath>

@@ -8,7 +8,6 @@
 #ifndef FLASH_H
 #define	FLASH_H
 
-
 #define FLASH_PAGE_SIZE 512
 #define FLASH_NUMBER_OF_PAGES 4096
 

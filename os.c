@@ -1,7 +1,6 @@
 
 #include <xc.h>
 #include <stdint.h>
-//#include <plib/pps.h>
 #include "os.h"
 #include "adc.h"
 #include "i2c.h"

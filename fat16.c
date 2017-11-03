@@ -225,6 +225,7 @@ static uint8_t _get_fat(uint16_t idx)
 {
 	switch (idx)
 	{
+        //Bytes 0-4 are reserved
 		case 0x00:
 			return 0xF8;
 		case 0x01:
@@ -233,6 +234,7 @@ static uint8_t _get_fat(uint16_t idx)
 			return 0xFF;
 		case 0x03:
 			return 0xFF;
+        //Bytes 4 & 5 = 0xFFFF. So there is 1 file occupying a single cluster
 		case 0x04:
 			return 0xFF;
 		case 0x05:
@@ -346,28 +348,46 @@ void fat_format_flash(void)
     }
     flash_page_write(1, buffer);
     
-    
-    //Write FAT to sector 2
+    //Write first FAT page to sector 2
     for(cntr=0; cntr<512; ++cntr)
     {
         buffer[cntr] = _get_fat(cntr);
     }
     flash_page_write(2, buffer);
     
+    //Fill remaining FAT pages to sectors 3-17 (all zeros)
+    for(cntr=0; cntr<512; ++cntr)
+    {
+        buffer[cntr] = 0x00;
+    }
+    for(cntr=3; cntr<=17; ++cntr)
+    {
+        flash_page_write(cntr, buffer);
+    }
     
-    //Write Root to sector 3
+    //Write beginning of root to sector 18
     for(cntr=0; cntr<512; ++cntr)
     {
         buffer[cntr] = _get_root(cntr);
     }
-    flash_page_write(3, buffer);
+    flash_page_write(18, buffer);
     
-    //Write Data to sector 4
+    //Fill remaining ROOT pages to sectors 19-21 (all zeros)
+    for(cntr=0; cntr<512; ++cntr)
+    {
+        buffer[cntr] = 0x00;
+    }
+    for(cntr=19; cntr<=21; ++cntr)
+    {
+        flash_page_write(cntr, buffer);
+    }
+    
+    //Write Data to sector 22
     for(cntr=0; cntr<512; ++cntr)
     {
         buffer[cntr] = _get_data(cntr);
     }
-    flash_page_write(4, buffer);
+    flash_page_write(22, buffer);
     
 }
 

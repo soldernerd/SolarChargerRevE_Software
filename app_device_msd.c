@@ -18,12 +18,8 @@ please contact mla_licensing@microchip.com
 *******************************************************************************/
 
 #include "system.h"
-
-
 #include "usb.h"
 #include "usb_device_msd.h"
-
-//#include "internal_flash.h"
 #include "external_flash.h"
 
 
@@ -39,19 +35,19 @@ LUN_FUNCTIONS LUN[MAX_LUN + 1] =
 {
     {
         //(FILEIO_MEDIA_INFORMATION* (*)(void *))&FILEIO_InternalFlash_MediaInitialize,
-        (FILEIO_MEDIA_INFORMATION* (*)(void *))&FILEIO_ExternalFlash_MediaInitialize,
+        (FILEIO_MEDIA_INFORMATION* (*)(void *))&ExternalFlash_MediaInitialize,
         //(uint32_t (*)(void *))&FILEIO_InternalFlash_CapacityRead,
-        (uint32_t (*)(void *))&FILEIO_ExternalFlash_CapacityRead,
+        (uint32_t (*)(void *))&ExternalFlash_CapacityRead,
         //(uint16_t (*)(void *))&FILEIO_InternalFlash_SectorSizeRead,
-        (uint16_t (*)(void *))&FILEIO_ExternalFlash_SectorSizeRead,
+        (uint16_t (*)(void *))&ExternalFlash_SectorSizeRead,
         //(bool  (*)(void *))&FILEIO_InternalFlash_MediaDetect,
-        (bool  (*)(void *))&FILEIO_ExternalFlash_MediaDetect,
+        (bool  (*)(void *))&ExternalFlash_MediaDetect,
         //(uint8_t  (*)(void *, uint32_t, uint8_t*))&FILEIO_InternalFlash_SectorRead,
-        (uint8_t  (*)(void *, uint32_t, uint8_t*))&FILEIO_ExternalFlash_SectorRead,
+        (uint8_t  (*)(void *, uint32_t, uint8_t*))&ExternalFlash_SectorRead,
         //(uint8_t  (*)(void *))&FILEIO_InternalFlash_WriteProtectStateGet,
-        (uint8_t  (*)(void *))&FILEIO_ExternalFlash_WriteProtectStateGet,
+        (uint8_t  (*)(void *))&ExternalFlash_WriteProtectStateGet,
         //(uint8_t  (*)(void *, uint32_t, uint8_t *, uint8_t))&FILEIO_InternalFlash_SectorWrite,
-        (uint8_t  (*)(void *, uint32_t, uint8_t *, uint8_t))&FILEIO_ExternalFlash_SectorWrite,
+        (uint8_t  (*)(void *, uint32_t, uint8_t *, uint8_t))&ExternalFlash_SectorWrite,
         (void *)NULL
     }
 };

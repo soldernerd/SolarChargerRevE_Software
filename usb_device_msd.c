@@ -23,8 +23,8 @@ please contact mla_licensing@microchip.com
 #include "usb.h"
 #include "system.h"
 #include "usb_config.h"
-
 #include <usb_device_msd.h>
+#include "flash.h"
 
 #ifdef USB_USE_MSD
 
@@ -1052,7 +1052,7 @@ uint8_t MSDReadHandler(void)
             TransferLength.byte.LB = gblCBW.CBWCB[8];   //LSB of Transfer Length (in number of blocks, not bytes)
 
             //Check for possible error cases before proceeding
-            if(MSDCheckForErrorCases(TransferLength.Val * (uint32_t)FILEIO_CONFIG_MEDIA_SECTOR_SIZE) != MSD_ERROR_CASE_NO_ERROR)
+            if(MSDCheckForErrorCases(TransferLength.Val * (uint32_t)FLASH_PAGE_SIZE) != MSD_ERROR_CASE_NO_ERROR)
             {
                 break;
             }    
@@ -1200,7 +1200,7 @@ uint8_t MSDWriteHandler(void)
             TransferLength.v[0]=gblCBW.CBWCB[8];
 
             //Do some error case checking.
-            if(MSDCheckForErrorCases(TransferLength.Val * (uint32_t)FILEIO_CONFIG_MEDIA_SECTOR_SIZE) != MSD_ERROR_CASE_NO_ERROR)
+            if(MSDCheckForErrorCases(TransferLength.Val * (uint32_t)FLASH_PAGE_SIZE) != MSD_ERROR_CASE_NO_ERROR)
             {
                 //An error was detected.  The MSDCheckForErrorCases() function will
                 //have taken care of setting the proper states to report the error to the host.

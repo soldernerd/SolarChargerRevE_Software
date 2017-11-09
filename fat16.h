@@ -37,8 +37,6 @@
 #define MBR_PARTITION_END_SECTOR ((MBR_LAST_PARTITION_SECTOR%FBR_SECTORS_PER_HEAD)+1)
 #define MBR_SIGNATURE 0X55AA
 
-
-
 #define ROOT_DRIVE_NAME "SolarChargr"
 #define ROOT_FILE_NAME "FILE    "
 #define ROOT_FILE_EXTENSION "TXT"
@@ -46,8 +44,40 @@
 #define ROOT_FILE_SIZE 12
 #define ROOT_FILE_FIRST_CLUSTER 2
 
+#define MBR_SECTOR 0
+#define FBR_SECTOR 1
+#define FAT_FIRST_SECTOR 2
+#define FAT_LAST_SECTOR 17
+#define ROOT_FIRST_SECTOR 18
+#define ROOT_LAST_SECTOR 21
+#define DATA_FIRST_SECTOR 22
+#define DATA_LAST_SECTOR 4095
+#define DATA_NUMBER_OF_SECTORS 4074
+
+typedef struct
+{
+    uint16_t time;
+    uint16_t date;
+} timestamp_t;
+
+typedef struct
+{
+    char fileName[8];
+    char fileExtension[3];
+    uint8_t attributes;
+    uint8_t reserved1;
+    uint8_t secondFractions;
+    timestamp_t createdTimestamp;
+    uint16_t lastAccessDate;
+    uint16_t reserved2;
+    timestamp_t modifiedTimestamp;
+    uint16_t firstCluster;
+    uint32_t fileSize;
+} rootEntry_t;
+
 
 void fat_format_flash(void);
+uint8_t fat_create_file(char *name, char *extension, uint32_t size);
 
 #endif	/* FAT16_H */
 

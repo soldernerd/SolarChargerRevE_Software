@@ -4,6 +4,12 @@
 #include "os.h"
 #include <xc.h>
 
+static uint8_t _rtcc_bdc_to_decimal(uint8_t input)
+{
+    uint8_t tens = (input & 0xF0) >> 4;
+    uint8_t ones = input & 0x0F;
+    return ((10*tens) + ones);
+}
 
 static void _rtcc_write_enable(void)
 {
@@ -102,6 +108,12 @@ uint8_t rtcc_get_year(void)
     return RTCVALL;
 }
 
+uint8_t rtcc_get_year_decimal(void)
+{
+    uint8_t bcd_year = rtcc_get_year();
+    return _rtcc_bdc_to_decimal(bcd_year);
+}
+
 void rtcc_set_year(uint8_t year)
 {
     _rtcc_write_enable();
@@ -132,6 +144,12 @@ uint8_t rtcc_get_month(void)
     RTCCFGbits.RTCPTR0 = 0;
     while(RTCCFGbits.RTCSYNC);
     return RTCVALH;
+}
+
+uint8_t rtcc_get_month_decimal(void)
+{
+    uint8_t bcd_month = rtcc_get_month();
+    return _rtcc_bdc_to_decimal(bcd_month);
 }
 
 void rtcc_set_month(uint8_t month)
@@ -166,6 +184,12 @@ uint8_t rtcc_get_day(void)
     return RTCVALL;
 }
 
+uint8_t rtcc_get_day_decimal(void)
+{
+    uint8_t bcd_day = rtcc_get_day();
+    return _rtcc_bdc_to_decimal(bcd_day);
+}
+
 void rtcc_set_day(uint8_t day)
 {
     _rtcc_write_enable();
@@ -196,6 +220,12 @@ uint8_t rtcc_get_hours(void)
     RTCCFGbits.RTCPTR0 = 1;
     while(RTCCFGbits.RTCSYNC);
     return RTCVALL;
+}
+
+uint8_t rtcc_get_hours_decimal(void)
+{
+    uint8_t bcd_hours = rtcc_get_hours();
+    return _rtcc_bdc_to_decimal(bcd_hours);
 }
 
 void rtcc_set_hours(uint8_t hours)
@@ -230,6 +260,12 @@ uint8_t rtcc_get_minutes(void)
     return RTCVALH;
 }
 
+uint8_t rtcc_get_minutes_decimal(void)
+{
+    uint8_t bcd_minutes = rtcc_get_minutes();
+    return _rtcc_bdc_to_decimal(bcd_minutes);
+}
+
 void rtcc_set_minutes(uint8_t minutes)
 {
     _rtcc_write_enable();
@@ -260,6 +296,12 @@ uint8_t rtcc_get_seconds(void)
     RTCCFGbits.RTCPTR0 = 0;
     while(RTCCFGbits.RTCSYNC);
     return RTCVALL;
+}
+
+uint8_t rtcc_get_seconds_decimal(void)
+{
+    uint8_t bcd_seconds = rtcc_get_seconds();
+    return _rtcc_bdc_to_decimal(bcd_seconds);
 }
 
 void rtcc_set_seconds(uint8_t seconds)

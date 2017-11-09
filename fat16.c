@@ -5,32 +5,164 @@
 #include "os.h"
 #include "fat16.h"
 #include "flash.h"
+#include "rtcc.h"
 
-
-
-/*
-void print_sector(uint8_t *dat)
-{
-	printf("        ");
-	for (uint16_t col = 0; col < 16; ++col)
-	{
-		printf("%02X ", col);
-	}
-	printf("\n");
-	printf("        -----------------------------------------------\n");
-	for (uint16_t row = 0; row < 32; ++row)
-	{
-		printf("0x%04X: ", 16 * row);
-		for (uint16_t col = 0; col < 16; ++col)
-		{
-			printf("%02X ", dat[16 * row + col]);
-		}
-		printf("\n");
-	}
-}
-*/
+static uint8_t _get_mbr(uint16_t idx);
+static uint8_t _get_fbr(uint16_t idx);
+static uint8_t _get_fat(uint16_t idx);
+static uint8_t _get_root(uint16_t idx);
+static uint16_t _get_time(void);
+static uint16_t _get_date(void);
+static void _get_timestamp(timestamp_t *timestamp);
+static uint8_t _get_available_root_entry(void);
+static uint16_t _get_available_cluster(void);
+static void _write_fat(uint16_t cluster, uint16_t value);
+static void _write_root(uint8_t slot, rootEntry_t *data);
 
 uint8_t buffer[512];
+
+static uint16_t _get_time(void)
+{
+    uint8_t hours = rtcc_get_hours_decimal();
+    uint8_t minutes = rtcc_get_minutes_decimal();
+    uint8_t seconds = rtcc_get_seconds_decimal();
+    hours = 23;
+    minutes = 44;
+    seconds = 54;
+    uint8_t time = ((hours&0b11111) << 11);
+    time &= ((minutes&0b111111) << 5);
+    time &= ((seconds>>1)&0b1111);
+    return time;
+};
+
+static uint16_t _get_date(void)
+{
+    uint8_t year = rtcc_get_year_decimal();
+    uint8_t month = rtcc_get_month_decimal();
+    uint8_t day = rtcc_get_day_decimal();
+    year = 37;
+    month = 11;
+    day = 9;
+    uint8_t date = (((year-20)&0b1111111) << 9);
+    date &= ((month&0b1111) << 5);
+    date &= (day&0b11111);
+    return date;
+}
+
+static void _get_timestamp(timestamp_t *timestamp)
+{
+    (*timestamp).date = _get_date();
+    (*timestamp).time = _get_time();
+}
+
+static uint8_t _get_available_root_entry(void)
+{
+    uint8_t slot;
+    uint16_t sector;
+    uint16_t offset;
+    uint8_t buffer;
+    slot = 0;
+    for(sector = ROOT_FIRST_SECTOR; sector <= ROOT_LAST_SECTOR; ++sector)
+    {
+        for(offset = 0; offset<512; offset += 32)
+        {
+           flash_partial_read(sector, offset, 1, &buffer);
+           if((buffer==0x00) || (buffer==0xE5))
+           {
+               return offset;
+           }
+           ++slot;
+        }
+        ++slot;
+    }
+    return 0xFF; //Indicating an error, i.e there are no available slots
+}
+
+static uint16_t _get_available_cluster(void)
+{
+    uint16_t cluster;
+    uint16_t fat_sector;
+    uint16_t offset;
+    uint16_t value;
+    
+    //Start at 2, first two positions are reserved
+    for(cluster=2; cluster<(DATA_NUMBER_OF_SECTORS+2); ++cluster)
+    {
+        fat_sector = cluster>>8; 
+        fat_sector += FAT_FIRST_SECTOR;
+        offset = cluster & 0xFF;
+        offset <<= 1;
+        flash_partial_read(fat_sector, offset, 2, &value);
+        if(value==0x0000)
+        {
+            return cluster;
+        }
+        return 0x0000; //Indicating that there are no free clusters
+    }
+}
+
+static void _write_fat(uint16_t cluster, uint16_t value)
+{
+    uint16_t fat_sector;
+    uint16_t offset;
+    fat_sector = cluster>>8; 
+    fat_sector += FAT_FIRST_SECTOR;
+    offset = cluster & 0xFF;
+    offset <<= 1;
+    flash_partial_write(fat_sector, offset, 2, &value);
+}
+
+static void _write_root(uint8_t slot, rootEntry_t *data)
+{
+    uint16_t root_sector;
+    uint16_t offset;
+    root_sector = (slot >> 4) + ROOT_FIRST_SECTOR;
+    offset = (slot & 0b1111);
+    offset <<= 5;
+    flash_partial_write(root_sector, offset, 32, data);
+    //flash_partial_write(root_sector, offset, sizeof(rootEntry_t), data);
+}
+
+uint8_t fat_create_file(char *name, char *extension, uint32_t size)
+{
+    uint8_t root_slot;
+    rootEntry_t root_entry;
+    uint16_t first_cluster;
+    
+    //Find an available root slot
+    //root_slot = _get_available_root_entry();
+    root_slot = 2;
+    
+    //Find first cluster
+    //first_cluster = _get_available_cluster();
+    first_cluster = 3;
+    
+    //Prepare root entry
+    memcpy(root_entry.fileName, name, 8);
+    memcpy(root_entry.fileExtension, extension, 3);
+    root_entry.attributes = 0x00;
+    root_entry.reserved1 = 0x00;
+    root_entry.secondFractions = 0x00;
+    root_entry.createdTimestamp.date = _get_date();
+    root_entry.createdTimestamp.time = _get_time();
+    //_get_timestamp(&root_entry.createdTimestamp);
+    root_entry.lastAccessDate = root_entry.createdTimestamp.date;
+    root_entry.reserved2 = 0x00;
+    root_entry.modifiedTimestamp.date = _get_date();
+    root_entry.modifiedTimestamp.time = _get_time();
+    //memcpy(&root_entry.modifiedTimestamp, &root_entry.createdTimestamp, 4);
+    //root_entry.modifiedTimestamp = root_entry.createdTimestamp;
+    memcpy(&root_entry.firstCluster, &first_cluster, 2);
+    memcpy(&root_entry.fileSize, &size, 4);
+    
+    //Write root entry
+    _write_root(root_slot, &root_entry);
+    
+    //Reserve first cluster
+    //_write_fat(first_cluster, 0xFFFF);
+    
+    return root_slot;
+}
 
 static uint8_t _get_mbr(uint16_t idx)
 {
@@ -390,72 +522,3 @@ void fat_format_flash(void)
     flash_page_write(22, buffer);
     
 }
-
-/*
-void print_mbr(void)
-{
-	uint8_t buf[512];
-	for (uint16_t i = 0; i < 512; ++i)
-	{
-		buf[i] = get_mbr(i);
-	}
-	print_sector(buf);
-}
-
-void print_fbr(void)
-{
-	uint8_t buf[512];
-	for (uint16_t i = 0; i < 512; ++i)
-	{
-		buf[i] = get_fbr(i);
-	}
-	print_sector(buf);
-}
-
-void print_fat(void)
-{
-	uint8_t buf[512];
-	for (uint16_t i = 0; i < 512; ++i)
-	{
-		buf[i] = get_fat(i);
-	}
-	print_sector(buf);
-}
-
-void print_root(void)
-{
-	uint8_t buf[512];
-	for (uint16_t i = 0; i < 512; ++i)
-	{
-		buf[i] = get_root(i);
-	}
-	print_sector(buf);
-}
-
-
-int main()
-{
-	printf("MBR\n");
-	printf("---\n");
-	print_mbr();
-	printf("\n");
-
-	printf("FBR\n");
-	printf("---\n");
-	print_fbr();
-	printf("\n");
-
-	printf("FAT\n");
-	printf("---\n");
-	print_fat();
-	printf("\n");
-
-	printf("Root\n");
-	printf("----\n");
-	print_root();
-	printf("\n");
-
-	system("pause");
-	return 0;
-}
-*/

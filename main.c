@@ -28,6 +28,7 @@
 #include "buck.h"
 #include "adc.h"
 #include "flash.h"
+#include "fat16.h"
 
 
 /********************************************************************

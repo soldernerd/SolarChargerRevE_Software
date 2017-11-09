@@ -1244,6 +1244,7 @@ void USBCancelIO(uint8_t endpoint)
                                                           
   **************************************************************************/
 #if defined(USB_INTERRUPT)
+
 void USBDeviceDetach(void)
 {
     //If the interrupt option is selected then the customer is required
@@ -1310,6 +1311,7 @@ void USBDeviceDetach(void)
     }
 #endif
 }
+
 #endif  //#if defined(USB_INTERRUPT)
 /**************************************************************************
     Function:

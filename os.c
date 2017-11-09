@@ -248,6 +248,9 @@ static void _system_timer0_init(void)
 
 void system_init(void)
 {
+    char filename[9] = "MYFILEXY";
+    char extension[4] = "TXT";
+    
     //Configure ports
     VCC_HIGH_TRIS = PIN_OUTPUT;
     PWR_GOOD_TRIS = PIN_INPUT;
@@ -387,6 +390,8 @@ void system_init(void)
     
     flash_init();
     fat_format_flash();
+    
+    fat_create_file(filename, extension, 0x36);
     //flash_dummy_write();
     //flash_dummy_read();
     

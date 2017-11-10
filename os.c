@@ -248,8 +248,8 @@ static void _system_timer0_init(void)
 
 void system_init(void)
 {
-    char filename[9] = "MYFILEXY";
-    char extension[4] = "TXT";
+    char filename[9] = "TEST2   ";
+    char extension[4] = "CSV";
     
     //Configure ports
     VCC_HIGH_TRIS = PIN_OUTPUT;
@@ -389,11 +389,8 @@ void system_init(void)
     _system_encoder_init();
     
     flash_init();
-    fat_format_flash();
-    
-    fat_create_file(filename, extension, 0x36);
-    //flash_dummy_write();
-    //flash_dummy_read();
+    //fat_format_flash();
+    fat_create_file(filename, extension, 0x0B);
     
     //Buck init
     buck_init();

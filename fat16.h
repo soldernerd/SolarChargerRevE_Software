@@ -54,11 +54,11 @@
 #define DATA_LAST_SECTOR 4095
 #define DATA_NUMBER_OF_SECTORS 4074
 
-typedef struct
-{
-    uint16_t time;
-    uint16_t date;
-} timestamp_t;
+//typedef struct
+//{
+//    uint16_t time;
+//    uint16_t date;
+//} timestamp_t;
 
 typedef struct
 {
@@ -67,16 +67,19 @@ typedef struct
     uint8_t attributes;
     uint8_t reserved1;
     uint8_t secondFractions;
-    timestamp_t createdTimestamp;
+    uint16_t createdTime;
+    uint16_t createdDate;
     uint16_t lastAccessDate;
     uint16_t reserved2;
-    timestamp_t modifiedTimestamp;
+    uint16_t modifiedTime;
+    uint16_t modifiedDate;
     uint16_t firstCluster;
     uint32_t fileSize;
 } rootEntry_t;
 
 
 void fat_format_flash(void);
+uint8_t find_file(char *name, char *extension);
 uint8_t fat_create_file(char *name, char *extension, uint32_t size);
 
 #endif	/* FAT16_H */

@@ -13,7 +13,7 @@ static uint8_t _get_fat(uint16_t idx);
 static uint8_t _get_root(uint16_t idx);
 static uint16_t _get_time(void);
 static uint16_t _get_date(void);
-static void _get_timestamp(timestamp_t *timestamp);
+//static void _get_timestamp(timestamp_t *timestamp);
 static uint8_t _get_available_root_entry(void);
 static uint16_t _get_available_cluster(void);
 static void _write_fat(uint16_t cluster, uint16_t value);
@@ -23,37 +23,33 @@ uint8_t buffer[512];
 
 static uint16_t _get_time(void)
 {
+    uint16_t time;
     uint8_t hours = rtcc_get_hours_decimal();
     uint8_t minutes = rtcc_get_minutes_decimal();
     uint8_t seconds = rtcc_get_seconds_decimal();
-    hours = 23;
-    minutes = 44;
-    seconds = 54;
-    uint8_t time = ((hours&0b11111) << 11);
-    time &= ((minutes&0b111111) << 5);
-    time &= ((seconds>>1)&0b1111);
+    time = ((hours&0b11111) << 11);
+    time |= ((minutes&0b111111) << 5);
+    time |= ((seconds>>1)&0b11111);
     return time;
 };
 
 static uint16_t _get_date(void)
 {
+    uint16_t date;
     uint8_t year = rtcc_get_year_decimal();
     uint8_t month = rtcc_get_month_decimal();
     uint8_t day = rtcc_get_day_decimal();
-    year = 37;
-    month = 11;
-    day = 9;
-    uint8_t date = (((year-20)&0b1111111) << 9);
-    date &= ((month&0b1111) << 5);
-    date &= (day&0b11111);
+    date = (((year+20)&0b1111111) << 9);
+    date |= ((month&0b1111) << 5);
+    date |= (day&0b11111);
     return date;
 }
 
-static void _get_timestamp(timestamp_t *timestamp)
-{
-    (*timestamp).date = _get_date();
-    (*timestamp).time = _get_time();
-}
+//static void _get_timestamp(timestamp_t *timestamp)
+//{
+//    (*timestamp).date = _get_date();
+//    (*timestamp).time = _get_time();
+//}
 
 static uint8_t _get_available_root_entry(void)
 {
@@ -69,7 +65,7 @@ static uint8_t _get_available_root_entry(void)
            flash_partial_read(sector, offset, 1, &buffer);
            if((buffer==0x00) || (buffer==0xE5))
            {
-               return offset;
+               return slot;
            }
            ++slot;
         }
@@ -97,8 +93,8 @@ static uint16_t _get_available_cluster(void)
         {
             return cluster;
         }
-        return 0x0000; //Indicating that there are no free clusters
     }
+    return 0x0000; //Indicating that there are no free clusters
 }
 
 static void _write_fat(uint16_t cluster, uint16_t value)
@@ -123,19 +119,80 @@ static void _write_root(uint8_t slot, rootEntry_t *data)
     //flash_partial_write(root_sector, offset, sizeof(rootEntry_t), data);
 }
 
+uint8_t find_file(char *name, char *extension)
+{
+    uint8_t slot;
+    uint16_t sector;
+    uint16_t offset;
+    uint8_t buffer[11];
+    slot = 0;
+    for(sector = ROOT_FIRST_SECTOR; sector <= ROOT_LAST_SECTOR; ++sector)
+    {
+        for(offset = 0; offset<512; offset += 32)
+        {
+           flash_partial_read(sector, offset, 11, &buffer);
+           if(buffer[0]==0x00)
+           {
+               //There are no valid entries after a 0x00 entry
+               //Indicate that there is no such file
+               return 0xFF; 
+           }
+           else if(buffer[0]==0xE5)
+           {
+               //This file has been deleted
+               //But there might be valid entries after this
+               continue;
+           }
+           else
+           {
+               //This is a valid entry, check if name matches
+               if(strncmp(name, &buffer[0], 8) == 0)
+               {
+                   //Name matches so check if extension matches as well
+                   if(strncmp(extension, &buffer[8], 3) == 0)
+                   {
+                       //Both name and extension match
+                       //We have found the file we're looking for
+                       return slot;
+                   }
+               }
+           }
+           ++slot;
+        }
+        ++slot;
+    }
+    return 0xFF; //Indicating an error, i.e there are no available slots    
+}
+
 uint8_t fat_create_file(char *name, char *extension, uint32_t size)
 {
     uint8_t root_slot;
     rootEntry_t root_entry;
     uint16_t first_cluster;
     
+    //Check if a file with this name already exists in root
+    //Return an error if the file is found
+    if(find_file(name, extension) != 0xFF)
+    {
+        //We found a file with this name and extension
+        //Return an error
+        return 0xFF;
+    }
+    
     //Find an available root slot
-    //root_slot = _get_available_root_entry();
-    root_slot = 2;
+    //Return an error if no slot is available
+    root_slot = _get_available_root_entry();
+    if(root_slot == 0xFF)
+    {
+        //There is no empty slot
+        //Return an error
+        return 0xFE;
+    }
+    
+    //Check if there's enough space for the desired file size
     
     //Find first cluster
-    //first_cluster = _get_available_cluster();
-    first_cluster = 3;
+    first_cluster = _get_available_cluster();
     
     //Prepare root entry
     memcpy(root_entry.fileName, name, 8);
@@ -143,23 +200,20 @@ uint8_t fat_create_file(char *name, char *extension, uint32_t size)
     root_entry.attributes = 0x00;
     root_entry.reserved1 = 0x00;
     root_entry.secondFractions = 0x00;
-    root_entry.createdTimestamp.date = _get_date();
-    root_entry.createdTimestamp.time = _get_time();
-    //_get_timestamp(&root_entry.createdTimestamp);
-    root_entry.lastAccessDate = root_entry.createdTimestamp.date;
+    root_entry.createdTime = _get_time();
+    root_entry.createdDate = _get_date();
+    root_entry.lastAccessDate = root_entry.createdDate;
     root_entry.reserved2 = 0x00;
-    root_entry.modifiedTimestamp.date = _get_date();
-    root_entry.modifiedTimestamp.time = _get_time();
-    //memcpy(&root_entry.modifiedTimestamp, &root_entry.createdTimestamp, 4);
-    //root_entry.modifiedTimestamp = root_entry.createdTimestamp;
-    memcpy(&root_entry.firstCluster, &first_cluster, 2);
-    memcpy(&root_entry.fileSize, &size, 4);
+    root_entry.modifiedTime = root_entry.createdTime;
+    root_entry.modifiedDate = root_entry.createdDate;
+    root_entry.firstCluster = first_cluster;
+    root_entry.fileSize = size;
     
     //Write root entry
     _write_root(root_slot, &root_entry);
     
     //Reserve first cluster
-    //_write_fat(first_cluster, 0xFFFF);
+    _write_fat(first_cluster, 0xFFFF);
     
     return root_slot;
 }

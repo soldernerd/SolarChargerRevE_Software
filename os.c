@@ -248,8 +248,9 @@ static void _system_timer0_init(void)
 
 void system_init(void)
 {
-    char filename[9] = "BIGFILE ";
+    char filename[9] = "FILE    ";
     char extension[4] = "TXT";
+    char appendtext[104] = "Just appended this text! Now this is super-long. it goes on and on and on ... but finally it ends HERE.";
     uint8_t file_number;
     
     //Configure ports
@@ -391,13 +392,25 @@ void system_init(void)
     
     flash_init();
     //fat_format();
+//    file_number = fat_find_file(filename, extension);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+//    fat_append_to_file(file_number, 103, appendtext);
+    //
     //fat_create_file(filename, extension, 1100);
-    file_number = fat_find_file(filename, extension);
-    //file_number = 10;
-    if(file_number!=0xFF)
-    {
-        fat_delete_file(file_number);
-    }
+//    file_number = fat_find_file(filename, extension);
+//    if(file_number!=0xFF)
+//    {
+//        fat_delete_file(file_number);
+//    }
     
     //Buck init
     buck_init();

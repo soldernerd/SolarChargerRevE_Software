@@ -84,6 +84,7 @@ uint32_t fat_get_file_size(uint8_t file_number);
 uint8_t fat_create_file(char *name, char *extension, uint32_t size);
 void fat_delete_file(uint8_t file_number);
 uint16_t fat_get_empty_clusters(uint16_t maximum);
+uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_t *data);
 
 #endif	/* FAT16_H */
 

@@ -22,6 +22,9 @@ static void _write_root(uint8_t slot, rootEntry_t *data);
 static void _read_root(uint8_t slot, rootEntry_t *data);
 static void _delete_root(uint8_t slot);
 static uint16_t _get_first_cluster(uint8_t slot);
+static uint32_t _get_file_size(uint8_t slot);
+static void _write_file_size(uint8_t file_number, uint32_t new_file_size);
+static uint16_t _sector_from_cluster(uint16_t fat_cluster);
 
 uint8_t buffer[512];
 
@@ -244,6 +247,37 @@ static uint16_t _get_first_cluster(uint8_t slot)
     return first_cluster;
 }
 
+static uint32_t _get_file_size(uint8_t slot)
+{
+    uint16_t sector;
+    uint16_t offset;
+    uint32_t file_size;
+    sector = slot >> 4;
+    sector += ROOT_FIRST_SECTOR;
+    offset = slot & 0b1111;
+    offset <<= 5;
+    offset += 28;
+//    flash_partial_write(22, 0, 1, &slot);
+//    flash_partial_write(22, 1, 2, &sector);
+//    flash_partial_write(22, 3, 2, &offset);
+    flash_partial_read(sector, offset, 4, &file_size);
+    //file_size = 0x12345678;
+//    flash_partial_write(22, 5, 4, &file_size);
+    return file_size;
+}
+
+static void _write_file_size(uint8_t file_number, uint32_t new_file_size)
+{
+    uint16_t sector;
+    uint16_t offset;
+    sector = file_number >> 4;
+    sector += ROOT_FIRST_SECTOR;
+    offset = file_number & 0b1111;
+    offset <<= 5;
+    offset += 28;
+    flash_partial_write(sector, offset, 4, &new_file_size);
+}
+
 uint8_t fat_find_file(char *name, char *extension)
 {
     uint8_t slot;
@@ -439,6 +473,99 @@ void fat_delete_file(uint8_t file_number)
     //Now all the clusters are marked as re-usable
     //But the file entry in the root still exists
     _delete_root(file_number);
+}
+
+static uint16_t _sector_from_cluster(uint16_t fat_cluster)
+{
+    return fat_cluster + DATA_FIRST_SECTOR - 2;
+}
+
+uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_t *data)
+{
+    uint32_t file_size;
+    uint16_t fat_cluster;
+    uint16_t new_cluster;
+    uint32_t position;
+    uint16_t offset;
+    uint16_t sector;
+    uint16_t length;
+    
+    //Make sure we have a valid file number
+    if(file_number>=FBR_ROOT_ENTRIES)
+    {
+        //Return an error
+        return 0xFF;
+    }
+    
+    //Check if file is in use
+    if(_root_is_available(file_number))
+    {
+        //Return an error
+        return 0xFE;
+    }
+
+    //Collect data from the root entry
+    file_size = _get_file_size(file_number);
+    fat_cluster = _get_first_cluster(file_number);
+    
+    //file_size = 0x0024 + 24 + 24;
+    //fat_cluster = 0x0002;
+    
+    //First, find right cluster, sector and offset
+    position = 0;
+    while((file_size-position)>512)
+    {
+        fat_cluster = _read_fat(fat_cluster);
+        position += 512;
+    }
+    
+    //Calculate offset
+    offset = file_size - position;
+    
+    //Now we know where to start writing data
+    position = 0;
+    while(position<number_of_bytes)
+    {
+        //Do we need another cluster first?
+        if(offset==512)
+        {
+            //Need to add a new cluster
+            //Find an unused cluster
+            new_cluster = _get_empty_cluster(0x0000);
+            //Update the last cluster to point to that new cluster
+            _write_fat(fat_cluster, new_cluster);
+            //Mark the new cluster as used
+            _write_fat(new_cluster, 0xFFFF);
+            //Reset fat_cluster and offset
+            fat_cluster = new_cluster;
+            offset = 0;
+        }
+        
+        //Get physical flash sector from logical cluster address
+        sector = _sector_from_cluster(fat_cluster);
+        
+        //How much data can we/should we write to the current cluster?
+        length = 512 - offset;
+        if(length>number_of_bytes)
+        {
+            length = number_of_bytes;
+        }
+        
+        //Write that data
+        flash_partial_write(sector, offset, length, &data[position]);
+        
+        //Update position and offset
+        position += length;
+        offset += length;
+    }
+    
+    //Now all the data has been written
+    //But we still need to update the file size in the root entry
+    file_size += number_of_bytes;
+    _write_file_size(file_number, file_size);
+    
+    //Report success
+    return 0x00;
 }
 
 static uint8_t _get_mbr(uint16_t idx)

@@ -15,9 +15,13 @@ static uint16_t _get_time(void);
 static uint16_t _get_date(void);
 //static void _get_timestamp(timestamp_t *timestamp);
 static uint8_t _get_available_root_entry(void);
-static uint16_t _get_available_cluster(void);
+static uint16_t _get_empty_cluster(uint16_t first_cluster);
 static void _write_fat(uint16_t cluster, uint16_t value);
+static uint16_t _read_fat(uint16_t cluster);
 static void _write_root(uint8_t slot, rootEntry_t *data);
+static void _read_root(uint8_t slot, rootEntry_t *data);
+static void _delete_root(uint8_t slot);
+static uint16_t _get_first_cluster(uint8_t slot);
 
 uint8_t buffer[512];
 
@@ -51,12 +55,48 @@ static uint16_t _get_date(void)
 //    (*timestamp).time = _get_time();
 //}
 
+static uint8_t _root_is_available(uint8_t file_number)
+{
+    uint16_t root_sector;
+    uint16_t offset;
+    uint8_t first_byte;
+    
+    //Sanity check
+    //Make sure we have a valid file number
+    if(file_number>=FBR_ROOT_ENTRIES)
+    {
+        //Indicate that root entry is not available
+        return 0;
+    }
+    
+    //Find position of root entry
+    root_sector = (file_number >> 4) + ROOT_FIRST_SECTOR;
+    offset = (file_number & 0b1111);
+    offset <<= 5;
+    
+    //Read the first character of the root entry
+    flash_partial_read(root_sector, offset, 1, &first_byte);   
+    
+    //Check the value of the first byte and return accordingly
+    if((first_byte==0x00) || (first_byte==0xE5))
+    {
+        //Root entry is available
+        return 1;
+    }
+    else
+    {
+        //Root entry is not available
+        return 0;
+    }
+}
+
 static uint8_t _get_available_root_entry(void)
 {
-    uint8_t slot;
-    uint16_t sector;
-    uint16_t offset;
-    uint8_t buffer;
+    uint8_t file_number;
+    //uint16_t sector;
+    //uint16_t offset;
+    //uint8_t buffer;
+    /*
     slot = 0;
     for(sector = ROOT_FIRST_SECTOR; sector <= ROOT_LAST_SECTOR; ++sector)
     {
@@ -71,11 +111,43 @@ static uint8_t _get_available_root_entry(void)
         }
         ++slot;
     }
+    */
+    for(file_number=0; file_number<FBR_ROOT_ENTRIES; ++file_number)
+    {
+        if(_root_is_available(file_number))
+        {
+            return file_number;
+        }
+    }
     return 0xFF; //Indicating an error, i.e there are no available slots
 }
 
-static uint16_t _get_available_cluster(void)
+static uint16_t _get_empty_cluster(uint16_t first_cluster)
 {
+    uint16_t cluster;
+    uint16_t fat_sector;
+    uint16_t offset;
+    uint16_t value;
+    
+    //Start at 2, first two positions are reserved
+    for(cluster=first_cluster; cluster<(DATA_NUMBER_OF_SECTORS+2); ++cluster)
+    {
+        fat_sector = cluster>>8; 
+        fat_sector += FAT_FIRST_SECTOR;
+        offset = cluster & 0xFF;
+        offset <<= 1;
+        flash_partial_read(fat_sector, offset, 2, &value);
+        if(value==0x0000)
+        {
+            return cluster;
+        }
+    }
+    return 0x0000; //Indicating that there are no free clusters
+}
+
+uint16_t fat_get_empty_clusters(uint16_t maximum)
+{
+    uint16_t empty_clusters = 0;
     uint16_t cluster;
     uint16_t fat_sector;
     uint16_t offset;
@@ -91,10 +163,14 @@ static uint16_t _get_available_cluster(void)
         flash_partial_read(fat_sector, offset, 2, &value);
         if(value==0x0000)
         {
-            return cluster;
+            ++empty_clusters;
+            if(empty_clusters==maximum)
+            {
+                return empty_clusters;
+            }
         }
     }
-    return 0x0000; //Indicating that there are no free clusters
+    return empty_clusters;
 }
 
 static void _write_fat(uint16_t cluster, uint16_t value)
@@ -108,6 +184,19 @@ static void _write_fat(uint16_t cluster, uint16_t value)
     flash_partial_write(fat_sector, offset, 2, &value);
 }
 
+static uint16_t _read_fat(uint16_t cluster)
+{
+    uint16_t fat_sector;
+    uint16_t offset;
+    uint16_t value;
+    fat_sector = cluster>>8; 
+    fat_sector += FAT_FIRST_SECTOR;
+    offset = cluster & 0xFF;
+    offset <<= 1;
+    flash_partial_read(fat_sector, offset, 2, &value);
+    return value;
+}
+
 static void _write_root(uint8_t slot, rootEntry_t *data)
 {
     uint16_t root_sector;
@@ -116,10 +205,46 @@ static void _write_root(uint8_t slot, rootEntry_t *data)
     offset = (slot & 0b1111);
     offset <<= 5;
     flash_partial_write(root_sector, offset, 32, data);
-    //flash_partial_write(root_sector, offset, sizeof(rootEntry_t), data);
 }
 
-uint8_t find_file(char *name, char *extension)
+static void _read_root(uint8_t slot, rootEntry_t *data)
+{
+    uint16_t root_sector;
+    uint16_t offset;
+    root_sector = (slot >> 4) + ROOT_FIRST_SECTOR;
+    offset = (slot & 0b1111);
+    offset <<= 5;
+    flash_partial_read(root_sector, offset, 32, data);
+}
+
+static void _delete_root(uint8_t slot)
+{
+    uint16_t root_sector;
+    uint16_t offset;
+    uint8_t deleted_value;
+    
+    root_sector = (slot >> 4) + ROOT_FIRST_SECTOR;
+    offset = (slot & 0b1111);
+    offset <<= 5;
+    deleted_value = 0xE5;
+    flash_partial_write(root_sector, offset, 1, &deleted_value);
+}
+
+static uint16_t _get_first_cluster(uint8_t slot)
+{
+    uint16_t sector;
+    uint16_t offset;
+    uint16_t first_cluster;
+    sector = slot >> 4;
+    sector += ROOT_FIRST_SECTOR;
+    offset = slot & 0b1111;
+    offset <<= 5;
+    offset += 26;
+    flash_partial_read(sector, offset, 2, &first_cluster);
+    return first_cluster;
+}
+
+uint8_t fat_find_file(char *name, char *extension)
 {
     uint8_t slot;
     uint16_t sector;
@@ -141,7 +266,7 @@ uint8_t find_file(char *name, char *extension)
            {
                //This file has been deleted
                //But there might be valid entries after this
-               continue;
+               //Just do nothing
            }
            else
            {
@@ -159,20 +284,37 @@ uint8_t find_file(char *name, char *extension)
            }
            ++slot;
         }
-        ++slot;
     }
     return 0xFF; //Indicating an error, i.e there are no available slots    
+}
+
+uint32_t fat_get_file_size(uint8_t file_number)
+{
+    uint16_t sector;
+    uint16_t offset;
+    uint32_t file_size;
+    sector = file_number >> 4;
+    sector += ROOT_FIRST_SECTOR;
+    offset = file_number;
+    offset <<= 5;
+    offset &= 0b111111111;
+    offset += 28;
+    flash_partial_read(sector, offset, 4, &file_size);
+    return file_size;
 }
 
 uint8_t fat_create_file(char *name, char *extension, uint32_t size)
 {
     uint8_t root_slot;
     rootEntry_t root_entry;
-    uint16_t first_cluster;
+    uint16_t cluster;
+    uint16_t next_cluster;
+    uint16_t number_of_clusters;
+    uint16_t cluster_count;
     
     //Check if a file with this name already exists in root
     //Return an error if the file is found
-    if(find_file(name, extension) != 0xFF)
+    if(fat_find_file(name, extension) != 0xFF)
     {
         //We found a file with this name and extension
         //Return an error
@@ -190,9 +332,16 @@ uint8_t fat_create_file(char *name, char *extension, uint32_t size)
     }
     
     //Check if there's enough space for the desired file size
+    number_of_clusters = (size>>9) + 1;
+    if(fat_get_empty_clusters(number_of_clusters) != number_of_clusters)
+    {
+        //There is not enough space on the drive
+        //Return an error
+        return 0xFD;
+    }
     
-    //Find first cluster
-    first_cluster = _get_available_cluster();
+    //Obtain the first cluster
+    cluster = _get_empty_cluster(2);
     
     //Prepare root entry
     memcpy(root_entry.fileName, name, 8);
@@ -206,16 +355,90 @@ uint8_t fat_create_file(char *name, char *extension, uint32_t size)
     root_entry.reserved2 = 0x00;
     root_entry.modifiedTime = root_entry.createdTime;
     root_entry.modifiedDate = root_entry.createdDate;
-    root_entry.firstCluster = first_cluster;
+    root_entry.firstCluster = cluster;
     root_entry.fileSize = size;
     
     //Write root entry
     _write_root(root_slot, &root_entry);
     
-    //Reserve first cluster
-    _write_fat(first_cluster, 0xFFFF);
-    
+    //Reserve first cluster(s)
+    //This code works but is inefficient since it reserves clusters one a the time
+    //That's probably fine since we rarely if ever need to reserve more than one
+    for(cluster_count=1; cluster_count<=number_of_clusters; ++cluster_count)
+    {
+        
+        if(cluster_count==number_of_clusters)
+        {
+            //This is the last cluster we need to reserve
+            _write_fat(cluster, 0xFFFF);
+        }
+        else
+        {
+            //There are more clusters to be reserved
+            next_cluster = _get_empty_cluster(cluster+1);
+            //Reserve this cluster and place a link to the next cluster
+            _write_fat(cluster, next_cluster);
+            //Prepare for the next loop
+            cluster = next_cluster;
+        }
+    }
     return root_slot;
+}
+
+void fat_delete_file(uint8_t file_number)
+{
+    uint16_t first_cluster;
+    uint16_t next_cluster;
+    
+    //Make sure we have a valid file number
+    if(file_number>=FBR_ROOT_ENTRIES)
+    {
+        //Nothing to be done
+        return;
+    }
+    
+    //Check if file is in use
+    if(_root_is_available(file_number))
+    {
+        //Nothing to be done
+        return;
+    }
+    
+    //Get number of first cluster, i.e where to start
+    first_cluster = _get_first_cluster(file_number);
+    //The last cluster of a chain contains a value above 0xFFF0, usually 0xFFFF
+    //Loop and delete until we reach that final cluster
+    while(1)
+    {
+        //Read value of current cluster
+        //The value points to the next cluster
+        next_cluster = _read_fat(first_cluster);
+        //Some extra checks just in case
+        if(next_cluster>DATA_NUMBER_OF_SECTORS+2)
+        {
+            break;
+        }
+        if(next_cluster<2)
+        {
+            break;
+        }
+        //Mark the current cluster as re-usable
+        _write_fat(first_cluster, 0x0000);
+        //If that cluster contained 0xFFFF (or similar) before, we're done
+        if(next_cluster>0xFFF0)
+        {
+            break;
+        }
+        //We're not done, start again
+        else
+        {
+            first_cluster = next_cluster;
+        }
+    }
+    
+    //Now all the clusters are marked as re-usable
+    //But the file entry in the root still exists
+    _delete_root(file_number);
 }
 
 static uint8_t _get_mbr(uint16_t idx)
@@ -516,7 +739,7 @@ static uint8_t _get_data(uint16_t idx)
 	return 0X00;
 }
 
-void fat_format_flash(void)
+void fat_format(void)
 {
     uint16_t cntr;
     

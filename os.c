@@ -248,8 +248,9 @@ static void _system_timer0_init(void)
 
 void system_init(void)
 {
-    char filename[9] = "TEST2   ";
-    char extension[4] = "CSV";
+    char filename[9] = "BIGFILE ";
+    char extension[4] = "TXT";
+    uint8_t file_number;
     
     //Configure ports
     VCC_HIGH_TRIS = PIN_OUTPUT;
@@ -389,8 +390,14 @@ void system_init(void)
     _system_encoder_init();
     
     flash_init();
-    //fat_format_flash();
-    fat_create_file(filename, extension, 0x0B);
+    //fat_format();
+    //fat_create_file(filename, extension, 1100);
+    file_number = fat_find_file(filename, extension);
+    //file_number = 10;
+    if(file_number!=0xFF)
+    {
+        fat_delete_file(file_number);
+    }
     
     //Buck init
     buck_init();

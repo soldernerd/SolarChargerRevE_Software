@@ -604,6 +604,9 @@ void flash_partial_write(uint16_t page, uint16_t start, uint16_t length, uint8_t
 {
     flashMatchResult_t match;
     
+    //Wait for flash to be ready
+    while(flash_is_busy());
+    
     //Copy data from page to ram buffer 1
     _flash_copy_page_to_buffer(page, FLASH_BUFFER_1); 
     

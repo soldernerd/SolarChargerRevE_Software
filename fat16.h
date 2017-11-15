@@ -14,7 +14,7 @@
 #define FBR_RESERVED_SECTORS 1
 #define FBR_NUMBER_OF_FATS 1
 #define FBR_ROOT_ENTRIES 64
-#define FBR_NUMBER_OF_SECTORS 4095
+#define FBR_NUMBER_OF_SECTORS 4114
 #define FBR_MEDIA_DESCRIPTOR 0XF8
 #define FBR_SECTORS_PER_FAT 16
 #define FBR_SECTORS_PER_HEAD 63
@@ -25,9 +25,9 @@
 #define FBR_SIGNATURE 0X55AA
 
 #define MRB_PARTITION_STATUS 0x80
-#define MBR_PARTITION_TYPE 4
+#define MBR_PARTITION_TYPE 0x04
 #define MBR_FIRST_PARTITION_SECTOR 1
-#define MBR_PARTITION_SIZE 4095
+#define MBR_PARTITION_SIZE 5000
 #define MBR_PARTITION_START_CYLINDER (MBR_FIRST_PARTITION_SECTOR/(FBR_HEADS_PER_CYLINDER*FBR_SECTORS_PER_HEAD))
 #define MBR_PARTITION_START_HEAD ((MBR_FIRST_PARTITION_SECTOR/FBR_SECTORS_PER_HEAD)%FBR_HEADS_PER_CYLINDER)
 #define MBR_PARTITION_START_SECTOR ((MBR_FIRST_PARTITION_SECTOR%FBR_SECTORS_PER_HEAD)+1)
@@ -51,7 +51,7 @@
 #define ROOT_FIRST_SECTOR 18
 #define ROOT_LAST_SECTOR 21
 #define DATA_FIRST_SECTOR 22
-#define DATA_LAST_SECTOR 4095
+#define DATA_LAST_SECTOR 4114
 #define DATA_NUMBER_OF_SECTORS 4074
 
 //typedef struct
@@ -78,9 +78,12 @@ typedef struct
 } rootEntry_t;
 
 
-void fat_format_flash(void);
-uint8_t find_file(char *name, char *extension);
+void fat_format(void);
+uint8_t fat_find_file(char *name, char *extension);
+uint32_t fat_get_file_size(uint8_t file_number);
 uint8_t fat_create_file(char *name, char *extension, uint32_t size);
+void fat_delete_file(uint8_t file_number);
+uint16_t fat_get_empty_clusters(uint16_t maximum);
 
 #endif	/* FAT16_H */
 

@@ -248,10 +248,13 @@ static void _system_timer0_init(void)
 
 void system_init(void)
 {
-    char filename[9] = "FILE    ";
+    char filename[9] = "TEST    ";
     char extension[4] = "TXT";
+    char filename2[9] = "NEWFILE ";
+    char extension2[4] = "TXT";
     char appendtext[104] = "Just appended this text! Now this is super-long. it goes on and on and on ... but finally it ends HERE.";
     uint8_t file_number;
+    uint8_t temp[50];
     
     //Configure ports
     VCC_HIGH_TRIS = PIN_OUTPUT;
@@ -392,8 +395,19 @@ void system_init(void)
     
     flash_init();
     //fat_format();
-//    file_number = fat_find_file(filename, extension);
-//    fat_append_to_file(file_number, 103, appendtext);
+    
+    //Read from first file
+    file_number = fat_find_file(filename, extension);
+    fat_read_from_file(file_number, 5, 10, temp);
+    
+    //Append to second file
+    file_number = fat_find_file(filename2, extension2);
+    fat_append_to_file(file_number, 10, temp);
+    
+    //fat_rename_file(file_number, filename2, extension2);
+    
+    
+    //fat_append_to_file(file_number, 103, appendtext);
 //    fat_append_to_file(file_number, 103, appendtext);
 //    fat_append_to_file(file_number, 103, appendtext);
 //    fat_append_to_file(file_number, 103, appendtext);

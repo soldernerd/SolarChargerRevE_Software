@@ -13,7 +13,7 @@ static uint8_t _get_fat(uint16_t idx);
 static uint8_t _get_root(uint16_t idx);
 static uint16_t _get_time(void);
 static uint16_t _get_date(void);
-//static void _get_timestamp(timestamp_t *timestamp);
+static void _update_modified_time(rootEntry_t *root);
 static uint8_t _get_available_root_entry(void);
 static uint16_t _get_empty_cluster(uint16_t first_cluster);
 static void _write_fat(uint16_t cluster, uint16_t value);
@@ -52,11 +52,11 @@ static uint16_t _get_date(void)
     return date;
 }
 
-//static void _get_timestamp(timestamp_t *timestamp)
-//{
-//    (*timestamp).date = _get_date();
-//    (*timestamp).time = _get_time();
-//}
+static void _update_modified_time(rootEntry_t *root)
+{
+    root->modifiedDate = _get_date();
+    root->modifiedTime = _get_time();
+}
 
 static uint8_t _root_is_available(uint8_t file_number)
 {
@@ -96,25 +96,6 @@ static uint8_t _root_is_available(uint8_t file_number)
 static uint8_t _get_available_root_entry(void)
 {
     uint8_t file_number;
-    //uint16_t sector;
-    //uint16_t offset;
-    //uint8_t buffer;
-    /*
-    slot = 0;
-    for(sector = ROOT_FIRST_SECTOR; sector <= ROOT_LAST_SECTOR; ++sector)
-    {
-        for(offset = 0; offset<512; offset += 32)
-        {
-           flash_partial_read(sector, offset, 1, &buffer);
-           if((buffer==0x00) || (buffer==0xE5))
-           {
-               return slot;
-           }
-           ++slot;
-        }
-        ++slot;
-    }
-    */
     for(file_number=0; file_number<FBR_ROOT_ENTRIES; ++file_number)
     {
         if(_root_is_available(file_number))
@@ -447,15 +428,11 @@ void fat_delete_file(uint8_t file_number)
         //Read value of current cluster
         //The value points to the next cluster
         next_cluster = _read_fat(first_cluster);
-        //Some extra checks just in case
-        if(next_cluster>DATA_NUMBER_OF_SECTORS+2)
-        {
-            break;
-        }
-        if(next_cluster<2)
-        {
-            break;
-        }
+        //An extra checks just in case
+//        if(next_cluster<2)
+//        {
+//            break;
+//        }
         //Mark the current cluster as re-usable
         _write_fat(first_cluster, 0x0000);
         //If that cluster contained 0xFFFF (or similar) before, we're done
@@ -482,6 +459,7 @@ static uint16_t _sector_from_cluster(uint16_t fat_cluster)
 
 uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_t *data)
 {
+    rootEntry_t root;
     uint32_t file_size;
     uint16_t fat_cluster;
     uint16_t new_cluster;
@@ -505,11 +483,9 @@ uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_
     }
 
     //Collect data from the root entry
-    file_size = _get_file_size(file_number);
-    fat_cluster = _get_first_cluster(file_number);
-    
-    //file_size = 0x0024 + 24 + 24;
-    //fat_cluster = 0x0002;
+    _read_root(file_number, &root);
+    file_size = root.fileSize;
+    fat_cluster = root.firstCluster;
     
     //First, find right cluster, sector and offset
     position = 0;
@@ -524,7 +500,7 @@ uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_
     
     //Now we know where to start writing data
     position = 0;
-    while(position<number_of_bytes)
+    while(position < number_of_bytes)
     {
         //Do we need another cluster first?
         if(offset==512)
@@ -560,11 +536,101 @@ uint8_t fat_append_to_file(uint8_t file_number, uint16_t number_of_bytes, uint8_
     }
     
     //Now all the data has been written
-    //But we still need to update the file size in the root entry
-    file_size += number_of_bytes;
-    _write_file_size(file_number, file_size);
-    
+    //But we still need to update the file size and modified date/time in the root entry
+    root.fileSize += number_of_bytes;
+    _update_modified_time(&root);
+    _write_root(file_number, &root);
+
     //Report success
+    return 0x00;
+}
+
+void fat_rename_file(uint8_t file_number, char *name, char *extension)
+{
+    rootEntry_t root;
+    uint8_t cntr;
+    
+    //Obtain a copy of root entry
+    _read_root(file_number, &root);
+    
+    //Change file name
+    for(cntr=0; cntr<8; ++cntr)
+    {
+        root.fileName[cntr] = name[cntr];
+    }
+    
+    //Change extension
+    for(cntr=0; cntr<3; ++cntr)
+    {
+        root.fileExtension[cntr] = extension[cntr];
+    }
+    
+    _write_root(file_number, &root);
+}
+
+uint8_t fat_read_from_file(uint8_t file_number, uint32_t start_byte, uint32_t length, uint8_t *data)
+{
+    rootEntry_t root;
+    uint32_t position;
+    uint16_t cluster;
+    uint16_t offset;
+    uint16_t sector;
+    uint16_t read_length;
+    
+    //Read root entry
+    _read_root(file_number, &root);
+    cluster = root.firstCluster;
+    
+    //Check file size
+    if(start_byte+length > root.fileSize)
+    {
+        //Indicate an error
+        return 0xFF;
+    }
+    
+    //First, find right cluster, sector and offset
+    position = 0;
+    while((start_byte-position) >= 512)
+    {
+        cluster = _read_fat(cluster);
+        position += 512;
+    }
+    
+    //Calculate offset
+    offset = start_byte - position;
+
+    //Now we know where to start reading data
+    position = 0;
+    while(position < length)
+    {
+        //Do we need another cluster first?
+        if(offset==512)
+        {
+            //Need to get the next cluster cluster
+            cluster = _read_fat(cluster);
+            offset = 0;
+        }
+        
+        //Get physical flash sector from logical cluster address
+        sector = _sector_from_cluster(cluster);
+        
+        //How much data can we/should we write to the current cluster?
+        read_length = 512 - offset; //Maximum we can read from this cluster
+        if(read_length > (length-position))
+        {
+            //Just read all remaining bytes
+            read_length = length - position;
+        }
+        
+        //Read that data
+        flash_partial_read(sector, offset, read_length, &data[position]);
+        
+        //Update position and offset
+        position += read_length;
+        offset += read_length;
+    }
+    
+    //Indicate success
     return 0x00;
 }
 

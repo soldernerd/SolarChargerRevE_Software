@@ -23,6 +23,7 @@
       <itemPath>flash.h</itemPath>
       <itemPath>external_flash.h</itemPath>
       <itemPath>fat16.h</itemPath>
+      <itemPath>log.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -52,6 +53,7 @@
       <itemPath>flash.c</itemPath>
       <itemPath>external_flash.c</itemPath>
       <itemPath>fat16.c</itemPath>
+      <itemPath>log.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

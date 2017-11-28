@@ -29,6 +29,7 @@
 #include "adc.h"
 #include "flash.h"
 #include "fat16.h"
+#include "log.h"
 
 
 /********************************************************************
@@ -173,6 +174,12 @@ MAIN_RETURN main(void)
                     
                 case 11:
                     APP_DeviceCustomHIDTasks();
+                    log_collect_data();
+                    if(log_get_number_of_samples() == LOG_PERIOD)
+                    {
+                        log_write_to_disk();
+                        log_start_new();
+                    }
                     break;
 
                 case 12:

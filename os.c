@@ -9,6 +9,7 @@
 #include "ui.h"
 #include "flash.h"
 #include "fat16.h"
+#include "log.h"
 
 
  
@@ -428,6 +429,9 @@ void system_init(void)
     
     //Buck init
     buck_init();
+    
+    //Start data logging
+    log_start_new();
 
 }
 

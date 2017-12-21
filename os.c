@@ -332,7 +332,7 @@ void system_init(void)
     
     //Initialize variables
     os.clockFrequency = CPU_FREQUENCY_48MHz;
-    os.boardVoltage = BOARD_VOLTAGE_LOW;
+    os.boardVoltage = BOARD_VOLTAGE_HIGH;
     os.buckFrequency = BUCK_OFF;
     os.buckDutyCycle = 0;
     os.buckLastStep = -1;
@@ -398,12 +398,12 @@ void system_init(void)
     //fat_format();
     
     //Read from first file
-    file_number = fat_find_file(filename, extension);
-    fat_read_from_file(file_number, 5, 10, temp);
+    //file_number = fat_find_file(filename, extension);
+    //fat_read_from_file(file_number, 5, 10, temp);
     
     //Append to second file
-    file_number = fat_find_file(filename2, extension2);
-    fat_append_to_file(file_number, 10, temp);
+    //file_number = fat_find_file(filename2, extension2);
+    //fat_append_to_file(file_number, 10, temp);
     
     //fat_rename_file(file_number, filename2, extension2);
     

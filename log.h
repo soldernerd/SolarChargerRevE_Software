@@ -10,7 +10,7 @@
 
 #define LOG_FILENAME "LOG     "
 #define LOG_EXTENSION "TXT"
-#define LOG_PERIOD 450
+#define LOG_PERIOD 30
 
 /* Log structure *
  * 32 bytes per entry, 1 entry every 7.5 minutes
@@ -43,7 +43,7 @@
  *      Bit 3: USB charging on
  *      Bit 2: Fan on
  *      Bit 1: USB connected
- *      Bit 0: unused
+ *      Bit 0: User interface active
  * Byte 31: Checksum: All other bytes XOR-ed
  * ****************************************************************************/
 

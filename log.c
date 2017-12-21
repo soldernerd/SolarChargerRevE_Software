@@ -26,11 +26,11 @@ uint32_t inputPowerSum;
 uint32_t outputPowerSum;
 uint32_t inputCapacitySum;
 uint32_t outputCapacitySum;
-uint16_t temperatureOnboardSum;
-uint16_t temperatureExternal1Sum;
-uint16_t temperatureExternal2Sum;
-uint8_t chargerOnTime;
-uint8_t lowPowerTime;
+int32_t temperatureOnboardSum;
+int32_t temperatureExternal1Sum;
+int32_t temperatureExternal2Sum;
+uint16_t chargerOnTime;
+uint16_t lowPowerTime;
 uint8_t status;
 uint16_t averageCount;
 
@@ -45,12 +45,12 @@ static uint32_t _get_dateTime(void)
     uint8_t hours = rtcc_get_hours_decimal();
     uint8_t minutes = rtcc_get_minutes_decimal();
     uint8_t seconds = rtcc_get_seconds_decimal();
-    datetime = ((year&0b111111) << 26);
-    datetime |= ((month&0b1111) << 22);
-    datetime |= (day&0b11111) << 17;
-    datetime |= ((hours&0b11111) << 12);
-    datetime |= ((minutes&0b111111) << 6);
-    datetime |= (seconds&0b11111);
+    datetime = (((uint32_t)(year&0b111111)) << 26);
+    datetime |= (((uint32_t)(month&0b1111)) << 22);
+    datetime |= (((uint32_t)day&0b11111)) << 17;
+    datetime |= (((uint32_t)(hours&0b11111)) << 12);
+    datetime |= (((uint16_t)(minutes&0b111111)) << 6);
+    datetime |= (seconds&0b111111);
     return datetime;
 };
 
@@ -90,8 +90,8 @@ void log_start_new(void)
 
 uint16_t _get_input_power(void)
 {
-    uint32_t pwr;
-    pwr = os.input_voltage * os.input_current;
+    int32_t pwr;
+    pwr = ((int32_t) os.input_voltage) * ((int32_t) os.input_current);
     pwr /= 1000;
     return (uint16_t) pwr;
 }
@@ -99,14 +99,16 @@ uint16_t _get_input_power(void)
 uint16_t _get_output_power(void)
 {
     uint32_t pwr;
-    pwr = os.output_voltage * os.output_current;
+    pwr = ((int32_t) os.output_voltage) * ((int32_t) os.output_current);
     pwr /= 1000;
     return (uint16_t) pwr;
 }
 
 uint8_t _get_temperature(int16_t temperature)
 {
-    return (uint8_t) (temperature+4000) / 100;
+    temperature += 4025;
+    temperature /= 50;
+    return (uint8_t) temperature;
 }
 
 void log_collect_data(void)
@@ -134,9 +136,9 @@ void log_collect_data(void)
     temp = _get_output_power();
     outputPowerSum += temp>>1;
     outputCapacitySum += temp;
-    temperatureOnboardSum += _get_temperature(os.temperature_onboard);
-    temperatureExternal1Sum += _get_temperature(os.temperature_external_1);
-    temperatureExternal2Sum += _get_temperature(os.temperature_external_2);
+    temperatureOnboardSum += os.temperature_onboard;
+    temperatureExternal1Sum += os.temperature_external_1;
+    temperatureExternal2Sum += os.temperature_external_2;
     if(buck_get_mode()&0b01111111)
     {
         ++chargerOnTime;
@@ -178,13 +180,13 @@ void log_generate_entry(logEntry_t *log_entry)
     log_entry->outputCurrent = outputCurrentSum / averageCount;
     log_entry->inputPower = inputPowerSum / averageCount;
     log_entry->outputPower = outputPowerSum / averageCount;
-    log_entry->inputCapacity = inputCapacitySum;
-    log_entry->outputCapacity = outputCapacitySum;
-    log_entry->temperatureOnboard = temperatureOnboardSum / averageCount;
-    log_entry->temperatureExternal1 = temperatureExternal1Sum / averageCount;
-    log_entry->temperatureExternal2 = temperatureExternal2Sum / averageCount;
-    log_entry->chargerOnTime = chargerOnTime;
-    log_entry->lowPowerTime = lowPowerTime;
+    log_entry->inputCapacity = (inputCapacitySum+500) / 1000;
+    log_entry->outputCapacity = (outputCapacitySum+500) / 1000;
+    log_entry->temperatureOnboard = _get_temperature(temperatureOnboardSum/averageCount);
+    log_entry->temperatureExternal1 = _get_temperature(temperatureExternal1Sum/averageCount);
+    log_entry->temperatureExternal2 = _get_temperature(temperatureExternal2Sum/averageCount);
+    log_entry->chargerOnTime = chargerOnTime >> 1;
+    log_entry->lowPowerTime = lowPowerTime >> 1;
     log_entry->unused[0] = 0x00;
     log_entry->unused[1] = 0x00;
     log_entry->unused[2] = 0x00;

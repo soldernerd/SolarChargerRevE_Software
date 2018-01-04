@@ -64,30 +64,71 @@ please contact mla_licensing@microchip.com
 */
 
 /** CONFIGURATION Bits **********************************************/
-#pragma config WDTEN = OFF          //WDT disabled (enabled by SWDTEN bit)
-#pragma config PLLDIV = 2           //Divide by 3 (12 MHz oscillator input)
-#pragma config STVREN = ON          //stack overflow/underflow reset enabled
-#pragma config XINST = OFF          //Extended instruction set disabled
-#pragma config CPUDIV = OSC1        //No CPU system clock divide
-#pragma config CP0 = OFF            //Program memory is not code-protected
-#pragma config OSC = HSPLL          //HS oscillator, PLL enabled, HSPLL used by USB
-#pragma config T1DIG = ON       // T1OSCEN Enforcement (Secondary Oscillator clock source may be selected)
-#pragma config LPT1OSC = OFF    // Low-Power Timer1 Oscillator (High-power operation)
-#pragma config FCMEN = OFF          //Fail-Safe Clock Monitor disabled
-//#pragma config IESO = OFF           //Two-Speed Start-up disabled
+// CONFIG1L
+#pragma config WDTEN = OFF      // Watchdog Timer (Disabled - Controlled by SWDTEN bit)
+#pragma config PLLDIV = 2       // PLL Prescaler Selection (Divide by 2 (8 MHz oscillator input))
+#pragma config CFGPLLEN = ON    // PLL Enable Configuration Bit (PLL Enabled)
+#pragma config STVREN = ON      // Stack Overflow/Underflow Reset (Enabled)
+#pragma config XINST = OFF      // Extended Instruction Set (Disabled)
+//#pragma config WDTEN = OFF          //WDT disabled (enabled by SWDTEN bit)
+//#pragma config PLLDIV = 2           //Divide by 3 (12 MHz oscillator input)
+//#pragma config STVREN = ON          //stack overflow/underflow reset enabled
+//#pragma config XINST = OFF          //Extended instruction set disabled
+
+// CONFIG1H
+#pragma config CPUDIV = OSC1    // CPU System Clock Postscaler (No CPU system clock divide)
+#pragma config CP0 = OFF        // Code Protect (Program memory is not code-protected)
+//#pragma config CPUDIV = OSC1        //No CPU system clock divide
+//#pragma config CP0 = OFF            //Program memory is not code-protected
+
+// CONFIG2L
+#pragma config OSC = HSPLL      // Oscillator (HS+PLL, USB-HS+PLL)
+#pragma config SOSCSEL = HIGH   // T1OSC/SOSC Power Selection Bits (High Power T1OSC/SOSC circuit selected)
+#pragma config CLKOEC = OFF     // EC Clock Out Enable Bit  (CLKO output disabled on the RA6 pin)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor (Disabled)
 #pragma config IESO = ON        // Internal External Oscillator Switch Over Mode (Enabled)
-#pragma config WDTPS = 32768        //1:32768
-#pragma config DSWDTOSC = INTOSCREF //DSWDT uses INTOSC/INTRC as clock
-#pragma config RTCOSC = T1OSCREF    //RTCC uses T1OSC/T1CKI as clock
-#pragma config DSBOREN = OFF        //Zero-Power BOR disabled in Deep Sleep
-#pragma config DSWDTEN = OFF        //Disabled
-#pragma config DSWDTPS = 8192       //1:8,192 (8.5 seconds)
-#pragma config IOL1WAY = OFF        //IOLOCK bit can be set and cleared
-#pragma config MSSP7B_EN = MSK7     //7 Bit address masking
-#pragma config WPFP = PAGE_1        //Write Protect Program Flash Page 0
-#pragma config WPEND = PAGE_0       //Start protection at page 0
-#pragma config WPCFG = OFF          //Write/Erase last page protect Disabled
-#pragma config WPDIS = OFF          //WPFP[5:0], WPEND, and WPCFG bits ignored
+//#pragma config OSC = HSPLL          //HS oscillator, PLL enabled, HSPLL used by USB
+//#pragma config T1DIG = ON       // T1OSCEN Enforcement (Secondary Oscillator clock source may be selected)
+//#pragma config LPT1OSC = OFF    // Low-Power Timer1 Oscillator (High-power operation)
+//#pragma config FCMEN = OFF          //Fail-Safe Clock Monitor disabled
+////#pragma config IESO = OFF           //Two-Speed Start-up disabled
+//#pragma config IESO = ON        // Internal External Oscillator Switch Over Mode (Enabled)
+
+// CONFIG2H
+#pragma config WDTPS = 32768    // Watchdog Postscaler (1:32768)
+//#pragma config WDTPS = 32768        //1:32768
+
+// CONFIG3L
+#pragma config DSWDTOSC = INTOSCREF// DSWDT Clock Select (DSWDT uses INTRC)
+#pragma config RTCOSC = T1OSCREF// RTCC Clock Select (RTCC uses T1OSC/T1CKI)
+#pragma config DSBOREN = OFF    // Deep Sleep BOR (Disabled)
+#pragma config DSWDTEN = OFF    // Deep Sleep Watchdog Timer (Disabled)
+#pragma config DSWDTPS = 8192   // Deep Sleep Watchdog Postscaler (1:8,192 (8.5 seconds))
+//#pragma config DSWDTOSC = INTOSCREF //DSWDT uses INTOSC/INTRC as clock
+//#pragma config RTCOSC = T1OSCREF    //RTCC uses T1OSC/T1CKI as clock
+//#pragma config DSBOREN = OFF        //Zero-Power BOR disabled in Deep Sleep
+//#pragma config DSWDTEN = OFF        //Disabled
+//#pragma config DSWDTPS = 8192       //1:8,192 (8.5 seconds)
+
+// CONFIG3H
+#pragma config IOL1WAY = OFF    // IOLOCK One-Way Set Enable bit (The IOLOCK bit (PPSCON<0>) can be set and cleared as needed)
+#pragma config ADCSEL = BIT10   // ADC 10 or 12 Bit Select (10 - Bit ADC Enabled)
+#pragma config MSSP7B_EN = MSK7 // MSSP address masking (7 Bit address masking mode)
+//#pragma config IOL1WAY = OFF        //IOLOCK bit can be set and cleared
+//#pragma config MSSP7B_EN = MSK7     //7 Bit address masking
+
+// CONFIG4L
+#pragma config WPFP = PAGE_1    // Write/Erase Protect Page Start/End Location (Write Protect Program Flash Page 1)
+#pragma config WPCFG = OFF      // Write/Erase Protect Configuration Region  (Configuration Words page not erase/write-protected)
+//#pragma config WPFP = PAGE_1        //Write Protect Program Flash Page 0
+//#pragma config WPEND = PAGE_0       //Start protection at page 0
+
+// CONFIG4H
+#pragma config WPDIS = OFF      // Write Protect Disable bit (WPFP<6:0>/WPEND region ignored)
+#pragma config WPEND = PAGE_0   // Write/Erase Protect Region Select bit (valid when WPDIS = 0) (Pages 0 through WPFP<6:0> erase/write protected)
+#pragma config LS48MHZ = SYS48X8// Low Speed USB mode with 48 MHz system clock bit (System clock at 48 MHz USB CLKEN divide-by is set to 8)
+//#pragma config WPCFG = OFF          //Write/Erase last page protect Disabled
+//#pragma config WPDIS = OFF          //WPFP[5:0], WPEND, and WPCFG bits ignored
 //#pragma config T1DIG = ON           //Sec Osc clock source may be selected
  
 /*********************************************************************

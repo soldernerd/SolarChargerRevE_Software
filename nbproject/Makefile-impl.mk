@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=SolarCharger_RevC
+PROJECTNAME=SolarCharger_RevE
 
 # Active Configuration
 DEFAULTCONF=default

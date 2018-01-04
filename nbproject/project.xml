@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>SolarCharger_RevC</name>
+            <name>SolarCharger_RevE</name>
             <creation-uuid>f404b41a-7781-42cb-a852-dc0c833ff906</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

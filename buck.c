@@ -64,8 +64,8 @@ static void _buck_pin_init(void)
 static void _buck_timer2_init(void)
 {
     //Use timer2 for CCP1 module
-    //TCLKCONbits.T3CCP2 = 0;
-    TCLKCONbits.T3CCP1 = 0;
+    //TCLKCONbits.T3CCP1 = 0; //This is PIC18F46J50 code
+    CCPTMRS0bits.C1TSEL = 0b000;
     
     //Post scaler = 16
     T2CONbits.T2OUTPS = 0b1111;

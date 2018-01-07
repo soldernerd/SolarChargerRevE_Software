@@ -36,7 +36,7 @@ extern calibration_t calibrationParameters[7];
 uint8_t idx;
 int32_t last;
 int32_t now;
-uint16_t battery_voltage_maximum = 13500;
+int16_t battery_voltage_maximum = 13500;
 
 static void _buck_pin_init(void)
 {
@@ -86,7 +86,7 @@ static uint8_t _buck_initial_dutycycle(void)
         return BUCK_DUTYCYCLE_MAXIMUM;
     dc = (uint32_t) os.output_voltage;
     dc <<= 8;
-    dc /= os.input_voltage;
+    dc /= (uint16_t) os.input_voltage;
     //Put some sane bounds around the duty cycle
     if(dc>BUCK_DUTYCYCLE_MAXIMUM)
         dc = BUCK_DUTYCYCLE_MAXIMUM;
@@ -115,9 +115,9 @@ static void _buck_set_dutycycle(uint8_t dutyCycle)
     //What follows is critical code, we don't want to get interrupted, turn interrupts off
     INTCONbits.GIE = 0;
     //Lowest two bits of duty cycle
-    CCP1CONbits.DC1B = (dutyCycle&0b11);
+    CCP1CONbits.DC1B = (uint8_t) (dutyCycle&0b11);
     //High byte of duty cycle
-    CCPR1L = dutyCycle >> 2;
+    CCPR1L = (uint8_t) (dutyCycle>>2);
     //Re-enable interrupts
     INTCONbits.GIE = 1;
 }
@@ -355,7 +355,7 @@ static void _buck_operate_local(void)
                 //Ensure that maximum battery voltage is not exceeded
                 if(os.output_voltage>battery_voltage_maximum)
                 {
-                    _buck_set_dutycycle(buck_dutycycle-1);
+                    _buck_set_dutycycle((uint8_t)(buck_dutycycle-1));
                     buck_dutycycle_last_step = -1;
                 }
                 //Shut down if current has fallen to (or almost to) zero or panel voltage falls below battery voltage
@@ -367,13 +367,13 @@ static void _buck_operate_local(void)
                 //Ensure a minimum voltage difference (otherwise the bootstrap capacitor will lose its charge)
                 else if (os.input_voltage - os.output_voltage < BUCK_VOLTAGE_DIFFERENCE_MINIMUM)
                 {
-                    _buck_set_dutycycle(buck_dutycycle-1);
+                    _buck_set_dutycycle((uint8_t)(buck_dutycycle-1));
                     buck_dutycycle_last_step = -1;
                 }
                 //Switch to synchronous mode if current exceeds threshold
                 else if (os.input_current>BUCK_ASYNCHRONOUS_INPUT_CURRENT_MAXIMUM)
                 {
-                    tmp_dutycycle = _buck_initial_dutycycle()+5;
+                    tmp_dutycycle = (uint8_t) (_buck_initial_dutycycle()+5);
                     _buck_set_sync_async(BUCK_MODE_SYNCHRONOUS, tmp_dutycycle);
                     //_buck_set_dutycycle();
                     //buck_status = BUCK_STATUS_SYNCHRONOUS;
@@ -382,7 +382,7 @@ static void _buck_operate_local(void)
                 else
                 {
                     //Current power level
-                    idx = os.timeSlot & 0b00110000;
+                    idx = (uint8_t) (os.timeSlot & 0b00110000);
                     idx >>= 4;
                     now = (int32_t)os.input_voltage_adc[idx];
                     now *= (int32_t) os.input_current_adc[idx];

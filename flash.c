@@ -128,10 +128,10 @@ static void _flash_spi_tx(uint8_t *data, uint16_t length)
     DMABCL = LOW_BYTE((uint16_t) (length-1));
     
     //Perform actual transfer
-    SPI_SS_PIN = 0; //Enable slave select pin 
+    SPI_SS1_PIN = 0; //Enable slave select pin 
     DMACON1bits.DMAEN = 1; //Start transfer
     while(DMACON1bits.DMAEN); //Wait for transfer to complete
-    SPI_SS_PIN = 1; //Disable slave select pin 
+    SPI_SS1_PIN = 1; //Disable slave select pin 
 }
 
 //Transmits a number of bytes via SPI using the DMA module
@@ -166,7 +166,7 @@ static void _flash_spi_tx_tx(uint8_t *command, uint16_t command_length, uint8_t 
     DMABCL = LOW_BYTE((uint16_t) (command_length-1));
     
     //Enable slave select pin 
-    SPI_SS_PIN = 0; 
+    SPI_SS1_PIN = 0; 
     
     //Perform transfer of command
     DMACON1bits.DMAEN = 1; //Start transfer
@@ -185,7 +185,7 @@ static void _flash_spi_tx_tx(uint8_t *command, uint16_t command_length, uint8_t 
     while(DMACON1bits.DMAEN); //Wait for transfer to complete
     
     //Disable slave select pin 
-    SPI_SS_PIN = 1;  
+    SPI_SS1_PIN = 1;  
 }
 
 //Transmits and then receives a number of bytes via SPI using the DMA module
@@ -219,7 +219,7 @@ static void _flash_spi_tx_rx(uint8_t *command, uint16_t command_length, uint8_t 
     DMABCL = LOW_BYTE((uint16_t) (command_length-1));
     
     //Enable slave select pin 
-    SPI_SS_PIN = 0; 
+    SPI_SS1_PIN = 0; 
     
     //Perform transfer of command
     DMACON1bits.DMAEN = 1; //Start transfer
@@ -246,7 +246,7 @@ static void _flash_spi_tx_rx(uint8_t *command, uint16_t command_length, uint8_t 
     while(DMACON1bits.DMAEN); //Wait for transfer to complete
     
     //Disable slave select pin 
-    SPI_SS_PIN = 1; 
+    SPI_SS1_PIN = 1; 
 }
 
 /*****************************************************************************
@@ -302,9 +302,9 @@ static void _flash_wakeup(void)
         case FLASH_POWER_STATE_ULTRA_DEEP_POWER_DOWN:
             //Do not need to send a command
             //Just pull ChipSelect low for some minimum amount of time
-            SPI_SS_PIN = 0;
+            SPI_SS1_PIN = 0;
             __delay_us(FLASH_DELAY_WAKEUP_CHIP_SELECT_LOW);
-            SPI_SS_PIN = 1; 
+            SPI_SS1_PIN = 1; 
             __delay_us(FLASH_DELAY_WAKEUP_ULTRA_DEEP_POWER_DOWN);
             power_state = FLASH_POWER_STATE_NORMAL;
             break;

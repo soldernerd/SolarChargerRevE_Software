@@ -282,8 +282,8 @@ void system_init(void)
     //SPI_MISO_ANCON = PIN_DIGITAL;
     SPI_MOSI_TRIS = PIN_OUTPUT;
     SPI_SCLK_TRIS = PIN_OUTPUT;
-    SPI_SS_TRIS = PIN_OUTPUT;
-    SPI_SS_PIN = 1;
+    SPI_SS1_TRIS = PIN_OUTPUT;
+    SPI_SS1_PIN = 1;
     
     //Pins for temperature sensing
     VOLTAGE_REFERENCE_TRIS = PIN_INPUT;

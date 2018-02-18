@@ -170,10 +170,7 @@ static void _ui_encoder(void)
             {
                 if(os.output_voltage>USB_CHARGING_VOLTAGE_MINIMUM)
                 {    
-                    if(USBCHARGER_EN_PORT)
-                        USBCHARGER_EN_PORT = 0;
-                    else
-                        USBCHARGER_EN_PORT = 1;
+                    system_output_toggle(OUTPUT_USB);
                 }
             }
             os.encoderCount = 0;

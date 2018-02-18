@@ -321,7 +321,7 @@ static void _display_usb(void)
     }
     
     cntr = 0;
-    if(USBCHARGER_EN_PORT)
+    if(USBCHARGER_EN_PIN)
     {
         while(usb_on[cntr])
             display_content[3][cntr] = usb_on[cntr++];

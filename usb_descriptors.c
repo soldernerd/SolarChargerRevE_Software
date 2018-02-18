@@ -253,16 +253,14 @@ const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[1];}sd000={
 //Manufacturer string descriptor
 const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[25];}sd001={
 sizeof(sd001),USB_DESCRIPTOR_STRING,
-{'S','o','l','d','e','r','n','e','r','d',
-'.','c','o','m',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '
-}};
+{'S','o','l','d','e','r','n','e','r','d','.','c','o','m',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}
+};
 
 //Product string descriptor
 const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[22];}sd002={
 sizeof(sd002),USB_DESCRIPTOR_STRING,
-{'M','P','P','T','S','o','l','a','r',' ',
-'C','h','a','r','g','e','r',' ','R','e','v','C'
-}};
+{'M','P','P','T','S','o','l','a','r',' ','C','h','a','r','g','e','r',' ','R','e','v','E'}
+};
 
 //Serial number string descriptor.  Note: This should be unique for each unit 
 //built on the assembly line.  Plugging in two units simultaneously with the 

@@ -447,10 +447,6 @@ static void _flash_write_page_from_buffer(uint16_t page, flashBuffer_t buffer)
 //After that, initialize the actual flash chip
 void flash_init(void)
 {
-    #ifdef DEBUG_FLASH
-    uint8_t sector;
-    #endif
-    
     //Associate pins with MSSP module
     PPSUnLock();
     PPS_FUNCTION_SPI2_MISO_INPUT = SPI_MISO_PPS;
@@ -458,7 +454,6 @@ void flash_init(void)
     //Careful: Clock needs to be mapped as an output AND an input
     SPI_SCLK_PPS_OUT = PPS_FUNCTION_SPI2_SCLK_OUTPUT;
     PPS_FUNCTION_SPI2_SCLK_INPUT = SPI_SCLK_PPS_IN;
-    //SPI_SS_PPS = PPS_FUNCTION_SPI2_SS_OUTPUT;
     PPSLock();
     
     //Configure and enable MSSP module
@@ -473,15 +468,6 @@ void flash_init(void)
     
     //Configure flash to operate in 512byte page size mode
     _flash_set_page_size(FLASH_PAGE_SIZE_512);
-    
-    //Copy data from internal flash at startup
-    //DEBUG ONLY
-    #ifdef DEBUG_FLASH
-    for(sector=0;sector<18;++sector)
-    {
-        _flash_copy_from_internal(sector, sector);
-    }
-    #endif
 }
 
 //Check if flash is currently busy

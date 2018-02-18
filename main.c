@@ -58,8 +58,6 @@ MAIN_RETURN main(void)
 
     USBDeviceInit();
     USBDeviceAttach();
-    
-    
 
     while(1)
     {

@@ -259,10 +259,10 @@ void system_init(void)
     
     //Configure ports
     VCC_HIGH_TRIS = PIN_OUTPUT;
-    PWR_GOOD_TRIS = PIN_INPUT;
     DISP_EN_TRIS = PIN_OUTPUT;
+    
     USBCHARGER_EN_TRIS = PIN_OUTPUT;
-    USBCHARGER_EN_PORT = 0;
+    USBCHARGER_EN_PIN = 0;
     
     //Fan output
     FANOUT_PIN = 0;
@@ -279,7 +279,6 @@ void system_init(void)
     
     //SPI Pins
     SPI_MISO_TRIS = PIN_INPUT;
-    //SPI_MISO_ANCON = PIN_DIGITAL;
     SPI_MOSI_TRIS = PIN_OUTPUT;
     SPI_SCLK_TRIS = PIN_OUTPUT;
     SPI_SS1_TRIS = PIN_OUTPUT;
@@ -507,8 +506,10 @@ void system_output_toggle(outputs_t output)
 
 void system_output_on(outputs_t output)
 {
+    //Update variable
     os.outputs |= output;
     
+    //Turn output on
     switch(output)
     {
         case OUTPUT_1:
@@ -528,19 +529,17 @@ void system_output_on(outputs_t output)
             PWROUT_CH4_PIN = 0; 
             break;
         case OUTPUT_USB:
-            //i2c_expander_high(I2C_EXPANDER_USB_CHARGER);
+            USBCHARGER_EN_PIN = 1; 
             break;
     }      
 }
 
 void system_output_off(outputs_t output)
 {
+    //Update variable
     os.outputs &= (~output);
-    if(!(os.outputs&(OUTPUT_1 | OUTPUT_2 | OUTPUT_3 | OUTPUT_4)))
-    {
-        PWROUT_ENABLE_PIN = 0;
-    }
-        
+      
+    //Turn output off
     switch(output)
     {
         case OUTPUT_1:
@@ -556,8 +555,15 @@ void system_output_off(outputs_t output)
             PWROUT_CH4_PIN = 1;  
             break;
         case OUTPUT_USB:
+            USBCHARGER_EN_PIN = 0; 
             break;
     }     
+    
+    //Turn off mosfet drivers if all outputs are off
+    if(!(os.outputs&(OUTPUT_1 | OUTPUT_2 | OUTPUT_3 | OUTPUT_4)))
+    {
+        PWROUT_ENABLE_PIN = 0;
+    }
 }
 
 
@@ -597,40 +603,44 @@ void system_calculate_output_voltage()
 
 void system_calculate_input_current()
 {
-    int32_t tmp = (int32_t) (os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3]);
-    tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration; 
-    tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Offset; 
-    tmp *= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Multiplier;
-    tmp >>= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Shift - 1;
-    tmp += 1;
-    tmp >>= 1;
-    os.input_current = (int16_t) tmp;
-    /*
-    float tmp = 0.7142857 * 0.25 * 1.00000;
-    int16_t adc_sum = os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3];
-    adc_sum -= os.input_current_calibration;
-    tmp *= adc_sum;
-    os.input_current = (int16_t) tmp;
-     * */
+    int32_t tmp;
+
+    if((buck_get_mode()==BUCK_STATUS_OFF) || (buck_get_mode()==BUCK_STATUS_REMOTE_OFF))
+    {
+        os.input_current = 0;
+    }
+    else
+    {
+        tmp = (int32_t) (os.input_current_adc[0] + os.input_current_adc[1] + os.input_current_adc[2] + os.input_current_adc[3]);
+        tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].AutoCalibration; 
+        tmp += calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Offset; 
+        tmp *= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Multiplier;
+        tmp >>= calibrationParameters[CALIBRATION_INDEX_INPUT_CURRENT].Shift - 1;
+        tmp += 1;
+        tmp >>= 1;
+        os.input_current = (int16_t) tmp;
+    }
 }
 
 void system_calculate_output_current()
 {
-    int32_t tmp = (int32_t) (os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3]);
-    tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration;
-    tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Offset; 
-    tmp *= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Multiplier;
-    tmp >>= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Shift - 1;
-    tmp += 1;
-    tmp >>= 1;
-    os.output_current = (int16_t) tmp;
-    /*
-    float tmp = 0.7142857 * 0.25 * 1.00000;
-    int16_t adc_sum = os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3];
-    adc_sum -= os.output_current_calibration;
-    tmp *= adc_sum;
-    os.output_current = (int16_t) tmp;
-     * */
+    int32_t tmp;
+    
+    if((buck_get_mode()==BUCK_STATUS_OFF) || (buck_get_mode()==BUCK_STATUS_REMOTE_OFF))
+    {
+        os.output_current = 0;
+    }
+    else
+    {
+        tmp = (int32_t) (os.output_current_adc[0] + os.output_current_adc[1] + os.output_current_adc[2] + os.output_current_adc[3]);
+        tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].AutoCalibration;
+        tmp += calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Offset; 
+        tmp *= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Multiplier;
+        tmp >>= calibrationParameters[CALIBRATION_INDEX_OUTPUT_CURRENT].Shift - 1;
+        tmp += 1;
+        tmp >>= 1;
+        os.output_current = (int16_t) tmp;
+    }
 }
 
 

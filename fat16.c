@@ -990,5 +990,4 @@ void fat_format(void)
         buffer[cntr] = _get_data(cntr);
     }
     flash_page_write(22, buffer);
-    
 }

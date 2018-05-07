@@ -1,0 +1,5338 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F47J53 ]
+[d frameptr 4065 ]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8724 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8744 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8729 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"141 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[e E8447 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"713
+[e E8388 . `ui
+EVENT_NONE 0
+EVENT_DEVICE_STACK_BASE 1
+EVENT_HOST_STACK_BASE 100
+EVENT_HUB_ATTACH 101
+EVENT_STALL 102
+EVENT_VBUS_SES_REQUEST 103
+EVENT_VBUS_OVERCURRENT 104
+EVENT_VBUS_REQUEST_POWER 105
+EVENT_VBUS_RELEASE_POWER 106
+EVENT_VBUS_POWER_AVAILABLE 107
+EVENT_UNSUPPORTED_DEVICE 108
+EVENT_CANNOT_ENUMERATE 109
+EVENT_CLIENT_INIT_ERROR 110
+EVENT_OUT_OF_MEMORY 111
+EVENT_UNSPECIFIED_ERROR 112
+EVENT_DETACH 113
+EVENT_TRANSFER 114
+EVENT_SOF 115
+EVENT_RESUME 116
+EVENT_SUSPEND 117
+EVENT_RESET 118
+EVENT_DATA_ISOC_READ 119
+EVENT_DATA_ISOC_WRITE 120
+EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION 121
+EVENT_1MS 122
+EVENT_ALT_INTERFACE 123
+EVENT_HOLD_BEFORE_CONFIGURATION 124
+EVENT_GENERIC_BASE 400
+EVENT_MSD_BASE 500
+EVENT_HID_BASE 600
+EVENT_PRINTER_BASE 700
+EVENT_CDC_BASE 800
+EVENT_CHARGER_BASE 900
+EVENT_AUDIO_BASE 1000
+EVENT_USER_BASE 10000
+EVENT_BUS_ERROR 32767
+]
+"2019
+[e E8456 . `uc
+EVENT_CONFIGURED 1
+EVENT_SET_DESCRIPTOR 2
+EVENT_EP0_REQUEST 3
+EVENT_ATTACH 4
+EVENT_TRANSFER_TERMINATED 5
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8716 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8736 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8721 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"166 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[e E8833 . `uc
+MEDIA_NO_ERROR 0
+MEDIA_DEVICE_NOT_PRESENT 1
+MEDIA_CANNOT_INITIALIZE 2
+]
+"342
+[e E285 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8733 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8753 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8738 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+[e E8119 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8139 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8124 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"55 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_events.c
+[e E8437 . `ui
+EVENT_NONE 0
+EVENT_DEVICE_STACK_BASE 1
+EVENT_HOST_STACK_BASE 100
+EVENT_HUB_ATTACH 101
+EVENT_STALL 102
+EVENT_VBUS_SES_REQUEST 103
+EVENT_VBUS_OVERCURRENT 104
+EVENT_VBUS_REQUEST_POWER 105
+EVENT_VBUS_RELEASE_POWER 106
+EVENT_VBUS_POWER_AVAILABLE 107
+EVENT_UNSUPPORTED_DEVICE 108
+EVENT_CANNOT_ENUMERATE 109
+EVENT_CLIENT_INIT_ERROR 110
+EVENT_OUT_OF_MEMORY 111
+EVENT_UNSPECIFIED_ERROR 112
+EVENT_DETACH 113
+EVENT_TRANSFER 114
+EVENT_SOF 115
+EVENT_RESUME 116
+EVENT_SUSPEND 117
+EVENT_RESET 118
+EVENT_DATA_ISOC_READ 119
+EVENT_DATA_ISOC_WRITE 120
+EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION 121
+EVENT_1MS 122
+EVENT_ALT_INTERFACE 123
+EVENT_HOLD_BEFORE_CONFIGURATION 124
+EVENT_GENERIC_BASE 400
+EVENT_MSD_BASE 500
+EVENT_HID_BASE 600
+EVENT_PRINTER_BASE 700
+EVENT_CDC_BASE 800
+EVENT_CHARGER_BASE 900
+EVENT_AUDIO_BASE 1000
+EVENT_USER_BASE 10000
+EVENT_BUS_ERROR 32767
+]
+"78
+[e E8228 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"56
+[e E8505 . `uc
+EVENT_CONFIGURED 1
+EVENT_SET_DESCRIPTOR 2
+EVENT_EP0_REQUEST 3
+EVENT_ATTACH 4
+EVENT_TRANSFER_TERMINATED 5
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8119 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8139 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8124 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"57 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\main.c
+[e E8228 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"95
+[e E8130 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"112
+[e E8214 . `uc
+ADC_CHANNEL_TEMPERATURE_ONBOARD 0
+ADC_CHANNEL_TEMPERATURE_EXTERNAL_1 1
+ADC_CHANNEL_TEMPERATURE_EXTERNAL_2 2
+]
+"120
+[e E9387 . `uc
+I2C_ADC_OUTPUT_VOLTAGE 0
+I2C_ADC_OUTPUT_CURRENT 1
+I2C_ADC_INPUT_CURRENT 2
+I2C_ADC_INPUT_VOLTAGE 3
+]
+[e E9393 . `uc
+I2C_ADC_RESOLUTION_12BIT 0
+I2C_ADC_RESOLUTION_14BIT 1
+I2C_ADC_RESOLUTION_16BIT 2
+I2C_ADC_RESOLUTION_18BIT 3
+]
+[e E9399 . `uc
+I2C_ADC_GAIN_1 0
+I2C_ADC_GAIN_2 1
+I2C_ADC_GAIN_4 2
+I2C_ADC_GAIN_8 3
+]
+"138
+[e E9488 . `uc
+USER_INTERFACE_STATUS_OFF 0
+USER_INTERFACE_STATUS_STARTUP_1 1
+USER_INTERFACE_STATUS_STARTUP_2 2
+USER_INTERFACE_STATUS_STARTUP_3 3
+USER_INTERFACE_STATUS_STARTUP_4 4
+USER_INTERFACE_STATUS_ON 5
+]
+"153
+[e E9570 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"197
+[e E8143 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8119 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8139 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8124 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"147 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
+[e E8228 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8732 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8752 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8737 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"115 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[e E285 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"203
+[e E9081 . `uc
+COMMAND_TOGGLE_LED 128
+COMMAND_GET_BUTTON_STATUS 129
+COMMAND_READ_POTENTIOMETER 55
+COMMAND_GET_STATUS 16
+COMMAND_GET_DISPLAY_1 17
+COMMAND_GET_DISPLAY_2 18
+COMMAND_GET_CALIBRATION_1 19
+COMMAND_GET_CALIBRATION_2 20
+]
+"306
+[e E9042 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"326
+[e E8848 . `uc
+USER_INTERFACE_STATUS_OFF 0
+USER_INTERFACE_STATUS_STARTUP_1 1
+USER_INTERFACE_STATUS_STARTUP_2 2
+USER_INTERFACE_STATUS_STARTUP_3 3
+USER_INTERFACE_STATUS_STARTUP_4 4
+USER_INTERFACE_STATUS_ON 5
+]
+"381
+[e E8756 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"403
+[e E8743 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"527
+[e E8901 . `uc
+EEPROM_WRITE_TASK_NONE 0
+EEPROM_WRITE_TASK_REAL_TIME_CLOCK 1
+EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE 2
+EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_VOLTAGE 3
+EEPROM_WRITE_TASK_CALIBRATION_INPUT_CURRENT 4
+EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_CURRENT 5
+EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE 6
+EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1 7
+EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2 8
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8119 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8139 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8124 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"34 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
+[e E8833 . `uc
+MEDIA_NO_ERROR 0
+MEDIA_DEVICE_NOT_PRESENT 1
+MEDIA_CANNOT_INITIALIZE 2
+]
+"115
+[e E8496 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8118 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8138 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8123 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"338 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[e E8099 . `uc
+DISPLAY_MODE_OVERVIEW 0
+DISPLAY_MODE_DATETIME_OVERVIEW 16
+DISPLAY_MODE_DATETIME_YEAR 17
+DISPLAY_MODE_DATETIME_MONTH 18
+DISPLAY_MODE_DATETIME_DAY 19
+DISPLAY_MODE_DATETIME_HOURS 20
+DISPLAY_MODE_DATETIME_MINUTES 21
+DISPLAY_MODE_DATETIME_SECONDS 22
+DISPLAY_MODE_USB_CHARGER 32
+DISPLAY_MODE_OUTPUTS 48
+DISPLAY_MODE_OUTPUTS_1 49
+DISPLAY_MODE_OUTPUTS_2 50
+DISPLAY_MODE_OUTPUTS_3 51
+DISPLAY_MODE_OUTPUTS_4 52
+DISPLAY_MODE_CHARGER_DETAILS 64
+DISPLAY_MODE_EFFICIENCY 80
+DISPLAY_MODE_TEMPERATURE 96
+]
+"492
+[e E8129 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"573
+[e E8142 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"608
+[e E8408 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8118 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8138 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8123 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"19 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[e E8213 . `uc
+I2C_FREQUENCY_100kHz 0
+I2C_FREQUENCY_200kHz 1
+I2C_FREQUENCY_400kHz 2
+]
+"22
+[e E8252 . `uc
+EEPROM_WRITE_TASK_NONE 0
+EEPROM_WRITE_TASK_REAL_TIME_CLOCK 1
+EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE 2
+EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_VOLTAGE 3
+EEPROM_WRITE_TASK_CALIBRATION_INPUT_CURRENT 4
+EEPROM_WRITE_TASK_CALIBRATION_OUTPUT_CURRENT 5
+EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE 6
+EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1 7
+EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2 8
+]
+"468
+[e E8224 . `uc
+I2C_ADC_OUTPUT_VOLTAGE 0
+I2C_ADC_OUTPUT_CURRENT 1
+I2C_ADC_INPUT_CURRENT 2
+I2C_ADC_INPUT_VOLTAGE 3
+]
+[e E8230 . `uc
+I2C_ADC_RESOLUTION_12BIT 0
+I2C_ADC_RESOLUTION_14BIT 1
+I2C_ADC_RESOLUTION_16BIT 2
+I2C_ADC_RESOLUTION_18BIT 3
+]
+[e E8236 . `uc
+I2C_ADC_GAIN_1 0
+I2C_ADC_GAIN_2 1
+I2C_ADC_GAIN_4 2
+I2C_ADC_GAIN_8 3
+]
+"585
+[e E8142 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8118 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8138 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8123 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[e E8386 . `uc
+USER_INTERFACE_STATUS_OFF 0
+USER_INTERFACE_STATUS_STARTUP_1 1
+USER_INTERFACE_STATUS_STARTUP_2 2
+USER_INTERFACE_STATUS_STARTUP_3 3
+USER_INTERFACE_STATUS_STARTUP_4 4
+USER_INTERFACE_STATUS_ON 5
+]
+"24
+[e E8099 . `uc
+DISPLAY_MODE_OVERVIEW 0
+DISPLAY_MODE_DATETIME_OVERVIEW 16
+DISPLAY_MODE_DATETIME_YEAR 17
+DISPLAY_MODE_DATETIME_MONTH 18
+DISPLAY_MODE_DATETIME_DAY 19
+DISPLAY_MODE_DATETIME_HOURS 20
+DISPLAY_MODE_DATETIME_MINUTES 21
+DISPLAY_MODE_DATETIME_SECONDS 22
+DISPLAY_MODE_USB_CHARGER 32
+DISPLAY_MODE_OUTPUTS 48
+DISPLAY_MODE_OUTPUTS_1 49
+DISPLAY_MODE_OUTPUTS_2 50
+DISPLAY_MODE_OUTPUTS_3 51
+DISPLAY_MODE_OUTPUTS_4 52
+DISPLAY_MODE_CHARGER_DETAILS 64
+DISPLAY_MODE_EFFICIENCY 80
+DISPLAY_MODE_TEMPERATURE 96
+]
+"173
+[e E8129 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8329 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8349 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8334 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"112 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[e E8310 . `uc
+DISPLAY_MODE_OVERVIEW 0
+DISPLAY_MODE_DATETIME_OVERVIEW 16
+DISPLAY_MODE_DATETIME_YEAR 17
+DISPLAY_MODE_DATETIME_MONTH 18
+DISPLAY_MODE_DATETIME_DAY 19
+DISPLAY_MODE_DATETIME_HOURS 20
+DISPLAY_MODE_DATETIME_MINUTES 21
+DISPLAY_MODE_DATETIME_SECONDS 22
+DISPLAY_MODE_USB_CHARGER 32
+DISPLAY_MODE_OUTPUTS 48
+DISPLAY_MODE_OUTPUTS_1 49
+DISPLAY_MODE_OUTPUTS_2 50
+DISPLAY_MODE_OUTPUTS_3 51
+DISPLAY_MODE_OUTPUTS_4 52
+DISPLAY_MODE_CHARGER_DETAILS 64
+DISPLAY_MODE_EFFICIENCY 80
+DISPLAY_MODE_TEMPERATURE 96
+]
+"166
+[e E8597 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"363
+[e E8340 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E110 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E130 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E115 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+[e E8152 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8172 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8157 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[e E8099 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"144
+[e E8109 . `uc
+BUCK_MODE_ASYNCHRONOUS 0
+BUCK_MODE_SYNCHRONOUS 1
+]
+"149
+[e E8176 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8118 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8138 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8123 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"31 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
+[e E8221 . `uc
+ADC_CHANNEL_TEMPERATURE_ONBOARD 0
+ADC_CHANNEL_TEMPERATURE_EXTERNAL_1 1
+ADC_CHANNEL_TEMPERATURE_EXTERNAL_2 2
+]
+"75
+[e E8142 . `uc
+CALIBRATION_INDEX_INPUT_VOLTAGE 0
+CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
+CALIBRATION_INDEX_INPUT_CURRENT 2
+CALIBRATION_INDEX_OUTPUT_CURRENT 3
+CALIBRATION_INDEX_ONBOARD_TEMPERATURE 4
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
+CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
+CALIBRATION_INDEX_COUNT 7
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8203 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8223 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8208 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"90 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[e E8298 . `uc
+FLASH_POWER_STATE_NORMAL 0
+FLASH_POWER_STATE_DEEP_POWER_DOWN 1
+FLASH_POWER_STATE_ULTRA_DEEP_POWER_DOWN 2
+]
+"261
+[e E8327 . `uc
+FLASH_PAGE_SIZE_512 0
+FLASH_PAGE_SIZE_528 1
+]
+"316
+[e E8331 . `uc
+FLASH_BUFFER_1 0
+FLASH_BUFFER_2 1
+]
+"338
+[e E8335 . `uc
+DATA_DOES_MATCH 0
+DATA_DOES_NOT_MATCH 1
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8203 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8223 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8208 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"8 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[e E8321 . `uc
+MEDIA_NO_ERROR 0
+MEDIA_DEVICE_NOT_PRESENT 1
+MEDIA_CANNOT_INITIALIZE 2
+]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8203 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8223 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8208 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+[e E8118 . `uc
+CPU_FREQUENCY_32kHz 0
+CPU_FREQUENCY_8MHz 1
+CPU_FREQUENCY_48MHz 2
+]
+[e E8138 . `uc
+BOARD_VOLTAGE_LOW 0
+BOARD_VOLTAGE_HIGH 1
+]
+[e E8123 . `uc
+BUCK_OFF 0
+BUCK_FREQUENCY_62500 1
+BUCK_FREQUENCY_93750 2
+BUCK_FREQUENCY_187500 3
+]
+"142 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[e E8353 . `uc
+BUCK_STATUS_OFF 0
+BUCK_STATUS_STARTUP 1
+BUCK_STATUS_ASYNCHRONOUS 2
+BUCK_STATUS_SYNCHRONOUS 3
+BUCK_STATUS_REMOTE_OFF 128
+BUCK_STATUS_REMOTE_STARTUP 129
+BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
+BUCK_STATUS_REMOTE_SYNCHRONOUS 131
+]
+"150
+[e E8129 . `uc
+OUTPUT_1 1
+OUTPUT_2 2
+OUTPUT_3 4
+OUTPUT_4 8
+OUTPUT_ALL 15
+OUTPUT_USB 16
+OUTPUT_FAN 32
+]
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
+[v _adc_init adc_init `(v  1 e 1 0 ]
+"20
+[v _adc_calibrate adc_calibrate `(v  1 e 1 0 ]
+"30
+[v _adc_read adc_read `(ui  1 e 2 0 ]
+"74
+[v _adc_calculate_temperature adc_calculate_temperature `(i  1 e 2 0 ]
+"81 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDInitialize APP_DeviceCustomHIDInitialize `(v  1 e 1 0 ]
+"108
+[v _APP_DeviceCustomHIDTasks APP_DeviceCustomHIDTasks `(v  1 e 1 0 ]
+"269
+[v __fill_buffer_get_status _fill_buffer_get_status `(v  1 s 1 _fill_buffer_get_status ]
+"331
+[v __fill_buffer_get_display1 _fill_buffer_get_display1 `(v  1 s 1 _fill_buffer_get_display1 ]
+"353
+[v __fill_buffer_get_display2 _fill_buffer_get_display2 `(v  1 s 1 _fill_buffer_get_display2 ]
+"376
+[v __fill_buffer_get_calibration1 _fill_buffer_get_calibration1 `(v  1 s 1 _fill_buffer_get_calibration1 ]
+"388
+[v __fill_buffer_get_calibration2 _fill_buffer_get_calibration2 `(v  1 s 1 _fill_buffer_get_calibration2 ]
+"398
+[v __parse_command_short _parse_command_short `(v  1 s 1 _parse_command_short ]
+"453
+[v __parse_command_long _parse_command_long `(v  1 s 1 _parse_command_long ]
+"505
+[v __parse_command_calibration _parse_command_calibration `(v  1 s 1 _parse_command_calibration ]
+"84 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
+[v _APP_DeviceMSDInitialize APP_DeviceMSDInitialize `(v  1 e 1 0 ]
+"110
+[v _APP_DeviceMSDTasks APP_DeviceMSDTasks `(v  1 e 1 0 ]
+"41 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v __buck_pin_init _buck_pin_init `(v  1 s 1 _buck_pin_init ]
+"64
+[v __buck_timer2_init _buck_timer2_init `(v  1 s 1 _buck_timer2_init ]
+"81
+[v __buck_initial_dutycycle _buck_initial_dutycycle `(uc  1 s 1 _buck_initial_dutycycle ]
+"98
+[v __buck_set_dutycycle _buck_set_dutycycle `(v  1 s 1 _buck_set_dutycycle ]
+"125
+[v __buck_prepare _buck_prepare `(v  1 s 1 _buck_prepare ]
+"143
+[v __buck_start _buck_start `(v  1 s 1 _buck_start ]
+"217
+[v __buck_set_sync_async _buck_set_sync_async `(v  1 s 1 _buck_set_sync_async ]
+"283
+[v __buck_stop _buck_stop `(v  1 s 1 _buck_stop ]
+"308
+[v __buck_operate_local _buck_operate_local `(v  1 s 1 _buck_operate_local ]
+"453
+[v __buck_operate_remote _buck_operate_remote `(v  1 s 1 _buck_operate_remote ]
+"543
+[v _buck_init buck_init `(v  1 e 1 0 ]
+"550
+[v _buck_operate buck_operate `(v  1 e 1 0 ]
+"592
+[v _buck_get_dutycycle buck_get_dutycycle `(uc  1 e 1 0 ]
+"597
+[v _buck_get_mode buck_get_mode `(E9570  1 e 1 0 ]
+"605
+[v _buck_remote_set_enable buck_remote_set_enable `(v  1 e 1 0 ]
+"613
+[v _buck_remote_set_on buck_remote_set_on `(v  1 e 1 0 ]
+"621
+[v _buck_remote_set_synchronous buck_remote_set_synchronous `(v  1 e 1 0 ]
+"629
+[v _buck_remote_set_dutycycle buck_remote_set_dutycycle `(v  1 e 1 0 ]
+"639
+[v _buck_remote_change_dutycycle buck_remote_change_dutycycle `(v  1 e 1 0 ]
+"650
+[v _buck_remote_get_status buck_remote_get_status `(uc  1 e 1 0 ]
+"662
+[v _buck_remote_get_dutycycle buck_remote_get_dutycycle `(uc  1 e 1 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"42 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\itoa.c
+[v _itoa itoa `(*.39uc  1 e 2 0 ]
+"17
+[v _utoa utoa `(*.39uc  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+[v i2_memcpy memcpy `(*.39v  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 2 0 ]
+[v i2_memset memset `(*.39v  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"23 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v _display_get_character display_get_character `(uc  1 e 1 0 ]
+"28
+[v __display_clear _display_clear `(v  1 s 1 _display_clear ]
+"41
+[v __display_itoa _display_itoa `(v  1 s 1 _display_itoa ]
+"108
+[v _display_prepare display_prepare `(v  1 e 1 0 ]
+"141
+[v __display_inout _display_inout `(v  1 s 1 _display_inout ]
+"174
+[v _display_update display_update `(v  1 e 1 0 ]
+"186
+[v __display_time _display_time `(v  1 s 1 _display_time ]
+"303
+[v __display_usb _display_usb `(v  1 s 1 _display_usb ]
+"336
+[v __display_outputs _display_outputs `(v  1 s 1 _display_outputs ]
+"405
+[v __display_charger _display_charger `(v  1 s 1 _display_charger ]
+"475
+[v __display_efficiency _display_efficiency `(v  1 s 1 _display_efficiency ]
+"513
+[v __display_temperature _display_temperature `(v  1 s 1 _display_temperature ]
+"35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fileio_media.h
+"39
+"42
+[s S2252 . 1 `uc 1 sectorSize 1 0 :1:0 
+`uc 1 maxLUN 1 0 :1:1 
+]
+"10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
+[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[v _ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
+"35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fileio_media.h
+"39
+"42
+[s S2252 . 1 `uc 1 sectorSize 1 0 :1:0 
+`uc 1 maxLUN 1 0 :1:1 
+]
+"10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
+[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[v i2_ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
+"18
+[v _ExternalFlash_SectorSizeRead ExternalFlash_SectorSizeRead `(ui  1 e 2 0 ]
+"24
+[v _ExternalFlash_CapacityRead ExternalFlash_CapacityRead `(ul  1 e 4 0 ]
+"29
+[v _ExternalFlash_MediaDetect ExternalFlash_MediaDetect `(uc  1 e 1 0 ]
+[v i2_ExternalFlash_MediaDetect ExternalFlash_MediaDetect `(uc  1 e 1 0 ]
+"34
+[v _ExternalFlash_WriteProtectStateGet ExternalFlash_WriteProtectStateGet `(uc  1 e 1 0 ]
+"64
+[v _ExternalFlash_SectorRead ExternalFlash_SectorRead `(uc  1 e 1 0 ]
+"104
+[v _ExternalFlash_SectorWrite ExternalFlash_SectorWrite `(uc  1 e 1 0 ]
+"31 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v __get_time _get_time `(ui  1 s 2 _get_time ]
+"43
+[v __get_date _get_date `(ui  1 s 2 _get_date ]
+"55
+[v __update_modified_time _update_modified_time `(v  1 s 1 _update_modified_time ]
+"61
+[v __root_is_available _root_is_available `(uc  1 s 1 _root_is_available ]
+"96
+[v __get_available_root_entry _get_available_root_entry `(uc  1 s 1 _get_available_root_entry ]
+"109
+[v __get_empty_cluster _get_empty_cluster `(ui  1 s 2 _get_empty_cluster ]
+"132
+[v _fat_get_empty_clusters fat_get_empty_clusters `(ui  1 e 2 0 ]
+"160
+[v __write_fat _write_fat `(v  1 s 1 _write_fat ]
+"171
+[v __read_fat _read_fat `(ui  1 s 2 _read_fat ]
+"184
+[v __write_root _write_root `(v  1 s 1 _write_root ]
+"194
+[v __read_root _read_root `(v  1 s 1 _read_root ]
+"204
+[v __delete_root _delete_root `(v  1 s 1 _delete_root ]
+"217
+[v __get_first_cluster _get_first_cluster `(ui  1 s 2 _get_first_cluster ]
+"262
+[v _fat_find_file fat_find_file `(uc  1 e 1 0 ]
+"321
+[v _fat_create_file fat_create_file `(uc  1 e 1 0 ]
+"455
+[v __sector_from_cluster _sector_from_cluster `(ui  1 s 2 _sector_from_cluster ]
+"460
+[v _fat_append_to_file fat_append_to_file `(uc  1 e 1 0 ]
+"637
+[v __get_mbr _get_mbr `(uc  1 s 1 _get_mbr ]
+"697
+[v __get_fbr _get_fbr `(uc  1 s 1 _get_fbr ]
+"826
+[v __get_fat _get_fat `(uc  1 s 1 _get_fat ]
+"849
+[v __get_root _get_root `(uc  1 s 1 _get_root ]
+"926
+[v __get_data _get_data `(uc  1 s 1 _get_data ]
+"103 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v __flash_spi_tx _flash_spi_tx `(v  1 s 1 _flash_spi_tx ]
+"141
+[v __flash_spi_tx_tx _flash_spi_tx_tx `(v  1 s 1 _flash_spi_tx_tx ]
+"194
+[v __flash_spi_tx_rx _flash_spi_tx_rx `(v  1 s 1 _flash_spi_tx_rx ]
+"260
+[v __flash_set_page_size _flash_set_page_size `(v  1 s 1 _flash_set_page_size ]
+"278
+[v __flash_get_status _flash_get_status `(ui  1 s 2 _flash_get_status ]
+"289
+[v __flash_wakeup _flash_wakeup `(v  1 s 1 _flash_wakeup ]
+"315
+[v __flash_copy_page_to_buffer _flash_copy_page_to_buffer `(v  1 s 1 _flash_copy_page_to_buffer ]
+"337
+[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8335  1 s 1 _flash_compare_page_to_buffer ]
+"397
+[v __flash_write_to_buffer _flash_write_to_buffer `(v  1 s 1 _flash_write_to_buffer ]
+"419
+[v __flash_write_page_from_buffer _flash_write_page_from_buffer `(v  1 s 1 _flash_write_page_from_buffer ]
+"448
+[v _flash_init flash_init `(v  1 e 1 0 ]
+"475
+[v _flash_is_busy flash_is_busy `(uc  1 e 1 0 ]
+"538
+[v _flash_page_read flash_page_read `(v  1 e 1 0 ]
+"546
+[v _flash_page_write flash_page_write `(v  1 e 1 0 ]
+"564
+[v _flash_partial_read flash_partial_read `(v  1 e 1 0 ]
+"589
+[v _flash_partial_write flash_partial_write `(v  1 e 1 0 ]
+"33 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v __i2c_open_1 _i2c_open_1 `(v  1 s 1 _i2c_open_1 ]
+"45
+[v __i2c_wait_idle _i2c_wait_idle `(v  1 s 1 _i2c_wait_idle ]
+"51
+[v __i2c_start _i2c_start `(v  1 s 1 _i2c_start ]
+"58
+[v __i2c_send _i2c_send `(v  1 s 1 _i2c_send ]
+"64
+[v __i2c_get _i2c_get `(uc  1 s 1 _i2c_get ]
+"72
+[v __i2c_stop _i2c_stop `(v  1 s 1 _i2c_stop ]
+"79
+[v __i2c_acknowledge _i2c_acknowledge `(v  1 s 1 _i2c_acknowledge ]
+"87
+[v __i2c_not_acknowledge _i2c_not_acknowledge `(v  1 s 1 _i2c_not_acknowledge ]
+"94
+[v _i2c_init i2c_init `(v  1 e 1 0 ]
+"107
+[v _i2c_set_frequency i2c_set_frequency `(v  1 e 1 0 ]
+"148
+[v __i2c_write _i2c_write `(v  1 s 1 _i2c_write ]
+"167
+[v __i2c_read _i2c_read `(v  1 s 1 _i2c_read ]
+"248
+[v _i2c_display_send_init_sequence i2c_display_send_init_sequence `(v  1 e 1 0 ]
+"311
+[v __ic2_display_set_address _ic2_display_set_address `(v  1 e 1 0 ]
+"324
+[v _i2c_display_cursor i2c_display_cursor `(v  1 e 1 0 ]
+"364
+[v _i2c_display_write_fixed i2c_display_write_fixed `(v  1 e 1 0 ]
+"425
+[v _i2c_digipot_reset_on i2c_digipot_reset_on `(v  1 e 1 0 ]
+"438
+[v _i2c_digipot_reset_off i2c_digipot_reset_off `(v  1 e 1 0 ]
+"450
+[v _i2c_digipot_backlight i2c_digipot_backlight `(v  1 e 1 0 ]
+"467
+[v _i2c_adc_start i2c_adc_start `(v  1 e 1 0 ]
+"481
+[v _i2c_adc_read i2c_adc_read `(i  1 e 2 0 ]
+"542
+[v _i2c_eeprom_write i2c_eeprom_write `(v  1 e 1 0 ]
+"563
+[v _i2c_eeprom_read i2c_eeprom_read `(v  1 e 1 0 ]
+"579
+[v _i2c_eeprom_read_calibration i2c_eeprom_read_calibration `(v  1 e 1 0 ]
+"645
+[v __i2c_eeprom_load_default_calibration _i2c_eeprom_load_default_calibration `(v  1 e 1 0 ]
+"715
+[v __write_calibration _write_calibration `(v  1 e 1 0 ]
+"741
+[v _schedule_eeprom_write_task schedule_eeprom_write_task `(v  1 e 1 0 ]
+"759
+[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8252  1 e 1 0 ]
+"779
+[v _i2c_eeprom_tasks i2c_eeprom_tasks `(v  1 e 1 0 ]
+"39 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v __get_dateTime _get_dateTime `(ul  1 s 4 _get_dateTime ]
+"57
+[v __get_checksum _get_checksum `(uc  1 s 1 _get_checksum ]
+"71
+[v _log_start_new log_start_new `(v  1 e 1 0 ]
+"91
+[v __get_input_power _get_input_power `(ui  1 e 2 0 ]
+"99
+[v __get_output_power _get_output_power `(ui  1 e 2 0 ]
+"107
+[v __get_temperature _get_temperature `(uc  1 e 1 0 ]
+"114
+[v _log_collect_data log_collect_data `(v  1 e 1 0 ]
+"169
+[v _log_get_number_of_samples log_get_number_of_samples `(ui  1 e 2 0 ]
+"174
+[v _log_generate_entry log_generate_entry `(v  1 e 1 0 ]
+"199
+[v _log_write_to_disk log_write_to_disk `(v  1 e 1 0 ]
+"50 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\main.c
+[v _main main `(v  1 e 1 0 ]
+"46 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _tmr_isr tmr_isr `(v  1 e 1 0 ]
+"127
+[v _system_delay_ms system_delay_ms `(v  1 e 1 0 ]
+"160
+[v __system_encoder_init _system_encoder_init `(v  1 s 1 _system_encoder_init ]
+"191
+[v _system_encoder_disable system_encoder_disable `(v  1 e 1 0 ]
+"198
+[v _system_encoder_enable system_encoder_enable `(v  1 e 1 0 ]
+"214
+[v __system_timer0_init _system_timer0_init `(v  1 s 1 _system_timer0_init ]
+"250
+[v _system_init system_init `(v  1 e 1 0 ]
+"491
+[v _system_output_is_on system_output_is_on `(uc  1 e 1 0 ]
+"499
+[v _system_output_toggle system_output_toggle `(v  1 e 1 0 ]
+"507
+[v _system_output_on system_output_on `(v  1 e 1 0 ]
+"537
+[v _system_output_off system_output_off `(v  1 e 1 0 ]
+"570
+[v _system_calculate_input_voltage system_calculate_input_voltage `(v  1 e 1 0 ]
+"587
+[v _system_calculate_output_voltage system_calculate_output_voltage `(v  1 e 1 0 ]
+"604
+[v _system_calculate_input_current system_calculate_input_current `(v  1 e 1 0 ]
+"625
+[v _system_calculate_output_current system_calculate_output_current `(v  1 e 1 0 ]
+"7 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v __rtcc_bdc_to_decimal _rtcc_bdc_to_decimal `(uc  1 s 1 _rtcc_bdc_to_decimal ]
+"14
+[v __rtcc_write_enable _rtcc_write_enable `(v  1 s 1 _rtcc_write_enable ]
+"24
+[v __rtcc_write_disable _rtcc_write_disable `(v  1 s 1 _rtcc_write_disable ]
+"34
+[v __rtcc_increment_bcd _rtcc_increment_bcd `(uc  1 s 1 _rtcc_increment_bcd ]
+"47
+[v __rtcc_decrement_bcd _rtcc_decrement_bcd `(uc  1 s 1 _rtcc_decrement_bcd ]
+"60
+[v __number_of_days _number_of_days `(uc  1 s 1 _number_of_days ]
+"81
+[v _rtcc_init rtcc_init `(v  1 e 1 0 ]
+"94
+[v _rtcc_correct_day rtcc_correct_day `(v  1 e 1 0 ]
+"103
+[v _rtcc_get_year rtcc_get_year `(uc  1 e 1 0 ]
+"111
+[v _rtcc_get_year_decimal rtcc_get_year_decimal `(uc  1 e 1 0 ]
+"117
+[v _rtcc_set_year rtcc_set_year `(v  1 e 1 0 ]
+"126
+[v _rtcc_increment_year rtcc_increment_year `(v  1 e 1 0 ]
+"133
+[v _rtcc_decrement_year rtcc_decrement_year `(v  1 e 1 0 ]
+"141
+[v _rtcc_get_month rtcc_get_month `(uc  1 e 1 0 ]
+"149
+[v _rtcc_get_month_decimal rtcc_get_month_decimal `(uc  1 e 1 0 ]
+"155
+[v _rtcc_set_month rtcc_set_month `(v  1 e 1 0 ]
+"164
+[v _rtcc_increment_month rtcc_increment_month `(v  1 e 1 0 ]
+"171
+[v _rtcc_decrement_month rtcc_decrement_month `(v  1 e 1 0 ]
+"179
+[v _rtcc_get_day rtcc_get_day `(uc  1 e 1 0 ]
+"187
+[v _rtcc_get_day_decimal rtcc_get_day_decimal `(uc  1 e 1 0 ]
+"193
+[v _rtcc_set_day rtcc_set_day `(v  1 e 1 0 ]
+"202
+[v _rtcc_increment_day rtcc_increment_day `(v  1 e 1 0 ]
+"209
+[v _rtcc_decrement_day rtcc_decrement_day `(v  1 e 1 0 ]
+"217
+[v _rtcc_get_hours rtcc_get_hours `(uc  1 e 1 0 ]
+"225
+[v _rtcc_get_hours_decimal rtcc_get_hours_decimal `(uc  1 e 1 0 ]
+"231
+[v _rtcc_set_hours rtcc_set_hours `(v  1 e 1 0 ]
+"240
+[v _rtcc_increment_hours rtcc_increment_hours `(v  1 e 1 0 ]
+"247
+[v _rtcc_decrement_hours rtcc_decrement_hours `(v  1 e 1 0 ]
+"255
+[v _rtcc_get_minutes rtcc_get_minutes `(uc  1 e 1 0 ]
+"263
+[v _rtcc_get_minutes_decimal rtcc_get_minutes_decimal `(uc  1 e 1 0 ]
+"269
+[v _rtcc_set_minutes rtcc_set_minutes `(v  1 e 1 0 ]
+"278
+[v _rtcc_increment_minutes rtcc_increment_minutes `(v  1 e 1 0 ]
+"285
+[v _rtcc_decrement_minutes rtcc_decrement_minutes `(v  1 e 1 0 ]
+"293
+[v _rtcc_get_seconds rtcc_get_seconds `(uc  1 e 1 0 ]
+"301
+[v _rtcc_get_seconds_decimal rtcc_get_seconds_decimal `(uc  1 e 1 0 ]
+"307
+[v _rtcc_set_seconds rtcc_set_seconds `(v  1 e 1 0 ]
+"316
+[v _rtcc_increment_seconds rtcc_increment_seconds `(v  1 e 1 0 ]
+"323
+[v _rtcc_decrement_seconds rtcc_decrement_seconds `(v  1 e 1 0 ]
+"330
+[v _rtcc_read_eeprom rtcc_read_eeprom `(v  1 e 1 0 ]
+"344
+[v _rtcc_write_eeprom rtcc_write_eeprom `(v  1 e 1 0 ]
+"146 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+[v i2_SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"269
+[v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 1 0 ]
+"12 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v _ui_get_status ui_get_status `(E9488  1 e 1 0 ]
+"17
+[v __ui_encoder _ui_encoder `(v  1 s 1 _ui_encoder ]
+"325
+[v _ui_init ui_init `(v  1 e 1 0 ]
+"334
+[v _ui_run ui_run `(v  1 e 1 0 ]
+"277 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBDeviceInit USBDeviceInit `(v  1 e 1 0 ]
+[v i2_USBDeviceInit USBDeviceInit `(v  1 e 1 0 ]
+"477
+[v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]
+"878
+[v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 1 0 ]
+"995
+[v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+[v i2_USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+"1073
+[v _USBStallEndpoint USBStallEndpoint `(v  1 e 1 0 ]
+[v i2_USBStallEndpoint USBStallEndpoint `(v  1 e 1 0 ]
+"1354
+[v _USBDeviceAttach USBDeviceAttach `(v  1 e 1 0 ]
+"1418
+[v _USBCtrlEPAllowStatusStage USBCtrlEPAllowStatusStage `(v  1 e 1 0 ]
+"1490
+[v _USBCtrlEPAllowDataStage USBCtrlEPAllowDataStage `(v  1 e 1 0 ]
+"1545
+[v _USBConfigureEndpoint USBConfigureEndpoint `(v  1 s 1 USBConfigureEndpoint ]
+"1618
+[v _USBCtrlEPServiceComplete USBCtrlEPServiceComplete `(v  1 s 1 USBCtrlEPServiceComplete ]
+"1773
+[v _USBCtrlTrfTxService USBCtrlTrfTxService `(v  1 s 1 USBCtrlTrfTxService ]
+"1854
+[v _USBCtrlTrfRxService USBCtrlTrfRxService `(v  1 s 1 USBCtrlTrfRxService ]
+"1970
+[v _USBStdSetCfgHandler USBStdSetCfgHandler `(v  1 s 1 USBStdSetCfgHandler ]
+"2045
+[v _USBStdGetDscHandler USBStdGetDscHandler `(v  1 s 1 USBStdGetDscHandler ]
+"2131
+[v _USBStdGetStatusHandler USBStdGetStatusHandler `(v  1 s 1 USBStdGetStatusHandler ]
+"2204
+[v _USBStallHandler USBStallHandler `(v  1 s 1 USBStallHandler ]
+"2247
+[v _USBSuspend USBSuspend `(v  1 s 1 USBSuspend ]
+"2305
+[v _USBWakeFromSuspend USBWakeFromSuspend `(v  1 s 1 USBWakeFromSuspend ]
+"2374
+[v _USBCtrlEPService USBCtrlEPService `(v  1 s 1 USBCtrlEPService ]
+"2467
+[v _USBCtrlTrfSetupHandler USBCtrlTrfSetupHandler `(v  1 s 1 USBCtrlTrfSetupHandler ]
+"2540
+[v _USBCtrlTrfOutHandler USBCtrlTrfOutHandler `(v  1 s 1 USBCtrlTrfOutHandler ]
+"2594
+[v _USBCtrlTrfInHandler USBCtrlTrfInHandler `(v  1 s 1 USBCtrlTrfInHandler ]
+"2688
+[v _USBCheckStdRequest USBCheckStdRequest `(v  1 s 1 USBCheckStdRequest ]
+"2756
+[v _USBStdFeatureReqHandler USBStdFeatureReqHandler `(v  1 s 1 USBStdFeatureReqHandler ]
+"3027
+[v _USBIncrement1msInternalTimers USBIncrement1msInternalTimers `(v  1 e 1 0 ]
+"153 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_hid.c
+[v _USBCheckHIDRequest USBCheckHIDRequest `(v  1 e 1 0 ]
+"142 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _USBMSDInit USBMSDInit `(v  1 e 1 0 ]
+"218
+[v _USBCheckMSDRequest USBCheckMSDRequest `(v  1 e 1 0 ]
+"335
+[v _MSDTasks MSDTasks `(uc  1 e 1 0 ]
+"553
+[v _MSDProcessCommand MSDProcessCommand `(uc  1 e 1 0 ]
+"635
+[v _MSDProcessCommandMediaAbsent MSDProcessCommandMediaAbsent `(v  1 e 1 0 ]
+"712
+[v _MSDProcessCommandMediaPresent MSDProcessCommandMediaPresent `(v  1 e 1 0 ]
+"993
+[v _MSDComputeDeviceInAndResidue MSDComputeDeviceInAndResidue `(v  1 s 1 MSDComputeDeviceInAndResidue ]
+"1038
+[v _MSDReadHandler MSDReadHandler `(uc  1 e 1 0 ]
+"1188
+[v _MSDWriteHandler MSDWriteHandler `(uc  1 e 1 0 ]
+"1373
+[v _ResetSenseData ResetSenseData `(v  1 e 1 0 ]
+[v i2_ResetSenseData ResetSenseData `(v  1 e 1 0 ]
+"1434
+[v _MSDCheckForErrorCases MSDCheckForErrorCases `(uc  1 e 1 0 ]
+"1577
+[v _MSDErrorHandler MSDErrorHandler `(v  1 e 1 0 ]
+"1674
+[v _MSDTransferTerminated MSDTransferTerminated `(v  1 e 1 0 ]
+"54 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_events.c
+[v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
+"35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v _ReceivedDataBuffer ReceivedDataBuffer `[64]uc  1 e 64 0 ]
+"36
+[v _ToSendDataBuffer ToSendDataBuffer `[64]uc  1 e 64 0 ]
+"38
+[v _USBOutHandle USBOutHandle `*.39VEv  1 e 2 0 ]
+"39
+[v _USBInHandle USBInHandle `*.39VEv  1 e 2 0 ]
+[s S2252 . 1 `uc 1 sectorSize 1 0 :1:0 
+`uc 1 maxLUN 1 0 :1:1 
+]
+"34 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
+[u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
+[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2272 . 29 `*.38(*.39S2258 1 MediaInitialize 3 0 `*.38(ul 1 ReadCapacity 3 3 `*.38(ui 1 ReadSectorSize 3 6 `*.38(uc 1 MediaDetect 3 9 `*.38(uc 1 SectorRead 3 12 `*.38(uc 1 WriteProtectState 3 15 `*.38(uc 1 SectorWrite 3 18 `*.2v 1 mediaParameters 2 21 `*.38(uc 1 AsyncWriteTasks 3 23 `*.38(uc 1 AsyncReadTasks 3 26 ]
+[v _LUN LUN `[1]S2272  1 e 29 0 ]
+[s S2549 . 36 `uc 1 Peripheral 1 0 `uc 1 Removble 1 1 `uc 1 Version 1 2 `uc 1 Response_Data_Format 1 3 `uc 1 AdditionalLength 1 4 `uc 1 Sccstp 1 5 `uc 1 bqueetc 1 6 `uc 1 CmdQue 1 7 `[8]uc 1 vendorID 8 8 `[16]uc 1 productID 16 16 `[4]uc 1 productRev 4 32 ]
+"56
+[v _inq_resp inq_resp `CS2549  1 e 36 0 ]
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v _buck_status buck_status `E8099  1 e 1 0 ]
+"10
+[v _buck_dutycycle buck_dutycycle `uc  1 e 1 0 ]
+"11
+[v _buck_dutycycle_last_step buck_dutycycle_last_step `uc  1 e 1 0 ]
+"14
+[v _buck_remote_enable buck_remote_enable `uc  1 e 1 0 ]
+"15
+[v _buck_remote_on buck_remote_on `uc  1 e 1 0 ]
+"16
+[v _buck_remote_synchronous buck_remote_synchronous `uc  1 e 1 0 ]
+"17
+[v _buck_remote_dutycycle buck_remote_dutycycle `uc  1 e 1 0 ]
+"36
+[v _idx idx `uc  1 e 1 0 ]
+"37
+[v _last last `l  1 e 4 0 ]
+"38
+[v _now now `l  1 e 4 0 ]
+"39
+[v _battery_voltage_maximum battery_voltage_maximum `i  1 e 2 0 ]
+[s S4237 . 1 `uc 1 IOLOCK 1 0 :1:0 
+]
+"1108 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f47j53.h
+[u S4239 . 1 `S4237 1 . 1 0 ]
+[v _PPSCONbits PPSCONbits `VES4239  1 e 1 @3775 ]
+"1153
+[v _RPOR5 RPOR5 `VEuc  1 e 1 @3781 ]
+"1160
+[v _RPOR6 RPOR6 `VEuc  1 e 1 @3782 ]
+"1244
+[v _RPOR21 RPOR21 `VEuc  1 e 1 @3797 ]
+"1251
+[v _RPOR22 RPOR22 `VEuc  1 e 1 @3798 ]
+"1272
+[v _RPINR1 RPINR1 `VEuc  1 e 1 @3809 ]
+"1279
+[v _RPINR2 RPINR2 `VEuc  1 e 1 @3810 ]
+"1286
+[v _RPINR3 RPINR3 `VEuc  1 e 1 @3811 ]
+"1370
+[v _RPINR21 RPINR21 `VEuc  1 e 1 @3836 ]
+"1377
+[v _RPINR22 RPINR22 `VEuc  1 e 1 @3837 ]
+"3115
+[v _UEP0 UEP0 `VEuc  1 e 1 @3878 ]
+[s S721 . 1 `uc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+"3143
+[s S727 . 1 `uc 1 EP0STALL 1 0 :1:0 
+`uc 1 EP0INEN 1 0 :1:1 
+`uc 1 EP0OUTEN 1 0 :1:2 
+`uc 1 EP0CONDIS 1 0 :1:3 
+`uc 1 EP0HSHK 1 0 :1:4 
+]
+[s S733 . 1 `uc 1 EPSTALL0 1 0 :1:0 
+`uc 1 EPINEN0 1 0 :1:1 
+`uc 1 EPOUTEN0 1 0 :1:2 
+`uc 1 EPCONDIS0 1 0 :1:3 
+`uc 1 EPHSHK0 1 0 :1:4 
+]
+[u S739 . 1 `S721 1 . 1 0 `S727 1 . 1 0 `S733 1 . 1 0 ]
+[v _UEP0bits UEP0bits `VES739  1 e 1 @3878 ]
+"3223
+[v _UEP1 UEP1 `VEuc  1 e 1 @3879 ]
+"4587
+[v _UIE UIE `VEuc  1 e 1 @3894 ]
+[s S383 . 1 `uc 1 URSTIE 1 0 :1:0 
+`uc 1 UERRIE 1 0 :1:1 
+`uc 1 ACTVIE 1 0 :1:2 
+`uc 1 TRNIE 1 0 :1:3 
+`uc 1 IDLEIE 1 0 :1:4 
+`uc 1 STALLIE 1 0 :1:5 
+`uc 1 SOFIE 1 0 :1:6 
+]
+"4603
+[u S391 . 1 `S383 1 . 1 0 ]
+[v _UIEbits UIEbits `VES391  1 e 1 @3894 ]
+"4643
+[v _UEIE UEIE `VEuc  1 e 1 @3895 ]
+"4694
+[v _UADDR UADDR `VEuc  1 e 1 @3896 ]
+"4758
+[v _UCFG UCFG `VEuc  1 e 1 @3897 ]
+"4829
+[v _RTCVALL RTCVALL `VEuc  1 e 1 @3898 ]
+"4849
+[v _RTCVALH RTCVALH `VEuc  1 e 1 @3899 ]
+"5016
+[v _RTCCAL RTCCAL `VEuc  1 e 1 @3902 ]
+[s S6051 . 1 `uc 1 RTCPTR0 1 0 :1:0 
+`uc 1 RTCPTR1 1 0 :1:1 
+`uc 1 RTCOE 1 0 :1:2 
+`uc 1 HALFSEC 1 0 :1:3 
+`uc 1 RTCSYNC 1 0 :1:4 
+`uc 1 RTCWREN 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 RTCEN 1 0 :1:7 
+]
+"5103
+[u S6060 . 1 `S6051 1 . 1 0 ]
+[v _RTCCFGbits RTCCFGbits `VES6060  1 e 1 @3903 ]
+[s S4456 . 1 `uc 1 PCFG0 1 0 :1:0 
+`uc 1 PCFG1 1 0 :1:1 
+`uc 1 PCFG2 1 0 :1:2 
+`uc 1 PCFG3 1 0 :1:3 
+`uc 1 PCFG4 1 0 :1:4 
+`uc 1 PCFG5 1 0 :1:5 
+`uc 1 PCFG6 1 0 :1:6 
+`uc 1 PCFG7 1 0 :1:7 
+]
+"5472
+[u S4465 . 1 `S4456 1 . 1 0 ]
+[v _ANCON0bits ANCON0bits `VES4465  1 e 1 @3912 ]
+[s S4477 . 1 `uc 1 PCFG8 1 0 :1:0 
+`uc 1 PCFG9 1 0 :1:1 
+`uc 1 PCFG10 1 0 :1:2 
+`uc 1 PCFG11 1 0 :1:3 
+`uc 1 PCFG12 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 VBGEN 1 0 :1:7 
+]
+"5537
+[s S4485 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 PCFG15 1 0 :1:7 
+]
+[u S4488 . 1 `S4477 1 . 1 0 `S4485 1 . 1 0 ]
+[v _ANCON1bits ANCON1bits `VES4488  1 e 1 @3913 ]
+[s S6271 . 1 `uc 1 C1TSEL 1 0 :3:0 
+`uc 1 C2TSEL 1 0 :3:3 
+`uc 1 C3TSEL 1 0 :2:6 
+]
+"5890
+[s S6275 . 1 `uc 1 C1TSEL0 1 0 :1:0 
+`uc 1 C1TSEL1 1 0 :1:1 
+`uc 1 C1TSEL2 1 0 :1:2 
+`uc 1 C2TSEL0 1 0 :1:3 
+`uc 1 C2TSEL1 1 0 :1:4 
+`uc 1 C2TSEL2 1 0 :1:5 
+`uc 1 C3TSEL0 1 0 :1:6 
+`uc 1 C3TSEL1 1 0 :1:7 
+]
+[u S6284 . 1 `S6271 1 . 1 0 `S6275 1 . 1 0 ]
+[v _CCPTMRS0bits CCPTMRS0bits `VES6284  1 e 1 @3922 ]
+"6734
+[v _UIR UIR `VEuc  1 e 1 @3938 ]
+[s S364 . 1 `uc 1 URSTIF 1 0 :1:0 
+`uc 1 UERRIF 1 0 :1:1 
+`uc 1 ACTVIF 1 0 :1:2 
+`uc 1 TRNIF 1 0 :1:3 
+`uc 1 IDLEIF 1 0 :1:4 
+`uc 1 STALLIF 1 0 :1:5 
+`uc 1 SOFIF 1 0 :1:6 
+]
+"6750
+[u S372 . 1 `S364 1 . 1 0 ]
+[v _UIRbits UIRbits `VES372  1 e 1 @3938 ]
+"6790
+[v _UEIR UEIR `VEuc  1 e 1 @3939 ]
+"6841
+[v _USTAT USTAT `VEuc  1 e 1 @3940 ]
+"6901
+[v _UCON UCON `VEuc  1 e 1 @3941 ]
+[s S344 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SUSPND 1 0 :1:1 
+`uc 1 RESUME 1 0 :1:2 
+`uc 1 USBEN 1 0 :1:3 
+`uc 1 PKTDIS 1 0 :1:4 
+`uc 1 SE0 1 0 :1:5 
+`uc 1 PPBRST 1 0 :1:6 
+]
+"6917
+[u S352 . 1 `S344 1 . 1 0 ]
+[v _UCONbits UCONbits `VES352  1 e 1 @3941 ]
+"6952
+[v _DMABCH DMABCH `VEuc  1 e 1 @3942 ]
+"6972
+[v _DMABCL DMABCL `VEuc  1 e 1 @3943 ]
+"6992
+[v _RXADDRH RXADDRH `VEuc  1 e 1 @3944 ]
+"7012
+[v _RXADDRL RXADDRL `VEuc  1 e 1 @3945 ]
+"7032
+[v _TXADDRH TXADDRH `VEuc  1 e 1 @3946 ]
+"7052
+[v _TXADDRL TXADDRL `VEuc  1 e 1 @3947 ]
+[s S5177 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"7468
+[s S5183 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[s S7067 . 1 `uc 1 SSPM02 1 0 :1:0 
+`uc 1 SSPM12 1 0 :1:1 
+`uc 1 SSPM22 1 0 :1:2 
+`uc 1 SSPM32 1 0 :1:3 
+`uc 1 CKP2 1 0 :1:4 
+`uc 1 SSPEN2 1 0 :1:5 
+`uc 1 SSPOV2 1 0 :1:6 
+`uc 1 WCOL2 1 0 :1:7 
+]
+[u S7076 . 1 `S5177 1 . 1 0 `S5183 1 . 1 0 `S7067 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES7076  1 e 1 @3954 ]
+[s S5013 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"7655
+[s S5016 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S5019 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S6905 . 1 `uc 1 BF2 1 0 :1:0 
+`uc 1 UA2 1 0 :1:1 
+`uc 1 I2C_READ2 1 0 :1:2 
+`uc 1 I2C_START2 1 0 :1:3 
+`uc 1 I2C_STOP2 1 0 :1:4 
+`uc 1 DA2 1 0 :1:5 
+`uc 1 CKE2 1 0 :1:6 
+`uc 1 SMP2 1 0 :1:7 
+]
+[s S6914 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE2 1 0 :1:2 
+`uc 1 S2 1 0 :1:3 
+`uc 1 P2 1 0 :1:4 
+`uc 1 DATA_ADDRESS2 1 0 :1:5 
+]
+[s S6920 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW2 1 0 :1:2 
+`uc 1 START2 1 0 :1:3 
+`uc 1 STOP2 1 0 :1:4 
+`uc 1 D_A2 1 0 :1:5 
+]
+[s S6926 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A2 1 0 :1:5 
+]
+[s S6929 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_nA2 1 0 :1:5 
+]
+[s S6934 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W2 1 0 :1:2 
+]
+[s S6937 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_nW2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 I2C_DAT2 1 0 :1:5 
+]
+[s S6942 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W2 1 0 :1:2 
+]
+[s S6945 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_A2 1 0 :1:5 
+]
+[s S6948 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA2 1 0 :1:5 
+]
+[s S6953 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE2 1 0 :1:2 
+]
+[s S6956 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS2 1 0 :1:5 
+]
+[s S6959 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS2 1 0 :1:5 
+]
+[u S6964 . 1 `S5013 1 . 1 0 `S5016 1 . 1 0 `S5019 1 . 1 0 `S6905 1 . 1 0 `S6914 1 . 1 0 `S6920 1 . 1 0 `S6926 1 . 1 0 `S6929 1 . 1 0 `S6934 1 . 1 0 `S6937 1 . 1 0 `S6942 1 . 1 0 `S6945 1 . 1 0 `S6948 1 . 1 0 `S6953 1 . 1 0 `S6956 1 . 1 0 `S6959 1 . 1 0 ]
+[v _SSP2STATbits SSP2STATbits `VES6964  1 e 1 @3955 ]
+[s S3406 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"9045
+[s S3415 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 AN3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 AN4 1 0 :1:5 
+`uc 1 OSC2 1 0 :1:6 
+`uc 1 OSC1 1 0 :1:7 
+]
+[s S3424 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_SS1 1 0 :1:5 
+]
+[s S3427 . 1 `uc 1 C1INA 1 0 :1:0 
+`uc 1 C2INA 1 0 :1:1 
+`uc 1 VREF_MINUS 1 0 :1:2 
+`uc 1 VREF_PLUS 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 nSS1 1 0 :1:5 
+`uc 1 CLKO 1 0 :1:6 
+`uc 1 CLKI 1 0 :1:7 
+]
+[s S3436 . 1 `uc 1 PMA6 1 0 :1:0 
+`uc 1 PMA7 1 0 :1:1 
+`uc 1 CVREF 1 0 :1:2 
+`uc 1 C1INB 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 HLVDIN 1 0 :1:5 
+]
+[s S3443 . 1 `uc 1 RP0 1 0 :1:0 
+`uc 1 RP1 1 0 :1:1 
+`uc 1 C2INB 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 RCV 1 0 :1:5 
+]
+[s S3449 . 1 `uc 1 ULPWU 1 0 :1:0 
+`uc 1 VBG 1 0 :1:1 
+`uc 1 C1IND 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 RP2 1 0 :1:5 
+]
+[s S3455 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 C3INB 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 C1INC 1 0 :1:5 
+]
+[s S3460 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 LVDIN 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 RJPU 1 0 :1:7 
+]
+[u S3466 . 1 `S3406 1 . 1 0 `S3415 1 . 1 0 `S3424 1 . 1 0 `S3427 1 . 1 0 `S3436 1 . 1 0 `S3443 1 . 1 0 `S3449 1 . 1 0 `S3455 1 . 1 0 `S3460 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES3466  1 e 1 @3968 ]
+[s S4089 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"9331
+[s S4098 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 PMA1 1 0 :1:4 
+`uc 1 PMA0 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S4107 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 PMPBE 1 0 :1:1 
+`uc 1 CTED1 1 0 :1:2 
+`uc 1 CTED2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S4116 . 1 `uc 1 RP3 1 0 :1:0 
+`uc 1 RTCC 1 0 :1:1 
+`uc 1 PMA3 1 0 :1:2 
+`uc 1 PMA2 1 0 :1:3 
+`uc 1 SCK1 1 0 :1:4 
+`uc 1 SDI1 1 0 :1:5 
+`uc 1 RP9 1 0 :1:6 
+`uc 1 RP10 1 0 :1:7 
+]
+[s S4125 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RP4 1 0 :1:1 
+`uc 1 VMO 1 0 :1:2 
+`uc 1 VPO 1 0 :1:3 
+`uc 1 SCL1 1 0 :1:4 
+`uc 1 SDA1 1 0 :1:5 
+]
+[s S4132 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 REFO 1 0 :1:2 
+`uc 1 RP6 1 0 :1:3 
+`uc 1 RP7 1 0 :1:4 
+`uc 1 RP8 1 0 :1:5 
+]
+[s S4138 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 C3INC 1 0 :1:1 
+`uc 1 RP5 1 0 :1:2 
+`uc 1 C3INA 1 0 :1:3 
+`uc 1 CCP4 1 0 :1:4 
+`uc 1 CCP5 1 0 :1:5 
+`uc 1 CCP6 1 0 :1:6 
+`uc 1 CCP7 1 0 :1:7 
+]
+[s S4147 . 1 `uc 1 C3IND 1 0 :1:0 
+`uc 1 PMBE 1 0 :1:1 
+`uc 1 C2INC 1 0 :1:2 
+]
+[s S4151 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S4154 . 1 `S4089 1 . 1 0 `S4098 1 . 1 0 `S4107 1 . 1 0 `S4116 1 . 1 0 `S4125 1 . 1 0 `S4132 1 . 1 0 `S4138 1 . 1 0 `S4147 1 . 1 0 `S4151 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES4154  1 e 1 @3969 ]
+[s S6808 . 1 `uc 1 INTLVL 1 0 :4:0 
+`uc 1 DLYCYC 1 0 :4:4 
+]
+"10265
+[s S6811 . 1 `uc 1 INTLVL0 1 0 :1:0 
+`uc 1 INTLVL1 1 0 :1:1 
+`uc 1 INTLVL2 1 0 :1:2 
+`uc 1 INTLVL3 1 0 :1:3 
+`uc 1 DLYCYC0 1 0 :1:4 
+`uc 1 DLYCYC1 1 0 :1:5 
+`uc 1 DLYCYC2 1 0 :1:6 
+`uc 1 DLYCYC3 1 0 :1:7 
+]
+[u S6820 . 1 `S6808 1 . 1 0 `S6811 1 . 1 0 ]
+[v _DMACON2bits DMACON2bits `VES6820  1 e 1 @3974 ]
+[s S6787 . 1 `uc 1 DMAEN 1 0 :1:0 
+`uc 1 DLYINTEN 1 0 :1:1 
+`uc 1 DUPLEX0 1 0 :1:2 
+`uc 1 DUPLEX1 1 0 :1:3 
+`uc 1 RXINC 1 0 :1:4 
+`uc 1 TXINC 1 0 :1:5 
+`uc 1 SSCON0 1 0 :1:6 
+`uc 1 SSCON1 1 0 :1:7 
+]
+"10377
+[u S6796 . 1 `S6787 1 . 1 0 ]
+[v _DMACON1bits DMACON1bits `VES6796  1 e 1 @3976 ]
+[s S4572 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"10449
+[s S4581 . 1 `uc 1 LA0 1 0 :1:0 
+`uc 1 LA1 1 0 :1:1 
+`uc 1 LA2 1 0 :1:2 
+`uc 1 LA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LA5 1 0 :1:5 
+`uc 1 LA6 1 0 :1:6 
+`uc 1 LA7 1 0 :1:7 
+]
+[u S4590 . 1 `S4572 1 . 1 0 `S4581 1 . 1 0 ]
+[v _LATAbits LATAbits `VES4590  1 e 1 @3977 ]
+[s S4374 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"10551
+[s S4383 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S4392 . 1 `S4374 1 . 1 0 `S4383 1 . 1 0 ]
+[v _LATBbits LATBbits `VES4392  1 e 1 @3978 ]
+[s S4503 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"10659
+[s S4510 . 1 `uc 1 LC0 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+`uc 1 LC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 LC6 1 0 :1:6 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S4517 . 1 `S4503 1 . 1 0 `S4510 1 . 1 0 ]
+[v _LATCbits LATCbits `VES4517  1 e 1 @3979 ]
+[s S3142 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"10741
+[s S3151 . 1 `uc 1 LD0 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+`uc 1 LD2 1 0 :1:2 
+`uc 1 LD3 1 0 :1:3 
+`uc 1 LD4 1 0 :1:4 
+`uc 1 LD5 1 0 :1:5 
+`uc 1 LD6 1 0 :1:6 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S3160 . 1 `S3142 1 . 1 0 `S3151 1 . 1 0 ]
+[v _LATDbits LATDbits `VES3160  1 e 1 @3980 ]
+[s S4535 . 1 `uc 1 LATE0 1 0 :1:0 
+`uc 1 LATE1 1 0 :1:1 
+`uc 1 LATE2 1 0 :1:2 
+]
+"10843
+[s S4539 . 1 `uc 1 LE0 1 0 :1:0 
+`uc 1 LE1 1 0 :1:1 
+`uc 1 LE2 1 0 :1:2 
+]
+[u S4543 . 1 `S4535 1 . 1 0 `S4539 1 . 1 0 ]
+[v _LATEbits LATEbits `VES4543  1 e 1 @3981 ]
+[s S4435 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"11139
+[u S4444 . 1 `S4435 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES4444  1 e 1 @3986 ]
+[s S4414 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"11196
+[u S4423 . 1 `S4414 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES4423  1 e 1 @3987 ]
+[s S4314 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"11256
+[u S4321 . 1 `S4314 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES4321  1 e 1 @3988 ]
+[s S4331 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"11303
+[u S4340 . 1 `S4331 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES4340  1 e 1 @3989 ]
+[s S4555 . 1 `uc 1 TRISE0 1 0 :1:0 
+`uc 1 TRISE1 1 0 :1:1 
+`uc 1 TRISE2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 REPU 1 0 :1:6 
+`uc 1 RDPU 1 0 :1:7 
+]
+"11363
+[u S4562 . 1 `S4555 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES4562  1 e 1 @3990 ]
+[s S3245 . 1 `uc 1 TUN 1 0 :6:0 
+`uc 1 PLLEN 1 0 :1:6 
+`uc 1 INTSRC 1 0 :1:7 
+]
+"11736
+[s S3249 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S3256 . 1 `S3245 1 . 1 0 `S3249 1 . 1 0 ]
+[v _OSCTUNEbits OSCTUNEbits `VES3256  1 e 1 @3995 ]
+[s S4630 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 PMPIF 1 0 :1:7 
+]
+"12041
+[s S4639 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+[s S4644 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 PSPIF 1 0 :1:7 
+]
+[u S4647 . 1 `S4630 1 . 1 0 `S4639 1 . 1 0 `S4644 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES4647  1 e 1 @3998 ]
+[s S293 . 1 `uc 1 CCP2IE 1 0 :1:0 
+`uc 1 TMR3IE 1 0 :1:1 
+`uc 1 LVDIE 1 0 :1:2 
+`uc 1 BCL1IE 1 0 :1:3 
+`uc 1 USBIE 1 0 :1:4 
+`uc 1 CM1IE 1 0 :1:5 
+`uc 1 CM2IE 1 0 :1:6 
+`uc 1 OSCFIE 1 0 :1:7 
+]
+"12224
+[s S302 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 HLVDIE 1 0 :1:2 
+`uc 1 BCLIE 1 0 :1:3 
+]
+[s S306 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIE 1 0 :1:6 
+]
+[u S309 . 1 `S293 1 . 1 0 `S302 1 . 1 0 `S306 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES309  1 e 1 @4000 ]
+[s S406 . 1 `uc 1 CCP2IF 1 0 :1:0 
+`uc 1 TMR3IF 1 0 :1:1 
+`uc 1 LVDIF 1 0 :1:2 
+`uc 1 BCL1IF 1 0 :1:3 
+`uc 1 USBIF 1 0 :1:4 
+`uc 1 CM1IF 1 0 :1:5 
+`uc 1 CM2IF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"12310
+[s S415 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 HLVDIF 1 0 :1:2 
+`uc 1 BCLIF 1 0 :1:3 
+]
+[s S419 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIF 1 0 :1:6 
+]
+[u S422 . 1 `S406 1 . 1 0 `S415 1 . 1 0 `S419 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES422  1 e 1 @4001 ]
+[s S591 . 1 `uc 1 CCP2IP 1 0 :1:0 
+`uc 1 TMR3IP 1 0 :1:1 
+`uc 1 LVDIP 1 0 :1:2 
+`uc 1 BCL1IP 1 0 :1:3 
+`uc 1 USBIP 1 0 :1:4 
+`uc 1 CM1IP 1 0 :1:5 
+`uc 1 CM2IP 1 0 :1:6 
+`uc 1 OSCFIP 1 0 :1:7 
+]
+"12396
+[s S600 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 HLVDIP 1 0 :1:2 
+`uc 1 BCLIP 1 0 :1:3 
+]
+[s S604 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIP 1 0 :1:6 
+]
+[u S607 . 1 `S591 1 . 1 0 `S600 1 . 1 0 `S604 1 . 1 0 ]
+[v _IPR2bits IPR2bits `VES607  1 e 1 @4002 ]
+"12767
+[v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
+"14610
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @4026 ]
+[s S6356 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 P1M 1 0 :2:6 
+]
+"14642
+[s S6360 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+`uc 1 P1M0 1 0 :1:6 
+`uc 1 P1M1 1 0 :1:7 
+]
+[s S6369 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S6373 . 1 `S6356 1 . 1 0 `S6360 1 . 1 0 `S6369 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES6373  1 e 1 @4026 ]
+"14809
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @4027 ]
+[s S6650 . 1 `uc 1 ADCS 1 0 :3:0 
+`uc 1 ACQT 1 0 :3:3 
+`uc 1 ADCAL 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"15223
+[s S6655 . 1 `uc 1 ADCS0 1 0 :1:0 
+`uc 1 ADCS1 1 0 :1:1 
+`uc 1 ADCS2 1 0 :1:2 
+`uc 1 ACQT0 1 0 :1:3 
+`uc 1 ACQT1 1 0 :1:4 
+`uc 1 ACQT2 1 0 :1:5 
+]
+[s S6662 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CHSN3 1 0 :1:3 
+`uc 1 VCFG01 1 0 :1:4 
+`uc 1 VCFG11 1 0 :1:5 
+]
+[u S6667 . 1 `S6650 1 . 1 0 `S6655 1 . 1 0 `S6662 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES6667  1 e 1 @4033 ]
+[s S6572 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"15342
+[s S6575 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 VCFG 1 0 :2:6 
+]
+[s S6580 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 VCFG0 1 0 :1:6 
+`uc 1 VCFG1 1 0 :1:7 
+]
+[s S6589 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S6592 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S6595 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S6598 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S6601 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+`uc 1 . 1 0 :5:2 
+`uc 1 ADCAL 1 0 :1:7 
+]
+[u S6606 . 1 `S6572 1 . 1 0 `S6575 1 . 1 0 `S6580 1 . 1 0 `S6589 1 . 1 0 `S6592 1 . 1 0 `S6595 1 . 1 0 `S6598 1 . 1 0 `S6601 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES6606  1 e 1 @4034 ]
+"15444
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"15464
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S5222 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"15532
+[s S5231 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK1 1 0 :1:1 
+`uc 1 ADMSK2 1 0 :1:2 
+`uc 1 ADMSK3 1 0 :1:3 
+`uc 1 ADMSK4 1 0 :1:4 
+`uc 1 ADMSK5 1 0 :1:5 
+]
+[s S5238 . 1 `uc 1 SEN1 1 0 :1:0 
+`uc 1 ADMSK11 1 0 :1:1 
+`uc 1 ADMSK21 1 0 :1:2 
+`uc 1 ADMSK31 1 0 :1:3 
+`uc 1 ACKEN1 1 0 :1:4 
+`uc 1 ACKDT1 1 0 :1:5 
+`uc 1 ACKSTAT1 1 0 :1:6 
+`uc 1 GCEN1 1 0 :1:7 
+]
+[s S5247 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RSEN1 1 0 :1:1 
+`uc 1 PEN1 1 0 :1:2 
+`uc 1 RCEN1 1 0 :1:3 
+`uc 1 ADMSK41 1 0 :1:4 
+`uc 1 ADMSK51 1 0 :1:5 
+]
+[u S5254 . 1 `S5222 1 . 1 0 `S5231 1 . 1 0 `S5238 1 . 1 0 `S5247 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES5254  1 e 1 @4037 ]
+"15873
+[s S5188 . 1 `uc 1 SSPM01 1 0 :1:0 
+`uc 1 SSPM11 1 0 :1:1 
+`uc 1 SSPM21 1 0 :1:2 
+`uc 1 SSPM31 1 0 :1:3 
+`uc 1 CKP1 1 0 :1:4 
+`uc 1 SSPEN1 1 0 :1:5 
+`uc 1 SSPOV1 1 0 :1:6 
+`uc 1 WCOL1 1 0 :1:7 
+]
+[u S5197 . 1 `S5177 1 . 1 0 `S5183 1 . 1 0 `S5188 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES5197  1 e 1 @4038 ]
+"16176
+[s S5028 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S5033 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S5038 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S5043 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S5046 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S5049 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S5054 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[s S5059 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+[s S5065 . 1 `uc 1 BF1 1 0 :1:0 
+`uc 1 UA1 1 0 :1:1 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+`uc 1 CKE1 1 0 :1:6 
+`uc 1 SMP1 1 0 :1:7 
+]
+[s S5074 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW1 1 0 :1:2 
+`uc 1 START1 1 0 :1:3 
+`uc 1 STOP1 1 0 :1:4 
+`uc 1 DA1 1 0 :1:5 
+]
+[s S5080 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+]
+[s S5083 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S5086 . 1 `S5013 1 . 1 0 `S5016 1 . 1 0 `S5019 1 . 1 0 `S5028 1 . 1 0 `S5033 1 . 1 0 `S5038 1 . 1 0 `S5043 1 . 1 0 `S5046 1 . 1 0 `S5049 1 . 1 0 `S5054 1 . 1 0 `S5059 1 . 1 0 `S5065 1 . 1 0 `S5074 1 . 1 0 `S5080 1 . 1 0 `S5083 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES5086  1 e 1 @4039 ]
+"16674
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @4040 ]
+"16974
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
+[s S6301 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+"17033
+[s S6305 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+[u S6313 . 1 `S6301 1 . 1 0 `S6305 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES6313  1 e 1 @4042 ]
+"17083
+[v _PR2 PR2 `VEuc  1 e 1 @4043 ]
+"17209
+[v _TMR2 TMR2 `VEuc  1 e 1 @4044 ]
+[s S4671 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_T1SYNC 1 0 :1:2 
+]
+"17261
+[s S4674 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 RD16 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S4681 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S4687 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SOSCEN 1 0 :1:3 
+`uc 1 . 1 0 :3:4 
+`uc 1 T1RD16 1 0 :1:7 
+]
+[u S4692 . 1 `S4671 1 . 1 0 `S4674 1 . 1 0 `S4681 1 . 1 0 `S4687 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES4692  1 e 1 @4045 ]
+"17338
+[v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
+"17358
+[v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
+[s S515 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"17426
+[s S517 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S520 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S523 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S526 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S529 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_CM 1 0 :1:5 
+]
+[s S532 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 nCM 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S541 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+`uc 1 CM 1 0 :1:5 
+]
+[u S548 . 1 `S515 1 . 1 0 `S517 1 . 1 0 `S520 1 . 1 0 `S523 1 . 1 0 `S526 1 . 1 0 `S529 1 . 1 0 `S532 1 . 1 0 `S541 1 . 1 0 ]
+[v _RCONbits RCONbits `VES548  1 e 1 @4048 ]
+"18058
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+[s S4288 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"18155
+[s S4295 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+]
+[u S4299 . 1 `S4288 1 . 1 0 `S4295 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES4299  1 e 1 @4053 ]
+"18212
+[v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+"18232
+[v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
+[s S4049 . 1 `uc 1 INT1IF 1 0 :1:0 
+`uc 1 INT2IF 1 0 :1:1 
+`uc 1 INT3IF 1 0 :1:2 
+`uc 1 INT1IE 1 0 :1:3 
+`uc 1 INT2IE 1 0 :1:4 
+`uc 1 INT3IE 1 0 :1:5 
+`uc 1 INT1IP 1 0 :1:6 
+`uc 1 INT2IP 1 0 :1:7 
+]
+"18779
+[s S4058 . 1 `uc 1 INT1F 1 0 :1:0 
+`uc 1 INT2F 1 0 :1:1 
+`uc 1 INT3F 1 0 :1:2 
+`uc 1 INT1E 1 0 :1:3 
+`uc 1 INT2E 1 0 :1:4 
+`uc 1 INT3E 1 0 :1:5 
+`uc 1 INT1P 1 0 :1:6 
+`uc 1 INT2P 1 0 :1:7 
+]
+[u S4067 . 1 `S4049 1 . 1 0 `S4058 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES4067  1 e 1 @4080 ]
+[s S4247 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"18892
+[s S4250 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 INT3IP 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 INTEDG3 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S4259 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT3P 1 0 :1:1 
+`uc 1 T0IP 1 0 :1:2 
+`uc 1 . 1 0 :4:3 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S4265 . 1 `S4247 1 . 1 0 `S4250 1 . 1 0 `S4259 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES4265  1 e 1 @4081 ]
+[s S628 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"18989
+[s S637 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S646 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S650 . 1 `S628 1 . 1 0 `S637 1 . 1 0 `S646 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES650  1 e 1 @4082 ]
+"13 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v _display_content display_content `[4][20]uc  1 e 80 0 ]
+"8 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[v _mediaInformation mediaInformation `S2258  1 s 5 mediaInformation ]
+"29 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v _buffer buffer `[512]uc  1 e 512 0 ]
+"90 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v _power_state power_state `E8298  1 e 1 0 ]
+"91
+[v _flash_command_pagesize_512 flash_command_pagesize_512 `C[4]uc  1 e 4 0 ]
+"92
+[v _flash_command_pagesize_528 flash_command_pagesize_528 `C[4]uc  1 e 4 0 ]
+"19 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_frequency i2c_frequency `E8213  1 e 1 0 ]
+"22
+[v _task_list task_list `[16]E8252  1 e 16 0 ]
+"23
+[v _task_list_read_index task_list_read_index `uc  1 e 1 0 ]
+"24
+[v _task_list_write_index task_list_write_index `uc  1 e 1 0 ]
+"17 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v _filename filename `[9]uc  1 e 9 0 ]
+"18
+[v _extension extension `[4]uc  1 e 4 0 ]
+"21
+[v _inputVoltageSum inputVoltageSum `ul  1 e 4 0 ]
+"22
+[v _inputCurrentSum inputCurrentSum `ul  1 e 4 0 ]
+"23
+[v _outputVoltageSum outputVoltageSum `ul  1 e 4 0 ]
+"24
+[v _outputCurrentSum outputCurrentSum `ul  1 e 4 0 ]
+"25
+[v _inputPowerSum inputPowerSum `ul  1 e 4 0 ]
+"26
+[v _outputPowerSum outputPowerSum `ul  1 e 4 0 ]
+"27
+[v _inputCapacitySum inputCapacitySum `ul  1 e 4 0 ]
+"28
+[v _outputCapacitySum outputCapacitySum `ul  1 e 4 0 ]
+"29
+[v _temperatureOnboardSum temperatureOnboardSum `l  1 e 4 0 ]
+"30
+[v _temperatureExternal1Sum temperatureExternal1Sum `l  1 e 4 0 ]
+"31
+[v _temperatureExternal2Sum temperatureExternal2Sum `l  1 e 4 0 ]
+"32
+[v _chargerOnTime chargerOnTime `ui  1 e 2 0 ]
+"33
+[v _lowPowerTime lowPowerTime `ui  1 e 2 0 ]
+"34
+[v _status status `uc  1 e 1 0 ]
+"35
+[v _averageCount averageCount `ui  1 e 2 0 ]
+"37
+[v _lastSecond lastSecond `uc  1 e 1 0 ]
+[s S3618 . 12 `i 1 NeutralOffset 2 0 `i 1 NeutralMultiplier 2 2 `c 1 NeutralShift 1 4 `i 1 Offset 2 5 `i 1 Multiplier 2 7 `c 1 Shift 1 9 `i 1 AutoCalibration 2 10 ]
+"41 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _calibrationParameters calibrationParameters `[7]S3618  1 e 84 0 ]
+[s S33 . 65 `E8724 1 clockFrequency 1 0 `E8744 1 boardVoltage 1 1 `E8729 1 buckFrequency 1 2 `uc 1 buckDutyCycle 1 3 `c 1 buckLastStep 1 4 `uc 1 outputs 1 5 `VEc 1 encoderCount 1 6 `VEc 1 buttonCount 1 7 `VEuc 1 timeSlot 1 8 `VEuc 1 done 1 9 `[4]i 1 input_voltage_adc 8 10 `i 1 input_voltage 2 18 `[4]i 1 input_current_adc 8 20 `c 1 input_current_calibration 1 28 `i 1 input_current 2 29 `[4]i 1 output_voltage_adc 8 31 `i 1 output_voltage 2 39 `[4]i 1 output_current_adc 8 41 `c 1 output_current_calibration 1 49 `i 1 output_current 2 50 `i 1 temperature_onboard_adc 2 52 `i 1 temperature_onboard 2 54 `i 1 temperature_external_1_adc 2 56 `i 1 temperature_external_1 2 58 `i 1 temperature_external_2_adc 2 60 `i 1 temperature_external_2 2 62 `uc 1 display_mode 1 64 ]
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[v _os os `VES33  1 e 65 0 ]
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v _userInterfaceStatus userInterfaceStatus `E8386  1 e 1 0 ]
+"10
+[v _system_ui_inactive_count system_ui_inactive_count `ui  1 e 2 0 ]
+[s S687 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
+"153 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_descriptors.c
+[v _device_dsc device_dsc `CS687  1 e 18 0 ]
+"172
+[v _configDescriptor1 configDescriptor1 `C[64]uc  1 e 64 0 ]
+[s S2785 . 4 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[1]ui 1 string 2 2 ]
+"247
+[v _sd000 sd000 `CS2785  1 e 4 0 ]
+[s S2789 . 52 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[25]ui 1 string 50 2 ]
+"254
+[v _sd001 sd001 `CS2789  1 e 52 0 ]
+[s S2793 . 46 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[22]ui 1 string 44 2 ]
+"260
+[v _sd002 sd002 `CS2793  1 e 46 0 ]
+[s S2797 . 26 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[12]ui 1 string 24 2 ]
+"271
+[v _sd003 sd003 `CS2797  1 e 26 0 ]
+[s S2080 . 29 `[29]uc 1 report 29 0 ]
+"277
+[v _hid_rpt01 hid_rpt01 `CS2080  1 e 29 0 ]
+"297
+[v _USB_CD_Ptr USB_CD_Ptr `C[1]*.32Cuc  1 e 2 0 ]
+"303
+[v _USB_SD_Ptr USB_SD_Ptr `C[4]*.32Cuc  1 e 8 0 ]
+"141 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBDeviceState USBDeviceState `VEE8447  1 e 1 0 ]
+"142
+[v _USBActiveConfiguration USBActiveConfiguration `VEuc  1 e 1 0 ]
+"143
+[v _USBAlternateInterface USBAlternateInterface `VE[2]uc  1 e 2 0 ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"144
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v _pBDTEntryEP0OutCurrent pBDTEntryEP0OutCurrent `*.39VES103  1 e 2 0 ]
+"145
+[v _pBDTEntryEP0OutNext pBDTEntryEP0OutNext `*.39VES103  1 e 2 0 ]
+"146
+[v _pBDTEntryOut pBDTEntryOut `[3]*.39VES103  1 e 6 0 ]
+"147
+[v _pBDTEntryIn pBDTEntryIn `[3]*.39VES103  1 e 6 0 ]
+"148
+[v _shortPacketStatus shortPacketStatus `VEuc  1 e 1 0 ]
+"149
+[v _controlTransferState controlTransferState `VEuc  1 e 1 0 ]
+[u S108 . 3 `*.2uc 1 bRam 3 0 `*.2Cuc 1 bRom 3 0 `*.2ui 1 wRam 3 0 `*.2Cui 1 wRom 3 0 ]
+"150
+[s S113 . 1 `uc 1 ctrl_trf_mem 1 0 :1:0 
+`uc 1 reserved 1 0 :5:1 
+`uc 1 includeZero 1 0 :1:6 
+`uc 1 busy 1 0 :1:7 
+]
+[u S118 . 1 `S113 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S121 . 2 `uc 1 LB 1 0 `uc 1 HB 1 1 ]
+[u S124 . 2 `ui 1 Val 2 0 `[2]uc 1 v 2 0 `S121 1 byte 2 0 ]
+[s S128 . 6 `S108 1 pSrc 3 0 `S118 1 info 1 3 `S124 1 wCount 2 4 ]
+[v _inPipes inPipes `VE[1]S128  1 e 6 0 ]
+[u S132 . 3 `*.2uc 1 bRam 3 0 `*.2ui 1 wRam 3 0 ]
+"151
+[s S135 . 1 `uc 1 reserved 1 0 :7:0 
+`uc 1 busy 1 0 :1:7 
+]
+[u S138 . 1 `S135 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S142 . 9 `S132 1 pDst 3 0 `S138 1 info 1 3 `S124 1 wCount 2 4 `*.38(v 1 pFunc 3 6 ]
+[v _outPipes outPipes `VE[1]S142  1 e 9 0 ]
+"152
+[v _pDst pDst `*.39VEuc  1 e 2 0 ]
+"153
+[v _RemoteWakeup RemoteWakeup `VEuc  1 e 1 0 ]
+"154
+[v _USBBusIsSuspended USBBusIsSuspended `VEuc  1 e 1 0 ]
+[s S147 . 1 `uc 1 filler1 1 0 :1:0 
+`uc 1 ping_pong 1 0 :1:1 
+`uc 1 direction 1 0 :1:2 
+`uc 1 endpoint_number 1 0 :4:3 
+]
+"155
+[u S152 __USTAT 1 `S147 1 . 1 0 `uc 1 Val 1 0 ]
+[v _USTATcopy USTATcopy `VES152  1 e 1 0 ]
+"156
+[v _endpoint_number endpoint_number `VEuc  1 e 1 0 ]
+"157
+[v _BothEP0OutUOWNsSet BothEP0OutUOWNsSet `VEuc  1 e 1 0 ]
+[s S155 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+`uc 1 transfer_terminated 1 0 :1:1 
+]
+"158
+[u S158 . 1 `S155 1 bits 1 0 `uc 1 Val 1 0 ]
+[v _ep_data_in ep_data_in `VE[3]S158  1 e 3 0 ]
+"159
+[v _ep_data_out ep_data_out `VE[3]S158  1 e 3 0 ]
+"160
+[v _USBStatusStageTimeoutCounter USBStatusStageTimeoutCounter `VEuc  1 e 1 0 ]
+"161
+[v _USBDeferStatusStagePacket USBDeferStatusStagePacket `VEuc  1 e 1 0 ]
+"162
+[v _USBStatusStageEnabledFlag1 USBStatusStageEnabledFlag1 `VEuc  1 e 1 0 ]
+"163
+[v _USBStatusStageEnabledFlag2 USBStatusStageEnabledFlag2 `VEuc  1 e 1 0 ]
+"164
+[v _USBDeferINDataStagePackets USBDeferINDataStagePackets `VEuc  1 e 1 0 ]
+"165
+[v _USBDeferOUTDataStagePackets USBDeferOUTDataStagePackets `VEuc  1 e 1 0 ]
+"166
+[v _USB1msTickCount USB1msTickCount `VEul  1 e 4 0 ]
+"167
+[v _USBTicksSinceSuspendEnd USBTicksSinceSuspendEnd `VEuc  1 e 1 0 ]
+"174
+[v _BDT BDT `VE[12]S103  1 e 48 @3328 ]
+[s S161 . 8 `uc 1 bmRequestType 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
+"179
+[s S188 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`S124 1 W_Value 2 2 `S124 1 W_Index 2 4 `S124 1 W_Length 2 6 ]
+[s S194 . 8 `uc 1 Recipient 1 0 :5:0 
+`uc 1 RequestType 1 0 :2:5 
+`uc 1 DataDir 1 0 :1:7 
+`uc 1 . 1 1 :8:0 
+`uc 1 bFeature 1 2 `uc 1 . 1 3 :8:0 
+`uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S205 . 1 `uc 1 recipient 1 0 :5:0 
+`uc 1 type 1 0 :2:5 
+`uc 1 direction 1 0 :1:7 
+]
+[u S209 . 1 `uc 1 bmRequestType 1 0 `S205 1 . 1 0 ]
+[s S212 . 1 `S209 1 requestInfo 1 0 ]
+[s S214 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bDscIndex 1 2 `uc 1 bDescriptorType 1 3 `ui 1 wLangID 2 4 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S222 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bDevADR 1 2 `uc 1 bDevADRH 1 3 `uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S231 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bConfigurationValue 1 2 `uc 1 bCfgRSD 1 3 `uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S240 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bAltID 1 2 `uc 1 bAltID_H 1 3 `uc 1 bIntfID 1 4 `uc 1 bIntfID_H 1 5 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S249 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 . 1 2 :8:0 
+`uc 1 . 1 3 :8:0 
+`uc 1 bEPID 1 4 `uc 1 bEPID_H 1 5 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S258 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 . 1 2 :8:0 
+`uc 1 . 1 3 :8:0 
+`uc 1 EPNum 1 4 :4:0 
+`uc 1 . 1 4 :3:4 
+`uc 1 EPDir 1 4 :1:7 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[u S269 . 8 `S161 1 . 8 0 `S188 1 . 8 0 `S194 1 . 8 0 `S212 1 . 1 0 `S214 1 . 8 0 `S222 1 . 8 0 `S231 1 . 8 0 `S240 1 . 8 0 `S249 1 . 8 0 `S258 1 . 8 0 ]
+[v _SetupPkt SetupPkt `VES269  1 e 8 @3376 ]
+"180
+[v _CtrlTrfData CtrlTrfData `VE[8]uc  1 e 8 @3384 ]
+[s S280 _USB_MSD_CBW 31 `ul 1 dCBWSignature 4 0 `ul 1 dCBWTag 4 4 `ul 1 dCBWDataTransferLength 4 8 `uc 1 bCBWFlags 1 12 `uc 1 bCBWLUN 1 13 `uc 1 bCBWCBLength 1 14 `[16]uc 1 CBWCB 16 15 ]
+"196
+[v _msd_cbw msd_cbw `VES280  1 e 31 @3392 ]
+[s S288 _USB_MSD_CSW 13 `ul 1 dCSWSignature 4 0 `ul 1 dCSWTag 4 4 `ul 1 dCSWDataResidue 4 8 `uc 1 bCSWStatus 1 12 ]
+"197
+[v _msd_csw msd_csw `VES288  1 e 13 @3456 ]
+"200
+[v _msd_buffer msd_buffer `VE[512]uc  1 e 512 @1536 ]
+"79 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_hid.c
+[v _idle_rate idle_rate `uc  1 s 1 idle_rate ]
+"80
+[v _active_protocol active_protocol `uc  1 s 1 active_protocol ]
+"64 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _MSD_State MSD_State `uc  1 e 1 0 ]
+"65
+[v _MSDCommandState MSDCommandState `uc  1 e 1 0 ]
+"66
+[v _MSDReadState MSDReadState `uc  1 e 1 0 ]
+"67
+[v _MSDWriteState MSDWriteState `uc  1 e 1 0 ]
+"68
+[v _MSDRetryAttempt MSDRetryAttempt `uc  1 e 1 0 ]
+"70
+[v _gblCBW gblCBW `S280  1 e 31 0 ]
+[s S2162 . 18 `[18]uc 1 _byte 18 0 ]
+"72
+[u S2164 . 4 `[4]uc 1 v 4 0 `[2]ui 1 w 4 0 `ul 1 Val 4 0 ]
+[s S2168 . 18 `uc 1 ResponseCode 1 0 :7:0 
+`uc 1 VALID 1 0 :1:7 
+`uc 1 Obsolete 1 1 `uc 1 SenseKey 1 2 :4:0 
+`uc 1 Resv 1 2 :1:4 
+`uc 1 ILI 1 2 :1:5 
+`uc 1 EOM 1 2 :1:6 
+`uc 1 FILEMARK 1 2 :1:7 
+`uc 1 InformationB0 1 3 `uc 1 InformationB1 1 4 `uc 1 InformationB2 1 5 `uc 1 InformationB3 1 6 `uc 1 AddSenseLen 1 7 `S2164 1 CmdSpecificInfo 4 8 `uc 1 ASC 1 12 `uc 1 ASCQ 1 13 `uc 1 FRUC 1 14 `[3]uc 1 SenseKeySpecific 3 15 ]
+[u S2187 . 18 `S2162 1 . 18 0 `S2168 1 . 18 0 ]
+[v _gblSenseData gblSenseData `[1]S2187  1 e 18 0 ]
+"73
+[v _ptrNextData ptrNextData `*.39uc  1 e 2 0 ]
+"74
+[v _USBMSDOutHandle USBMSDOutHandle `*.39v  1 e 2 0 ]
+"75
+[v _USBMSDInHandle USBMSDInHandle `*.39v  1 e 2 0 ]
+"77
+[v _gblMediaPresent gblMediaPresent `ui  1 e 2 0 ]
+"78
+[v _SoftDetach SoftDetach `[1]uc  1 e 1 0 ]
+"79
+[v _MSDHostNoData MSDHostNoData `uc  1 e 1 0 ]
+"80
+[v _MSDCBWValid MSDCBWValid `uc  1 e 1 0 ]
+"82
+[u S2193 . 2 `[2]uc 1 v 2 0 `S121 1 byte 2 0 `ui 1 Val 2 0 ]
+[v _TransferLength TransferLength `S2193  1 s 2 TransferLength ]
+"83
+[v _LBA LBA `S2164  1 s 4 LBA ]
+"90
+[v _gblNumBLKS gblNumBLKS `S2164  1 e 4 0 ]
+[v _gblBLKLen gblBLKLen `S2164  1 e 4 0 ]
+"50 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"261
+} 0
+"334 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v _ui_run ui_run `(v  1 e 1 0 ]
+{
+"417
+} 0
+"198 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _system_encoder_enable system_encoder_enable `(v  1 e 1 0 ]
+{
+"210
+} 0
+"191
+[v _system_encoder_disable system_encoder_disable `(v  1 e 1 0 ]
+{
+"196
+} 0
+"248 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_display_send_init_sequence i2c_display_send_init_sequence `(v  1 e 1 0 ]
+{
+"250
+[v i2c_display_send_init_sequence@init_sequence init_sequence `[9]uc  1 a 9 10 ]
+"249
+[v i2c_display_send_init_sequence@F8354 F8354 `[9]uc  1 s 9 F8354 ]
+"269
+} 0
+"425
+[v _i2c_digipot_reset_on i2c_digipot_reset_on `(v  1 e 1 0 ]
+{
+"427
+[v i2c_digipot_reset_on@data_array data_array `[2]uc  1 a 2 10 ]
+"436
+} 0
+"438
+[v _i2c_digipot_reset_off i2c_digipot_reset_off `(v  1 e 1 0 ]
+{
+"440
+[v i2c_digipot_reset_off@data_array data_array `[2]uc  1 a 2 10 ]
+"448
+} 0
+"450
+[v _i2c_digipot_backlight i2c_digipot_backlight `(v  1 e 1 0 ]
+{
+[v i2c_digipot_backlight@level level `uc  1 a 1 wreg ]
+"452
+[v i2c_digipot_backlight@data_array data_array `[2]uc  1 a 2 11 ]
+"450
+[v i2c_digipot_backlight@level level `uc  1 a 1 wreg ]
+"453
+[v i2c_digipot_backlight@level level `uc  1 a 1 10 ]
+"460
+} 0
+"17 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v __ui_encoder _ui_encoder `(v  1 s 1 _ui_encoder ]
+{
+"323
+} 0
+"499 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _system_output_toggle system_output_toggle `(v  1 e 1 0 ]
+{
+[v system_output_toggle@output output `E8129  1 a 1 wreg ]
+[v system_output_toggle@output output `E8129  1 a 1 wreg ]
+"501
+[v system_output_toggle@output output `E8129  1 a 1 2 ]
+"505
+} 0
+"126 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_increment_year rtcc_increment_year `(v  1 e 1 0 ]
+{
+"128
+[v rtcc_increment_year@year year `uc  1 a 1 8 ]
+"131
+} 0
+"316
+[v _rtcc_increment_seconds rtcc_increment_seconds `(v  1 e 1 0 ]
+{
+"318
+[v rtcc_increment_seconds@seconds seconds `uc  1 a 1 8 ]
+"321
+} 0
+"164
+[v _rtcc_increment_month rtcc_increment_month `(v  1 e 1 0 ]
+{
+"166
+[v rtcc_increment_month@month month `uc  1 a 1 8 ]
+"169
+} 0
+"278
+[v _rtcc_increment_minutes rtcc_increment_minutes `(v  1 e 1 0 ]
+{
+"280
+[v rtcc_increment_minutes@minutes minutes `uc  1 a 1 8 ]
+"283
+} 0
+"240
+[v _rtcc_increment_hours rtcc_increment_hours `(v  1 e 1 0 ]
+{
+"242
+[v rtcc_increment_hours@hours hours `uc  1 a 1 8 ]
+"245
+} 0
+"202
+[v _rtcc_increment_day rtcc_increment_day `(v  1 e 1 0 ]
+{
+"204
+[v rtcc_increment_day@day day `uc  1 a 1 8 ]
+"207
+} 0
+"34
+[v __rtcc_increment_bcd _rtcc_increment_bcd `(uc  1 s 1 _rtcc_increment_bcd ]
+{
+[v __rtcc_increment_bcd@value value `uc  1 a 1 wreg ]
+[v __rtcc_increment_bcd@value value `uc  1 a 1 wreg ]
+[v __rtcc_increment_bcd@min min `uc  1 p 1 4 ]
+[v __rtcc_increment_bcd@max max `uc  1 p 1 5 ]
+"36
+[v __rtcc_increment_bcd@value value `uc  1 a 1 7 ]
+"45
+} 0
+"133
+[v _rtcc_decrement_year rtcc_decrement_year `(v  1 e 1 0 ]
+{
+"135
+[v rtcc_decrement_year@year year `uc  1 a 1 8 ]
+"138
+} 0
+"323
+[v _rtcc_decrement_seconds rtcc_decrement_seconds `(v  1 e 1 0 ]
+{
+"325
+[v rtcc_decrement_seconds@seconds seconds `uc  1 a 1 8 ]
+"328
+} 0
+"171
+[v _rtcc_decrement_month rtcc_decrement_month `(v  1 e 1 0 ]
+{
+"173
+[v rtcc_decrement_month@month month `uc  1 a 1 8 ]
+"176
+} 0
+"285
+[v _rtcc_decrement_minutes rtcc_decrement_minutes `(v  1 e 1 0 ]
+{
+"287
+[v rtcc_decrement_minutes@minutes minutes `uc  1 a 1 8 ]
+"290
+} 0
+"247
+[v _rtcc_decrement_hours rtcc_decrement_hours `(v  1 e 1 0 ]
+{
+"249
+[v rtcc_decrement_hours@hours hours `uc  1 a 1 8 ]
+"252
+} 0
+"209
+[v _rtcc_decrement_day rtcc_decrement_day `(v  1 e 1 0 ]
+{
+"211
+[v rtcc_decrement_day@day day `uc  1 a 1 8 ]
+"214
+} 0
+"47
+[v __rtcc_decrement_bcd _rtcc_decrement_bcd `(uc  1 s 1 _rtcc_decrement_bcd ]
+{
+[v __rtcc_decrement_bcd@value value `uc  1 a 1 wreg ]
+[v __rtcc_decrement_bcd@value value `uc  1 a 1 wreg ]
+[v __rtcc_decrement_bcd@min min `uc  1 p 1 4 ]
+[v __rtcc_decrement_bcd@max max `uc  1 p 1 5 ]
+"49
+[v __rtcc_decrement_bcd@value value `uc  1 a 1 7 ]
+"58
+} 0
+"94
+[v _rtcc_correct_day rtcc_correct_day `(v  1 e 1 0 ]
+{
+"97
+[v rtcc_correct_day@max max `uc  1 a 1 5 ]
+"96
+[v rtcc_correct_day@day day `uc  1 a 1 4 ]
+"100
+} 0
+"60
+[v __number_of_days _number_of_days `(uc  1 s 1 _number_of_days ]
+{
+"62
+[v __number_of_days@month month `uc  1 a 1 3 ]
+"63
+[v __number_of_days@bcd_year bcd_year `uc  1 a 1 2 ]
+"64
+[v __number_of_days@year year `uc  1 a 1 1 ]
+"78
+} 0
+"250 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _system_init system_init `(v  1 e 1 0 ]
+{
+"256
+[v system_init@appendtext appendtext `[104]uc  1 a 104 0 ]
+"254
+[v system_init@filename2 filename2 `[9]uc  1 a 9 113 ]
+"252
+[v system_init@filename filename `[9]uc  1 a 9 104 ]
+"255
+[v system_init@extension2 extension2 `[4]uc  1 a 4 126 ]
+"253
+[v system_init@extension extension `[4]uc  1 a 4 122 ]
+"251
+[v system_init@F8573 F8573 `[9]uc  1 s 9 F8573 ]
+"252
+[v system_init@F8575 F8575 `[4]uc  1 s 4 F8575 ]
+"253
+[v system_init@F8577 F8577 `[9]uc  1 s 9 F8577 ]
+"254
+[v system_init@F8579 F8579 `[4]uc  1 s 4 F8579 ]
+"255
+[v system_init@F8581 F8581 `[104]uc  1 s 104 F8581 ]
+"435
+} 0
+"325 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v _ui_init ui_init `(v  1 e 1 0 ]
+{
+"331
+} 0
+"81 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_init rtcc_init `(v  1 e 1 0 ]
+{
+"92
+} 0
+"330
+[v _rtcc_read_eeprom rtcc_read_eeprom `(v  1 e 1 0 ]
+{
+"332
+[v rtcc_read_eeprom@date date `[6]uc  1 a 6 25 ]
+"342
+} 0
+"71 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v _log_start_new log_start_new `(v  1 e 1 0 ]
+{
+"89
+} 0
+"94 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_init i2c_init `(v  1 e 1 0 ]
+{
+"100
+} 0
+"33
+[v __i2c_open_1 _i2c_open_1 `(v  1 s 1 _i2c_open_1 ]
+{
+"42
+} 0
+"579
+[v _i2c_eeprom_read_calibration i2c_eeprom_read_calibration `(v  1 e 1 0 ]
+{
+"581
+[v i2c_eeprom_read_calibration@buffer buffer `[4]uc  1 a 4 27 ]
+"583
+[v i2c_eeprom_read_calibration@addr addr `ui  1 a 2 31 ]
+"582
+[v i2c_eeprom_read_calibration@cntr cntr `uc  1 a 1 33 ]
+"643
+} 0
+"563
+[v _i2c_eeprom_read i2c_eeprom_read `(v  1 e 1 0 ]
+{
+"565
+[v i2c_eeprom_read@slave_address slave_address `uc  1 a 1 24 ]
+"566
+[v i2c_eeprom_read@addr addr `uc  1 a 1 23 ]
+"563
+[v i2c_eeprom_read@address address `ui  1 p 2 17 ]
+[v i2c_eeprom_read@data data `*.39uc  1 p 2 19 ]
+[v i2c_eeprom_read@length length `uc  1 p 1 21 ]
+"577
+} 0
+"167
+[v __i2c_read _i2c_read `(v  1 s 1 _i2c_read ]
+{
+[v __i2c_read@slave_address slave_address `uc  1 a 1 wreg ]
+"169
+[v __i2c_read@cntr cntr `uc  1 a 1 16 ]
+"167
+[v __i2c_read@slave_address slave_address `uc  1 a 1 wreg ]
+[v __i2c_read@data data `*.39uc  1 p 2 5 ]
+[v __i2c_read@length length `uc  1 p 1 7 ]
+"171
+[v __i2c_read@slave_address slave_address `uc  1 a 1 15 ]
+"194
+} 0
+"645
+[v __i2c_eeprom_load_default_calibration _i2c_eeprom_load_default_calibration `(v  1 e 1 0 ]
+{
+[s S3618 . 12 `i 1 NeutralOffset 2 0 `i 1 NeutralMultiplier 2 2 `c 1 NeutralShift 1 4 `i 1 Offset 2 5 `i 1 Multiplier 2 7 `c 1 Shift 1 9 `i 1 AutoCalibration 2 10 ]
+[v __i2c_eeprom_load_default_calibration@buffer buffer `*.39S3618  1 p 2 0 ]
+[v __i2c_eeprom_load_default_calibration@index index `E8142  1 p 1 2 ]
+"713
+} 0
+"448 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v _flash_init flash_init `(v  1 e 1 0 ]
+{
+"471
+} 0
+"260
+[v __flash_set_page_size _flash_set_page_size `(v  1 s 1 _flash_set_page_size ]
+{
+[v __flash_set_page_size@size size `E8327  1 a 1 wreg ]
+"262
+[v __flash_set_page_size@command command `[4]uc  1 a 4 19 ]
+"260
+[v __flash_set_page_size@size size `E8327  1 a 1 wreg ]
+[v __flash_set_page_size@size size `E8327  1 a 1 23 ]
+"275
+} 0
+"543 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v _buck_init buck_init `(v  1 e 1 0 ]
+{
+"548
+} 0
+"64
+[v __buck_timer2_init _buck_timer2_init `(v  1 s 1 _buck_timer2_init ]
+{
+"79
+} 0
+"41
+[v __buck_pin_init _buck_pin_init `(v  1 s 1 _buck_pin_init ]
+{
+"62
+} 0
+"9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
+[v _adc_init adc_init `(v  1 e 1 0 ]
+{
+"18
+} 0
+"214 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v __system_timer0_init _system_timer0_init `(v  1 s 1 _system_timer0_init ]
+{
+"248
+} 0
+"160
+[v __system_encoder_init _system_encoder_init `(v  1 s 1 _system_encoder_init ]
+{
+"189
+} 0
+"587
+[v _system_calculate_output_voltage system_calculate_output_voltage `(v  1 e 1 0 ]
+{
+"589
+[v system_calculate_output_voltage@tmp tmp `l  1 a 4 16 ]
+"602
+} 0
+"625
+[v _system_calculate_output_current system_calculate_output_current `(v  1 e 1 0 ]
+{
+"627
+[v system_calculate_output_current@tmp tmp `l  1 a 4 16 ]
+"644
+} 0
+"570
+[v _system_calculate_input_voltage system_calculate_input_voltage `(v  1 e 1 0 ]
+{
+"572
+[v system_calculate_input_voltage@tmp tmp `l  1 a 4 16 ]
+"585
+} 0
+"604
+[v _system_calculate_input_current system_calculate_input_current `(v  1 e 1 0 ]
+{
+"606
+[v system_calculate_input_current@tmp tmp `l  1 a 4 16 ]
+"623
+} 0
+"199 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v _log_write_to_disk log_write_to_disk `(v  1 e 1 0 ]
+{
+[s S7682 . 32 `ul 1 dateTime 4 0 `ui 1 inputVoltage 2 4 `ui 1 inputCurrent 2 6 `ui 1 outputVoltage 2 8 `ui 1 outputCurrent 2 10 `ui 1 inputPower 2 12 `ui 1 outputPower 2 14 `ui 1 inputCapacity 2 16 `ui 1 outputCapacity 2 18 `uc 1 temperatureOnboard 1 20 `uc 1 temperatureExternal1 1 21 `uc 1 temperatureExternal2 1 22 `uc 1 chargerOnTime 1 23 `uc 1 lowPowerTime 1 24 `[5]uc 1 unused 5 25 `uc 1 status 1 30 `uc 1 checksum 1 31 ]
+"202
+[v log_write_to_disk@log_entry log_entry `S7682  1 a 32 1 ]
+"201
+[v log_write_to_disk@file_number file_number `uc  1 a 1 0 ]
+"217
+} 0
+"174
+[v _log_generate_entry log_generate_entry `(v  1 e 1 0 ]
+{
+[s S7682 . 32 `ul 1 dateTime 4 0 `ui 1 inputVoltage 2 4 `ui 1 inputCurrent 2 6 `ui 1 outputVoltage 2 8 `ui 1 outputCurrent 2 10 `ui 1 inputPower 2 12 `ui 1 outputPower 2 14 `ui 1 inputCapacity 2 16 `ui 1 outputCapacity 2 18 `uc 1 temperatureOnboard 1 20 `uc 1 temperatureExternal1 1 21 `uc 1 temperatureExternal2 1 22 `uc 1 chargerOnTime 1 23 `uc 1 lowPowerTime 1 24 `[5]uc 1 unused 5 25 `uc 1 status 1 30 `uc 1 checksum 1 31 ]
+[v log_generate_entry@log_entry log_entry `*.39S7682  1 p 2 24 ]
+"197
+} 0
+"107
+[v __get_temperature _get_temperature `(uc  1 e 1 0 ]
+{
+[v __get_temperature@temperature temperature `i  1 p 2 14 ]
+"112
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"42
+} 0
+"39 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v __get_dateTime _get_dateTime `(ul  1 s 4 _get_dateTime ]
+{
+"41
+[v __get_dateTime@datetime datetime `ul  1 a 4 20 ]
+"47
+[v __get_dateTime@seconds seconds `uc  1 a 1 19 ]
+"46
+[v __get_dateTime@minutes minutes `uc  1 a 1 18 ]
+"45
+[v __get_dateTime@hours hours `uc  1 a 1 17 ]
+"44
+[v __get_dateTime@day day `uc  1 a 1 16 ]
+"43
+[v __get_dateTime@month month `uc  1 a 1 15 ]
+"42
+[v __get_dateTime@year year `uc  1 a 1 14 ]
+"55
+} 0
+"57
+[v __get_checksum _get_checksum `(uc  1 s 1 _get_checksum ]
+{
+"60
+[v __get_checksum@byte_array byte_array `*.39uc  1 a 2 2 ]
+"61
+[v __get_checksum@cntr cntr `uc  1 a 1 5 ]
+"59
+[v __get_checksum@checksum checksum `uc  1 a 1 4 ]
+[s S7682 . 32 `ul 1 dateTime 4 0 `ui 1 inputVoltage 2 4 `ui 1 inputCurrent 2 6 `ui 1 outputVoltage 2 8 `ui 1 outputCurrent 2 10 `ui 1 inputPower 2 12 `ui 1 outputPower 2 14 `ui 1 inputCapacity 2 16 `ui 1 outputCapacity 2 18 `uc 1 temperatureOnboard 1 20 `uc 1 temperatureExternal1 1 21 `uc 1 temperatureExternal2 1 22 `uc 1 chargerOnTime 1 23 `uc 1 lowPowerTime 1 24 `[5]uc 1 unused 5 25 `uc 1 status 1 30 `uc 1 checksum 1 31 ]
+"57
+[v __get_checksum@log_entry log_entry `*.39S7682  1 p 2 0 ]
+"69
+} 0
+"321 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v _fat_create_file fat_create_file `(uc  1 e 1 0 ]
+{
+[s S7364 . 32 `[8]uc 1 fileName 8 0 `[3]uc 1 fileExtension 3 8 `uc 1 attributes 1 11 `uc 1 reserved1 1 12 `uc 1 secondFractions 1 13 `ui 1 createdTime 2 14 `ui 1 createdDate 2 16 `ui 1 lastAccessDate 2 18 `ui 1 reserved2 2 20 `ui 1 modifiedTime 2 22 `ui 1 modifiedDate 2 24 `ui 1 firstCluster 2 26 `ul 1 fileSize 4 28 ]
+"324
+[v fat_create_file@root_entry root_entry `S7364  1 a 32 80 ]
+"325
+[v fat_create_file@cluster cluster `ui  1 a 2 78 ]
+"327
+[v fat_create_file@number_of_clusters number_of_clusters `ui  1 a 2 76 ]
+"328
+[v fat_create_file@cluster_count cluster_count `ui  1 a 2 73 ]
+"326
+[v fat_create_file@next_cluster next_cluster `ui  1 a 2 71 ]
+"323
+[v fat_create_file@root_slot root_slot `uc  1 a 1 75 ]
+"321
+[v fat_create_file@name name `*.39uc  1 p 2 59 ]
+[v fat_create_file@extension extension `*.39uc  1 p 2 61 ]
+[v fat_create_file@size size `ul  1 p 4 63 ]
+"401
+} 0
+"132
+[v _fat_get_empty_clusters fat_get_empty_clusters `(ui  1 e 2 0 ]
+{
+"135
+[v fat_get_empty_clusters@cluster cluster `ui  1 a 2 49 ]
+"134
+[v fat_get_empty_clusters@empty_clusters empty_clusters `ui  1 a 2 47 ]
+"138
+[v fat_get_empty_clusters@value value `ui  1 a 2 45 ]
+"137
+[v fat_get_empty_clusters@offset offset `ui  1 a 2 43 ]
+"136
+[v fat_get_empty_clusters@fat_sector fat_sector `ui  1 a 2 41 ]
+"132
+[v fat_get_empty_clusters@maximum maximum `ui  1 p 2 39 ]
+"158
+} 0
+"262
+[v _fat_find_file fat_find_file `(uc  1 e 1 0 ]
+{
+"266
+[v fat_find_file@buffer buffer `[11]uc  1 a 11 43 ]
+[v fat_find_file@offset offset `ui  1 a 2 57 ]
+"265
+[v fat_find_file@sector sector `ui  1 a 2 55 ]
+"264
+[v fat_find_file@slot slot `uc  1 a 1 54 ]
+"262
+[v fat_find_file@name name `*.39uc  1 p 2 39 ]
+[v fat_find_file@extension extension `*.39uc  1 p 2 41 ]
+"304
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+{
+[v strncmp@s1 s1 `*.39Cuc  1 p 2 0 ]
+[v strncmp@s2 s2 `*.39Cuc  1 p 2 2 ]
+[v strncmp@len len `ui  1 p 2 4 ]
+"14
+} 0
+"96 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v __get_available_root_entry _get_available_root_entry `(uc  1 s 1 _get_available_root_entry ]
+{
+"98
+[v __get_available_root_entry@file_number file_number `uc  1 a 1 46 ]
+"107
+} 0
+"460
+[v _fat_append_to_file fat_append_to_file `(uc  1 e 1 0 ]
+{
+[v fat_append_to_file@file_number file_number `uc  1 a 1 wreg ]
+[s S7364 . 32 `[8]uc 1 fileName 8 0 `[3]uc 1 fileExtension 3 8 `uc 1 attributes 1 11 `uc 1 reserved1 1 12 `uc 1 secondFractions 1 13 `ui 1 createdTime 2 14 `ui 1 createdDate 2 16 `ui 1 lastAccessDate 2 18 `ui 1 reserved2 2 20 `ui 1 modifiedTime 2 22 `ui 1 modifiedDate 2 24 `ui 1 firstCluster 2 26 `ul 1 fileSize 4 28 ]
+"462
+[v fat_append_to_file@root root `S7364  1 a 32 80 ]
+"466
+[v fat_append_to_file@position position `ul  1 a 4 76 ]
+"463
+[v fat_append_to_file@file_size file_size `ul  1 a 4 63 ]
+"469
+[v fat_append_to_file@length length `ui  1 a 2 74 ]
+"467
+[v fat_append_to_file@offset offset `ui  1 a 2 71 ]
+"464
+[v fat_append_to_file@fat_cluster fat_cluster `ui  1 a 2 69 ]
+"465
+[v fat_append_to_file@new_cluster new_cluster `ui  1 a 2 67 ]
+"468
+[v fat_append_to_file@sector sector `ui  1 a 2 61 ]
+"460
+[v fat_append_to_file@file_number file_number `uc  1 a 1 wreg ]
+[v fat_append_to_file@number_of_bytes number_of_bytes `ui  1 p 2 49 ]
+[v fat_append_to_file@data data `*.39uc  1 p 2 51 ]
+"472
+[v fat_append_to_file@file_number file_number `uc  1 a 1 73 ]
+"546
+} 0
+"184
+[v __write_root _write_root `(v  1 s 1 _write_root ]
+{
+[v __write_root@slot slot `uc  1 a 1 wreg ]
+"187
+[v __write_root@offset offset `ui  1 a 2 45 ]
+"186
+[v __write_root@root_sector root_sector `ui  1 a 2 43 ]
+"184
+[v __write_root@slot slot `uc  1 a 1 wreg ]
+[s S7364 . 32 `[8]uc 1 fileName 8 0 `[3]uc 1 fileExtension 3 8 `uc 1 attributes 1 11 `uc 1 reserved1 1 12 `uc 1 secondFractions 1 13 `ui 1 createdTime 2 14 `ui 1 createdDate 2 16 `ui 1 lastAccessDate 2 18 `ui 1 reserved2 2 20 `ui 1 modifiedTime 2 22 `ui 1 modifiedDate 2 24 `ui 1 firstCluster 2 26 `ul 1 fileSize 4 28 ]
+[v __write_root@data data `*.39S7364  1 p 2 40 ]
+"188
+[v __write_root@slot slot `uc  1 a 1 47 ]
+"192
+} 0
+"160
+[v __write_fat _write_fat `(v  1 s 1 _write_fat ]
+{
+"163
+[v __write_fat@offset offset `ui  1 a 2 46 ]
+"162
+[v __write_fat@fat_sector fat_sector `ui  1 a 2 44 ]
+"160
+[v __write_fat@cluster cluster `ui  1 p 2 40 ]
+[v __write_fat@value value `ui  1 p 2 42 ]
+"169
+} 0
+"589 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v _flash_partial_write flash_partial_write `(v  1 e 1 0 ]
+{
+"591
+[v flash_partial_write@match match `E8335  1 a 1 39 ]
+"589
+[v flash_partial_write@page page `ui  1 p 2 31 ]
+[v flash_partial_write@start start `ui  1 p 2 33 ]
+[v flash_partial_write@length length `ui  1 p 2 35 ]
+[v flash_partial_write@data data `*.39uc  1 p 2 37 ]
+"610
+} 0
+"315
+[v __flash_copy_page_to_buffer _flash_copy_page_to_buffer `(v  1 s 1 _flash_copy_page_to_buffer ]
+{
+"317
+[v __flash_copy_page_to_buffer@command command `[4]uc  1 a 4 25 ]
+"315
+[v __flash_copy_page_to_buffer@page page `ui  1 p 2 19 ]
+[v __flash_copy_page_to_buffer@buffer buffer `E8331  1 p 1 21 ]
+"334
+} 0
+"55 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v __update_modified_time _update_modified_time `(v  1 s 1 _update_modified_time ]
+{
+[s S7364 . 32 `[8]uc 1 fileName 8 0 `[3]uc 1 fileExtension 3 8 `uc 1 attributes 1 11 `uc 1 reserved1 1 12 `uc 1 secondFractions 1 13 `ui 1 createdTime 2 14 `ui 1 createdDate 2 16 `ui 1 lastAccessDate 2 18 `ui 1 reserved2 2 20 `ui 1 modifiedTime 2 22 `ui 1 modifiedDate 2 24 `ui 1 firstCluster 2 26 `ul 1 fileSize 4 28 ]
+[v __update_modified_time@root root `*.39S7364  1 p 2 13 ]
+"59
+} 0
+"31
+[v __get_time _get_time `(ui  1 s 2 _get_time ]
+{
+"33
+[v __get_time@time time `ui  1 a 2 11 ]
+"36
+[v __get_time@seconds seconds `uc  1 a 1 10 ]
+"35
+[v __get_time@minutes minutes `uc  1 a 1 9 ]
+"34
+[v __get_time@hours hours `uc  1 a 1 8 ]
+"41
+} 0
+"263 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_get_minutes_decimal rtcc_get_minutes_decimal `(uc  1 e 1 0 ]
+{
+"265
+[v rtcc_get_minutes_decimal@bcd_minutes bcd_minutes `uc  1 a 1 3 ]
+"267
+} 0
+"225
+[v _rtcc_get_hours_decimal rtcc_get_hours_decimal `(uc  1 e 1 0 ]
+{
+"227
+[v rtcc_get_hours_decimal@bcd_hours bcd_hours `uc  1 a 1 3 ]
+"229
+} 0
+"43 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v __get_date _get_date `(ui  1 s 2 _get_date ]
+{
+"45
+[v __get_date@date date `ui  1 a 2 11 ]
+"48
+[v __get_date@day day `uc  1 a 1 10 ]
+"47
+[v __get_date@month month `uc  1 a 1 9 ]
+"46
+[v __get_date@year year `uc  1 a 1 8 ]
+"53
+} 0
+"111 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_get_year_decimal rtcc_get_year_decimal `(uc  1 e 1 0 ]
+{
+"113
+[v rtcc_get_year_decimal@bcd_year bcd_year `uc  1 a 1 3 ]
+"115
+} 0
+"149
+[v _rtcc_get_month_decimal rtcc_get_month_decimal `(uc  1 e 1 0 ]
+{
+"151
+[v rtcc_get_month_decimal@bcd_month bcd_month `uc  1 a 1 3 ]
+"153
+} 0
+"187
+[v _rtcc_get_day_decimal rtcc_get_day_decimal `(uc  1 e 1 0 ]
+{
+"189
+[v rtcc_get_day_decimal@bcd_day bcd_day `uc  1 a 1 3 ]
+"191
+} 0
+"455 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
+[v __sector_from_cluster _sector_from_cluster `(ui  1 s 2 _sector_from_cluster ]
+{
+[v __sector_from_cluster@fat_cluster fat_cluster `ui  1 p 2 0 ]
+"458
+} 0
+"61
+[v __root_is_available _root_is_available `(uc  1 s 1 _root_is_available ]
+{
+[v __root_is_available@file_number file_number `uc  1 a 1 wreg ]
+"64
+[v __root_is_available@offset offset `ui  1 a 2 42 ]
+"63
+[v __root_is_available@root_sector root_sector `ui  1 a 2 40 ]
+"65
+[v __root_is_available@first_byte first_byte `uc  1 a 1 45 ]
+"61
+[v __root_is_available@file_number file_number `uc  1 a 1 wreg ]
+"69
+[v __root_is_available@file_number file_number `uc  1 a 1 44 ]
+"94
+} 0
+"194
+[v __read_root _read_root `(v  1 s 1 _read_root ]
+{
+[v __read_root@slot slot `uc  1 a 1 wreg ]
+"197
+[v __read_root@offset offset `ui  1 a 2 44 ]
+"196
+[v __read_root@root_sector root_sector `ui  1 a 2 42 ]
+"194
+[v __read_root@slot slot `uc  1 a 1 wreg ]
+[s S7364 . 32 `[8]uc 1 fileName 8 0 `[3]uc 1 fileExtension 3 8 `uc 1 attributes 1 11 `uc 1 reserved1 1 12 `uc 1 secondFractions 1 13 `ui 1 createdTime 2 14 `ui 1 createdDate 2 16 `ui 1 lastAccessDate 2 18 `ui 1 reserved2 2 20 `ui 1 modifiedTime 2 22 `ui 1 modifiedDate 2 24 `ui 1 firstCluster 2 26 `ul 1 fileSize 4 28 ]
+[v __read_root@data data `*.39S7364  1 p 2 39 ]
+"198
+[v __read_root@slot slot `uc  1 a 1 46 ]
+"202
+} 0
+"171
+[v __read_fat _read_fat `(ui  1 s 2 _read_fat ]
+{
+"175
+[v __read_fat@value value `ui  1 a 2 45 ]
+"174
+[v __read_fat@offset offset `ui  1 a 2 43 ]
+"173
+[v __read_fat@fat_sector fat_sector `ui  1 a 2 41 ]
+"171
+[v __read_fat@cluster cluster `ui  1 p 2 39 ]
+"182
+} 0
+"109
+[v __get_empty_cluster _get_empty_cluster `(ui  1 s 2 _get_empty_cluster ]
+{
+"111
+[v __get_empty_cluster@cluster cluster `ui  1 a 2 47 ]
+"114
+[v __get_empty_cluster@value value `ui  1 a 2 45 ]
+"113
+[v __get_empty_cluster@offset offset `ui  1 a 2 43 ]
+"112
+[v __get_empty_cluster@fat_sector fat_sector `ui  1 a 2 41 ]
+"109
+[v __get_empty_cluster@first_cluster first_cluster `ui  1 p 2 39 ]
+"130
+} 0
+"169 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v _log_get_number_of_samples log_get_number_of_samples `(ui  1 e 2 0 ]
+{
+"172
+} 0
+"114
+[v _log_collect_data log_collect_data `(v  1 e 1 0 ]
+{
+"116
+[v log_collect_data@temp temp `ui  1 a 2 24 ]
+"167
+} 0
+"491 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _system_output_is_on system_output_is_on `(uc  1 e 1 0 ]
+{
+[v system_output_is_on@output output `E8129  1 a 1 wreg ]
+[v system_output_is_on@output output `E8129  1 a 1 wreg ]
+"493
+[v system_output_is_on@output output `E8129  1 a 1 0 ]
+"497
+} 0
+"301 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_get_seconds_decimal rtcc_get_seconds_decimal `(uc  1 e 1 0 ]
+{
+"303
+[v rtcc_get_seconds_decimal@bcd_seconds bcd_seconds `uc  1 a 1 3 ]
+"305
+} 0
+"7
+[v __rtcc_bdc_to_decimal _rtcc_bdc_to_decimal `(uc  1 s 1 _rtcc_bdc_to_decimal ]
+{
+[v __rtcc_bdc_to_decimal@input input `uc  1 a 1 wreg ]
+"10
+[v __rtcc_bdc_to_decimal@ones ones `uc  1 a 1 1 ]
+"9
+[v __rtcc_bdc_to_decimal@tens tens `uc  1 a 1 0 ]
+"7
+[v __rtcc_bdc_to_decimal@input input `uc  1 a 1 wreg ]
+"9
+[v __rtcc_bdc_to_decimal@input input `uc  1 a 1 2 ]
+"12
+} 0
+"99 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
+[v __get_output_power _get_output_power `(ui  1 e 2 0 ]
+{
+"101
+[v __get_output_power@pwr pwr `ul  1 a 4 15 ]
+"105
+} 0
+"91
+[v __get_input_power _get_input_power `(ui  1 e 2 0 ]
+{
+"93
+[v __get_input_power@pwr pwr `l  1 a 4 16 ]
+"97
+} 0
+"779 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_eeprom_tasks i2c_eeprom_tasks `(v  1 e 1 0 ]
+{
+"807
+} 0
+"759
+[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8252  1 e 1 0 ]
+{
+"761
+[v get_next_eeprom_write_task@task task `E8252  1 a 1 0 ]
+"777
+} 0
+"715
+[v __write_calibration _write_calibration `(v  1 e 1 0 ]
+{
+[v __write_calibration@index index `E8142  1 a 1 wreg ]
+"717
+[v __write_calibration@buffer buffer `[16]uc  1 a 16 39 ]
+"718
+[v __write_calibration@ptr ptr `*.39uc  1 a 2 57 ]
+"720
+[v __write_calibration@addr addr `ui  1 a 2 55 ]
+"719
+[v __write_calibration@cntr cntr `uc  1 a 1 60 ]
+"715
+[v __write_calibration@index index `E8142  1 a 1 wreg ]
+"721
+[v __write_calibration@index index `E8142  1 a 1 59 ]
+"733
+} 0
+"467
+[v _i2c_adc_start i2c_adc_start `(v  1 e 1 0 ]
+{
+[v i2c_adc_start@channel channel `E8224  1 a 1 wreg ]
+"469
+[v i2c_adc_start@configuration_byte configuration_byte `uc  1 a 1 13 ]
+"467
+[v i2c_adc_start@channel channel `E8224  1 a 1 wreg ]
+[v i2c_adc_start@resolution resolution `E8230  1 p 1 10 ]
+[v i2c_adc_start@gain gain `E8236  1 p 1 11 ]
+"470
+[v i2c_adc_start@channel channel `E8224  1 a 1 12 ]
+"479
+} 0
+"481
+[v _i2c_adc_read i2c_adc_read `(i  1 e 2 0 ]
+{
+"483
+[v i2c_adc_read@result result `i  1 a 2 8 ]
+"501
+} 0
+"87
+[v __i2c_not_acknowledge _i2c_not_acknowledge `(v  1 s 1 _i2c_not_acknowledge ]
+{
+"92
+} 0
+"64
+[v __i2c_get _i2c_get `(uc  1 s 1 _i2c_get ]
+{
+"69
+} 0
+"79
+[v __i2c_acknowledge _i2c_acknowledge `(v  1 s 1 _i2c_acknowledge ]
+{
+"84
+} 0
+"174 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v _display_update display_update `(v  1 e 1 0 ]
+{
+"184
+} 0
+"364 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_display_write_fixed i2c_display_write_fixed `(v  1 e 1 0 ]
+{
+"366
+[v i2c_display_write_fixed@pos pos `uc  1 a 1 8 ]
+"364
+[v i2c_display_write_fixed@data data `*.39uc  1 p 2 5 ]
+[v i2c_display_write_fixed@length length `uc  1 p 1 7 ]
+"387
+} 0
+"324
+[v _i2c_display_cursor i2c_display_cursor `(v  1 e 1 0 ]
+{
+[v i2c_display_cursor@line line `uc  1 a 1 wreg ]
+"326
+[v i2c_display_cursor@address address `uc  1 a 1 15 ]
+"324
+[v i2c_display_cursor@line line `uc  1 a 1 wreg ]
+[v i2c_display_cursor@position position `uc  1 p 1 13 ]
+"329
+[v i2c_display_cursor@line line `uc  1 a 1 14 ]
+"339
+} 0
+"311
+[v __ic2_display_set_address _ic2_display_set_address `(v  1 e 1 0 ]
+{
+[v __ic2_display_set_address@address address `uc  1 a 1 wreg ]
+"313
+[v __ic2_display_set_address@data_array data_array `[2]uc  1 a 2 11 ]
+"311
+[v __ic2_display_set_address@address address `uc  1 a 1 wreg ]
+"314
+[v __ic2_display_set_address@address address `uc  1 a 1 10 ]
+"322
+} 0
+"108 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v _display_prepare display_prepare `(v  1 e 1 0 ]
+{
+[v display_prepare@mode mode `uc  1 a 1 wreg ]
+[v display_prepare@mode mode `uc  1 a 1 wreg ]
+"110
+[v display_prepare@mode mode `uc  1 a 1 116 ]
+"138
+} 0
+"303
+[v __display_usb _display_usb `(v  1 s 1 _display_usb ]
+{
+"306
+[v __display_usb@header header `C[20]uc  1 a 20 0 ]
+"309
+[v __display_usb@usb_off usb_off `C[17]uc  1 a 17 20 ]
+"308
+[v __display_usb@usb_on usb_on `C[16]uc  1 a 16 53 ]
+"307
+[v __display_usb@low low `C[16]uc  1 a 16 37 ]
+"305
+[v __display_usb@cntr cntr `uc  1 a 1 69 ]
+[v __display_usb@F8712 F8712 `C[20]uc  1 s 20 F8712 ]
+"306
+[v __display_usb@F8714 F8714 `C[16]uc  1 s 16 F8714 ]
+"307
+[v __display_usb@F8716 F8716 `C[16]uc  1 s 16 F8716 ]
+"308
+[v __display_usb@F8718 F8718 `C[17]uc  1 s 17 F8718 ]
+"334
+} 0
+"186
+[v __display_time _display_time `(v  1 s 1 _display_time ]
+{
+[v __display_time@mode mode `uc  1 a 1 wreg ]
+"200
+[v __display_time@pressseconds pressseconds `C[20]uc  1 a 20 40 ]
+"199
+[v __display_time@pressminutes pressminutes `C[20]uc  1 a 20 20 ]
+"195
+[v __display_time@pts pts `C[20]uc  1 a 20 0 ]
+"198
+[v __display_time@presshours presshours `C[18]uc  1 a 18 78 ]
+"196
+[v __display_time@pressmonth pressmonth `C[18]uc  1 a 18 60 ]
+"201
+[v __display_time@presssave presssave `C[16]uc  1 a 16 112 ]
+"197
+[v __display_time@pressday pressday `C[16]uc  1 a 16 96 ]
+"188
+[v __display_time@tad tad `C[14]uc  1 a 14 128 ]
+"194
+[v __display_time@setseconds setseconds `C[12]uc  1 a 12 154 ]
+"193
+[v __display_time@setminutes setminutes `C[12]uc  1 a 12 142 ]
+"192
+[v __display_time@sethours sethours `C[10]uc  1 a 10 176 ]
+"190
+[v __display_time@setmonth setmonth `C[10]uc  1 a 10 166 ]
+"189
+[v __display_time@setyear setyear `C[9]uc  1 a 9 186 ]
+"191
+[v __display_time@setday setday `C[8]uc  1 a 8 195 ]
+"203
+[v __display_time@cntr cntr `uc  1 a 1 210 ]
+"209
+[v __display_time@seconds seconds `uc  1 a 1 209 ]
+"208
+[v __display_time@minutes minutes `uc  1 a 1 208 ]
+"207
+[v __display_time@hours hours `uc  1 a 1 207 ]
+"206
+[v __display_time@day day `uc  1 a 1 206 ]
+"205
+[v __display_time@month month `uc  1 a 1 205 ]
+"204
+[v __display_time@year year `uc  1 a 1 204 ]
+"186
+[v __display_time@mode mode `uc  1 a 1 wreg ]
+"187
+[v __display_time@F8675 F8675 `C[14]uc  1 s 14 F8675 ]
+"188
+[v __display_time@F8677 F8677 `C[9]uc  1 s 9 F8677 ]
+"189
+[v __display_time@F8679 F8679 `C[10]uc  1 s 10 F8679 ]
+"190
+[v __display_time@F8681 F8681 `C[8]uc  1 s 8 F8681 ]
+"191
+[v __display_time@F8683 F8683 `C[10]uc  1 s 10 F8683 ]
+"192
+[v __display_time@F8685 F8685 `C[12]uc  1 s 12 F8685 ]
+"193
+[v __display_time@F8687 F8687 `C[12]uc  1 s 12 F8687 ]
+"194
+[v __display_time@F8689 F8689 `C[20]uc  1 s 20 F8689 ]
+"195
+[v __display_time@F8691 F8691 `C[18]uc  1 s 18 F8691 ]
+"196
+[v __display_time@F8693 F8693 `C[16]uc  1 s 16 F8693 ]
+"197
+[v __display_time@F8695 F8695 `C[18]uc  1 s 18 F8695 ]
+"198
+[v __display_time@F8697 F8697 `C[20]uc  1 s 20 F8697 ]
+"199
+[v __display_time@F8699 F8699 `C[20]uc  1 s 20 F8699 ]
+"200
+[v __display_time@F8701 F8701 `C[16]uc  1 s 16 F8701 ]
+"188
+[v __display_time@mode mode `uc  1 a 1 203 ]
+"301
+} 0
+"513
+[v __display_temperature _display_temperature `(v  1 s 1 _display_temperature ]
+{
+"516
+[v __display_temperature@header header `C[20]uc  1 a 20 48 ]
+"519
+[v __display_temperature@external2 external2 `C[12]uc  1 a 12 80 ]
+"518
+[v __display_temperature@external1 external1 `C[12]uc  1 a 12 68 ]
+"517
+[v __display_temperature@internal internal `C[11]uc  1 a 11 92 ]
+"515
+[v __display_temperature@cntr cntr `uc  1 a 1 103 ]
+[v __display_temperature@F8773 F8773 `C[20]uc  1 s 20 F8773 ]
+"516
+[v __display_temperature@F8775 F8775 `C[11]uc  1 s 11 F8775 ]
+"517
+[v __display_temperature@F8777 F8777 `C[12]uc  1 s 12 F8777 ]
+"518
+[v __display_temperature@F8779 F8779 `C[12]uc  1 s 12 F8779 ]
+"542
+} 0
+"336
+[v __display_outputs _display_outputs `(v  1 s 1 _display_outputs ]
+{
+[v __display_outputs@mode mode `uc  1 a 1 wreg ]
+"342
+[v __display_outputs@line4 line4 `C[21]uc  1 a 21 21 ]
+"341
+[v __display_outputs@line3 line3 `C[21]uc  1 a 21 0 ]
+"340
+[v __display_outputs@low low `C[16]uc  1 a 16 42 ]
+"339
+[v __display_outputs@header header `C[14]uc  1 a 14 58 ]
+"338
+[v __display_outputs@cntr cntr `uc  1 a 1 73 ]
+"336
+[v __display_outputs@mode mode `uc  1 a 1 wreg ]
+"338
+[v __display_outputs@F8722 F8722 `C[14]uc  1 s 14 F8722 ]
+"339
+[v __display_outputs@F8724 F8724 `C[16]uc  1 s 16 F8724 ]
+"340
+[v __display_outputs@F8726 F8726 `C[21]uc  1 s 21 F8726 ]
+"341
+[v __display_outputs@F8728 F8728 `C[21]uc  1 s 21 F8728 ]
+"339
+[v __display_outputs@mode mode `uc  1 a 1 72 ]
+"403
+} 0
+"141
+[v __display_inout _display_inout `(v  1 s 1 _display_inout ]
+{
+"145
+[v __display_inout@line2 line2 `C[18]uc  1 a 18 66 ]
+"144
+[v __display_inout@line1 line1 `C[18]uc  1 a 18 48 ]
+"147
+[v __display_inout@line4 line4 `C[14]uc  1 a 14 84 ]
+"146
+[v __display_inout@line3 line3 `C[3]uc  1 a 3 98 ]
+"143
+[v __display_inout@cntr cntr `uc  1 a 1 101 ]
+[v __display_inout@F8665 F8665 `C[18]uc  1 s 18 F8665 ]
+"144
+[v __display_inout@F8667 F8667 `C[18]uc  1 s 18 F8667 ]
+"145
+[v __display_inout@F8669 F8669 `C[3]uc  1 s 3 F8669 ]
+"146
+[v __display_inout@F8671 F8671 `C[14]uc  1 s 14 F8671 ]
+"172
+} 0
+"475
+[v __display_efficiency _display_efficiency `(v  1 s 1 _display_efficiency ]
+{
+"479
+[v __display_efficiency@source source `C[19]uc  1 a 19 69 ]
+"478
+[v __display_efficiency@header header `C[19]uc  1 a 19 50 ]
+"480
+[v __display_efficiency@footer footer `C[14]uc  1 a 14 88 ]
+"482
+[v __display_efficiency@battery battery `l  1 a 4 109 ]
+"481
+[v __display_efficiency@panel panel `l  1 a 4 105 ]
+"483
+[v __display_efficiency@efficiency efficiency `f  1 a 3 102 ]
+"477
+[v __display_efficiency@cntr cntr `uc  1 a 1 113 ]
+[v __display_efficiency@F8753 F8753 `C[19]uc  1 s 19 F8753 ]
+"478
+[v __display_efficiency@F8755 F8755 `C[19]uc  1 s 19 F8755 ]
+"479
+[v __display_efficiency@F8757 F8757 `C[14]uc  1 s 14 F8757 ]
+"511
+} 0
+"44 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 10 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 14 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 9 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 0 ]
+"73
+} 0
+"42 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+{
+"44
+[v ___altoft@sign sign `uc  1 a 1 23 ]
+[v ___altoft@exp exp `uc  1 a 1 22 ]
+"42
+[v ___altoft@c c `l  1 p 4 14 ]
+"57
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"11
+[v ___aldiv@quotient quotient `l  1 a 4 10 ]
+"12
+[v ___aldiv@sign sign `uc  1 a 1 9 ]
+[v ___aldiv@counter counter `uc  1 a 1 8 ]
+"8
+[v ___aldiv@dividend dividend `l  1 p 4 0 ]
+[v ___aldiv@divisor divisor `l  1 p 4 4 ]
+"42
+} 0
+"28 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v __display_clear _display_clear `(v  1 s 1 _display_clear ]
+{
+"31
+[v __display_clear@col col `uc  1 a 1 3 ]
+"30
+[v __display_clear@row row `uc  1 a 1 2 ]
+"39
+} 0
+"405
+[v __display_charger _display_charger `(v  1 s 1 _display_charger ]
+{
+"416
+[v __display_charger@charger_async charger_async `C[21]uc  1 a 21 36 ]
+"408
+[v __display_charger@header header `C[21]uc  1 a 21 15 ]
+"417
+[v __display_charger@charger_sync charger_sync `C[20]uc  1 a 20 57 ]
+"410
+[v __display_charger@supply_off supply_off `C[19]uc  1 a 19 77 ]
+"409
+[v __display_charger@supply_on supply_on `C[18]uc  1 a 18 96 ]
+"415
+[v __display_charger@charger_startup charger_startup `C[16]uc  1 a 16 114 ]
+"414
+[v __display_charger@charger_off charger_off `C[12]uc  1 a 12 130 ]
+"412
+[v __display_charger@fan_off fan_off `C[8]uc  1 a 8 0 ]
+"411
+[v __display_charger@fan_on fan_on `C[7]uc  1 a 7 8 ]
+"407
+[v __display_charger@cntr cntr `uc  1 a 1 142 ]
+[v __display_charger@F8732 F8732 `C[21]uc  1 s 21 F8732 ]
+"408
+[v __display_charger@F8734 F8734 `C[18]uc  1 s 18 F8734 ]
+"409
+[v __display_charger@F8736 F8736 `C[19]uc  1 s 19 F8736 ]
+"410
+[v __display_charger@F8738 F8738 `C[7]uc  1 s 7 F8738 ]
+"411
+[v __display_charger@F8740 F8740 `C[8]uc  1 s 8 F8740 ]
+"412
+[v __display_charger@F8742 F8742 `C[12]uc  1 s 12 F8742 ]
+"414
+[v __display_charger@F8744 F8744 `C[16]uc  1 s 16 F8744 ]
+"415
+[v __display_charger@F8746 F8746 `C[21]uc  1 s 21 F8746 ]
+"416
+[v __display_charger@F8748 F8748 `C[20]uc  1 s 20 F8748 ]
+"473
+} 0
+"41
+[v __display_itoa _display_itoa `(v  1 s 1 _display_itoa ]
+{
+"46
+[v __display_itoa@tmp tmp `[10]uc  1 a 10 35 ]
+"43
+[v __display_itoa@pos pos `uc  1 a 1 47 ]
+"45
+[v __display_itoa@missing missing `c  1 a 1 46 ]
+"44
+[v __display_itoa@len len `uc  1 a 1 45 ]
+"41
+[v __display_itoa@value value `i  1 p 2 24 ]
+[v __display_itoa@decimals decimals `uc  1 p 1 26 ]
+[v __display_itoa@text text `*.39uc  1 p 2 27 ]
+"106
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"6
+[v strlen@cp cp `*.39Cuc  1 a 2 4 ]
+"4
+[v strlen@s s `*.39Cuc  1 p 2 0 ]
+"13
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\itoa.c
+[v _itoa itoa `(*.39uc  1 e 2 0 ]
+{
+"6
+[v itoa@cp cp `*.39uc  1 a 2 22 ]
+"4
+[v itoa@buf buf `*.39uc  1 p 2 16 ]
+[v itoa@val val `i  1 p 2 18 ]
+[v itoa@base base `i  1 p 2 20 ]
+"14
+} 0
+"17
+[v _utoa utoa `(*.39uc  1 e 2 0 ]
+{
+"19
+[v utoa@v v `ui  1 a 2 13 ]
+"20
+[v utoa@c c `uc  1 a 1 15 ]
+"17
+[v utoa@buf buf `*.39uc  1 p 2 7 ]
+[v utoa@val val `ui  1 p 2 9 ]
+[v utoa@base base `i  1 p 2 11 ]
+"37
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
+"26
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
+"31
+} 0
+"550 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v _buck_operate buck_operate `(v  1 e 1 0 ]
+{
+"590
+} 0
+"453
+[v __buck_operate_remote _buck_operate_remote `(v  1 s 1 _buck_operate_remote ]
+{
+"541
+} 0
+"125
+[v __buck_prepare _buck_prepare `(v  1 s 1 _buck_prepare ]
+{
+"127
+[v __buck_prepare@cntr cntr `uc  1 a 1 0 ]
+"141
+} 0
+"308
+[v __buck_operate_local _buck_operate_local `(v  1 s 1 _buck_operate_local ]
+{
+"310
+[v __buck_operate_local@cntr cntr `uc  1 a 1 29 ]
+"311
+[v __buck_operate_local@tmp_dutycycle tmp_dutycycle `uc  1 a 1 28 ]
+"451
+} 0
+"283
+[v __buck_stop _buck_stop `(v  1 s 1 _buck_stop ]
+{
+"305
+} 0
+"143
+[v __buck_start _buck_start `(v  1 s 1 _buck_start ]
+{
+[v __buck_start@mode mode `E8109  1 a 1 wreg ]
+"146
+[v __buck_start@cntr cntr `uc  1 a 1 21 ]
+"145
+[v __buck_start@startup_dutycycle startup_dutycycle `uc  1 a 1 20 ]
+"143
+[v __buck_start@mode mode `E8109  1 a 1 wreg ]
+[v __buck_start@dutycycle dutycycle `uc  1 p 1 18 ]
+"149
+[v __buck_start@mode mode `E8109  1 a 1 19 ]
+"215
+} 0
+"217
+[v __buck_set_sync_async _buck_set_sync_async `(v  1 s 1 _buck_set_sync_async ]
+{
+[v __buck_set_sync_async@mode mode `E8109  1 a 1 wreg ]
+[v __buck_set_sync_async@mode mode `E8109  1 a 1 wreg ]
+[v __buck_set_sync_async@new_dutycycle new_dutycycle `uc  1 p 1 2 ]
+[v __buck_set_sync_async@mode mode `E8109  1 a 1 3 ]
+"281
+} 0
+"98
+[v __buck_set_dutycycle _buck_set_dutycycle `(v  1 s 1 _buck_set_dutycycle ]
+{
+[v __buck_set_dutycycle@dutyCycle dutyCycle `uc  1 a 1 wreg ]
+[v __buck_set_dutycycle@dutyCycle dutyCycle `uc  1 a 1 wreg ]
+"101
+[v __buck_set_dutycycle@dutyCycle dutyCycle `uc  1 a 1 1 ]
+"123
+} 0
+"81
+[v __buck_initial_dutycycle _buck_initial_dutycycle `(uc  1 s 1 _buck_initial_dutycycle ]
+{
+"83
+[v __buck_initial_dutycycle@dc dc `ul  1 a 4 14 ]
+"96
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"8
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"31
+} 0
+"30 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
+[v _adc_read adc_read `(ui  1 e 2 0 ]
+{
+[v adc_read@channel channel `E8221  1 a 1 wreg ]
+"32
+[v adc_read@adc_value adc_value `ui  1 a 2 3 ]
+"30
+[v adc_read@channel channel `E8221  1 a 1 wreg ]
+[v adc_read@channel channel `E8221  1 a 1 2 ]
+"72
+} 0
+"20
+[v _adc_calibrate adc_calibrate `(v  1 e 1 0 ]
+{
+"28
+} 0
+"74
+[v _adc_calculate_temperature adc_calculate_temperature `(i  1 e 2 0 ]
+{
+"76
+[v adc_calculate_temperature@tmp tmp `l  1 a 4 21 ]
+"74
+[v adc_calculate_temperature@adc_value adc_value `ui  1 p 2 12 ]
+[v adc_calculate_temperature@calibration calibration `E8142  1 p 1 14 ]
+"83
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 8 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"277 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBDeviceInit USBDeviceInit `(v  1 e 1 0 ]
+{
+"279
+[v USBDeviceInit@i i `uc  1 a 1 8 ]
+"371
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 2 0 ]
+{
+"15
+[v memset@p p `*.39uc  1 a 2 6 ]
+"8
+[v memset@p1 p1 `*.39v  1 p 2 0 ]
+[v memset@c c `i  1 p 2 2 ]
+[v memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"1354 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBDeviceAttach USBDeviceAttach `(v  1 e 1 0 ]
+{
+"1384
+} 0
+"146 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+[v SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+"192
+[v SYSTEM_Initialize@pll_startup_counter_3284 pll_startup_counter `ui  1 a 2 3 ]
+"158
+[v SYSTEM_Initialize@pll_startup_counter pll_startup_counter `ui  1 a 2 1 ]
+"146
+[v SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E8228  1 a 1 0 ]
+"197
+} 0
+"110 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
+[v _APP_DeviceMSDTasks APP_DeviceMSDTasks `(v  1 e 1 0 ]
+{
+"130
+} 0
+"335 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _MSDTasks MSDTasks `(uc  1 e 1 0 ]
+{
+"337
+[v MSDTasks@i i `uc  1 a 1 81 ]
+"527
+} 0
+"553
+[v _MSDProcessCommand MSDProcessCommand `(uc  1 e 1 0 ]
+{
+"605
+} 0
+"635
+[v _MSDProcessCommandMediaAbsent MSDProcessCommandMediaAbsent `(v  1 e 1 0 ]
+{
+"686
+} 0
+"712
+[v _MSDProcessCommandMediaPresent MSDProcessCommandMediaPresent `(v  1 e 1 0 ]
+{
+[u S2164 . 4 `[4]uc 1 v 4 0 `[2]ui 1 w 4 0 `ul 1 Val 4 0 ]
+"780
+[v MSDProcessCommandMediaPresent@capacity capacity `S2164  1 a 4 66 ]
+"779
+[v MSDProcessCommandMediaPresent@sectorSize sectorSize `S2164  1 a 4 62 ]
+"714
+[v MSDProcessCommandMediaPresent@i i `uc  1 a 1 70 ]
+"715
+[v MSDProcessCommandMediaPresent@NumBytesInPacket NumBytesInPacket `uc  1 a 1 61 ]
+"961
+} 0
+"1188
+[v _MSDWriteHandler MSDWriteHandler `(uc  1 e 1 0 ]
+{
+"1348
+} 0
+"34 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[v _ExternalFlash_WriteProtectStateGet ExternalFlash_WriteProtectStateGet `(uc  1 e 1 0 ]
+{
+[v ExternalFlash_WriteProtectStateGet@config config `*.2v  1 p 2 0 ]
+"38
+} 0
+"104
+[v _ExternalFlash_SectorWrite ExternalFlash_SectorWrite `(uc  1 e 1 0 ]
+{
+"106
+[v ExternalFlash_SectorWrite@page page `ui  1 a 2 45 ]
+"104
+[v ExternalFlash_SectorWrite@config config `*.2v  1 p 2 36 ]
+[v ExternalFlash_SectorWrite@sector_addr sector_addr `ul  1 p 4 38 ]
+[v ExternalFlash_SectorWrite@buffer buffer `*.39uc  1 p 2 42 ]
+[v ExternalFlash_SectorWrite@allowWriteToZero allowWriteToZero `uc  1 p 1 44 ]
+"144
+} 0
+"546 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v _flash_page_write flash_page_write `(v  1 e 1 0 ]
+{
+"548
+[v flash_page_write@match match `E8335  1 a 1 35 ]
+"546
+[v flash_page_write@page page `ui  1 p 2 31 ]
+[v flash_page_write@data data `*.39uc  1 p 2 33 ]
+"561
+} 0
+"397
+[v __flash_write_to_buffer _flash_write_to_buffer `(v  1 s 1 _flash_write_to_buffer ]
+{
+"399
+[v __flash_write_to_buffer@command command `[4]uc  1 a 4 26 ]
+"397
+[v __flash_write_to_buffer@start start `ui  1 p 2 19 ]
+[v __flash_write_to_buffer@data data `*.39uc  1 p 2 21 ]
+[v __flash_write_to_buffer@data_length data_length `ui  1 p 2 23 ]
+[v __flash_write_to_buffer@buffer buffer `E8331  1 p 1 25 ]
+"416
+} 0
+"141
+[v __flash_spi_tx_tx _flash_spi_tx_tx `(v  1 s 1 _flash_spi_tx_tx ]
+{
+[v __flash_spi_tx_tx@command command `*.39uc  1 p 2 0 ]
+[v __flash_spi_tx_tx@command_length command_length `ui  1 p 2 2 ]
+[v __flash_spi_tx_tx@data data `*.39uc  1 p 2 4 ]
+[v __flash_spi_tx_tx@data_length data_length `ui  1 p 2 6 ]
+"189
+} 0
+"419
+[v __flash_write_page_from_buffer _flash_write_page_from_buffer `(v  1 s 1 _flash_write_page_from_buffer ]
+{
+"421
+[v __flash_write_page_from_buffer@command command `[4]uc  1 a 4 25 ]
+"419
+[v __flash_write_page_from_buffer@page page `ui  1 p 2 19 ]
+[v __flash_write_page_from_buffer@buffer buffer `E8331  1 p 1 21 ]
+"438
+} 0
+"337
+[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8335  1 s 1 _flash_compare_page_to_buffer ]
+{
+"339
+[v __flash_compare_page_to_buffer@command command `[4]uc  1 a 4 27 ]
+"340
+[v __flash_compare_page_to_buffer@status status `ui  1 a 2 25 ]
+"337
+[v __flash_compare_page_to_buffer@page page `ui  1 p 2 19 ]
+[v __flash_compare_page_to_buffer@buffer buffer `E8331  1 p 1 21 ]
+"375
+} 0
+"1038 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _MSDReadHandler MSDReadHandler `(uc  1 e 1 0 ]
+{
+"1162
+} 0
+"1434
+[v _MSDCheckForErrorCases MSDCheckForErrorCases `(uc  1 e 1 0 ]
+{
+"1436
+[v MSDCheckForErrorCases@MSDErrorCase MSDErrorCase `uc  1 a 1 16 ]
+"1438
+[v MSDCheckForErrorCases@DeviceNoData DeviceNoData `uc  1 a 1 15 ]
+"1437
+[v MSDCheckForErrorCases@HostMoreDataThanDevice HostMoreDataThanDevice `uc  1 a 1 14 ]
+"1434
+[v MSDCheckForErrorCases@DeviceBytes DeviceBytes `ul  1 p 4 10 ]
+"1534
+} 0
+"1577
+[v _MSDErrorHandler MSDErrorHandler `(v  1 e 1 0 ]
+{
+[v MSDErrorHandler@ErrorCase ErrorCase `uc  1 a 1 wreg ]
+"1579
+[v MSDErrorHandler@OldMSD_State OldMSD_State `uc  1 a 1 9 ]
+"1577
+[v MSDErrorHandler@ErrorCase ErrorCase `uc  1 a 1 wreg ]
+"1583
+[v MSDErrorHandler@ErrorCase ErrorCase `uc  1 a 1 8 ]
+"1645
+} 0
+"1073 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBStallEndpoint USBStallEndpoint `(v  1 e 1 0 ]
+{
+[v USBStallEndpoint@ep ep `uc  1 a 1 wreg ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"1075
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStallEndpoint@p p `*.39S103  1 a 2 6 ]
+"1073
+[v USBStallEndpoint@ep ep `uc  1 a 1 wreg ]
+[v USBStallEndpoint@dir dir `uc  1 p 1 0 ]
+"1077
+[v USBStallEndpoint@ep ep `uc  1 a 1 5 ]
+"1104
+} 0
+"1373 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _ResetSenseData ResetSenseData `(v  1 e 1 0 ]
+{
+"1395
+} 0
+"64 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[v _ExternalFlash_SectorRead ExternalFlash_SectorRead `(uc  1 e 1 0 ]
+{
+"66
+[v ExternalFlash_SectorRead@page page `ui  1 a 2 51 ]
+"64
+[v ExternalFlash_SectorRead@config config `*.2v  1 p 2 43 ]
+[v ExternalFlash_SectorRead@sector_addr sector_addr `ul  1 p 4 45 ]
+[v ExternalFlash_SectorRead@buffer buffer `*.39uc  1 p 2 49 ]
+"79
+} 0
+"538 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
+[v _flash_page_read flash_page_read `(v  1 e 1 0 ]
+{
+[v flash_page_read@page page `ui  1 p 2 39 ]
+[v flash_page_read@data data `*.39uc  1 p 2 41 ]
+"542
+} 0
+"564
+[v _flash_partial_read flash_partial_read `(v  1 e 1 0 ]
+{
+"567
+[v flash_partial_read@command command `[4]uc  1 a 4 31 ]
+"566
+[v flash_partial_read@address address `ul  1 a 4 35 ]
+"564
+[v flash_partial_read@page page `ui  1 p 2 19 ]
+[v flash_partial_read@start start `ui  1 p 2 21 ]
+[v flash_partial_read@length length `ui  1 p 2 23 ]
+[v flash_partial_read@data data `*.39uc  1 p 2 25 ]
+"585
+} 0
+"475
+[v _flash_is_busy flash_is_busy `(uc  1 e 1 0 ]
+{
+"484
+[v flash_is_busy@status status `ui  1 a 2 17 ]
+"495
+} 0
+"289
+[v __flash_wakeup _flash_wakeup `(v  1 s 1 _flash_wakeup ]
+{
+"291
+[v __flash_wakeup@command command `uc  1 a 1 8 ]
+"312
+} 0
+"103
+[v __flash_spi_tx _flash_spi_tx `(v  1 s 1 _flash_spi_tx ]
+{
+[v __flash_spi_tx@data data `*.39uc  1 p 2 0 ]
+[v __flash_spi_tx@length length `ui  1 p 2 2 ]
+"135
+} 0
+"278
+[v __flash_get_status _flash_get_status `(ui  1 s 2 _flash_get_status ]
+{
+"283
+[v __flash_get_status@status status `ui  1 a 2 15 ]
+"282
+[v __flash_get_status@command command `uc  1 a 1 14 ]
+"286
+} 0
+"194
+[v __flash_spi_tx_rx _flash_spi_tx_rx `(v  1 s 1 _flash_spi_tx_rx ]
+{
+[v __flash_spi_tx_rx@command command `*.39uc  1 p 2 0 ]
+[v __flash_spi_tx_rx@command_length command_length `ui  1 p 2 2 ]
+[v __flash_spi_tx_rx@data data `*.39uc  1 p 2 4 ]
+[v __flash_spi_tx_rx@data_length data_length `ui  1 p 2 6 ]
+"250
+} 0
+"993 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _MSDComputeDeviceInAndResidue MSDComputeDeviceInAndResidue `(v  1 s 1 MSDComputeDeviceInAndResidue ]
+{
+[v MSDComputeDeviceInAndResidue@DiExpected DiExpected `ui  1 p 2 0 ]
+"1012
+} 0
+"18 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[v _ExternalFlash_SectorSizeRead ExternalFlash_SectorSizeRead `(ui  1 e 2 0 ]
+{
+[v ExternalFlash_SectorSizeRead@config config `*.2v  1 p 2 0 ]
+"22
+} 0
+"24
+[v _ExternalFlash_CapacityRead ExternalFlash_CapacityRead `(ul  1 e 4 0 ]
+{
+[v ExternalFlash_CapacityRead@config config `*.2v  1 p 2 0 ]
+"27
+} 0
+"35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fileio_media.h
+"39
+"42
+[s S2252 . 1 `uc 1 sectorSize 1 0 :1:0 
+`uc 1 maxLUN 1 0 :1:1 
+]
+"10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
+[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[v _ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
+{
+[v ExternalFlash_MediaInitialize@config config `*.2v  1 p 2 0 ]
+"16
+} 0
+"29
+[v _ExternalFlash_MediaDetect ExternalFlash_MediaDetect `(uc  1 e 1 0 ]
+{
+[v ExternalFlash_MediaDetect@config config `*.2v  1 p 2 0 ]
+"32
+} 0
+"108 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDTasks APP_DeviceCustomHIDTasks `(v  1 e 1 0 ]
+{
+"221
+[v APP_DeviceCustomHIDTasks@return_value return_value `ui  1 a 2 52 ]
+"110
+[v APP_DeviceCustomHIDTasks@idx idx `uc  1 a 1 54 ]
+"265
+} 0
+"398
+[v __parse_command_short _parse_command_short `(v  1 s 1 _parse_command_short ]
+{
+[v __parse_command_short@cmd cmd `uc  1 a 1 wreg ]
+[v __parse_command_short@cmd cmd `uc  1 a 1 wreg ]
+[v __parse_command_short@cmd cmd `uc  1 a 1 43 ]
+"451
+} 0
+"507 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _system_output_on system_output_on `(v  1 e 1 0 ]
+{
+[v system_output_on@output output `E8129  1 a 1 wreg ]
+[v system_output_on@output output `E8129  1 a 1 wreg ]
+"510
+[v system_output_on@output output `E8129  1 a 1 0 ]
+"535
+} 0
+"537
+[v _system_output_off system_output_off `(v  1 e 1 0 ]
+{
+[v system_output_off@output output `E8129  1 a 1 wreg ]
+[v system_output_off@output output `E8129  1 a 1 wreg ]
+"540
+[v system_output_off@output output `E8129  1 a 1 1 ]
+"567
+} 0
+"344 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_write_eeprom rtcc_write_eeprom `(v  1 e 1 0 ]
+{
+"346
+[v rtcc_write_eeprom@date date `[6]uc  1 a 6 37 ]
+"355
+} 0
+"542 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _i2c_eeprom_write i2c_eeprom_write `(v  1 e 1 0 ]
+{
+"546
+[v i2c_eeprom_write@dat dat `[17]uc  1 a 17 18 ]
+"544
+[v i2c_eeprom_write@cntr cntr `uc  1 a 1 36 ]
+"545
+[v i2c_eeprom_write@slave_address slave_address `uc  1 a 1 35 ]
+"542
+[v i2c_eeprom_write@address address `ui  1 p 2 10 ]
+[v i2c_eeprom_write@data data `*.39uc  1 p 2 12 ]
+[v i2c_eeprom_write@length length `uc  1 p 1 14 ]
+"561
+} 0
+"107
+[v _i2c_set_frequency i2c_set_frequency `(v  1 e 1 0 ]
+{
+[v i2c_set_frequency@frequency frequency `E8213  1 a 1 wreg ]
+[v i2c_set_frequency@frequency frequency `E8213  1 a 1 wreg ]
+[v i2c_set_frequency@frequency frequency `E8213  1 a 1 0 ]
+"145
+} 0
+"148
+[v __i2c_write _i2c_write `(v  1 s 1 _i2c_write ]
+{
+[v __i2c_write@slave_address slave_address `uc  1 a 1 wreg ]
+"150
+[v __i2c_write@cntr cntr `uc  1 a 1 9 ]
+"148
+[v __i2c_write@slave_address slave_address `uc  1 a 1 wreg ]
+[v __i2c_write@data data `*.39uc  1 p 2 5 ]
+[v __i2c_write@length length `uc  1 p 1 7 ]
+"152
+[v __i2c_write@slave_address slave_address `uc  1 a 1 8 ]
+"165
+} 0
+"45
+[v __i2c_wait_idle _i2c_wait_idle `(v  1 s 1 _i2c_wait_idle ]
+{
+"48
+} 0
+"72
+[v __i2c_stop _i2c_stop `(v  1 s 1 _i2c_stop ]
+{
+"76
+} 0
+"51
+[v __i2c_start _i2c_start `(v  1 s 1 _i2c_start ]
+{
+"55
+} 0
+"58
+[v __i2c_send _i2c_send `(v  1 s 1 _i2c_send ]
+{
+[v __i2c_send@dat dat `uc  1 a 1 wreg ]
+[v __i2c_send@dat dat `uc  1 a 1 wreg ]
+"60
+[v __i2c_send@dat dat `uc  1 a 1 0 ]
+"61
+} 0
+"453 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v __parse_command_long _parse_command_long `(v  1 s 1 _parse_command_long ]
+{
+[v __parse_command_long@cmd cmd `uc  1 a 1 wreg ]
+[v __parse_command_long@cmd cmd `uc  1 a 1 wreg ]
+[v __parse_command_long@data data `uc  1 p 1 3 ]
+[v __parse_command_long@cmd cmd `uc  1 a 1 4 ]
+"503
+} 0
+"117 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_set_year rtcc_set_year `(v  1 e 1 0 ]
+{
+[v rtcc_set_year@year year `uc  1 a 1 wreg ]
+[v rtcc_set_year@year year `uc  1 a 1 wreg ]
+"119
+[v rtcc_set_year@year year `uc  1 a 1 0 ]
+"124
+} 0
+"307
+[v _rtcc_set_seconds rtcc_set_seconds `(v  1 e 1 0 ]
+{
+[v rtcc_set_seconds@seconds seconds `uc  1 a 1 wreg ]
+[v rtcc_set_seconds@seconds seconds `uc  1 a 1 wreg ]
+"309
+[v rtcc_set_seconds@seconds seconds `uc  1 a 1 0 ]
+"314
+} 0
+"155
+[v _rtcc_set_month rtcc_set_month `(v  1 e 1 0 ]
+{
+[v rtcc_set_month@month month `uc  1 a 1 wreg ]
+[v rtcc_set_month@month month `uc  1 a 1 wreg ]
+"157
+[v rtcc_set_month@month month `uc  1 a 1 0 ]
+"162
+} 0
+"269
+[v _rtcc_set_minutes rtcc_set_minutes `(v  1 e 1 0 ]
+{
+[v rtcc_set_minutes@minutes minutes `uc  1 a 1 wreg ]
+[v rtcc_set_minutes@minutes minutes `uc  1 a 1 wreg ]
+"271
+[v rtcc_set_minutes@minutes minutes `uc  1 a 1 0 ]
+"276
+} 0
+"231
+[v _rtcc_set_hours rtcc_set_hours `(v  1 e 1 0 ]
+{
+[v rtcc_set_hours@hours hours `uc  1 a 1 wreg ]
+[v rtcc_set_hours@hours hours `uc  1 a 1 wreg ]
+"233
+[v rtcc_set_hours@hours hours `uc  1 a 1 0 ]
+"238
+} 0
+"193
+[v _rtcc_set_day rtcc_set_day `(v  1 e 1 0 ]
+{
+[v rtcc_set_day@day day `uc  1 a 1 wreg ]
+[v rtcc_set_day@day day `uc  1 a 1 wreg ]
+"195
+[v rtcc_set_day@day day `uc  1 a 1 0 ]
+"200
+} 0
+"14
+[v __rtcc_write_enable _rtcc_write_enable `(v  1 s 1 _rtcc_write_enable ]
+{
+"22
+} 0
+"24
+[v __rtcc_write_disable _rtcc_write_disable `(v  1 s 1 _rtcc_write_disable ]
+{
+"32
+} 0
+"621 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v _buck_remote_set_synchronous buck_remote_set_synchronous `(v  1 e 1 0 ]
+{
+[v buck_remote_set_synchronous@synchronous synchronous `uc  1 a 1 wreg ]
+[v buck_remote_set_synchronous@synchronous synchronous `uc  1 a 1 wreg ]
+"623
+[v buck_remote_set_synchronous@synchronous synchronous `uc  1 a 1 0 ]
+"627
+} 0
+"613
+[v _buck_remote_set_on buck_remote_set_on `(v  1 e 1 0 ]
+{
+[v buck_remote_set_on@on on `uc  1 a 1 wreg ]
+[v buck_remote_set_on@on on `uc  1 a 1 wreg ]
+"615
+[v buck_remote_set_on@on on `uc  1 a 1 0 ]
+"619
+} 0
+"605
+[v _buck_remote_set_enable buck_remote_set_enable `(v  1 e 1 0 ]
+{
+[v buck_remote_set_enable@remote remote `uc  1 a 1 wreg ]
+[v buck_remote_set_enable@remote remote `uc  1 a 1 wreg ]
+"607
+[v buck_remote_set_enable@remote remote `uc  1 a 1 0 ]
+"611
+} 0
+"629
+[v _buck_remote_set_dutycycle buck_remote_set_dutycycle `(v  1 e 1 0 ]
+{
+[v buck_remote_set_dutycycle@dutycycle dutycycle `uc  1 a 1 wreg ]
+[v buck_remote_set_dutycycle@dutycycle dutycycle `uc  1 a 1 wreg ]
+"631
+[v buck_remote_set_dutycycle@dutycycle dutycycle `uc  1 a 1 0 ]
+"637
+} 0
+"639
+[v _buck_remote_change_dutycycle buck_remote_change_dutycycle `(v  1 e 1 0 ]
+{
+[v buck_remote_change_dutycycle@change change `c  1 a 1 wreg ]
+"641
+[v buck_remote_change_dutycycle@new_dutycycle new_dutycycle `i  1 a 2 1 ]
+"639
+[v buck_remote_change_dutycycle@change change `c  1 a 1 wreg ]
+"641
+[v buck_remote_change_dutycycle@change change `c  1 a 1 0 ]
+"648
+} 0
+"505 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v __parse_command_calibration _parse_command_calibration `(v  1 s 1 _parse_command_calibration ]
+{
+"507
+[v __parse_command_calibration@parameter parameter `i  1 a 2 9 ]
+"505
+[v __parse_command_calibration@item item `uc  1 p 1 3 ]
+[v __parse_command_calibration@dat1 dat1 `uc  1 p 1 4 ]
+[v __parse_command_calibration@dat2 dat2 `uc  1 p 1 5 ]
+[v __parse_command_calibration@dat3 dat3 `uc  1 p 1 6 ]
+"548
+} 0
+"741 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
+[v _schedule_eeprom_write_task schedule_eeprom_write_task `(v  1 e 1 0 ]
+{
+[v schedule_eeprom_write_task@task task `E8252  1 a 1 wreg ]
+"743
+[v schedule_eeprom_write_task@idx idx `uc  1 a 1 2 ]
+"741
+[v schedule_eeprom_write_task@task task `E8252  1 a 1 wreg ]
+"745
+[v schedule_eeprom_write_task@task task `E8252  1 a 1 1 ]
+"757
+} 0
+"269 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v __fill_buffer_get_status _fill_buffer_get_status `(v  1 s 1 _fill_buffer_get_status ]
+{
+"328
+} 0
+"12 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
+[v _ui_get_status ui_get_status `(E9488  1 e 1 0 ]
+{
+"15
+} 0
+"103 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
+[v _rtcc_get_year rtcc_get_year `(uc  1 e 1 0 ]
+{
+"109
+} 0
+"293
+[v _rtcc_get_seconds rtcc_get_seconds `(uc  1 e 1 0 ]
+{
+"299
+} 0
+"141
+[v _rtcc_get_month rtcc_get_month `(uc  1 e 1 0 ]
+{
+"147
+} 0
+"255
+[v _rtcc_get_minutes rtcc_get_minutes `(uc  1 e 1 0 ]
+{
+"261
+} 0
+"217
+[v _rtcc_get_hours rtcc_get_hours `(uc  1 e 1 0 ]
+{
+"223
+} 0
+"179
+[v _rtcc_get_day rtcc_get_day `(uc  1 e 1 0 ]
+{
+"185
+} 0
+"650 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
+[v _buck_remote_get_status buck_remote_get_status `(uc  1 e 1 0 ]
+{
+"652
+[v buck_remote_get_status@retval retval `uc  1 a 1 0 ]
+"660
+} 0
+"662
+[v _buck_remote_get_dutycycle buck_remote_get_dutycycle `(uc  1 e 1 0 ]
+{
+"665
+} 0
+"597
+[v _buck_get_mode buck_get_mode `(E9570  1 e 1 0 ]
+{
+"600
+} 0
+"592
+[v _buck_get_dutycycle buck_get_dutycycle `(uc  1 e 1 0 ]
+{
+"595
+} 0
+"353 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v __fill_buffer_get_display2 _fill_buffer_get_display2 `(v  1 s 1 _fill_buffer_get_display2 ]
+{
+"357
+[v __fill_buffer_get_display2@position position `uc  1 a 1 7 ]
+"356
+[v __fill_buffer_get_display2@line line `uc  1 a 1 6 ]
+"355
+[v __fill_buffer_get_display2@cntr cntr `uc  1 a 1 5 ]
+"372
+} 0
+"331
+[v __fill_buffer_get_display1 _fill_buffer_get_display1 `(v  1 s 1 _fill_buffer_get_display1 ]
+{
+"335
+[v __fill_buffer_get_display1@position position `uc  1 a 1 7 ]
+"334
+[v __fill_buffer_get_display1@line line `uc  1 a 1 6 ]
+"333
+[v __fill_buffer_get_display1@cntr cntr `uc  1 a 1 5 ]
+"350
+} 0
+"23 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
+[v _display_get_character display_get_character `(uc  1 e 1 0 ]
+{
+[v display_get_character@line line `uc  1 a 1 wreg ]
+[v display_get_character@line line `uc  1 a 1 wreg ]
+[v display_get_character@position position `uc  1 p 1 0 ]
+"25
+[v display_get_character@line line `uc  1 a 1 3 ]
+"26
+} 0
+"388 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v __fill_buffer_get_calibration2 _fill_buffer_get_calibration2 `(v  1 s 1 _fill_buffer_get_calibration2 ]
+{
+"396
+} 0
+"376
+[v __fill_buffer_get_calibration1 _fill_buffer_get_calibration1 `(v  1 s 1 _fill_buffer_get_calibration1 ]
+{
+"385
+} 0
+"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+{
+"31
+[v memcpy@s s `*.34Cuc  1 a 2 9 ]
+"30
+[v memcpy@d d `*.39uc  1 a 2 7 ]
+"32
+[v memcpy@tmp tmp `uc  1 a 1 6 ]
+"27
+[v memcpy@d1 d1 `*.39v  1 p 2 0 ]
+[v memcpy@s1 s1 `*.34Cv  1 p 2 2 ]
+[v memcpy@n n `ui  1 p 2 4 ]
+"41
+} 0
+"995 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+{
+[v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"997
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBTransferOnePacket@handle handle `*.39VES103  1 a 2 9 ]
+"995
+[v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[v USBTransferOnePacket@dir dir `uc  1 p 1 0 ]
+[v USBTransferOnePacket@data data `*.39uc  1 p 2 1 ]
+[v USBTransferOnePacket@len len `uc  1 p 1 3 ]
+"1000
+[v USBTransferOnePacket@ep ep `uc  1 a 1 8 ]
+"1047
+} 0
+"269 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
+[v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 1 0 ]
+{
+"278
+} 0
+"46 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
+[v _tmr_isr tmr_isr `(v  1 e 1 0 ]
+{
+"124
+} 0
+"477 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]
+{
+"479
+[v USBDeviceTasks@i i `uc  1 a 1 30 ]
+"827
+} 0
+"277
+[v i2_USBDeviceInit USBDeviceInit `(v  1 e 1 0 ]
+{
+[v i2USBDeviceInit@i USBDeviceInit `uc  1 a 1 8 ]
+"371
+} 0
+"2305
+[v _USBWakeFromSuspend USBWakeFromSuspend `(v  1 s 1 USBWakeFromSuspend ]
+{
+"2351
+} 0
+"2247
+[v _USBSuspend USBSuspend `(v  1 s 1 USBSuspend ]
+{
+"2288
+} 0
+"2204
+[v _USBStallHandler USBStallHandler `(v  1 s 1 USBStallHandler ]
+{
+"2229
+} 0
+"3027
+[v _USBIncrement1msInternalTimers USBIncrement1msInternalTimers `(v  1 e 1 0 ]
+{
+"3045
+} 0
+"2374
+[v _USBCtrlEPService USBCtrlEPService `(v  1 s 1 USBCtrlEPService ]
+{
+"2425
+} 0
+"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+[v i2_memcpy memcpy `(*.39v  1 e 2 0 ]
+{
+[v i2memcpy@s memcpy `*.34Cuc  1 a 2 8 ]
+[v i2memcpy@d memcpy `*.39uc  1 a 2 6 ]
+[v i2memcpy@tmp memcpy `uc  1 a 1 10 ]
+[v i2memcpy@d1 d1 `*.39v  1 p 2 0 ]
+[v i2memcpy@s1 s1 `*.34Cv  1 p 2 2 ]
+[v i2memcpy@n n `ui  1 p 2 4 ]
+"41
+} 0
+"2467 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBCtrlTrfSetupHandler USBCtrlTrfSetupHandler `(v  1 s 1 USBCtrlTrfSetupHandler ]
+{
+"2517
+} 0
+"1618
+[v _USBCtrlEPServiceComplete USBCtrlEPServiceComplete `(v  1 s 1 USBCtrlEPServiceComplete ]
+{
+"1750
+} 0
+"1490
+[v _USBCtrlEPAllowDataStage USBCtrlEPAllowDataStage `(v  1 e 1 0 ]
+{
+"1520
+} 0
+"2688
+[v _USBCheckStdRequest USBCheckStdRequest `(v  1 s 1 USBCheckStdRequest ]
+{
+"2735
+} 0
+"1970
+[v _USBStdSetCfgHandler USBStdSetCfgHandler `(v  1 s 1 USBStdSetCfgHandler ]
+{
+"1972
+[v USBStdSetCfgHandler@i i `uc  1 a 1 23 ]
+"2026
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+[v i2_memset memset `(*.39v  1 e 2 0 ]
+{
+[v i2memset@p memset `*.39uc  1 a 2 6 ]
+[v i2memset@p1 p1 `*.39v  1 p 2 0 ]
+[v i2memset@c c `i  1 p 2 2 ]
+[v i2memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"2131 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v _USBStdGetStatusHandler USBStdGetStatusHandler `(v  1 s 1 USBStdGetStatusHandler ]
+{
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"2163
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdGetStatusHandler@p p `*.39S103  1 a 2 1 ]
+"2186
+} 0
+"2045
+[v _USBStdGetDscHandler USBStdGetDscHandler `(v  1 s 1 USBStdGetDscHandler ]
+{
+"2114
+} 0
+"2756
+[v _USBStdFeatureReqHandler USBStdFeatureReqHandler `(v  1 s 1 USBStdFeatureReqHandler ]
+{
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"2758
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdFeatureReqHandler@p p `*.39S103  1 a 2 27 ]
+"2763
+[v USBStdFeatureReqHandler@pUEP pUEP `*.39uc  1 a 2 24 ]
+[s S155 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+`uc 1 transfer_terminated 1 0 :1:1 
+]
+"2759
+[u S158 . 1 `S155 1 bits 1 0 `uc 1 Val 1 0 ]
+[v USBStdFeatureReqHandler@current_ep_data current_ep_data `S158  1 a 1 26 ]
+"2982
+} 0
+"54 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_events.c
+[v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
+{
+[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E8437  1 p 2 15 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@pdata pdata `*.39v  1 p 2 17 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@size size `ui  1 p 2 19 ]
+"131
+} 0
+"146 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
+[v i2_SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+[v i2SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@pll_startup_counter_3284 SYSTEM_Initialize `ui  1 a 2 2 ]
+[v i2SYSTEM_Initialize@pll_startup_counter SYSTEM_Initialize `ui  1 a 2 0 ]
+[v i2SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@state state `E8228  1 a 1 4 ]
+"197
+} 0
+"218 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _USBCheckMSDRequest USBCheckMSDRequest `(v  1 e 1 0 ]
+{
+"279
+} 0
+"153 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_hid.c
+[v _USBCheckHIDRequest USBCheckHIDRequest `(v  1 e 1 0 ]
+{
+"241
+} 0
+"1674 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _MSDTransferTerminated MSDTransferTerminated `(v  1 e 1 0 ]
+{
+[v MSDTransferTerminated@handle handle `*.39v  1 p 2 11 ]
+"1691
+} 0
+"1073 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v i2_USBStallEndpoint USBStallEndpoint `(v  1 e 1 0 ]
+{
+[v i2USBStallEndpoint@ep ep `uc  1 a 1 wreg ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v i2USBStallEndpoint@p USBStallEndpoint `*.39S103  1 a 2 6 ]
+[v i2USBStallEndpoint@ep ep `uc  1 a 1 wreg ]
+[v i2USBStallEndpoint@dir dir `uc  1 p 1 0 ]
+"1077
+[v i2USBStallEndpoint@ep ep `uc  1 a 1 5 ]
+"1104
+} 0
+"84 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
+[v _APP_DeviceMSDInitialize APP_DeviceMSDInitialize `(v  1 e 1 0 ]
+{
+"94
+} 0
+"142 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
+[v _USBMSDInit USBMSDInit `(v  1 e 1 0 ]
+{
+"178
+} 0
+"1373
+[v i2_ResetSenseData ResetSenseData `(v  1 e 1 0 ]
+{
+"1395
+} 0
+"35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fileio_media.h
+"39
+"42
+[s S2252 . 1 `uc 1 sectorSize 1 0 :1:0 
+`uc 1 maxLUN 1 0 :1:1 
+]
+"10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
+[u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
+[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[v i2_ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
+{
+[v i2ExternalFlash_MediaInitialize@config config `*.2v  1 p 2 0 ]
+"16
+} 0
+"29
+[v i2_ExternalFlash_MediaDetect ExternalFlash_MediaDetect `(uc  1 e 1 0 ]
+{
+[v i2ExternalFlash_MediaDetect@config config `*.2v  1 p 2 0 ]
+"32
+} 0
+"81 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDInitialize APP_DeviceCustomHIDInitialize `(v  1 e 1 0 ]
+{
+"92
+} 0
+"995 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
+[v i2_USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+{
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v i2USBTransferOnePacket@handle USBTransferOnePacket `*.39VES103  1 a 2 9 ]
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[v i2USBTransferOnePacket@dir dir `uc  1 p 1 0 ]
+[v i2USBTransferOnePacket@data data `*.39uc  1 p 2 1 ]
+[v i2USBTransferOnePacket@len len `uc  1 p 1 3 ]
+"1000
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 8 ]
+"1047
+} 0
+"878
+[v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 1 0 ]
+{
+[v USBEnableEndpoint@ep ep `uc  1 a 1 wreg ]
+"880
+[v USBEnableEndpoint@p p `*.39uc  1 a 2 9 ]
+"878
+[v USBEnableEndpoint@ep ep `uc  1 a 1 wreg ]
+[v USBEnableEndpoint@options options `uc  1 p 1 8 ]
+"884
+[v USBEnableEndpoint@ep ep `uc  1 a 1 11 ]
+"902
+} 0
+"1545
+[v _USBConfigureEndpoint USBConfigureEndpoint `(v  1 s 1 USBConfigureEndpoint ]
+{
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
+[s S69 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"1547
+[s S78 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S85 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S89 _BD_STAT 1 `uc 1 Val 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S85 1 . 1 0 ]
+[s S94 . 4 `S89 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S99 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S103 __BDT 4 `S94 1 . 4 0 `S99 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBConfigureEndpoint@handle handle `*.39VES103  1 a 2 6 ]
+"1545
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
+[v USBConfigureEndpoint@direction direction `uc  1 p 1 0 ]
+"1551
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 5 ]
+"1587
+} 0
+"2540
+[v _USBCtrlTrfOutHandler USBCtrlTrfOutHandler `(v  1 s 1 USBCtrlTrfOutHandler ]
+{
+"2569
+} 0
+"1854
+[v _USBCtrlTrfRxService USBCtrlTrfRxService `(v  1 s 1 USBCtrlTrfRxService ]
+{
+"1856
+[v USBCtrlTrfRxService@byteToRead byteToRead `uc  1 a 1 1 ]
+"1857
+[v USBCtrlTrfRxService@i i `uc  1 a 1 0 ]
+"1949
+} 0
+"1418
+[v _USBCtrlEPAllowStatusStage USBCtrlEPAllowStatusStage `(v  1 e 1 0 ]
+{
+"1461
+} 0
+"2594
+[v _USBCtrlTrfInHandler USBCtrlTrfInHandler `(v  1 s 1 USBCtrlTrfInHandler ]
+{
+"2596
+[v USBCtrlTrfInHandler@lastDTS lastDTS `uc  1 a 1 1 ]
+"2669
+} 0
+"1773
+[v _USBCtrlTrfTxService USBCtrlTrfTxService `(v  1 s 1 USBCtrlTrfTxService ]
+{
+"1775
+[v USBCtrlTrfTxService@byteToSend byteToSend `uc  1 a 1 0 ]
+"1827
+} 0

@@ -392,7 +392,7 @@ static void _buck_operate_local(void)
                     last = (int32_t)os.input_voltage_adc[idx];
                     last *= (int32_t) os.input_current_adc[idx];
                     //Adjust duty cycle
-                    if(os.input_voltage>17000)
+                    if(os.input_voltage>15185)
                     {
                         _buck_set_dutycycle(buck_dutycycle+1);
                     }
@@ -433,7 +433,7 @@ static void _buck_operate_local(void)
                     last = (int32_t)os.input_voltage_adc[idx];
                     last *= (int32_t) os.input_current_adc[idx];
                     //Adjust duty cycle
-                    if(os.input_voltage>17000)
+                    if(os.input_voltage>15185)
                     {
                         _buck_set_dutycycle(buck_dutycycle+1);
                     }

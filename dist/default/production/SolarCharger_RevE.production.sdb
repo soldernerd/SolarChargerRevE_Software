@@ -3,24 +3,24 @@
 [d edition pro ]
 [d chip 18F47J53 ]
 [d frameptr 4065 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8724 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8730 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8744 . `uc
+[e E8750 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8729 . `uc
+[e E8735 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "141 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
-[e E8447 . `uc
+[e E8453 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -30,7 +30,7 @@ ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
 "713
-[e E8388 . `ui
+[e E8394 . `ui
 EVENT_NONE 0
 EVENT_DEVICE_STACK_BASE 1
 EVENT_HOST_STACK_BASE 100
@@ -69,37 +69,37 @@ EVENT_USER_BASE 10000
 EVENT_BUS_ERROR 32767
 ]
 "2019
-[e E8456 . `uc
+[e E8462 . `uc
 EVENT_CONFIGURED 1
 EVENT_SET_DESCRIPTOR 2
 EVENT_EP0_REQUEST 3
 EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8716 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8722 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8736 . `uc
+[e E8742 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8721 . `uc
+[e E8727 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "166 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
-[e E8833 . `uc
+[e E8839 . `uc
 MEDIA_NO_ERROR 0
 MEDIA_DEVICE_NOT_PRESENT 1
 MEDIA_CANNOT_INITIALIZE 2
 ]
 "342
-[e E285 . `uc
+[e E291 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -108,39 +108,39 @@ ADR_PENDING_STATE 8
 ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8733 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8739 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8753 . `uc
+[e E8759 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8738 . `uc
+[e E8744 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
-[e E8119 . `uc
+[e E8125 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8139 . `uc
+[e E8145 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8124 . `uc
+[e E8130 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "55 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_events.c
-[e E8437 . `ui
+[e E8443 . `ui
 EVENT_NONE 0
 EVENT_DEVICE_STACK_BASE 1
 EVENT_HOST_STACK_BASE 100
@@ -179,43 +179,43 @@ EVENT_USER_BASE 10000
 EVENT_BUS_ERROR 32767
 ]
 "78
-[e E8228 . `uc
+[e E8234 . `uc
 SYSTEM_STATE_USB_START 0
 SYSTEM_STATE_USB_SUSPEND 1
 SYSTEM_STATE_USB_RESUME 2
 ]
 "56
-[e E8505 . `uc
+[e E8511 . `uc
 EVENT_CONFIGURED 1
 EVENT_SET_DESCRIPTOR 2
 EVENT_EP0_REQUEST 3
 EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8119 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8125 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8139 . `uc
+[e E8145 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8124 . `uc
+[e E8130 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "57 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\main.c
-[e E8228 . `uc
+[e E8234 . `uc
 SYSTEM_STATE_USB_START 0
 SYSTEM_STATE_USB_SUSPEND 1
 SYSTEM_STATE_USB_RESUME 2
 ]
 "95
-[e E8130 . `uc
+[e E8136 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -225,32 +225,32 @@ OUTPUT_USB 16
 OUTPUT_FAN 32
 ]
 "112
-[e E8214 . `uc
+[e E8220 . `uc
 ADC_CHANNEL_TEMPERATURE_ONBOARD 0
 ADC_CHANNEL_TEMPERATURE_EXTERNAL_1 1
 ADC_CHANNEL_TEMPERATURE_EXTERNAL_2 2
 ]
 "120
-[e E9387 . `uc
+[e E9393 . `uc
 I2C_ADC_OUTPUT_VOLTAGE 0
 I2C_ADC_OUTPUT_CURRENT 1
 I2C_ADC_INPUT_CURRENT 2
 I2C_ADC_INPUT_VOLTAGE 3
 ]
-[e E9393 . `uc
+[e E9399 . `uc
 I2C_ADC_RESOLUTION_12BIT 0
 I2C_ADC_RESOLUTION_14BIT 1
 I2C_ADC_RESOLUTION_16BIT 2
 I2C_ADC_RESOLUTION_18BIT 3
 ]
-[e E9399 . `uc
+[e E9405 . `uc
 I2C_ADC_GAIN_1 0
 I2C_ADC_GAIN_2 1
 I2C_ADC_GAIN_4 2
 I2C_ADC_GAIN_8 3
 ]
 "138
-[e E9488 . `uc
+[e E9494 . `uc
 USER_INTERFACE_STATUS_OFF 0
 USER_INTERFACE_STATUS_STARTUP_1 1
 USER_INTERFACE_STATUS_STARTUP_2 2
@@ -259,7 +259,7 @@ USER_INTERFACE_STATUS_STARTUP_4 4
 USER_INTERFACE_STATUS_ON 5
 ]
 "153
-[e E9570 . `uc
+[e E9576 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -270,7 +270,7 @@ BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
 "197
-[e E8143 . `uc
+[e E8149 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -280,46 +280,46 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
 CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8119 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8125 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8139 . `uc
+[e E8145 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8124 . `uc
+[e E8130 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "147 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
-[e E8228 . `uc
+[e E8234 . `uc
 SYSTEM_STATE_USB_START 0
 SYSTEM_STATE_USB_SUSPEND 1
 SYSTEM_STATE_USB_RESUME 2
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8732 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8738 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8752 . `uc
+[e E8758 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8737 . `uc
+[e E8743 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "115 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
-[e E285 . `uc
+[e E291 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -329,7 +329,7 @@ ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
 "203
-[e E9081 . `uc
+[e E9087 . `uc
 COMMAND_TOGGLE_LED 128
 COMMAND_GET_BUTTON_STATUS 129
 COMMAND_READ_POTENTIOMETER 55
@@ -340,7 +340,7 @@ COMMAND_GET_CALIBRATION_1 19
 COMMAND_GET_CALIBRATION_2 20
 ]
 "306
-[e E9042 . `uc
+[e E9048 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -351,7 +351,7 @@ BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
 "326
-[e E8848 . `uc
+[e E8854 . `uc
 USER_INTERFACE_STATUS_OFF 0
 USER_INTERFACE_STATUS_STARTUP_1 1
 USER_INTERFACE_STATUS_STARTUP_2 2
@@ -360,7 +360,7 @@ USER_INTERFACE_STATUS_STARTUP_4 4
 USER_INTERFACE_STATUS_ON 5
 ]
 "381
-[e E8756 . `uc
+[e E8762 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -371,7 +371,7 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
 "403
-[e E8743 . `uc
+[e E8749 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -381,7 +381,7 @@ OUTPUT_USB 16
 OUTPUT_FAN 32
 ]
 "527
-[e E8901 . `uc
+[e E8907 . `uc
 EEPROM_WRITE_TASK_NONE 0
 EEPROM_WRITE_TASK_REAL_TIME_CLOCK 1
 EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE 2
@@ -392,30 +392,30 @@ EEPROM_WRITE_TASK_CALIBRATION_ONBOARD_TEMPERATURE 6
 EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1 7
 EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2 8
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8119 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8125 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8139 . `uc
+[e E8145 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8124 . `uc
+[e E8130 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "34 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
-[e E8833 . `uc
+[e E8839 . `uc
 MEDIA_NO_ERROR 0
 MEDIA_DEVICE_NOT_PRESENT 1
 MEDIA_CANNOT_INITIALIZE 2
 ]
 "115
-[e E8496 . `uc
+[e E8502 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -424,24 +424,24 @@ ADR_PENDING_STATE 8
 ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8118 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8124 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8138 . `uc
+[e E8144 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8123 . `uc
+[e E8129 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "338 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
-[e E8099 . `uc
+[e E8105 . `uc
 DISPLAY_MODE_OVERVIEW 0
 DISPLAY_MODE_DATETIME_OVERVIEW 16
 DISPLAY_MODE_DATETIME_YEAR 17
@@ -461,7 +461,7 @@ DISPLAY_MODE_EFFICIENCY 80
 DISPLAY_MODE_TEMPERATURE 96
 ]
 "492
-[e E8129 . `uc
+[e E8135 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -471,7 +471,7 @@ OUTPUT_USB 16
 OUTPUT_FAN 32
 ]
 "573
-[e E8142 . `uc
+[e E8148 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -482,7 +482,7 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
 "608
-[e E8408 . `uc
+[e E8414 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -492,30 +492,30 @@ BUCK_STATUS_REMOTE_STARTUP 129
 BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8118 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8124 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8138 . `uc
+[e E8144 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8123 . `uc
+[e E8129 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "19 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
-[e E8213 . `uc
+[e E8219 . `uc
 I2C_FREQUENCY_100kHz 0
 I2C_FREQUENCY_200kHz 1
 I2C_FREQUENCY_400kHz 2
 ]
 "22
-[e E8252 . `uc
+[e E8258 . `uc
 EEPROM_WRITE_TASK_NONE 0
 EEPROM_WRITE_TASK_REAL_TIME_CLOCK 1
 EEPROM_WRITE_TASK_CALIBRATION_INPUT_VOLTAGE 2
@@ -527,26 +527,26 @@ EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_1 7
 EEPROM_WRITE_TASK_CALIBRATION_EXTERNAL_TEMPERATURE_2 8
 ]
 "468
-[e E8224 . `uc
+[e E8230 . `uc
 I2C_ADC_OUTPUT_VOLTAGE 0
 I2C_ADC_OUTPUT_CURRENT 1
 I2C_ADC_INPUT_CURRENT 2
 I2C_ADC_INPUT_VOLTAGE 3
 ]
-[e E8230 . `uc
+[e E8236 . `uc
 I2C_ADC_RESOLUTION_12BIT 0
 I2C_ADC_RESOLUTION_14BIT 1
 I2C_ADC_RESOLUTION_16BIT 2
 I2C_ADC_RESOLUTION_18BIT 3
 ]
-[e E8236 . `uc
+[e E8242 . `uc
 I2C_ADC_GAIN_1 0
 I2C_ADC_GAIN_2 1
 I2C_ADC_GAIN_4 2
 I2C_ADC_GAIN_8 3
 ]
 "585
-[e E8142 . `uc
+[e E8148 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -556,24 +556,24 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
 CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8118 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8124 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8138 . `uc
+[e E8144 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8123 . `uc
+[e E8129 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
-[e E8386 . `uc
+[e E8392 . `uc
 USER_INTERFACE_STATUS_OFF 0
 USER_INTERFACE_STATUS_STARTUP_1 1
 USER_INTERFACE_STATUS_STARTUP_2 2
@@ -582,7 +582,7 @@ USER_INTERFACE_STATUS_STARTUP_4 4
 USER_INTERFACE_STATUS_ON 5
 ]
 "24
-[e E8099 . `uc
+[e E8105 . `uc
 DISPLAY_MODE_OVERVIEW 0
 DISPLAY_MODE_DATETIME_OVERVIEW 16
 DISPLAY_MODE_DATETIME_YEAR 17
@@ -602,7 +602,7 @@ DISPLAY_MODE_EFFICIENCY 80
 DISPLAY_MODE_TEMPERATURE 96
 ]
 "173
-[e E8129 . `uc
+[e E8135 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -611,24 +611,24 @@ OUTPUT_ALL 15
 OUTPUT_USB 16
 OUTPUT_FAN 32
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8329 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8335 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8349 . `uc
+[e E8355 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8334 . `uc
+[e E8340 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "112 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
-[e E8310 . `uc
+[e E8316 . `uc
 DISPLAY_MODE_OVERVIEW 0
 DISPLAY_MODE_DATETIME_OVERVIEW 16
 DISPLAY_MODE_DATETIME_YEAR 17
@@ -648,7 +648,7 @@ DISPLAY_MODE_EFFICIENCY 80
 DISPLAY_MODE_TEMPERATURE 96
 ]
 "166
-[e E8597 . `uc
+[e E8603 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -659,7 +659,7 @@ BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
 "363
-[e E8340 . `uc
+[e E8346 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -668,39 +668,39 @@ OUTPUT_ALL 15
 OUTPUT_USB 16
 OUTPUT_FAN 32
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E110 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E116 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E130 . `uc
+[e E136 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E115 . `uc
+[e E121 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
-[e E8152 . `uc
+[e E8158 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8172 . `uc
+[e E8178 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8157 . `uc
+[e E8163 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
-[e E8099 . `uc
+[e E8105 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -711,12 +711,12 @@ BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
 "144
-[e E8109 . `uc
+[e E8115 . `uc
 BUCK_MODE_ASYNCHRONOUS 0
 BUCK_MODE_SYNCHRONOUS 1
 ]
 "149
-[e E8176 . `uc
+[e E8182 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -726,30 +726,30 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
 CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8118 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8124 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8138 . `uc
+[e E8144 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8123 . `uc
+[e E8129 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "31 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
-[e E8221 . `uc
+[e E8227 . `uc
 ADC_CHANNEL_TEMPERATURE_ONBOARD 0
 ADC_CHANNEL_TEMPERATURE_EXTERNAL_1 1
 ADC_CHANNEL_TEMPERATURE_EXTERNAL_2 2
 ]
 "75
-[e E8142 . `uc
+[e E8148 . `uc
 CALIBRATION_INDEX_INPUT_VOLTAGE 0
 CALIBRATION_INDEX_OUTPUT_VOLTAGE 1
 CALIBRATION_INDEX_INPUT_CURRENT 2
@@ -759,98 +759,98 @@ CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_1 5
 CALIBRATION_INDEX_EXTERNAL_TEMPERATURE_2 6
 CALIBRATION_INDEX_COUNT 7
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8203 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8209 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8223 . `uc
+[e E8229 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8208 . `uc
+[e E8214 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "90 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
-[e E8298 . `uc
+[e E8304 . `uc
 FLASH_POWER_STATE_NORMAL 0
 FLASH_POWER_STATE_DEEP_POWER_DOWN 1
 FLASH_POWER_STATE_ULTRA_DEEP_POWER_DOWN 2
 ]
 "261
-[e E8327 . `uc
+[e E8333 . `uc
 FLASH_PAGE_SIZE_512 0
 FLASH_PAGE_SIZE_528 1
 ]
 "316
-[e E8331 . `uc
+[e E8337 . `uc
 FLASH_BUFFER_1 0
 FLASH_BUFFER_2 1
 ]
 "338
-[e E8335 . `uc
+[e E8341 . `uc
 DATA_DOES_MATCH 0
 DATA_DOES_NOT_MATCH 1
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8203 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8209 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8223 . `uc
+[e E8229 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8208 . `uc
+[e E8214 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "8 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
-[e E8321 . `uc
+[e E8327 . `uc
 MEDIA_NO_ERROR 0
 MEDIA_DEVICE_NOT_PRESENT 1
 MEDIA_CANNOT_INITIALIZE 2
 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
-[e E8203 . `uc
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[e E8209 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8223 . `uc
+[e E8229 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8208 . `uc
+[e E8214 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
-[e E8118 . `uc
+[e E8124 . `uc
 CPU_FREQUENCY_32kHz 0
 CPU_FREQUENCY_8MHz 1
 CPU_FREQUENCY_48MHz 2
 ]
-[e E8138 . `uc
+[e E8144 . `uc
 BOARD_VOLTAGE_LOW 0
 BOARD_VOLTAGE_HIGH 1
 ]
-[e E8123 . `uc
+[e E8129 . `uc
 BUCK_OFF 0
 BUCK_FREQUENCY_62500 1
 BUCK_FREQUENCY_93750 2
 BUCK_FREQUENCY_187500 3
 ]
 "142 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
-[e E8353 . `uc
+[e E8359 . `uc
 BUCK_STATUS_OFF 0
 BUCK_STATUS_STARTUP 1
 BUCK_STATUS_ASYNCHRONOUS 2
@@ -861,7 +861,7 @@ BUCK_STATUS_REMOTE_ASYNCHRONOUS 130
 BUCK_STATUS_REMOTE_SYNCHRONOUS 131
 ]
 "150
-[e E8129 . `uc
+[e E8135 . `uc
 OUTPUT_1 1
 OUTPUT_2 2
 OUTPUT_3 4
@@ -929,7 +929,7 @@ OUTPUT_FAN 32
 "592
 [v _buck_get_dutycycle buck_get_dutycycle `(uc  1 e 1 0 ]
 "597
-[v _buck_get_mode buck_get_mode `(E9570  1 e 1 0 ]
+[v _buck_get_mode buck_get_mode `(E9576  1 e 1 0 ]
 "605
 [v _buck_remote_set_enable buck_remote_set_enable `(v  1 e 1 0 ]
 "613
@@ -944,53 +944,53 @@ OUTPUT_FAN 32
 [v _buck_remote_get_status buck_remote_get_status `(uc  1 e 1 0 ]
 "662
 [v _buck_remote_get_dutycycle buck_remote_get_dutycycle `(uc  1 e 1 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
-"42 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\altoft.c
+"42 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+"86 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+"54 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
-"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+"20 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\fttol.c
+"44 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\itoa.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\itoa.c
 [v _itoa itoa `(*.39uc  1 e 2 0 ]
 "17
 [v _utoa utoa `(*.39uc  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+"27 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memcpy.c
 [v _memcpy memcpy `(*.39v  1 e 2 0 ]
 [v i2_memcpy memcpy `(*.39v  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memset.c
 [v _memset memset `(*.39v  1 e 2 0 ]
 [v i2_memset memset `(*.39v  1 e 2 0 ]
-"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+"10 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 3 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 3 0 ]
-"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+"11 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strlen.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strncmp.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "23 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
 [v _display_get_character display_get_character `(uc  1 e 1 0 ]
@@ -1024,7 +1024,7 @@ OUTPUT_FAN 32
 ]
 "10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
 [u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
-[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2258 . 5 `E8839 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
 [v _ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
 "35 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fileio_media.h
 "39
@@ -1034,7 +1034,7 @@ OUTPUT_FAN 32
 ]
 "10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
 [u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
-[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2258 . 5 `E8839 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
 [v i2_ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
 "18
 [v _ExternalFlash_SectorSizeRead ExternalFlash_SectorSizeRead `(ui  1 e 2 0 ]
@@ -1108,7 +1108,7 @@ OUTPUT_FAN 32
 "315
 [v __flash_copy_page_to_buffer _flash_copy_page_to_buffer `(v  1 s 1 _flash_copy_page_to_buffer ]
 "337
-[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8335  1 s 1 _flash_compare_page_to_buffer ]
+[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8341  1 s 1 _flash_compare_page_to_buffer ]
 "397
 [v __flash_write_to_buffer _flash_write_to_buffer `(v  1 s 1 _flash_write_to_buffer ]
 "419
@@ -1180,7 +1180,7 @@ OUTPUT_FAN 32
 "741
 [v _schedule_eeprom_write_task schedule_eeprom_write_task `(v  1 e 1 0 ]
 "759
-[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8252  1 e 1 0 ]
+[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8258  1 e 1 0 ]
 "779
 [v _i2c_eeprom_tasks i2c_eeprom_tasks `(v  1 e 1 0 ]
 "39 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\log.c
@@ -1321,7 +1321,7 @@ OUTPUT_FAN 32
 "269
 [v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 1 0 ]
 "12 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
-[v _ui_get_status ui_get_status `(E9488  1 e 1 0 ]
+[v _ui_get_status ui_get_status `(E9494  1 e 1 0 ]
 "17
 [v __ui_encoder _ui_encoder `(v  1 s 1 _ui_encoder ]
 "325
@@ -1425,14 +1425,14 @@ OUTPUT_FAN 32
 ]
 "34 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
 [u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
-[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2258 . 5 `E8839 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
 [s S2272 . 29 `*.38(*.39S2258 1 MediaInitialize 3 0 `*.38(ul 1 ReadCapacity 3 3 `*.38(ui 1 ReadSectorSize 3 6 `*.38(uc 1 MediaDetect 3 9 `*.38(uc 1 SectorRead 3 12 `*.38(uc 1 WriteProtectState 3 15 `*.38(uc 1 SectorWrite 3 18 `*.2v 1 mediaParameters 2 21 `*.38(uc 1 AsyncWriteTasks 3 23 `*.38(uc 1 AsyncReadTasks 3 26 ]
 [v _LUN LUN `[1]S2272  1 e 29 0 ]
 [s S2549 . 36 `uc 1 Peripheral 1 0 `uc 1 Removble 1 1 `uc 1 Version 1 2 `uc 1 Response_Data_Format 1 3 `uc 1 AdditionalLength 1 4 `uc 1 Sccstp 1 5 `uc 1 bqueetc 1 6 `uc 1 CmdQue 1 7 `[8]uc 1 vendorID 8 8 `[16]uc 1 productID 16 16 `[4]uc 1 productRev 4 32 ]
 "56
 [v _inq_resp inq_resp `CS2549  1 e 36 0 ]
 "9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
-[v _buck_status buck_status `E8099  1 e 1 0 ]
+[v _buck_status buck_status `E8105  1 e 1 0 ]
 "10
 [v _buck_dutycycle buck_dutycycle `uc  1 e 1 0 ]
 "11
@@ -1455,7 +1455,7 @@ OUTPUT_FAN 32
 [v _battery_voltage_maximum battery_voltage_maximum `i  1 e 2 0 ]
 [s S4237 . 1 `uc 1 IOLOCK 1 0 :1:0 
 ]
-"1108 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f47j53.h
+"1108 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f47j53.h
 [u S4239 . 1 `S4237 1 . 1 0 ]
 [v _PPSCONbits PPSCONbits `VES4239  1 e 1 @3775 ]
 "1153
@@ -2494,15 +2494,15 @@ OUTPUT_FAN 32
 "29 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
 [v _buffer buffer `[512]uc  1 e 512 0 ]
 "90 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
-[v _power_state power_state `E8298  1 e 1 0 ]
+[v _power_state power_state `E8304  1 e 1 0 ]
 "91
 [v _flash_command_pagesize_512 flash_command_pagesize_512 `C[4]uc  1 e 4 0 ]
 "92
 [v _flash_command_pagesize_528 flash_command_pagesize_528 `C[4]uc  1 e 4 0 ]
 "19 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
-[v _i2c_frequency i2c_frequency `E8213  1 e 1 0 ]
+[v _i2c_frequency i2c_frequency `E8219  1 e 1 0 ]
 "22
-[v _task_list task_list `[16]E8252  1 e 16 0 ]
+[v _task_list task_list `[16]E8258  1 e 16 0 ]
 "23
 [v _task_list_read_index task_list_read_index `uc  1 e 1 0 ]
 "24
@@ -2546,11 +2546,11 @@ OUTPUT_FAN 32
 [s S3618 . 12 `i 1 NeutralOffset 2 0 `i 1 NeutralMultiplier 2 2 `c 1 NeutralShift 1 4 `i 1 Offset 2 5 `i 1 Multiplier 2 7 `c 1 Shift 1 9 `i 1 AutoCalibration 2 10 ]
 "41 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
 [v _calibrationParameters calibrationParameters `[7]S3618  1 e 84 0 ]
-[s S33 . 65 `E8724 1 clockFrequency 1 0 `E8744 1 boardVoltage 1 1 `E8729 1 buckFrequency 1 2 `uc 1 buckDutyCycle 1 3 `c 1 buckLastStep 1 4 `uc 1 outputs 1 5 `VEc 1 encoderCount 1 6 `VEc 1 buttonCount 1 7 `VEuc 1 timeSlot 1 8 `VEuc 1 done 1 9 `[4]i 1 input_voltage_adc 8 10 `i 1 input_voltage 2 18 `[4]i 1 input_current_adc 8 20 `c 1 input_current_calibration 1 28 `i 1 input_current 2 29 `[4]i 1 output_voltage_adc 8 31 `i 1 output_voltage 2 39 `[4]i 1 output_current_adc 8 41 `c 1 output_current_calibration 1 49 `i 1 output_current 2 50 `i 1 temperature_onboard_adc 2 52 `i 1 temperature_onboard 2 54 `i 1 temperature_external_1_adc 2 56 `i 1 temperature_external_1 2 58 `i 1 temperature_external_2_adc 2 60 `i 1 temperature_external_2 2 62 `uc 1 display_mode 1 64 ]
-"309 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
+[s S33 . 65 `E8730 1 clockFrequency 1 0 `E8750 1 boardVoltage 1 1 `E8735 1 buckFrequency 1 2 `uc 1 buckDutyCycle 1 3 `c 1 buckLastStep 1 4 `uc 1 outputs 1 5 `VEc 1 encoderCount 1 6 `VEc 1 buttonCount 1 7 `VEuc 1 timeSlot 1 8 `VEuc 1 done 1 9 `[4]i 1 input_voltage_adc 8 10 `i 1 input_voltage 2 18 `[4]i 1 input_current_adc 8 20 `c 1 input_current_calibration 1 28 `i 1 input_current 2 29 `[4]i 1 output_voltage_adc 8 31 `i 1 output_voltage 2 39 `[4]i 1 output_current_adc 8 41 `c 1 output_current_calibration 1 49 `i 1 output_current 2 50 `i 1 temperature_onboard_adc 2 52 `i 1 temperature_onboard 2 54 `i 1 temperature_external_1_adc 2 56 `i 1 temperature_external_1 2 58 `i 1 temperature_external_2_adc 2 60 `i 1 temperature_external_2 2 62 `uc 1 display_mode 1 64 ]
+"312 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.h
 [v _os os `VES33  1 e 65 0 ]
 "9 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
-[v _userInterfaceStatus userInterfaceStatus `E8386  1 e 1 0 ]
+[v _userInterfaceStatus userInterfaceStatus `E8392  1 e 1 0 ]
 "10
 [v _system_ui_inactive_count system_ui_inactive_count `ui  1 e 2 0 ]
 [s S687 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
@@ -2578,7 +2578,7 @@ OUTPUT_FAN 32
 "303
 [v _USB_SD_Ptr USB_SD_Ptr `C[4]*.32Cuc  1 e 8 0 ]
 "141 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device.c
-[v _USBDeviceState USBDeviceState `VEE8447  1 e 1 0 ]
+[v _USBDeviceState USBDeviceState `VEE8453  1 e 1 0 ]
 "142
 [v _USBActiveConfiguration USBActiveConfiguration `VEuc  1 e 1 0 ]
 "143
@@ -2837,7 +2837,7 @@ OUTPUT_FAN 32
 "250
 [v i2c_display_send_init_sequence@init_sequence init_sequence `[9]uc  1 a 9 10 ]
 "249
-[v i2c_display_send_init_sequence@F8354 F8354 `[9]uc  1 s 9 F8354 ]
+[v i2c_display_send_init_sequence@F8360 F8360 `[9]uc  1 s 9 F8360 ]
 "269
 } 0
 "425
@@ -2874,10 +2874,10 @@ OUTPUT_FAN 32
 "499 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
 [v _system_output_toggle system_output_toggle `(v  1 e 1 0 ]
 {
-[v system_output_toggle@output output `E8129  1 a 1 wreg ]
-[v system_output_toggle@output output `E8129  1 a 1 wreg ]
+[v system_output_toggle@output output `E8135  1 a 1 wreg ]
+[v system_output_toggle@output output `E8135  1 a 1 wreg ]
 "501
-[v system_output_toggle@output output `E8129  1 a 1 2 ]
+[v system_output_toggle@output output `E8135  1 a 1 2 ]
 "505
 } 0
 "126 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
@@ -3020,15 +3020,15 @@ OUTPUT_FAN 32
 "253
 [v system_init@extension extension `[4]uc  1 a 4 122 ]
 "251
-[v system_init@F8573 F8573 `[9]uc  1 s 9 F8573 ]
+[v system_init@F8579 F8579 `[9]uc  1 s 9 F8579 ]
 "252
-[v system_init@F8575 F8575 `[4]uc  1 s 4 F8575 ]
+[v system_init@F8581 F8581 `[4]uc  1 s 4 F8581 ]
 "253
-[v system_init@F8577 F8577 `[9]uc  1 s 9 F8577 ]
+[v system_init@F8583 F8583 `[9]uc  1 s 9 F8583 ]
 "254
-[v system_init@F8579 F8579 `[4]uc  1 s 4 F8579 ]
+[v system_init@F8585 F8585 `[4]uc  1 s 4 F8585 ]
 "255
-[v system_init@F8581 F8581 `[104]uc  1 s 104 F8581 ]
+[v system_init@F8587 F8587 `[104]uc  1 s 104 F8587 ]
 "435
 } 0
 "325 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
@@ -3106,7 +3106,7 @@ OUTPUT_FAN 32
 {
 [s S3618 . 12 `i 1 NeutralOffset 2 0 `i 1 NeutralMultiplier 2 2 `c 1 NeutralShift 1 4 `i 1 Offset 2 5 `i 1 Multiplier 2 7 `c 1 Shift 1 9 `i 1 AutoCalibration 2 10 ]
 [v __i2c_eeprom_load_default_calibration@buffer buffer `*.39S3618  1 p 2 0 ]
-[v __i2c_eeprom_load_default_calibration@index index `E8142  1 p 1 2 ]
+[v __i2c_eeprom_load_default_calibration@index index `E8148  1 p 1 2 ]
 "713
 } 0
 "448 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\flash.c
@@ -3117,12 +3117,12 @@ OUTPUT_FAN 32
 "260
 [v __flash_set_page_size _flash_set_page_size `(v  1 s 1 _flash_set_page_size ]
 {
-[v __flash_set_page_size@size size `E8327  1 a 1 wreg ]
+[v __flash_set_page_size@size size `E8333  1 a 1 wreg ]
 "262
 [v __flash_set_page_size@command command `[4]uc  1 a 4 19 ]
 "260
-[v __flash_set_page_size@size size `E8327  1 a 1 wreg ]
-[v __flash_set_page_size@size size `E8327  1 a 1 23 ]
+[v __flash_set_page_size@size size `E8333  1 a 1 wreg ]
+[v __flash_set_page_size@size size `E8333  1 a 1 23 ]
 "275
 } 0
 "543 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\buck.c
@@ -3188,9 +3188,9 @@ OUTPUT_FAN 32
 {
 [s S7682 . 32 `ul 1 dateTime 4 0 `ui 1 inputVoltage 2 4 `ui 1 inputCurrent 2 6 `ui 1 outputVoltage 2 8 `ui 1 outputCurrent 2 10 `ui 1 inputPower 2 12 `ui 1 outputPower 2 14 `ui 1 inputCapacity 2 16 `ui 1 outputCapacity 2 18 `uc 1 temperatureOnboard 1 20 `uc 1 temperatureExternal1 1 21 `uc 1 temperatureExternal2 1 22 `uc 1 chargerOnTime 1 23 `uc 1 lowPowerTime 1 24 `[5]uc 1 unused 5 25 `uc 1 status 1 30 `uc 1 checksum 1 31 ]
 "202
-[v log_write_to_disk@log_entry log_entry `S7682  1 a 32 1 ]
+[v log_write_to_disk@log_entry log_entry `S7682  1 a 32 113 ]
 "201
-[v log_write_to_disk@file_number file_number `uc  1 a 1 0 ]
+[v log_write_to_disk@file_number file_number `uc  1 a 1 112 ]
 "217
 } 0
 "174
@@ -3206,7 +3206,7 @@ OUTPUT_FAN 32
 [v __get_temperature@temperature temperature `i  1 p 2 14 ]
 "112
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
@@ -3306,7 +3306,7 @@ OUTPUT_FAN 32
 [v fat_find_file@extension extension `*.39uc  1 p 2 41 ]
 "304
 } 0
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strncmp.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
 {
 [v strncmp@s1 s1 `*.39Cuc  1 p 2 0 ]
@@ -3382,7 +3382,7 @@ OUTPUT_FAN 32
 [v _flash_partial_write flash_partial_write `(v  1 e 1 0 ]
 {
 "591
-[v flash_partial_write@match match `E8335  1 a 1 39 ]
+[v flash_partial_write@match match `E8341  1 a 1 39 ]
 "589
 [v flash_partial_write@page page `ui  1 p 2 31 ]
 [v flash_partial_write@start start `ui  1 p 2 33 ]
@@ -3397,7 +3397,7 @@ OUTPUT_FAN 32
 [v __flash_copy_page_to_buffer@command command `[4]uc  1 a 4 25 ]
 "315
 [v __flash_copy_page_to_buffer@page page `ui  1 p 2 19 ]
-[v __flash_copy_page_to_buffer@buffer buffer `E8331  1 p 1 21 ]
+[v __flash_copy_page_to_buffer@buffer buffer `E8337  1 p 1 21 ]
 "334
 } 0
 "55 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\fat16.c
@@ -3549,10 +3549,10 @@ OUTPUT_FAN 32
 "491 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
 [v _system_output_is_on system_output_is_on `(uc  1 e 1 0 ]
 {
-[v system_output_is_on@output output `E8129  1 a 1 wreg ]
-[v system_output_is_on@output output `E8129  1 a 1 wreg ]
+[v system_output_is_on@output output `E8135  1 a 1 wreg ]
+[v system_output_is_on@output output `E8135  1 a 1 wreg ]
 "493
-[v system_output_is_on@output output `E8129  1 a 1 0 ]
+[v system_output_is_on@output output `E8135  1 a 1 0 ]
 "497
 } 0
 "301 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
@@ -3596,16 +3596,16 @@ OUTPUT_FAN 32
 "807
 } 0
 "759
-[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8252  1 e 1 0 ]
+[v _get_next_eeprom_write_task get_next_eeprom_write_task `(E8258  1 e 1 0 ]
 {
 "761
-[v get_next_eeprom_write_task@task task `E8252  1 a 1 0 ]
+[v get_next_eeprom_write_task@task task `E8258  1 a 1 0 ]
 "777
 } 0
 "715
 [v __write_calibration _write_calibration `(v  1 e 1 0 ]
 {
-[v __write_calibration@index index `E8142  1 a 1 wreg ]
+[v __write_calibration@index index `E8148  1 a 1 wreg ]
 "717
 [v __write_calibration@buffer buffer `[16]uc  1 a 16 39 ]
 "718
@@ -3615,23 +3615,23 @@ OUTPUT_FAN 32
 "719
 [v __write_calibration@cntr cntr `uc  1 a 1 60 ]
 "715
-[v __write_calibration@index index `E8142  1 a 1 wreg ]
+[v __write_calibration@index index `E8148  1 a 1 wreg ]
 "721
-[v __write_calibration@index index `E8142  1 a 1 59 ]
+[v __write_calibration@index index `E8148  1 a 1 59 ]
 "733
 } 0
 "467
 [v _i2c_adc_start i2c_adc_start `(v  1 e 1 0 ]
 {
-[v i2c_adc_start@channel channel `E8224  1 a 1 wreg ]
+[v i2c_adc_start@channel channel `E8230  1 a 1 wreg ]
 "469
 [v i2c_adc_start@configuration_byte configuration_byte `uc  1 a 1 13 ]
 "467
-[v i2c_adc_start@channel channel `E8224  1 a 1 wreg ]
-[v i2c_adc_start@resolution resolution `E8230  1 p 1 10 ]
-[v i2c_adc_start@gain gain `E8236  1 p 1 11 ]
+[v i2c_adc_start@channel channel `E8230  1 a 1 wreg ]
+[v i2c_adc_start@resolution resolution `E8236  1 p 1 10 ]
+[v i2c_adc_start@gain gain `E8242  1 p 1 11 ]
 "470
-[v i2c_adc_start@channel channel `E8224  1 a 1 12 ]
+[v i2c_adc_start@channel channel `E8230  1 a 1 12 ]
 "479
 } 0
 "481
@@ -3718,13 +3718,13 @@ OUTPUT_FAN 32
 [v __display_usb@low low `C[16]uc  1 a 16 37 ]
 "305
 [v __display_usb@cntr cntr `uc  1 a 1 69 ]
-[v __display_usb@F8712 F8712 `C[20]uc  1 s 20 F8712 ]
+[v __display_usb@F8718 F8718 `C[20]uc  1 s 20 F8718 ]
 "306
-[v __display_usb@F8714 F8714 `C[16]uc  1 s 16 F8714 ]
+[v __display_usb@F8720 F8720 `C[16]uc  1 s 16 F8720 ]
 "307
-[v __display_usb@F8716 F8716 `C[16]uc  1 s 16 F8716 ]
+[v __display_usb@F8722 F8722 `C[16]uc  1 s 16 F8722 ]
 "308
-[v __display_usb@F8718 F8718 `C[17]uc  1 s 17 F8718 ]
+[v __display_usb@F8724 F8724 `C[17]uc  1 s 17 F8724 ]
 "334
 } 0
 "186
@@ -3776,33 +3776,33 @@ OUTPUT_FAN 32
 "186
 [v __display_time@mode mode `uc  1 a 1 wreg ]
 "187
-[v __display_time@F8675 F8675 `C[14]uc  1 s 14 F8675 ]
+[v __display_time@F8681 F8681 `C[14]uc  1 s 14 F8681 ]
 "188
-[v __display_time@F8677 F8677 `C[9]uc  1 s 9 F8677 ]
+[v __display_time@F8683 F8683 `C[9]uc  1 s 9 F8683 ]
 "189
-[v __display_time@F8679 F8679 `C[10]uc  1 s 10 F8679 ]
+[v __display_time@F8685 F8685 `C[10]uc  1 s 10 F8685 ]
 "190
-[v __display_time@F8681 F8681 `C[8]uc  1 s 8 F8681 ]
+[v __display_time@F8687 F8687 `C[8]uc  1 s 8 F8687 ]
 "191
-[v __display_time@F8683 F8683 `C[10]uc  1 s 10 F8683 ]
+[v __display_time@F8689 F8689 `C[10]uc  1 s 10 F8689 ]
 "192
-[v __display_time@F8685 F8685 `C[12]uc  1 s 12 F8685 ]
+[v __display_time@F8691 F8691 `C[12]uc  1 s 12 F8691 ]
 "193
-[v __display_time@F8687 F8687 `C[12]uc  1 s 12 F8687 ]
+[v __display_time@F8693 F8693 `C[12]uc  1 s 12 F8693 ]
 "194
-[v __display_time@F8689 F8689 `C[20]uc  1 s 20 F8689 ]
+[v __display_time@F8695 F8695 `C[20]uc  1 s 20 F8695 ]
 "195
-[v __display_time@F8691 F8691 `C[18]uc  1 s 18 F8691 ]
+[v __display_time@F8697 F8697 `C[18]uc  1 s 18 F8697 ]
 "196
-[v __display_time@F8693 F8693 `C[16]uc  1 s 16 F8693 ]
+[v __display_time@F8699 F8699 `C[16]uc  1 s 16 F8699 ]
 "197
-[v __display_time@F8695 F8695 `C[18]uc  1 s 18 F8695 ]
+[v __display_time@F8701 F8701 `C[18]uc  1 s 18 F8701 ]
 "198
-[v __display_time@F8697 F8697 `C[20]uc  1 s 20 F8697 ]
+[v __display_time@F8703 F8703 `C[20]uc  1 s 20 F8703 ]
 "199
-[v __display_time@F8699 F8699 `C[20]uc  1 s 20 F8699 ]
+[v __display_time@F8705 F8705 `C[20]uc  1 s 20 F8705 ]
 "200
-[v __display_time@F8701 F8701 `C[16]uc  1 s 16 F8701 ]
+[v __display_time@F8707 F8707 `C[16]uc  1 s 16 F8707 ]
 "188
 [v __display_time@mode mode `uc  1 a 1 203 ]
 "301
@@ -3820,13 +3820,13 @@ OUTPUT_FAN 32
 [v __display_temperature@internal internal `C[11]uc  1 a 11 92 ]
 "515
 [v __display_temperature@cntr cntr `uc  1 a 1 103 ]
-[v __display_temperature@F8773 F8773 `C[20]uc  1 s 20 F8773 ]
+[v __display_temperature@F8779 F8779 `C[20]uc  1 s 20 F8779 ]
 "516
-[v __display_temperature@F8775 F8775 `C[11]uc  1 s 11 F8775 ]
+[v __display_temperature@F8781 F8781 `C[11]uc  1 s 11 F8781 ]
 "517
-[v __display_temperature@F8777 F8777 `C[12]uc  1 s 12 F8777 ]
+[v __display_temperature@F8783 F8783 `C[12]uc  1 s 12 F8783 ]
 "518
-[v __display_temperature@F8779 F8779 `C[12]uc  1 s 12 F8779 ]
+[v __display_temperature@F8785 F8785 `C[12]uc  1 s 12 F8785 ]
 "542
 } 0
 "336
@@ -3846,13 +3846,13 @@ OUTPUT_FAN 32
 "336
 [v __display_outputs@mode mode `uc  1 a 1 wreg ]
 "338
-[v __display_outputs@F8722 F8722 `C[14]uc  1 s 14 F8722 ]
+[v __display_outputs@F8728 F8728 `C[14]uc  1 s 14 F8728 ]
 "339
-[v __display_outputs@F8724 F8724 `C[16]uc  1 s 16 F8724 ]
+[v __display_outputs@F8730 F8730 `C[16]uc  1 s 16 F8730 ]
 "340
-[v __display_outputs@F8726 F8726 `C[21]uc  1 s 21 F8726 ]
+[v __display_outputs@F8732 F8732 `C[21]uc  1 s 21 F8732 ]
 "341
-[v __display_outputs@F8728 F8728 `C[21]uc  1 s 21 F8728 ]
+[v __display_outputs@F8734 F8734 `C[21]uc  1 s 21 F8734 ]
 "339
 [v __display_outputs@mode mode `uc  1 a 1 72 ]
 "403
@@ -3870,13 +3870,13 @@ OUTPUT_FAN 32
 [v __display_inout@line3 line3 `C[3]uc  1 a 3 98 ]
 "143
 [v __display_inout@cntr cntr `uc  1 a 1 101 ]
-[v __display_inout@F8665 F8665 `C[18]uc  1 s 18 F8665 ]
+[v __display_inout@F8671 F8671 `C[18]uc  1 s 18 F8671 ]
 "144
-[v __display_inout@F8667 F8667 `C[18]uc  1 s 18 F8667 ]
+[v __display_inout@F8673 F8673 `C[18]uc  1 s 18 F8673 ]
 "145
-[v __display_inout@F8669 F8669 `C[3]uc  1 s 3 F8669 ]
+[v __display_inout@F8675 F8675 `C[3]uc  1 s 3 F8675 ]
 "146
-[v __display_inout@F8671 F8671 `C[14]uc  1 s 14 F8671 ]
+[v __display_inout@F8677 F8677 `C[14]uc  1 s 14 F8677 ]
 "172
 } 0
 "475
@@ -3896,14 +3896,14 @@ OUTPUT_FAN 32
 [v __display_efficiency@efficiency efficiency `f  1 a 3 102 ]
 "477
 [v __display_efficiency@cntr cntr `uc  1 a 1 113 ]
-[v __display_efficiency@F8753 F8753 `C[19]uc  1 s 19 F8753 ]
+[v __display_efficiency@F8759 F8759 `C[19]uc  1 s 19 F8759 ]
 "478
-[v __display_efficiency@F8755 F8755 `C[19]uc  1 s 19 F8755 ]
+[v __display_efficiency@F8761 F8761 `C[19]uc  1 s 19 F8761 ]
 "479
-[v __display_efficiency@F8757 F8757 `C[14]uc  1 s 14 F8757 ]
+[v __display_efficiency@F8763 F8763 `C[14]uc  1 s 14 F8763 ]
 "511
 } 0
-"44 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\fttol.c
+"44 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
@@ -3915,7 +3915,7 @@ OUTPUT_FAN 32
 [v ___fttol@f1 f1 `f  1 p 3 0 ]
 "73
 } 0
-"42 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\altoft.c
+"42 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
 {
 "44
@@ -3925,7 +3925,7 @@ OUTPUT_FAN 32
 [v ___altoft@c c `l  1 p 4 14 ]
 "57
 } 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 {
 [v ___ftpack@arg arg `um  1 p 3 0 ]
@@ -3933,7 +3933,7 @@ OUTPUT_FAN 32
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 {
 "11
@@ -3978,23 +3978,23 @@ OUTPUT_FAN 32
 [v __display_charger@fan_on fan_on `C[7]uc  1 a 7 8 ]
 "407
 [v __display_charger@cntr cntr `uc  1 a 1 142 ]
-[v __display_charger@F8732 F8732 `C[21]uc  1 s 21 F8732 ]
+[v __display_charger@F8738 F8738 `C[21]uc  1 s 21 F8738 ]
 "408
-[v __display_charger@F8734 F8734 `C[18]uc  1 s 18 F8734 ]
+[v __display_charger@F8740 F8740 `C[18]uc  1 s 18 F8740 ]
 "409
-[v __display_charger@F8736 F8736 `C[19]uc  1 s 19 F8736 ]
+[v __display_charger@F8742 F8742 `C[19]uc  1 s 19 F8742 ]
 "410
-[v __display_charger@F8738 F8738 `C[7]uc  1 s 7 F8738 ]
+[v __display_charger@F8744 F8744 `C[7]uc  1 s 7 F8744 ]
 "411
-[v __display_charger@F8740 F8740 `C[8]uc  1 s 8 F8740 ]
+[v __display_charger@F8746 F8746 `C[8]uc  1 s 8 F8746 ]
 "412
-[v __display_charger@F8742 F8742 `C[12]uc  1 s 12 F8742 ]
+[v __display_charger@F8748 F8748 `C[12]uc  1 s 12 F8748 ]
 "414
-[v __display_charger@F8744 F8744 `C[16]uc  1 s 16 F8744 ]
+[v __display_charger@F8750 F8750 `C[16]uc  1 s 16 F8750 ]
 "415
-[v __display_charger@F8746 F8746 `C[21]uc  1 s 21 F8746 ]
+[v __display_charger@F8752 F8752 `C[21]uc  1 s 21 F8752 ]
 "416
-[v __display_charger@F8748 F8748 `C[20]uc  1 s 20 F8748 ]
+[v __display_charger@F8754 F8754 `C[20]uc  1 s 20 F8754 ]
 "473
 } 0
 "41
@@ -4014,7 +4014,7 @@ OUTPUT_FAN 32
 [v __display_itoa@text text `*.39uc  1 p 2 27 ]
 "106
 } 0
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\strlen.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "6
@@ -4023,7 +4023,7 @@ OUTPUT_FAN 32
 [v strlen@s s `*.39Cuc  1 p 2 0 ]
 "13
 } 0
-"4 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\itoa.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\itoa.c
 [v _itoa itoa `(*.39uc  1 e 2 0 ]
 {
 "6
@@ -4047,7 +4047,7 @@ OUTPUT_FAN 32
 [v utoa@base base `i  1 p 2 11 ]
 "37
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
@@ -4057,13 +4057,13 @@ OUTPUT_FAN 32
 [v ___lwmod@divisor divisor `ui  1 p 2 2 ]
 "26
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lwdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+[v ___lwdiv@counter counter `uc  1 a 1 6 ]
 "8
 [v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
 [v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
@@ -4103,25 +4103,25 @@ OUTPUT_FAN 32
 "143
 [v __buck_start _buck_start `(v  1 s 1 _buck_start ]
 {
-[v __buck_start@mode mode `E8109  1 a 1 wreg ]
+[v __buck_start@mode mode `E8115  1 a 1 wreg ]
 "146
 [v __buck_start@cntr cntr `uc  1 a 1 21 ]
 "145
 [v __buck_start@startup_dutycycle startup_dutycycle `uc  1 a 1 20 ]
 "143
-[v __buck_start@mode mode `E8109  1 a 1 wreg ]
+[v __buck_start@mode mode `E8115  1 a 1 wreg ]
 [v __buck_start@dutycycle dutycycle `uc  1 p 1 18 ]
 "149
-[v __buck_start@mode mode `E8109  1 a 1 19 ]
+[v __buck_start@mode mode `E8115  1 a 1 19 ]
 "215
 } 0
 "217
 [v __buck_set_sync_async _buck_set_sync_async `(v  1 s 1 _buck_set_sync_async ]
 {
-[v __buck_set_sync_async@mode mode `E8109  1 a 1 wreg ]
-[v __buck_set_sync_async@mode mode `E8109  1 a 1 wreg ]
+[v __buck_set_sync_async@mode mode `E8115  1 a 1 wreg ]
+[v __buck_set_sync_async@mode mode `E8115  1 a 1 wreg ]
 [v __buck_set_sync_async@new_dutycycle new_dutycycle `uc  1 p 1 2 ]
-[v __buck_set_sync_async@mode mode `E8109  1 a 1 3 ]
+[v __buck_set_sync_async@mode mode `E8115  1 a 1 3 ]
 "281
 } 0
 "98
@@ -4140,7 +4140,7 @@ OUTPUT_FAN 32
 [v __buck_initial_dutycycle@dc dc `ul  1 a 4 14 ]
 "96
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\lldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "11
@@ -4155,12 +4155,12 @@ OUTPUT_FAN 32
 "30 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\adc.c
 [v _adc_read adc_read `(ui  1 e 2 0 ]
 {
-[v adc_read@channel channel `E8221  1 a 1 wreg ]
+[v adc_read@channel channel `E8227  1 a 1 wreg ]
 "32
 [v adc_read@adc_value adc_value `ui  1 a 2 3 ]
 "30
-[v adc_read@channel channel `E8221  1 a 1 wreg ]
-[v adc_read@channel channel `E8221  1 a 1 2 ]
+[v adc_read@channel channel `E8227  1 a 1 wreg ]
+[v adc_read@channel channel `E8227  1 a 1 2 ]
 "72
 } 0
 "20
@@ -4175,10 +4175,10 @@ OUTPUT_FAN 32
 [v adc_calculate_temperature@tmp tmp `l  1 a 4 21 ]
 "74
 [v adc_calculate_temperature@adc_value adc_value `ui  1 p 2 12 ]
-[v adc_calculate_temperature@calibration calibration `E8142  1 p 1 14 ]
+[v adc_calculate_temperature@calibration calibration `E8148  1 p 1 14 ]
 "83
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 {
 "17
@@ -4195,7 +4195,7 @@ OUTPUT_FAN 32
 [v USBDeviceInit@i i `uc  1 a 1 8 ]
 "371
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memset.c
 [v _memset memset `(*.39v  1 e 2 0 ]
 {
 "15
@@ -4214,14 +4214,14 @@ OUTPUT_FAN 32
 "146 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-[v SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E8234  1 a 1 wreg ]
 "192
-[v SYSTEM_Initialize@pll_startup_counter_3284 pll_startup_counter `ui  1 a 2 3 ]
+[v SYSTEM_Initialize@pll_startup_counter_3284 pll_startup_counter `ui  1 a 2 2 ]
 "158
-[v SYSTEM_Initialize@pll_startup_counter pll_startup_counter `ui  1 a 2 1 ]
+[v SYSTEM_Initialize@pll_startup_counter pll_startup_counter `ui  1 a 2 0 ]
 "146
-[v SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
-[v SYSTEM_Initialize@state state `E8228  1 a 1 0 ]
+[v SYSTEM_Initialize@state state `E8234  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E8234  1 a 1 4 ]
 "197
 } 0
 "110 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_msd.c
@@ -4287,7 +4287,7 @@ OUTPUT_FAN 32
 [v _flash_page_write flash_page_write `(v  1 e 1 0 ]
 {
 "548
-[v flash_page_write@match match `E8335  1 a 1 35 ]
+[v flash_page_write@match match `E8341  1 a 1 35 ]
 "546
 [v flash_page_write@page page `ui  1 p 2 31 ]
 [v flash_page_write@data data `*.39uc  1 p 2 33 ]
@@ -4302,7 +4302,7 @@ OUTPUT_FAN 32
 [v __flash_write_to_buffer@start start `ui  1 p 2 19 ]
 [v __flash_write_to_buffer@data data `*.39uc  1 p 2 21 ]
 [v __flash_write_to_buffer@data_length data_length `ui  1 p 2 23 ]
-[v __flash_write_to_buffer@buffer buffer `E8331  1 p 1 25 ]
+[v __flash_write_to_buffer@buffer buffer `E8337  1 p 1 25 ]
 "416
 } 0
 "141
@@ -4321,11 +4321,11 @@ OUTPUT_FAN 32
 [v __flash_write_page_from_buffer@command command `[4]uc  1 a 4 25 ]
 "419
 [v __flash_write_page_from_buffer@page page `ui  1 p 2 19 ]
-[v __flash_write_page_from_buffer@buffer buffer `E8331  1 p 1 21 ]
+[v __flash_write_page_from_buffer@buffer buffer `E8337  1 p 1 21 ]
 "438
 } 0
 "337
-[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8335  1 s 1 _flash_compare_page_to_buffer ]
+[v __flash_compare_page_to_buffer _flash_compare_page_to_buffer `(E8341  1 s 1 _flash_compare_page_to_buffer ]
 {
 "339
 [v __flash_compare_page_to_buffer@command command `[4]uc  1 a 4 27 ]
@@ -4333,7 +4333,7 @@ OUTPUT_FAN 32
 [v __flash_compare_page_to_buffer@status status `ui  1 a 2 25 ]
 "337
 [v __flash_compare_page_to_buffer@page page `ui  1 p 2 19 ]
-[v __flash_compare_page_to_buffer@buffer buffer `E8331  1 p 1 21 ]
+[v __flash_compare_page_to_buffer@buffer buffer `E8337  1 p 1 21 ]
 "375
 } 0
 "1038 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
@@ -4344,10 +4344,10 @@ OUTPUT_FAN 32
 "1434
 [v _MSDCheckForErrorCases MSDCheckForErrorCases `(uc  1 e 1 0 ]
 {
-"1436
-[v MSDCheckForErrorCases@MSDErrorCase MSDErrorCase `uc  1 a 1 16 ]
 "1438
-[v MSDCheckForErrorCases@DeviceNoData DeviceNoData `uc  1 a 1 15 ]
+[v MSDCheckForErrorCases@DeviceNoData DeviceNoData `uc  1 a 1 16 ]
+"1436
+[v MSDCheckForErrorCases@MSDErrorCase MSDErrorCase `uc  1 a 1 15 ]
 "1437
 [v MSDCheckForErrorCases@HostMoreDataThanDevice HostMoreDataThanDevice `uc  1 a 1 14 ]
 "1434
@@ -4507,7 +4507,7 @@ OUTPUT_FAN 32
 ]
 "10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
 [u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
-[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2258 . 5 `E8839 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
 [v _ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
 {
 [v ExternalFlash_MediaInitialize@config config `*.2v  1 p 2 0 ]
@@ -4539,19 +4539,19 @@ OUTPUT_FAN 32
 "507 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
 [v _system_output_on system_output_on `(v  1 e 1 0 ]
 {
-[v system_output_on@output output `E8129  1 a 1 wreg ]
-[v system_output_on@output output `E8129  1 a 1 wreg ]
+[v system_output_on@output output `E8135  1 a 1 wreg ]
+[v system_output_on@output output `E8135  1 a 1 wreg ]
 "510
-[v system_output_on@output output `E8129  1 a 1 0 ]
+[v system_output_on@output output `E8135  1 a 1 0 ]
 "535
 } 0
 "537
 [v _system_output_off system_output_off `(v  1 e 1 0 ]
 {
-[v system_output_off@output output `E8129  1 a 1 wreg ]
-[v system_output_off@output output `E8129  1 a 1 wreg ]
+[v system_output_off@output output `E8135  1 a 1 wreg ]
+[v system_output_off@output output `E8135  1 a 1 wreg ]
 "540
-[v system_output_off@output output `E8129  1 a 1 1 ]
+[v system_output_off@output output `E8135  1 a 1 1 ]
 "567
 } 0
 "344 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\rtcc.c
@@ -4579,9 +4579,9 @@ OUTPUT_FAN 32
 "107
 [v _i2c_set_frequency i2c_set_frequency `(v  1 e 1 0 ]
 {
-[v i2c_set_frequency@frequency frequency `E8213  1 a 1 wreg ]
-[v i2c_set_frequency@frequency frequency `E8213  1 a 1 wreg ]
-[v i2c_set_frequency@frequency frequency `E8213  1 a 1 0 ]
+[v i2c_set_frequency@frequency frequency `E8219  1 a 1 wreg ]
+[v i2c_set_frequency@frequency frequency `E8219  1 a 1 wreg ]
+[v i2c_set_frequency@frequency frequency `E8219  1 a 1 0 ]
 "145
 } 0
 "148
@@ -4758,13 +4758,13 @@ OUTPUT_FAN 32
 "741 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\i2c.c
 [v _schedule_eeprom_write_task schedule_eeprom_write_task `(v  1 e 1 0 ]
 {
-[v schedule_eeprom_write_task@task task `E8252  1 a 1 wreg ]
+[v schedule_eeprom_write_task@task task `E8258  1 a 1 wreg ]
 "743
 [v schedule_eeprom_write_task@idx idx `uc  1 a 1 2 ]
 "741
-[v schedule_eeprom_write_task@task task `E8252  1 a 1 wreg ]
+[v schedule_eeprom_write_task@task task `E8258  1 a 1 wreg ]
 "745
-[v schedule_eeprom_write_task@task task `E8252  1 a 1 1 ]
+[v schedule_eeprom_write_task@task task `E8258  1 a 1 1 ]
 "757
 } 0
 "269 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\app_device_custom_hid.c
@@ -4773,7 +4773,7 @@ OUTPUT_FAN 32
 "328
 } 0
 "12 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
-[v _ui_get_status ui_get_status `(E9488  1 e 1 0 ]
+[v _ui_get_status ui_get_status `(E9494  1 e 1 0 ]
 {
 "15
 } 0
@@ -4820,7 +4820,7 @@ OUTPUT_FAN 32
 "665
 } 0
 "597
-[v _buck_get_mode buck_get_mode `(E9570  1 e 1 0 ]
+[v _buck_get_mode buck_get_mode `(E9576  1 e 1 0 ]
 {
 "600
 } 0
@@ -4871,15 +4871,15 @@ OUTPUT_FAN 32
 {
 "385
 } 0
-"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+"27 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memcpy.c
 [v _memcpy memcpy `(*.39v  1 e 2 0 ]
 {
 "31
-[v memcpy@s s `*.34Cuc  1 a 2 9 ]
+[v memcpy@s s `*.34Cuc  1 a 2 8 ]
 "30
-[v memcpy@d d `*.39uc  1 a 2 7 ]
+[v memcpy@d d `*.39uc  1 a 2 6 ]
 "32
-[v memcpy@tmp tmp `uc  1 a 1 6 ]
+[v memcpy@tmp tmp `uc  1 a 1 10 ]
 "27
 [v memcpy@d1 d1 `*.39v  1 p 2 0 ]
 [v memcpy@s1 s1 `*.34Cv  1 p 2 2 ]
@@ -4975,7 +4975,7 @@ OUTPUT_FAN 32
 {
 "2425
 } 0
-"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+"27 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memcpy.c
 [v i2_memcpy memcpy `(*.39v  1 e 2 0 ]
 {
 [v i2memcpy@s memcpy `*.34Cuc  1 a 2 8 ]
@@ -5013,7 +5013,7 @@ OUTPUT_FAN 32
 [v USBStdSetCfgHandler@i i `uc  1 a 1 23 ]
 "2026
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\memset.c
 [v i2_memset memset `(*.39v  1 e 2 0 ]
 {
 [v i2memset@p memset `*.39uc  1 a 2 6 ]
@@ -5104,7 +5104,7 @@ OUTPUT_FAN 32
 "54 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_events.c
 [v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
 {
-[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E8437  1 p 2 15 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E8443  1 p 2 15 ]
 [v USER_USB_CALLBACK_EVENT_HANDLER@pdata pdata `*.39v  1 p 2 17 ]
 [v USER_USB_CALLBACK_EVENT_HANDLER@size size `ui  1 p 2 19 ]
 "131
@@ -5112,11 +5112,11 @@ OUTPUT_FAN 32
 "146 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\system.c
 [v i2_SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-[v i2SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@state state `E8234  1 a 1 wreg ]
 [v i2SYSTEM_Initialize@pll_startup_counter_3284 SYSTEM_Initialize `ui  1 a 2 2 ]
 [v i2SYSTEM_Initialize@pll_startup_counter SYSTEM_Initialize `ui  1 a 2 0 ]
-[v i2SYSTEM_Initialize@state state `E8228  1 a 1 wreg ]
-[v i2SYSTEM_Initialize@state state `E8228  1 a 1 4 ]
+[v i2SYSTEM_Initialize@state state `E8234  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@state state `E8234  1 a 1 4 ]
 "197
 } 0
 "218 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\usb_device_msd.c
@@ -5195,7 +5195,7 @@ OUTPUT_FAN 32
 ]
 "10 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\external_flash.c
 [u S2255 . 1 `uc 1 value 1 0 `S2252 1 bits 1 0 ]
-[s S2258 . 5 `E8833 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
+[s S2258 . 5 `E8839 1 errorCode 1 0 `S2255 1 validityFlags 1 1 `ui 1 sectorSize 2 2 `uc 1 maxLUN 1 4 ]
 [v i2_ExternalFlash_MediaInitialize ExternalFlash_MediaInitialize `(*.39S2258  1 e 2 0 ]
 {
 [v i2ExternalFlash_MediaInitialize@config config `*.2v  1 p 2 0 ]

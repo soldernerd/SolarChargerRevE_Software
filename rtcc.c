@@ -4,7 +4,7 @@
 #include "os.h"
 #include <xc.h>
 
-static uint8_t _rtcc_bdc_to_decimal(uint8_t input)
+static uint8_t _rtcc_bcd_to_decimal(uint8_t input)
 {
     uint8_t tens = (input & 0xF0) >> 4;
     uint8_t ones = input & 0x0F;
@@ -77,6 +77,30 @@ static uint8_t _number_of_days(void)
     return 0x31;
 }
 
+static uint8_t _rtcc_verify_bcd(uint8_t value, uint8_t min, uint8_t max)
+{
+    //Ensure that both decimals are in the range 0-9
+    if((value&0x0F)>0x09)
+    {
+        return min;
+    }
+    if((value&0xF0)>0x90)
+    {
+        return min;
+    }
+    //Ensure values are within their limits
+    if(value<min)
+    {
+        return min;
+    }
+    if(value>max)
+    {
+        return max;
+    }
+    //All is well, return unchanged value
+    return value;
+}
+
 
 void rtcc_init(void)
 {
@@ -111,7 +135,7 @@ uint8_t rtcc_get_year(void)
 uint8_t rtcc_get_year_decimal(void)
 {
     uint8_t bcd_year = rtcc_get_year();
-    return _rtcc_bdc_to_decimal(bcd_year);
+    return _rtcc_bcd_to_decimal(bcd_year);
 }
 
 void rtcc_set_year(uint8_t year)
@@ -149,7 +173,7 @@ uint8_t rtcc_get_month(void)
 uint8_t rtcc_get_month_decimal(void)
 {
     uint8_t bcd_month = rtcc_get_month();
-    return _rtcc_bdc_to_decimal(bcd_month);
+    return _rtcc_bcd_to_decimal(bcd_month);
 }
 
 void rtcc_set_month(uint8_t month)
@@ -187,7 +211,7 @@ uint8_t rtcc_get_day(void)
 uint8_t rtcc_get_day_decimal(void)
 {
     uint8_t bcd_day = rtcc_get_day();
-    return _rtcc_bdc_to_decimal(bcd_day);
+    return _rtcc_bcd_to_decimal(bcd_day);
 }
 
 void rtcc_set_day(uint8_t day)
@@ -225,7 +249,7 @@ uint8_t rtcc_get_hours(void)
 uint8_t rtcc_get_hours_decimal(void)
 {
     uint8_t bcd_hours = rtcc_get_hours();
-    return _rtcc_bdc_to_decimal(bcd_hours);
+    return _rtcc_bcd_to_decimal(bcd_hours);
 }
 
 void rtcc_set_hours(uint8_t hours)
@@ -263,7 +287,7 @@ uint8_t rtcc_get_minutes(void)
 uint8_t rtcc_get_minutes_decimal(void)
 {
     uint8_t bcd_minutes = rtcc_get_minutes();
-    return _rtcc_bdc_to_decimal(bcd_minutes);
+    return _rtcc_bcd_to_decimal(bcd_minutes);
 }
 
 void rtcc_set_minutes(uint8_t minutes)
@@ -301,7 +325,7 @@ uint8_t rtcc_get_seconds(void)
 uint8_t rtcc_get_seconds_decimal(void)
 {
     uint8_t bcd_seconds = rtcc_get_seconds();
-    return _rtcc_bdc_to_decimal(bcd_seconds);
+    return _rtcc_bcd_to_decimal(bcd_seconds);
 }
 
 void rtcc_set_seconds(uint8_t seconds)
@@ -330,15 +354,83 @@ void rtcc_decrement_seconds(void)
 void rtcc_read_eeprom(void)
 {
     uint8_t date[6];
+    uint8_t buffer;
+    uint8_t error_found = 0;
+    
+    //Read values from eeprom
     i2c_eeprom_read(EEPROM_RTCC_ADDRESS, &date[0], 6);
     
-    //Set time and date
+    //Correct values from eeprom
+    //If this is the first time this code runs, EEPROM may contain invalid data
+    
+    //year
+    buffer = _rtcc_verify_bcd(date[0], 0x00, 0x99);
+    if(buffer != date[0])
+    {
+        date[0] = buffer;
+        error_found = 1;
+    }
     rtcc_set_year(date[0]);
+    
+    //month
+    buffer = _rtcc_verify_bcd(date[1], 0x01, 0x12);
+    if(buffer != date[1])
+    {
+        date[1] = buffer;
+        error_found = 1;
+    }
     rtcc_set_month(date[1]);
+    
+    //day
+    buffer = _rtcc_verify_bcd(date[2], 0x01, 0x31);
+    if(buffer != date[2])
+    {
+        date[2] = buffer;
+        error_found = 1;
+    }
     rtcc_set_day(date[2]);
+    
+    //correct day if necessary
+    rtcc_correct_day();
+    buffer = rtcc_get_day();
+    if(buffer != date[2])
+    {
+        date[2] = buffer;
+        error_found = 1;
+    }
+    
+    //hours
+    buffer = _rtcc_verify_bcd(date[3], 0x00, 0x23);
+    if(buffer != date[3])
+    {
+        date[3] = buffer;
+        error_found = 1;
+    }
     rtcc_set_hours(date[3]);
+    
+    //minutes
+    buffer = _rtcc_verify_bcd(date[4], 0x00, 0x59);
+    if(buffer != date[4])
+    {
+        date[4] = buffer;
+        error_found = 1;
+    }
     rtcc_set_minutes(date[4]);
+    
+    //seconds
+    buffer = _rtcc_verify_bcd(date[5], 0x00, 0x59);
+    if(buffer != date[5])
+    {
+        date[5] = buffer;
+        error_found = 1;
+    }
     rtcc_set_seconds(date[5]);
+    
+    //Write date/time to EEPROM if any correction was necessary
+    if(error_found)
+    {
+        rtcc_write_eeprom();
+    }
 }
 
 void rtcc_write_eeprom(void)

@@ -504,7 +504,7 @@ void i2c_adc_start(i2cAdcPort_t channel, i2cAdcResolution_t resolution, i2cAdcGa
  * I2C EEPROM Functionality
  * ****************************************************************************/
  
-#define EEPROM_CALIBRATION_ADDRESS 0x0100
+
  
 void _i2c_eeprom_load_default_calibration(calibration_t *buffer, calibrationIndex_t index);
  

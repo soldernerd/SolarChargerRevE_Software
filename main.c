@@ -89,6 +89,9 @@ MAIN_RETURN main(void)
         {
             //Do this every time
             
+            //Clear watchdog timer
+            ClrWdt();
+            
             //Shut down outputs when battery voltage drops too low
             if(os.output_voltage<USB_CHARGING_VOLTAGE_MINIMUM)
             {

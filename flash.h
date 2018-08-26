@@ -9,8 +9,7 @@
 #define	FLASH_H
 
 #define FLASH_PAGE_SIZE 512
-//True value is 4096. We have to cheat a bit so windows accepts it as a FAT16, not FAT12
-#define FLASH_NUMBER_OF_PAGES 4114
+#define FLASH_NUMBER_OF_PAGES 8196
 
 typedef enum 
 { 

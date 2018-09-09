@@ -338,12 +338,8 @@ void ui_run(void)
 		case USER_INTERFACE_STATUS_OFF:
 			if (os.buttonCount!=0)
 			{
-				//Enable high (3.3volts) board voltage
-                VCC_HIGH_PORT = 1;
+                ui_init();
                 os.buttonCount = 0;
-                //Proceed to next state
-                system_ui_inactive_count = 0;
-				userInterfaceStatus = USER_INTERFACE_STATUS_STARTUP_1;
 			}
 			break;
 

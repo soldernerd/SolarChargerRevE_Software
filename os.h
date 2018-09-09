@@ -190,7 +190,7 @@
 //Page 2 (0x200 to 0x2FF) reserved for calibration
 #define EEPROM_CALIBRATION_ADDRESS 0x0200
 
-#define OS_USER_INTERFACE_TIMEOUT 20000
+#define OS_USER_INTERFACE_TIMEOUT 2000
 
 
 /*

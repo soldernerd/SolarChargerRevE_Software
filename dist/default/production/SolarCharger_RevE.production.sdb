@@ -2821,7 +2821,7 @@ OUTPUT_FAN 32
 "334 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\ui.c
 [v _ui_run ui_run `(v  1 e 1 0 ]
 {
-"417
+"413
 } 0
 "198 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\os.c
 [v _system_encoder_enable system_encoder_enable `(v  1 e 1 0 ]

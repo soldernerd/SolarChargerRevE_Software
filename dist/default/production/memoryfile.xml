@@ -3,9 +3,9 @@
   <executable name="dist/default/production\SolarCharger_RevE.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>94602</length>
-      <used>45810</used>
-      <free>48792</free>
+      <length>90104</length>
+      <used>40682</used>
+      <free>49422</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

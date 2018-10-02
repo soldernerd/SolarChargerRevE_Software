@@ -1,4 +1,4 @@
-[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[p LITE_MODE AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F47J53 ]
@@ -948,22 +948,22 @@ OUTPUT_FAN 32
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
-"42 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\altoft.c
-[v ___altoft __altoft `(f  1 e 3 0 ]
 "7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
 "19 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\ftsub.c
-[v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\itoa.c
 [v _itoa itoa `(*.39uc  1 e 2 0 ]
 "17
@@ -979,13 +979,13 @@ OUTPUT_FAN 32
 [v _memset memset `(*.39v  1 e 2 0 ]
 [v i2_memset memset `(*.39v  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcadd.c
-[v ___fladd __fladd `(d  1 e 3 0 ]
+[v ___fladd __fladd `(d  1 e 4 0 ]
 "245
-[v ___flsub __flsub `(d  1 e 3 0 ]
+[v ___flsub __flsub `(d  1 e 4 0 ]
 "11 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 3 0 ]
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcmul.c
-[v ___flmul __flmul `(d  1 e 3 0 ]
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\strncmp.c
@@ -994,6 +994,8 @@ OUTPUT_FAN 32
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\Umul64.c
 [v ___omul __omul `(ul  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "23 C:\Users\luke\OneDrive\EmbeddedSystems\MPLAB\SolarCharger_RevE\display.c
 [v _display_get_character display_get_character `(uc  1 e 1 0 ]
 "28
@@ -3721,7 +3723,7 @@ OUTPUT_FAN 32
 [v display_prepare@mode mode `uc  1 a 1 wreg ]
 [v display_prepare@mode mode `uc  1 a 1 wreg ]
 "110
-[v display_prepare@mode mode `uc  1 a 1 116 ]
+[v display_prepare@mode mode `uc  1 a 1 117 ]
 "138
 } 0
 "303
@@ -3908,13 +3910,13 @@ OUTPUT_FAN 32
 "480
 [v __display_efficiency@footer footer `C[14]uc  1 a 14 88 ]
 "482
-[v __display_efficiency@battery battery `l  1 a 4 109 ]
+[v __display_efficiency@battery battery `l  1 a 4 110 ]
 "481
-[v __display_efficiency@panel panel `l  1 a 4 105 ]
+[v __display_efficiency@panel panel `l  1 a 4 106 ]
 "483
-[v __display_efficiency@efficiency efficiency `f  1 a 3 102 ]
+[v __display_efficiency@efficiency efficiency `f  1 a 4 102 ]
 "477
-[v __display_efficiency@cntr cntr `uc  1 a 1 113 ]
+[v __display_efficiency@cntr cntr `uc  1 a 1 114 ]
 [v __display_efficiency@F7276 F7276 `C[19]uc  1 s 19 F7276 ]
 "478
 [v __display_efficiency@F7278 F7278 `C[19]uc  1 s 19 F7278 ]
@@ -3922,35 +3924,30 @@ OUTPUT_FAN 32
 [v __display_efficiency@F7280 F7280 `C[14]uc  1 s 14 F7280 ]
 "511
 } 0
-"44 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
-"47
-[v ___fttol@lval lval `ul  1 a 4 10 ]
-"46
-[v ___fttol@exp1 exp1 `uc  1 a 1 14 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 9 ]
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 24 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 23 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 14 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 22 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 0 ]
-"73
 } 0
-"42 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\altoft.c
-[v ___altoft __altoft `(f  1 e 3 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 {
-"44
-[v ___altoft@sign sign `uc  1 a 1 23 ]
-[v ___altoft@exp exp `uc  1 a 1 22 ]
-"42
-[v ___altoft@c c `l  1 p 4 14 ]
-"57
-} 0
-"62 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 0 ]
-[v ___ftpack@exp exp `uc  1 p 1 3 ]
-[v ___ftpack@sign sign `uc  1 p 1 4 ]
-"86
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 9 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 8 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 0 ]
+"70
 } 0
 "7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]

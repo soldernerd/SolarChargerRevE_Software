@@ -3,15 +3,15 @@
   <executable name="dist/default/production\SolarCharger_RevE.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>90104</length>
-      <used>40682</used>
-      <free>49422</free>
+      <length>81912</length>
+      <used>40692</used>
+      <free>41220</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>3760</length>
-      <used>2302</used>
-      <free>1458</free>
+      <used>2303</used>
+      <free>1457</free>
     </memory>
   </executable>
 </project>

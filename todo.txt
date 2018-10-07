@@ -1,7 +1,7 @@
--.gitignore erstellen
--Dependencies eleminieren
--ADC fixen
--Disp fixen
--Flash implementieren
--MSD auf flash umhängen
--Filezugriff implementieren
+- Establish SPI communication
+- Debug and test data logging
+- Improve MPPT algorithm
+- Implement PWM power outputs
+- Implement 12bit ADC usage for temperature measurements
+- Reduce standby current consumption
+- Remove debugging display modes

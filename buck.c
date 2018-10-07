@@ -1,7 +1,7 @@
 #include <xc.h>
 #include <stdint.h>
-//#include <plib/pps.h>
 
+#include "hardware_config.h"
 #include "buck.h"
 #include "os.h"
 #include "i2c.h"
@@ -54,8 +54,8 @@ static void _buck_pin_init(void)
     
     //Assign via peripheral pin select (PPS)
     PPSUnLock();
-    BUCK_LOWFET_PPS = PPS_FUNCTION_CCP1_OUTPUT_A;
-    BUCK_HIGHFET_PPS = PPS_FUNCTION_CCP2_OUTPUT_B;
+    BUCK_LOWFET_RP_OUTPUT_REGISTER = PPS_FUNCTION_CCP1_A_OUTPUT_VALUE;
+    BUCK_HIGHFET_RP_OUTPUT_REGISTER = PPS_FUNCTION_CCP1_B_OUTPUT_VALUE;
     PPSLock();
     //PPSOutput(PPS_RP6, PPS_CCP1P1A);
     //PPSOutput(PPS_RP5, PPS_P1B);

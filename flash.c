@@ -2,19 +2,10 @@
 #include <stdint.h>
 #include <xc.h>
 #include "string.h"
+#include "hardware_config.h"
 #include "os.h"
 #include "flash.h"
-
-#define xDEBUG_FLASH
-
-//Just for debugging, remove later
-#ifdef DEBUG_FLASH
-#include "external_flash.h"
-uint8_t _read_internal_flash(uint16_t sector_addr, uint8_t* buffer);
-void _flash_copy_from_internal(uint16_t internal_sector, uint16_t external_page);
-uint8_t _flash_buffer[512];
-#endif
-//End of debug
+#include "spi.h"
 
 /*****************************************************************************
  * Flash commands, flags and delays                                          *
@@ -37,6 +28,8 @@ uint8_t _flash_buffer[512];
 #define FLASH_COMMAND_ENTER_ULTRA_DEEP_POWER_DOWN 0x79
 #define FLASH_COMMAND_PAGE_PROGRAM 0x82
 #define FLASH_COMMAND_DATA_READ 0x03
+#define FLASH_COMMAND_BUFFER1_READ 0xD1
+#define FLASH_COMMAND_BUFFER2_READ 0xD3
 
 #define FLASH_STATUS_FLAG_BUSY 0b0000000010000000
 #define FLASH_STATUS_FLAG_COMPARE 0b0000000001000000
@@ -57,8 +50,8 @@ typedef enum
 
 typedef enum 
 { 
-    FLASH_BUFFER_1,
-    FLASH_BUFFER_2
+    FLASH_BUFFER_1, //Buffer 1 is reserved for internal use
+    FLASH_BUFFER_2  //Buffer 2 is used for external access
 } flashBuffer_t;
 
 typedef enum 
@@ -71,9 +64,6 @@ typedef enum
  * Function prototypes                                                       *
  *****************************************************************************/
 
-static void _flash_spi_tx(uint8_t *data, uint16_t length);
-static void _flash_spi_tx_tx(uint8_t *command, uint16_t command_length, uint8_t *data, uint16_t data_length);
-static void _flash_spi_tx_rx(uint8_t *command, uint16_t command_length, uint8_t *data, uint16_t data_length);
 static void _flash_set_page_size(flashPageSize_t size);
 static uint16_t _flash_get_status(void);
 static void _flash_wakeup(void);
@@ -82,6 +72,10 @@ static flashMatchResult_t _flash_compare_page_to_buffer(uint16_t page, flashBuff
 static void _flash_erase_page(uint16_t page);
 static void _flash_write_to_buffer(uint16_t start, uint8_t *data, uint16_t data_length, flashBuffer_t buffer);
 static void _flash_write_page_from_buffer(uint16_t page, flashBuffer_t buffer);
+static uint8_t _flash_is_busy(void);
+void _flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t *data);
+void _flash_buffer_read(uint16_t start, uint16_t length, uint8_t *data, flashBuffer_t buffer);
+
 
 /*****************************************************************************
  * Global Variables                                                          *
@@ -91,168 +85,13 @@ flashPowerState_t power_state;
 const char flash_command_pagesize_512[4] = FLASH_COMMAND_PAGESIZE_512;
 const char flash_command_pagesize_528[4] = FLASH_COMMAND_PAGESIZE_528;
 
-/*****************************************************************************
- * SPI / DMA Functions                                                       *
- * These are for internal use only and are used to implement the actual      *  
- * flash functionality                                                       *
- *****************************************************************************/
-
-//Transmits a number of bytes via SPI using the DMA module
-//Typically used to send a command
-//Caution: this function does NOT check if the flash is busy or in low-power mode
-static void _flash_spi_tx(uint8_t *data, uint16_t length)
-{
-    //Slave Select not controlled by DMA module
-    DMACON1bits.SSCON1 = 0;
-    DMACON1bits.SSCON0 = 0; 
-    //Do increment TX address
-    DMACON1bits.TXINC = 1; 
-    //Do not increment RX address
-    DMACON1bits.RXINC = 0; 
-    //Half duplex, transmit only
-    DMACON1bits.DUPLEX1 = 0;
-    DMACON1bits.DUPLEX0 = 1;
-    //Disable delay interrupts
-    DMACON1bits.DLYINTEN = 0; 
-    //1 cycle delay only
-    DMACON2bits.DLYCYC = 0b0000; 
-    //Only interrupt after transfer is completed
-    DMACON2bits.INTLVL = 0b0000; 
-    
-    //Set TX buffer address
-    TXADDRH =  HIGH_BYTE((uint16_t) data);
-    TXADDRL =  LOW_BYTE((uint16_t) data);
-    
-    //Set number of bytes to transmit
-    DMABCH = HIGH_BYTE((uint16_t) (length-1));
-    DMABCL = LOW_BYTE((uint16_t) (length-1));
-    
-    //Perform actual transfer
-    SPI_SS1_PIN = 0; //Enable slave select pin 
-    DMACON1bits.DMAEN = 1; //Start transfer
-    while(DMACON1bits.DMAEN); //Wait for transfer to complete
-    SPI_SS1_PIN = 1; //Disable slave select pin 
-}
-
-//Transmits a number of bytes via SPI using the DMA module
-//Similar to _flash_spi_tx but uses two different data sources
-//Typically used to send a command followed by data
-//Caution: this function does NOT check if the flash is busy or in low-power mode
-static void _flash_spi_tx_tx(uint8_t *command, uint16_t command_length, uint8_t *data, uint16_t data_length)
-{
-    //Slave Select not controlled by DMA module
-    DMACON1bits.SSCON1 = 0;
-    DMACON1bits.SSCON0 = 0; 
-    //Do increment TX address
-    DMACON1bits.TXINC = 1; 
-    //Do not increment RX address
-    DMACON1bits.RXINC = 0; 
-    //Half duplex, transmit only
-    DMACON1bits.DUPLEX1 = 0;
-    DMACON1bits.DUPLEX0 = 1;
-    //Disable delay interrupts
-    DMACON1bits.DLYINTEN = 0; 
-    //1 cycle delay only
-    DMACON2bits.DLYCYC = 0b0000; 
-    //Only interrupt after transfer is completed
-    DMACON2bits.INTLVL = 0b0000; 
-    
-    //Set TX buffer address for command
-    TXADDRH =  HIGH_BYTE((uint16_t) command);
-    TXADDRL =  LOW_BYTE((uint16_t) command);
-    
-    //Set number of bytes to transmit for command
-    DMABCH = HIGH_BYTE((uint16_t) (command_length-1));
-    DMABCL = LOW_BYTE((uint16_t) (command_length-1));
-    
-    //Enable slave select pin 
-    SPI_SS1_PIN = 0; 
-    
-    //Perform transfer of command
-    DMACON1bits.DMAEN = 1; //Start transfer
-    while(DMACON1bits.DMAEN); //Wait for transfer to complete  
-    
-    //Set TX buffer address for data
-    TXADDRH =  HIGH_BYTE((uint16_t) data);
-    TXADDRL =  LOW_BYTE((uint16_t) data);
-    
-    //Set number of bytes to transmit for actual data
-    DMABCH = HIGH_BYTE((uint16_t) (data_length-1));
-    DMABCL = LOW_BYTE((uint16_t) (data_length-1));
-    
-    //Perform transfer of data
-    DMACON1bits.DMAEN = 1; //Start transfer
-    while(DMACON1bits.DMAEN); //Wait for transfer to complete
-    
-    //Disable slave select pin 
-    SPI_SS1_PIN = 1;  
-}
-
-//Transmits and then receives a number of bytes via SPI using the DMA module
-//Typically used to send a command in order to receive data
-//Caution: this function does NOT check if the flash is busy or in low-power mode
-static void _flash_spi_tx_rx(uint8_t *command, uint16_t command_length, uint8_t *data, uint16_t data_length)
-{
-    //Slave Select not controlled by DMA module
-    DMACON1bits.SSCON1 = 0;
-    DMACON1bits.SSCON0 = 0; 
-    //Do increment TX address
-    DMACON1bits.TXINC = 1; 
-    //Do not increment RX address
-    DMACON1bits.RXINC = 0; 
-    //Half duplex, transmit only
-    DMACON1bits.DUPLEX1 = 0;
-    DMACON1bits.DUPLEX0 = 1;
-    //Disable delay interrupts
-    DMACON1bits.DLYINTEN = 0; 
-    //1 cycle delay only
-    DMACON2bits.DLYCYC = 0b0000; 
-    //Only interrupt after transfer is completed
-    DMACON2bits.INTLVL = 0b0000; 
-    
-    //Set TX buffer address
-    TXADDRH =  HIGH_BYTE((uint16_t) command);
-    TXADDRL =  LOW_BYTE((uint16_t) command);
-    
-    //Set number of bytes to transmit
-    DMABCH = HIGH_BYTE((uint16_t) (command_length-1));
-    DMABCL = LOW_BYTE((uint16_t) (command_length-1));
-    
-    //Enable slave select pin 
-    SPI_SS1_PIN = 0; 
-    
-    //Perform transfer of command
-    DMACON1bits.DMAEN = 1; //Start transfer
-    while(DMACON1bits.DMAEN); //Wait for transfer to complete  
-    
-    //Do not increment TX address
-    DMACON1bits.TXINC = 0; 
-    //Do increment RX address
-    DMACON1bits.RXINC = 1; 
-    //Half duplex, receive only
-    DMACON1bits.DUPLEX1 = 0;
-    DMACON1bits.DUPLEX0 = 0;
-    
-    //Set RX buffer address
-    RXADDRH =  HIGH_BYTE((uint16_t) data);
-    RXADDRL =  LOW_BYTE((uint16_t) data);
-    
-    //Set number of bytes to transmit
-    DMABCH = HIGH_BYTE((uint16_t) (data_length-1));
-    DMABCL = LOW_BYTE((uint16_t) (data_length-1));
-    
-    //Perform transfer of data
-    DMACON1bits.DMAEN = 1; //Start transfer
-    while(DMACON1bits.DMAEN); //Wait for transfer to complete
-    
-    //Disable slave select pin 
-    SPI_SS1_PIN = 1; 
-}
 
 /*****************************************************************************
  * Utility functions                                                         *
  * These are for internal use only and are used to implement the actual      *  
  * flash functionality                                                       *
+ * These functions may safely assume the configuration to be set correctly   *
+ * They may call each other but must not call public functions               *
  *****************************************************************************/
 
 //Configures flash to use page size of 512 or 528
@@ -262,7 +101,7 @@ static void _flash_set_page_size(flashPageSize_t size)
     uint8_t command[4];
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Prepare command buffer
     if(size==FLASH_PAGE_SIZE_512)
@@ -271,7 +110,7 @@ static void _flash_set_page_size(flashPageSize_t size)
         memcpy(command, flash_command_pagesize_528, 4);
     
     //Transmit command
-    _flash_spi_tx(command, 4);
+    spi_tx(command, 4);
 }
 
 //Reads and returns the two status bytes from the flash
@@ -281,7 +120,7 @@ static uint16_t _flash_get_status(void)
     //Most commonly we use it to CHECK if it is busy
     uint8_t command = FLASH_COMMAND_STATUS_READ;
     uint16_t status;
-    _flash_spi_tx_rx(&command, 1, (uint8_t*) &status, 2);
+    spi_tx_rx(&command, 1, (uint8_t*) &status, 2);
     return status;
 }
 
@@ -294,7 +133,7 @@ static void _flash_wakeup(void)
     {
         case FLASH_POWER_STATE_DEEP_POWER_DOWN:
             command = FLASH_COMMAND_EXIT_DEEP_POWER_DOWN;
-            _flash_spi_tx(&command, 1);
+            spi_tx(&command, 1);
             __delay_us(FLASH_DELAY_WAKEUP_DEEP_POWER_DOWN);
             power_state = FLASH_POWER_STATE_NORMAL;
             break;
@@ -317,7 +156,7 @@ static void _flash_copy_page_to_buffer(uint16_t page, flashBuffer_t buffer)
     uint8_t command[4];
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Configure copy command
     if(buffer==FLASH_BUFFER_1)
@@ -330,7 +169,7 @@ static void _flash_copy_page_to_buffer(uint16_t page, flashBuffer_t buffer)
     command[3] = 0x00; //Low address byte
     
     //Transmit command
-    _flash_spi_tx(command, 4);
+    spi_tx(command, 4);
 }
 
 //Compare the content of a certain page to the content of one of the ram buffers
@@ -340,7 +179,7 @@ static flashMatchResult_t _flash_compare_page_to_buffer(uint16_t page, flashBuff
     uint16_t status;
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Configure compare command
     if(buffer==FLASH_BUFFER_1)
@@ -353,10 +192,10 @@ static flashMatchResult_t _flash_compare_page_to_buffer(uint16_t page, flashBuff
     command[3] = 0x00; //Low address byte
     
     //Transmit command
-    _flash_spi_tx(command, 4);
+    spi_tx(command, 4);
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Get status
     status = _flash_get_status();
@@ -380,7 +219,7 @@ static void _flash_erase_page(uint16_t page)
     uint8_t command[4];
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Configure erase command
     command[0] = FLASH_COMMAND_ERASE_PAGE;
@@ -390,7 +229,7 @@ static void _flash_erase_page(uint16_t page)
     command[3] = 0x00; //Low address byte
     
     //Transmit command
-    _flash_spi_tx(command, 4);
+    spi_tx(command, 4);
 }
 
 //Write data into one of the ram buffers
@@ -399,7 +238,7 @@ static void _flash_write_to_buffer(uint16_t start, uint8_t *data, uint16_t data_
     uint8_t command[4];
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Configure write command
     if(buffer==FLASH_BUFFER_1)
@@ -412,7 +251,7 @@ static void _flash_write_to_buffer(uint16_t start, uint8_t *data, uint16_t data_
     command[3] = LOW_BYTE(start);
     
     //Transmit command
-    _flash_spi_tx_tx(command, 4, data, data_length);
+    spi_tx_tx(command, 4, data, data_length);
 }
 
 //Write the content of one of the ram buffers into a certain page
@@ -421,7 +260,7 @@ static void _flash_write_page_from_buffer(uint16_t page, flashBuffer_t buffer)
     uint8_t command[4];
     
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Configure copy/write command
     if(buffer==FLASH_BUFFER_1)
@@ -434,46 +273,15 @@ static void _flash_write_page_from_buffer(uint16_t page, flashBuffer_t buffer)
     command[3] = 0x00; //Low address byte
     
     //Transmit command
-    _flash_spi_tx(command, 4);
+    spi_tx(command, 4);
 }
 
-/*****************************************************************************
- * Public functions                                                          *
- * Only these functions are made accessible via flash.h                      *  
- *****************************************************************************/
-
-//Set up PPS pin mappings
-//Initialize the SPI
-//After that, initialize the actual flash chip
-void flash_init(void)
-{
-    //Associate pins with MSSP module
-    PPSUnLock();
-    PPS_FUNCTION_SPI2_MISO_INPUT = SPI_MISO_PPS;
-    SPI_MOSI_PPS = PPS_FUNCTION_SPI2_MOSI_OUTPUT;
-    //Careful: Clock needs to be mapped as an output AND an input
-    SPI_SCLK_PPS_OUT = PPS_FUNCTION_SPI2_SCLK_OUTPUT;
-    PPS_FUNCTION_SPI2_SCLK_INPUT = SPI_SCLK_PPS_IN;
-    PPSLock();
-    
-    //Configure and enable MSSP module
-    SSP2STATbits.SMP = 1; //Sample at end
-    SSP2STATbits.CKE = 1; //Active to idle
-    SSP2CON1bits.CKP = 0; //Idle clock is low
-    SSP2CON1bits.SSPM =0b0000; //SPI master mode, Fosc/4
-    SSP2CON1bits.SSPEN = 1; //Enable SPI module
-    
-    //Initialize variables
-    power_state = FLASH_POWER_STATE_NORMAL;
-    
-    //Configure flash to operate in 512byte page size mode
-    _flash_set_page_size(FLASH_PAGE_SIZE_512);
-}
-
-//Check if flash is currently busy
 //This command wakes up the device if it is in one of the low-power modes
-uint8_t flash_is_busy(void)
+//Do not confuse with: uint8_t flash_is_busy(void)
+static uint8_t _flash_is_busy(void)
 {
+    uint16_t status;
+    
     //Wake flash up if it is powered down
     if(power_state!=FLASH_POWER_STATE_NORMAL)
     {
@@ -481,7 +289,9 @@ uint8_t flash_is_busy(void)
     }
     
     //Get and check status bytes
-    uint16_t status = _flash_get_status();
+    status = _flash_get_status();
+    
+
     if(status & FLASH_STATUS_FLAG_BUSY)
     {
         //Flag=1 indicates that the flash is NOT busy
@@ -494,80 +304,15 @@ uint8_t flash_is_busy(void)
     }
 }
 
-//Get the current power state of the device
-flashPowerState_t flash_get_power_state(void)
-{
-    return power_state;
-}
-
-//Change the current power state
-//CAUTION: You can not go from DeepPowerDown to UltraDeepPowerDown and vice versa
-void flash_set_power_state(flashPowerState_t new_power_state)
-{
-    uint8_t command;
-    switch(power_state)
-    {
-        case FLASH_POWER_STATE_NORMAL:
-            if(new_power_state==FLASH_POWER_STATE_DEEP_POWER_DOWN)
-            {
-                command = FLASH_COMMAND_ENTER_DEEP_POWER_DOWN;
-            }
-            else if(new_power_state==FLASH_POWER_STATE_DEEP_POWER_DOWN)
-            {
-                command = FLASH_COMMAND_ENTER_ULTRA_DEEP_POWER_DOWN;
-            }
-            //Wait for flash to be ready
-            //The device is currently awake so there's no risk of waking it up
-            while(flash_is_busy());
-            //Send sleep command
-            _flash_spi_tx(&command, 1);
-            //Keep track of power state
-            power_state = new_power_state;
-            break;
-            
-        default:
-            if(new_power_state==FLASH_POWER_STATE_NORMAL)
-            {
-                _flash_wakeup();
-            }
-            break;
-    }
-}
-
-//Reads one full 512byte page from flash
-void flash_page_read(uint16_t page, uint8_t *data)
-{
-    //Page read is just a special case of a partial read
-    flash_partial_read(page, 0, 512, data);
-}
-
-//Writes one full 512 byte page to flash
-//This function is smart enough to only write if the data does not already match
-void flash_page_write(uint16_t page, uint8_t *data)
-{
-    flashMatchResult_t match;
-    
-    //Write data to ram buffer 1
-    _flash_write_to_buffer(0, data, 512, FLASH_BUFFER_1);
-    
-    //Compare buffer 1 to the page we want to write to
-    match = _flash_compare_page_to_buffer(page, FLASH_BUFFER_1);
-    
-    //Copy the data from the ram buffer to flash page if (and only if) necessary
-    if(match==DATA_DOES_NOT_MATCH)
-    {
-        _flash_write_page_from_buffer(page, FLASH_BUFFER_1);
-    }
-}
-
 //Reads a partial page from flash
-void flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t *data)
+//Do not confuse with: void flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t *data)
+void _flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t *data)
 {
     uint32_t address;
     uint8_t command[4];
-    
+
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Calculate address from page and start
     address = page;
@@ -581,7 +326,168 @@ void flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t 
     command[3] = LOW_BYTE(LOW_WORD(address)); //Low address byte
     
     //Transmit command and receive data
-    _flash_spi_tx_rx(command, 4, data, length);    
+    spi_tx_rx(command, 4, data, length);
+}
+
+void _flash_buffer_read(uint16_t start, uint16_t length, uint8_t *data, flashBuffer_t buffer)
+{
+    uint8_t command[4];
+
+    //Wait for flash to be ready
+    while(_flash_is_busy());
+    
+    //Prepare data to send
+    if(buffer==FLASH_BUFFER_1)
+        command[0] = FLASH_COMMAND_BUFFER1_READ;
+    if(buffer==FLASH_BUFFER_2)
+        command[0] = FLASH_COMMAND_BUFFER2_READ;
+    command[1] = 0x00; //Not used
+    command[2] = HIGH_BYTE(start); //Most significant bit only
+    command[3] = LOW_BYTE(start); //Least significant 8 bits
+    
+    //Transmit command and receive data
+    spi_tx_rx(command, 4, data, length);
+}
+
+/*****************************************************************************
+ * Public functions                                                          *
+ * Only these functions are made accessible via flash.h                      *  
+ * These functions must set (and then reset) the configuration correctly     *
+ * They may call static functions but must not call other public functions   *
+ *****************************************************************************/
+
+//Initialize the SPI
+//After that, initialize the actual flash chip
+void flash_init(void)
+{
+    //Configure and enable MSSP module
+    spi_init(SPI_CONFIGURATION_INTERNAL);
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    //Configure flash to operate in 512byte page size mode
+    _flash_set_page_size(FLASH_PAGE_SIZE_512);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+    
+}
+
+//Check if flash is currently busy
+//This command wakes up the device if it is in one of the low-power modes
+//Do not confuse with: static uint8_t _flash_is_busy(void)
+uint8_t flash_is_busy(void)
+{
+    uint8_t result;
+    
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    //Check and save status
+    result = _flash_is_busy();
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+    
+    //Return status
+    return result;
+}
+
+//Get the current power state of the device
+flashPowerState_t flash_get_power_state(void)
+{
+    return power_state;
+}
+
+//Change the current power state
+//CAUTION: You can not go from DeepPowerDown to UltraDeepPowerDown and vice versa
+void flash_set_power_state(flashPowerState_t new_power_state)
+{
+    uint8_t command;
+    
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    switch(power_state)
+    {
+        case FLASH_POWER_STATE_NORMAL:
+            if(new_power_state==FLASH_POWER_STATE_DEEP_POWER_DOWN)
+            {
+                command = FLASH_COMMAND_ENTER_DEEP_POWER_DOWN;
+            }
+            else if(new_power_state==FLASH_POWER_STATE_DEEP_POWER_DOWN)
+            {
+                command = FLASH_COMMAND_ENTER_ULTRA_DEEP_POWER_DOWN;
+            }
+            //Wait for flash to be ready
+            //The device is currently awake so there's no risk of waking it up
+            while(_flash_is_busy());
+            //Send sleep command
+            spi_tx(&command, 1);
+            //Keep track of power state
+            power_state = new_power_state;
+            break;
+            
+        default:
+            if(new_power_state==FLASH_POWER_STATE_NORMAL)
+            {
+                _flash_wakeup();
+            }
+            break;
+    }
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}
+
+//Reads one full 512byte page from flash
+void flash_sector_read(uint16_t page, uint8_t *data)
+{
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    //Page read is just a special case of a partial read
+    _flash_partial_read(page, 0, 512, data);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}
+
+//Writes one full 512 byte page to flash
+//This function is smart enough to only write if the data does not already match
+void flash_sector_write(uint16_t page, uint8_t *data)
+{
+    flashMatchResult_t match;
+    
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    //Write data to ram buffer 1
+    _flash_write_to_buffer(0, data, 512, FLASH_BUFFER_1);
+    
+    //Compare buffer 1 to the page we want to write to
+    match = _flash_compare_page_to_buffer(page, FLASH_BUFFER_1);
+    
+    //Copy the data from the ram buffer to flash page if (and only if) necessary
+    if(match==DATA_DOES_NOT_MATCH)
+    {
+        _flash_write_page_from_buffer(page, FLASH_BUFFER_1);
+    }
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}
+
+//Reads a partial page from flash
+void flash_partial_read(uint16_t page, uint16_t start, uint16_t length, uint8_t *data)
+{
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    //Do the work
+    _flash_partial_read(page, start, length, data);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
 }
 
 //Writes a partial page to flash
@@ -590,8 +496,11 @@ void flash_partial_write(uint16_t page, uint16_t start, uint16_t length, uint8_t
 {
     flashMatchResult_t match;
     
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
     //Wait for flash to be ready
-    while(flash_is_busy());
+    while(_flash_is_busy());
     
     //Copy data from page to ram buffer 1
     _flash_copy_page_to_buffer(page, FLASH_BUFFER_1); 
@@ -607,37 +516,51 @@ void flash_partial_write(uint16_t page, uint16_t start, uint16_t length, uint8_t
     {
         _flash_write_page_from_buffer(page, FLASH_BUFFER_1);
     }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Everything below here is just for debugging and will be deleted later on
-////////////////////////////////////////////////////////////////////////////////
-
-#ifdef DEBUG_FLASH
-uint8_t _read_internal_flash(uint16_t sector_addr, uint8_t* buffer)
-{
-    //Error check.  Make sure the host is trying to read from a legitimate
-    //address, which corresponds to the MSD volume (and not some other program
-    //memory region beyond the end of the MSD volume).
-    if(sector_addr >= DRV_FILEIO_INTERNAL_FLASH_TOTAL_DISK_SIZE)
-    {
-        return 0;
-    }   
     
-    //Read a sector worth of data, and copy it to the specified RAM "buffer".
-    memcpy
-    (
-        (void*)buffer,
-        (const void*)(MASTER_BOOT_RECORD_ADDRESS + (sector_addr * FILEIO_CONFIG_MEDIA_SECTOR_SIZE)),
-        FILEIO_CONFIG_MEDIA_SECTOR_SIZE
-    );
-
-	return 1;
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
 }
 
-void _flash_copy_from_internal(uint16_t internal_sector, uint16_t external_page)
+void flash_copy_page_to_buffer(uint16_t page)
 {
-    _read_internal_flash(internal_sector, _flash_buffer);
-    flash_page_write(external_page, _flash_buffer);
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    _flash_copy_page_to_buffer(page, FLASH_BUFFER_2);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
 }
-#endif
+
+void flash_write_page_from_buffer(uint16_t page)
+{
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    _flash_write_page_from_buffer(page, FLASH_BUFFER_2);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}
+
+void flash_read_from_buffer(uint16_t start, uint16_t length, uint8_t *data)
+{
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    _flash_buffer_read(start, length, data, FLASH_BUFFER_2);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}
+
+void flash_write_to_buffer(uint16_t start, uint16_t length, uint8_t *data)
+{
+    //Set configuration
+    spi_set_configuration(SPI_CONFIGURATION_INTERNAL);
+    
+    _flash_write_to_buffer(start, data, length, FLASH_BUFFER_2);
+    
+    //Reset configuration
+    spi_set_configuration(SPI_CONFIGURATION_EXTERNAL);
+}

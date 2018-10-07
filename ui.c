@@ -1,6 +1,7 @@
 #include <xc.h>
 #include <stdint.h>
 
+#include "hardware_config.h"
 #include "os.h"
 #include "i2c.h"
 #include "rtcc.h"
@@ -326,7 +327,7 @@ void ui_init(void)
 {
     system_ui_inactive_count = 0;
     //Enable high (3.3volts) board voltage
-    VCC_HIGH_PORT = 1;
+    VCC_HIGH_PIN = 1;
     userInterfaceStatus = USER_INTERFACE_STATUS_STARTUP_1;
 }
 
@@ -350,7 +351,7 @@ void ui_run(void)
                 //system_set_cpu_frequency(CPU_FREQUENCY_48MHz);
             //}
             //Enable the user interface
-            DISP_EN_PORT = 0;
+            DISP_EN_PIN = 0;
             //Proceed to next state
 			system_ui_inactive_count = 0;
 			userInterfaceStatus = USER_INTERFACE_STATUS_STARTUP_2;
@@ -396,7 +397,7 @@ void ui_run(void)
                     //Disable rotary encoder inputs
                     system_encoder_disable();
                     //Disable the user interface
-                    DISP_EN_PORT = 1;
+                    DISP_EN_PIN = 1;
                     //i2c_expander_low(I2C_EXPANDER_USER_INTERFACE);
                     //User interface is now off
                     system_ui_inactive_count = 0;

@@ -1,6 +1,7 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "hardware_config.h"
 #include "os.h"
 #include "adc.h"
 #include "i2c.h"
@@ -107,7 +108,7 @@ void tmr_isr(void)
     //Encoder
     if(INTCON3bits.INT2IF)
     {
-        if(!ENCODER_B_BIT)
+        if(!ENCODER_B_PIN)
         {
             --os.encoderCount;
         }
@@ -115,7 +116,7 @@ void tmr_isr(void)
     }   
     if(INTCON3bits.INT3IF)
     {
-        if(!ENCODER_A_BIT)
+        if(!ENCODER_A_PIN)
         {
             ++os.encoderCount;
         }
@@ -335,7 +336,7 @@ void system_init(void)
     os.buckFrequency = BUCK_OFF;
     os.buckDutyCycle = 0;
     os.buckLastStep = -1;
-    os.display_mode = DISPLAY_MODE_OVERVIEW;
+    os.display_mode = DISPLAY_MODE_STARTUP;
     
     //Just for now
     os.output_voltage = 13000;
@@ -643,4 +644,17 @@ void system_calculate_output_current()
     }
 }
 
+void reboot(void)
+{
+    //Display message if display is on
+//    os.display_mode = DISPLAY_MODE_BOOTLOADER_REBOOTING;
+//    display_prepare(os.display_mode);
+//    if(ui_get_status()==USER_INTERFACE_STATUS_ON)
+//    {
+//        display_update();
+//    }
+    
+    //Just wait 2 seconds until the WDT resets the device
+    while(1);
+}
 

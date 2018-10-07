@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "hardware_config.h"
 #include "display.h"
 #include "i2c.h"
 #include "os.h"
@@ -11,7 +13,9 @@
 
 
 char display_content[4][20];
+uint8_t startup_timer = 0;
 
+static void _display_startup(void);
 static void _display_inout(void);
 static void _display_time(uint8_t mode);
 static void _display_usb(void);
@@ -105,12 +109,51 @@ static void _display_itoa(int16_t value, uint8_t decimals, char *text)
     }
 }
 
+static uint8_t _display_itoa_u16(uint16_t value,  char *text)
+{
+    itoa(text, value, 10);
+    if(value>9999)
+    {
+        *(text+5) = ' ';
+        return 5;
+    }
+    else if (value>999)
+    {
+        *(text+4) = ' ';
+        return 4;
+    }
+    else if (value>99)
+    {
+        *(text+3) = ' ';
+        return 3;
+    }
+    else if (value>9)
+    {
+        *(text+2) = ' ';
+        return 2;
+    }
+    else
+    {
+        *(text+1) = ' ';
+        return 1;
+    }
+}
+
+
 void display_prepare(uint8_t mode)
 {
     _display_clear();
     
     switch(mode&0xF0)
     {
+        case DISPLAY_MODE_STARTUP:
+            _display_startup();
+            ++startup_timer;
+            if(startup_timer>30)
+            {
+                os.display_mode = DISPLAY_MODE_OVERVIEW;
+            }
+            break;
         case DISPLAY_MODE_OVERVIEW:
             _display_inout();
             break;
@@ -137,6 +180,32 @@ void display_prepare(uint8_t mode)
     }
 }
 
+static void _display_startup(void)
+{
+    uint8_t cntr;
+    const char line1[] = "MPPT Solar Charger";
+    const char line2[] = "Version ";
+    const char line3[] = "";
+    const char line4[] = "soldernerd.com";
+
+    cntr = 0;
+    while(line1[cntr])
+        display_content[0][cntr] = line1[cntr++];
+    cntr = 0;
+    while(line2[cntr])
+        display_content[1][cntr] = line2[cntr++];
+    cntr += _display_itoa_u16(FIRMWARE_VERSION_MAJOR, &display_content[1][cntr]);
+    display_content[1][cntr++] = '.';
+    cntr += _display_itoa_u16(FIRMWARE_VERSION_MINOR, &display_content[1][cntr]);
+    display_content[1][cntr++] = '.';
+    cntr += _display_itoa_u16(FIRMWARE_VERSION_FIX, &display_content[1][cntr]);
+    cntr = 0;
+    while(line3[cntr])
+        display_content[2][cntr] = line3[cntr++];
+    cntr = 0;
+    while(line4[cntr])
+        display_content[3][cntr] = line4[cntr++];
+}
 
 static void _display_inout(void)
 {

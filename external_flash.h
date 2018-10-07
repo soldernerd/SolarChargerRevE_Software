@@ -13,6 +13,9 @@
 #include "flash.h"
 
 //Functions for mass storage device
+//This module provides the link between app_device_msd.h and flash.h
+//app_device_msd.h is concerned with the USB mass storage and doesn't care about how the data is stored
+//flash.h implements the communication with our flash chip and doesn't care about USB
 FILEIO_MEDIA_INFORMATION * ExternalFlash_MediaInitialize(void* config);
 uint16_t ExternalFlash_SectorSizeRead(void* config);
 uint32_t ExternalFlash_CapacityRead(void* config);

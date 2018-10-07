@@ -1,6 +1,7 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "hardware_config.h"
 #include "os.h"
 #include "adc.h"
 

@@ -20,6 +20,7 @@
 #include "app_device_msd.h"
 
 //User defined code
+#include "hardware_config.h"
 #include "os.h"
 #include "i2c.h"
 #include "display.h"
@@ -58,30 +59,9 @@ MAIN_RETURN main(void)
 
     USBDeviceInit();
     USBDeviceAttach();
-
+    
     while(1)
     {
-        
-        /*
-        SYSTEM_Tasks();
-
-        #if defined(USB_POLLING)
-            // Interrupt or polling method.  If using polling, must call
-            // this function periodically.  This function will take care
-            // of processing and responding to SETUP transactions
-            // (such as during the enumeration process when you first
-            // plug in).  USB hosts require that USB devices should accept
-            // and process SETUP packets in a timely fashion.  Therefore,
-            // when using polling, this function should be called
-            // regularly (such as once every 1.8ms or faster** [see
-            // inline code comments in usb_device.c for explanation when
-            // "or faster" applies])  In most cases, the USBDeviceTasks()
-            // function does not take very long to execute (ex: <100
-            // instruction cycles) before it returns.
-            USBDeviceTasks();
-        #endif
-        */
-        
         //Do this as often as possible
         APP_DeviceMSDTasks();
         
@@ -147,7 +127,7 @@ MAIN_RETURN main(void)
                 case 5:
                     if(ui_get_status()==USER_INTERFACE_STATUS_ON)
                     {
-                        //display_update();
+                        display_update();
                     }
                     break;
                     
@@ -176,11 +156,11 @@ MAIN_RETURN main(void)
                 case 11:
                     APP_DeviceCustomHIDTasks();
                     log_collect_data();
-                    if(log_get_number_of_samples() == LOG_PERIOD)
-                    {
-                        log_write_to_disk();
-                        log_start_new();
-                    }
+//                    if(log_get_number_of_samples() == LOG_PERIOD)
+//                    {
+//                        log_write_to_disk();
+//                        log_start_new();
+//                    }
                     break;
 
                 case 12:

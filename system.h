@@ -25,8 +25,6 @@ please contact mla_licensing@microchip.com
 #include <stdint.h>
 #include "adc.h"
 
-#include "io_mapping.h"
-
 //Microcontroller flash memory erase/write page sizes.
 #define DRV_FILEIO_INTERNAL_FLASH_CONFIG_ERASE_BLOCK_SIZE 1024
 #define DRV_FILEIO_INTERNAL_FLASH_CONFIG_WRITE_BLOCK_SIZE 64

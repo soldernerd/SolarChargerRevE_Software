@@ -9,7 +9,6 @@
         <itemPath>fileio_media.h</itemPath>
       </logicalFolder>
       <itemPath>system.h</itemPath>
-      <itemPath>io_mapping.h</itemPath>
       <itemPath>app_device_custom_hid.h</itemPath>
       <itemPath>app_device_msd.h</itemPath>
       <itemPath>usb_config.h</itemPath>
@@ -24,6 +23,10 @@
       <itemPath>fat16.h</itemPath>
       <itemPath>log.h</itemPath>
       <itemPath>rtcc.h</itemPath>
+      <itemPath>spi.h</itemPath>
+      <itemPath>api.h</itemPath>
+      <itemPath>application_config.h</itemPath>
+      <itemPath>hardware_config.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -54,6 +57,8 @@
       <itemPath>external_flash.c</itemPath>
       <itemPath>fat16.c</itemPath>
       <itemPath>log.c</itemPath>
+      <itemPath>spi.c</itemPath>
+      <itemPath>api.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -129,7 +134,6 @@
         <property key="verbose" value="false"/>
         <property key="warning-level" value="-3"/>
         <property key="what-to-do" value="ignore"/>
-        <appendMe value="--msgdisable=520,751,759,373,359,362,363"/>
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
